@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1790328835693532, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
       propertyPath: m_Name
-      value: MinimalCharacter2D
+      value: CheeseMinimalCharacter2D
       objectReference: {fileID: 0}
     - target: {fileID: 4319614708212260, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
       propertyPath: m_RootOrder
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539632890920534, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114654745524214770, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
         type: 3}
