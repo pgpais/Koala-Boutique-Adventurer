@@ -83,13 +83,25 @@ public class MissionManager : MonoBehaviour
                 if (remainingExitsToCreate < 0)
                     Debug.LogError("smth went worng, negative exits to creat");
 
-                foreach (var exit in newRoomEntrances.Exits)
+                foreach (var newRoomExit in newRoomEntrances.Exits)
                 {
-                    if (exit.ExitDirection == curExit.RequiredEntranceDirection || !exit.gameObject.activeSelf)
+                    if (!newRoomExit.gameObject.activeSelf)
+                    {
                         continue;
-                    // if (unspawnedExits.Count < 2)
-                    exit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
-                    unspawnedExits.Enqueue(exit);
+                    }
+
+                    if (newRoomExit.ExitDirection == curExit.RequiredEntranceDirection)
+                    {
+                        curExit.Teleporter.Destination = newRoomExit.Teleporter;
+                        curExit.Teleporter.TargetRoom = newRoomExit.Teleporter.CurrentRoom;
+
+                        newRoomExit.Teleporter.Destination = curExit.Teleporter;
+                        newRoomExit.Teleporter.TargetRoom = curExit.Teleporter.CurrentRoom;
+                        continue;
+                    }
+
+                    newRoomExit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
+                    unspawnedExits.Enqueue(newRoomExit);
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
             }
