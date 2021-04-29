@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69087b96f465fbe45a344dae6e5531eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
   exitDirection: 2
-  roomSpawnPoint: {fileID: 5834395057771505300}
+  roomSpawnPoint: {fileID: 0}
 --- !u!1001 &6978586149832785226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 6063875829265102251, guid: 56e2762e616eb064cba139ca61a3e071,
         type: 3}
       propertyPath: m_Name
-      value: Left
+      value: Left Portal
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3471998535665799039, guid: 56e2762e616eb064cba139ca61a3e071, type: 3}
@@ -122,12 +124,6 @@ PrefabInstance:
 --- !u!1 &3819014900132481249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6063875829265102251, guid: 56e2762e616eb064cba139ca61a3e071,
-    type: 3}
-  m_PrefabInstance: {fileID: 6978586149832785226}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5834395057771505300 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3471998535061052382, guid: 56e2762e616eb064cba139ca61a3e071,
     type: 3}
   m_PrefabInstance: {fileID: 6978586149832785226}
   m_PrefabAsset: {fileID: 0}

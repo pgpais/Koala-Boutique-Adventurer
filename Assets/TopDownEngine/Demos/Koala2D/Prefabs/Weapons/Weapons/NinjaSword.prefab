@@ -46,10 +46,12 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -163,6 +166,7 @@ MonoBehaviour:
   FlipWeaponOnCharacterFlip: 1
   RightFacingFlipValue: {x: 1, y: 1, z: 1}
   LeftFacingFlipValue: {x: -1, y: 1, z: 1}
+  WeaponUseTransform: {fileID: 0}
   LeftHandHandle: {fileID: 0}
   RightHandHandle: {fileID: 0}
   ModifyMovementWhileAttacking: 0
@@ -184,978 +188,19 @@ MonoBehaviour:
   ReloadStopAnimationParameter: 
   WeaponAngleAnimationParameter: 
   WeaponAngleRelativeAnimationParameter: 
-  WeaponStartFeedback:
-    UpdateAnimator: 0
-    FeedbackAnimator: {fileID: 0}
-    AnimatorTriggerParameterName: 
-    AnimatorBoolParameterName: 
-    AnimateScale: 0
-    AnimateScaleTarget: {fileID: 0}
-    AnimateScaleDuration: 0.2
-    AnimateScaleX:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleY:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleZ:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    InstantiateParticles: 0
-    ParticlesPrefab: {fileID: 0}
-    InstantiateParticlesAt: {fileID: 0}
-    BindParticleSystem: 0
-    BoundParticleSystem: {fileID: 0}
-    InstantiateVFX: 0
-    VfxToInstantiate: {fileID: 0}
-    VfxPositionOffset: {x: 0, y: 0, z: 0}
-    VfxCreateObjectPool: 0
-    VfxObjectPoolSize: 5
-    FlickerRenderer: 0
-    FlickeringRenderer: {fileID: 0}
-    FlickerDuration: 0.2
-    FlickerOctave: 0.04
-    FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-    Sfx: {fileID: 0}
-    SfxAudioMixerGroup: {fileID: 0}
-    ShakeCamera: 0
-    CameraShakeProperties:
-      Duration: 0
-      Amplitude: 0
-      Frequency: 0
-    ZoomCamera: 0
-    ZoomMode: 0
-    ZoomFieldOfView: 30
-    ZoomTransitionDuration: 0.05
-    ZoomDuration: 0.1
-    FreezeFrame: 0
-    FreezeFrameDuration: 0
-    ModifyTimescale: 0
-    TimeScale: 0
-    TimeScaleDuration: 0
-    TimeScaleLerp: 0
-    TimeScaleLerpSpeed: 0
-    ChromaticAberration: 0
-    ChromaticAberrationIntensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ChromaticAberrationDuration: 0.2
-    ChromaticAberrationAmplitude: 1
-    TriggerFlash: 0
-    FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
-    FlashAlpha: 1
-    FlashID: 0
-    PlayEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    StopEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  WeaponUsedFeedback:
-    UpdateAnimator: 0
-    FeedbackAnimator: {fileID: 0}
-    AnimatorTriggerParameterName: 
-    AnimatorBoolParameterName: 
-    AnimateScale: 0
-    AnimateScaleTarget: {fileID: 0}
-    AnimateScaleDuration: 0.2
-    AnimateScaleX:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleY:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleZ:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    InstantiateParticles: 0
-    ParticlesPrefab: {fileID: 0}
-    InstantiateParticlesAt: {fileID: 0}
-    BindParticleSystem: 0
-    BoundParticleSystem: {fileID: 0}
-    InstantiateVFX: 0
-    VfxToInstantiate: {fileID: 0}
-    VfxPositionOffset: {x: 0, y: 0, z: 0}
-    VfxCreateObjectPool: 0
-    VfxObjectPoolSize: 5
-    FlickerRenderer: 0
-    FlickeringRenderer: {fileID: 0}
-    FlickerDuration: 0.2
-    FlickerOctave: 0.04
-    FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-    Sfx: {fileID: 0}
-    SfxAudioMixerGroup: {fileID: 0}
-    ShakeCamera: 0
-    CameraShakeProperties:
-      Duration: 0
-      Amplitude: 0
-      Frequency: 0
-    ZoomCamera: 0
-    ZoomMode: 0
-    ZoomFieldOfView: 30
-    ZoomTransitionDuration: 0.05
-    ZoomDuration: 0.1
-    FreezeFrame: 0
-    FreezeFrameDuration: 0
-    ModifyTimescale: 0
-    TimeScale: 0
-    TimeScaleDuration: 0
-    TimeScaleLerp: 0
-    TimeScaleLerpSpeed: 0
-    ChromaticAberration: 0
-    ChromaticAberrationIntensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ChromaticAberrationDuration: 0.2
-    ChromaticAberrationAmplitude: 1
-    TriggerFlash: 0
-    FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
-    FlashAlpha: 1
-    FlashID: 0
-    PlayEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    StopEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  WeaponStopFeedback:
-    UpdateAnimator: 0
-    FeedbackAnimator: {fileID: 0}
-    AnimatorTriggerParameterName: 
-    AnimatorBoolParameterName: 
-    AnimateScale: 0
-    AnimateScaleTarget: {fileID: 0}
-    AnimateScaleDuration: 0.2
-    AnimateScaleX:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleY:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleZ:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    InstantiateParticles: 0
-    ParticlesPrefab: {fileID: 0}
-    InstantiateParticlesAt: {fileID: 0}
-    BindParticleSystem: 0
-    BoundParticleSystem: {fileID: 0}
-    InstantiateVFX: 0
-    VfxToInstantiate: {fileID: 0}
-    VfxPositionOffset: {x: 0, y: 0, z: 0}
-    VfxCreateObjectPool: 0
-    VfxObjectPoolSize: 5
-    FlickerRenderer: 0
-    FlickeringRenderer: {fileID: 0}
-    FlickerDuration: 0.2
-    FlickerOctave: 0.04
-    FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-    Sfx: {fileID: 0}
-    SfxAudioMixerGroup: {fileID: 0}
-    ShakeCamera: 0
-    CameraShakeProperties:
-      Duration: 0
-      Amplitude: 0
-      Frequency: 0
-    ZoomCamera: 0
-    ZoomMode: 0
-    ZoomFieldOfView: 30
-    ZoomTransitionDuration: 0.05
-    ZoomDuration: 0.1
-    FreezeFrame: 0
-    FreezeFrameDuration: 0
-    ModifyTimescale: 0
-    TimeScale: 0
-    TimeScaleDuration: 0
-    TimeScaleLerp: 0
-    TimeScaleLerpSpeed: 0
-    ChromaticAberration: 0
-    ChromaticAberrationIntensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ChromaticAberrationDuration: 0.2
-    ChromaticAberrationAmplitude: 1
-    TriggerFlash: 0
-    FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
-    FlashAlpha: 1
-    FlashID: 0
-    PlayEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    StopEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  WeaponReloadFeedback:
-    UpdateAnimator: 0
-    FeedbackAnimator: {fileID: 0}
-    AnimatorTriggerParameterName: 
-    AnimatorBoolParameterName: 
-    AnimateScale: 0
-    AnimateScaleTarget: {fileID: 0}
-    AnimateScaleDuration: 0.2
-    AnimateScaleX:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleY:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleZ:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    InstantiateParticles: 0
-    ParticlesPrefab: {fileID: 0}
-    InstantiateParticlesAt: {fileID: 0}
-    BindParticleSystem: 0
-    BoundParticleSystem: {fileID: 0}
-    InstantiateVFX: 0
-    VfxToInstantiate: {fileID: 0}
-    VfxPositionOffset: {x: 0, y: 0, z: 0}
-    VfxCreateObjectPool: 0
-    VfxObjectPoolSize: 5
-    FlickerRenderer: 0
-    FlickeringRenderer: {fileID: 0}
-    FlickerDuration: 0.2
-    FlickerOctave: 0.04
-    FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-    Sfx: {fileID: 0}
-    SfxAudioMixerGroup: {fileID: 0}
-    ShakeCamera: 0
-    CameraShakeProperties:
-      Duration: 0
-      Amplitude: 0
-      Frequency: 0
-    ZoomCamera: 0
-    ZoomMode: 0
-    ZoomFieldOfView: 30
-    ZoomTransitionDuration: 0.05
-    ZoomDuration: 0.1
-    FreezeFrame: 0
-    FreezeFrameDuration: 0
-    ModifyTimescale: 0
-    TimeScale: 0
-    TimeScaleDuration: 0
-    TimeScaleLerp: 0
-    TimeScaleLerpSpeed: 0
-    ChromaticAberration: 0
-    ChromaticAberrationIntensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ChromaticAberrationDuration: 0.2
-    ChromaticAberrationAmplitude: 1
-    TriggerFlash: 0
-    FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
-    FlashAlpha: 1
-    FlashID: 0
-    PlayEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    StopEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  WeaponReloadNeededFeedback:
-    UpdateAnimator: 0
-    FeedbackAnimator: {fileID: 0}
-    AnimatorTriggerParameterName: 
-    AnimatorBoolParameterName: 
-    AnimateScale: 0
-    AnimateScaleTarget: {fileID: 0}
-    AnimateScaleDuration: 0.2
-    AnimateScaleX:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleY:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    AnimateScaleZ:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.3
-        value: 1.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    InstantiateParticles: 0
-    ParticlesPrefab: {fileID: 0}
-    InstantiateParticlesAt: {fileID: 0}
-    BindParticleSystem: 0
-    BoundParticleSystem: {fileID: 0}
-    InstantiateVFX: 0
-    VfxToInstantiate: {fileID: 0}
-    VfxPositionOffset: {x: 0, y: 0, z: 0}
-    VfxCreateObjectPool: 0
-    VfxObjectPoolSize: 5
-    FlickerRenderer: 0
-    FlickeringRenderer: {fileID: 0}
-    FlickerDuration: 0.2
-    FlickerOctave: 0.04
-    FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-    Sfx: {fileID: 0}
-    SfxAudioMixerGroup: {fileID: 0}
-    ShakeCamera: 0
-    CameraShakeProperties:
-      Duration: 0
-      Amplitude: 0
-      Frequency: 0
-    ZoomCamera: 0
-    ZoomMode: 0
-    ZoomFieldOfView: 30
-    ZoomTransitionDuration: 0.05
-    ZoomDuration: 0.1
-    FreezeFrame: 0
-    FreezeFrameDuration: 0
-    ModifyTimescale: 0
-    TimeScale: 0
-    TimeScaleDuration: 0
-    TimeScaleLerp: 0
-    TimeScaleLerpSpeed: 0
-    ChromaticAberration: 0
-    ChromaticAberrationIntensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ChromaticAberrationDuration: 0.2
-    ChromaticAberrationAmplitude: 1
-    TriggerFlash: 0
-    FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
-    FlashAlpha: 1
-    FlashID: 0
-    PlayEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    StopEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   WeaponStartMMFeedback: {fileID: 0}
   WeaponUsedMMFeedback: {fileID: 9123869880610213249}
   WeaponStopMMFeedback: {fileID: 0}
   WeaponReloadMMFeedback: {fileID: 0}
   WeaponReloadNeededMMFeedback: {fileID: 0}
-  MuzzleFlareLight: {fileID: 0}
   InitializeOnStart: 0
   Interruptable: 0
   Flipped: 0
   DamageAreaShape: 0
   AreaSize: {x: 4, y: 2, z: 0}
   AreaOffset: {x: 0.64, y: 0, z: 0}
+  HitDamageableFeedback: {fileID: 0}
+  HitNonDamageableFeedback: {fileID: 0}
   InitialDelay: 0
   ActiveDuration: 0.2
   TargetLayerMask:
@@ -1165,6 +210,7 @@ MonoBehaviour:
   Knockback: 1
   KnockbackForce: {x: 500, y: 500}
   InvincibilityDuration: 0.5
+  CanDamageOwner: 0
 --- !u!1 &8806252929600874253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +262,8 @@ MonoBehaviour:
   - {fileID: 7203264229273342234}
   - {fileID: 7497915000978146033}
   InitializationMode: 2
+  SafeMode: 3
+  AutoPlayOnStart: 0
   DebugActive: 0
 --- !u!114 &464147986856431169
 MonoBehaviour:
@@ -1231,13 +279,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   Label: Flash
+  Chance: 100
   Timing:
+    TimescaleMode: 0
     InitialDelay: 0
     CooldownDuration: 0
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
   DebugActive: 0
+  Channel: 0
   FlashColor: {r: 0.8431373, g: 0.7254902, b: 0.9568628, a: 1}
   FlashDuration: 0.1
   FlashAlpha: 0.1
@@ -1256,15 +311,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   Label: Sound
+  Chance: 100
   Timing:
+    TimescaleMode: 0
     InitialDelay: 0
     CooldownDuration: 0
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
   DebugActive: 0
   Sfx: {fileID: 8300000, guid: d383337d581f02845a7774fb266bcffd, type: 3}
   RandomSfx: []
+  TestButton: 0
+  TestStopButton: 0
+  PlayMethod: 0
+  PoolSize: 10
   MinVolume: 1
   MaxVolume: 1
   MinPitch: 1
@@ -1284,13 +349,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   Label: Camera Shake
+  Chance: 100
   Timing:
+    TimescaleMode: 0
     InitialDelay: 0
     CooldownDuration: 0
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
   DebugActive: 0
+  RepeatUntilStopped: 0
+  Channel: 0
   CameraShakeProperties:
     Duration: 0.1
     Amplitude: 0.03
