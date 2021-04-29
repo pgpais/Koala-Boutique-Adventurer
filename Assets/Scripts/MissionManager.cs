@@ -71,25 +71,27 @@ public class MissionManager : MonoBehaviour
                 // Debug.Log($"ROOM COLLISION AT ({curExit.x}, {curExit.y})");
                 continue;
             }
-
-
-            RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
-            newRoomEntrances.x = curExit.x;
-            newRoomEntrances.y = curExit.y;
-            roomMap[curExit.x, curExit.y] = newRoomEntrances.GetComponent<Room>();
-
-            remainingExitsToCreate -= newRoomEntrances.NExits - 1;
-            if (remainingExitsToCreate < 0)
-                Debug.LogError("smth went worng, negative exits to creat");
-
-            foreach (var exit in newRoomEntrances.Exits)
+            else
             {
-                if (exit.ExitDirection == curExit.RequiredEntranceDirection || !exit.gameObject.activeSelf)
-                    continue;
-                // if (unspawnedExits.Count < 2)
-                exit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
-                unspawnedExits.Enqueue(exit);
-                // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
+                // Add room at exit
+                RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
+                newRoomEntrances.x = curExit.x;
+                newRoomEntrances.y = curExit.y;
+                roomMap[curExit.x, curExit.y] = newRoomEntrances.GetComponent<Room>();
+
+                remainingExitsToCreate -= newRoomEntrances.NExits - 1;
+                if (remainingExitsToCreate < 0)
+                    Debug.LogError("smth went worng, negative exits to creat");
+
+                foreach (var exit in newRoomEntrances.Exits)
+                {
+                    if (exit.ExitDirection == curExit.RequiredEntranceDirection || !exit.gameObject.activeSelf)
+                        continue;
+                    // if (unspawnedExits.Count < 2)
+                    exit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
+                    unspawnedExits.Enqueue(exit);
+                    // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
+                }
             }
         }
     }
@@ -118,22 +120,22 @@ public class MissionManager : MonoBehaviour
 
             // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
 
-            // if (remainingExitsToCreate <= howManyDeadEnds)
-            // {
-            //     Debug.Log("Spawning dead end | nexits = " + nRoomAdittionalExits);
-            //     // Spawn dead end
-            //     // TODO: Dead ends could be secrets?
-            //     if (nRoomAdittionalExits > 0)
-            //     {
-            //         continue;
-            //     }
-            //     else
-            //     {
-            //         return room;
-            //     }
-            // }
-            // else 
-            if (nRoomAdittionalExits <= remainingExitsToCreate)
+            if (remainingExitsToCreate <= howManyDeadEnds)
+            {
+                // Debug.Log("Spawning dead end | nexits = " + nRoomAdittionalExits);
+                // Spawn dead end
+                // TODO: Dead ends could be secrets?
+                if (nRoomAdittionalExits > 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    return room;
+                }
+            }
+            else
+            if (nRoomAdittionalExits <= remainingExitsToCreate && nRoomAdittionalExits > 0)
             {
                 // TODO: Check for exit collision with other rooms
                 // Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
