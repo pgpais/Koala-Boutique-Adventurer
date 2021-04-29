@@ -33,6 +33,8 @@ public class RoomEntrances : MonoBehaviour
     //     }
     // }
 
+    public int x, y;
+
     public int NExits => nExits;
     [SerializeField] int nExits;
 

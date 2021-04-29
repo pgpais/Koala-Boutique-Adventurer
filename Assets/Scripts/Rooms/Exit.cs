@@ -5,6 +5,9 @@ using static RoomEntrances;
 [RequireComponent(typeof(Teleporter))]
 public class Exit : MonoBehaviour
 {
+    public int x, y;
+
+
     public ExitDirection ExitDirection => exitDirection;
     [SerializeField] ExitDirection exitDirection;
 
@@ -13,6 +16,9 @@ public class Exit : MonoBehaviour
 
     public ExitDirection RequiredEntranceDirection => requiredEntranceDirection;
     private ExitDirection requiredEntranceDirection;
+
+    public Teleporter Teleporter => teleporter;
+    Teleporter teleporter;
 
     private void Awake()
     {
@@ -31,8 +37,36 @@ public class Exit : MonoBehaviour
                 requiredEntranceDirection = ExitDirection.Left;
                 break;
             default:
+                Debug.LogError("This Exit has a weird direction! HALP", this);
                 break;
         }
 
+        teleporter = GetComponent<Teleporter>();
+    }
+
+    public void SetCoordinates(int roomX, int roomY)
+    {
+        switch (exitDirection)
+        {
+            case ExitDirection.Top:
+                x = roomX;
+                y = roomY + 1;
+                break;
+            case ExitDirection.Bot:
+                x = roomX;
+                y = roomY - 1;
+                break;
+            case ExitDirection.Left:
+                x = roomX - 1;
+                y = roomY;
+                break;
+            case ExitDirection.Right:
+                x = roomX + 1;
+                y = roomY;
+                break;
+            default:
+                Debug.LogError("This Exit has a weird direction! HALP", this);
+                break;
+        }
     }
 }

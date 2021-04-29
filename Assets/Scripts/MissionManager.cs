@@ -5,6 +5,7 @@ using static RoomEntrances;
 
 public class MissionManager : MonoBehaviour
 {
+    [SerializeField] int seed; // TODO: Start using seeds
     [SerializeField] RoomPrefabs roomPrefabs;
 
     [Space]
@@ -25,7 +26,7 @@ public class MissionManager : MonoBehaviour
         initialRoomTransform = initialRoom.transform;
         unspawnedExits = new Queue<Exit>();
         roomMap = new Room[howManyRooms * 2, howManyRooms * 2]; //! Can be terrible memory eater
-        roomMap[howManyRooms / 2, howManyRooms / 2] = initialRoom;
+
     }
 
     // Start is called before the first frame update
@@ -42,8 +43,14 @@ public class MissionManager : MonoBehaviour
 
     void GenerateMap()
     {
-        foreach (var exit in initialRoom.GetComponent<RoomEntrances>().Exits)
+        roomMap[howManyRooms / 2, howManyRooms / 2] = initialRoom;
+        var initialRoomEntrances = initialRoom.GetComponent<RoomEntrances>();
+        initialRoomEntrances.x = howManyRooms / 2;
+        initialRoomEntrances.y = howManyRooms / 2;
+
+        foreach (var exit in initialRoomEntrances.Exits)
         {
+            exit.SetCoordinates(initialRoomEntrances.x, initialRoomEntrances.y);
             unspawnedExits.Enqueue(exit);
         }
         remainingExitsToCreate -= 4;
@@ -51,12 +58,25 @@ public class MissionManager : MonoBehaviour
         while (unspawnedExits.Count > 0)
         {
             Exit curExit = unspawnedExits.Dequeue();
-            Debug.Log("Doing exit " + curExit.ExitDirection);
+            // Debug.Log("Doing exit " + curExit.ExitDirection);
 
             GameObject roomToSpawn = GetRoomForExit(curExit);
 
-            // TODO: Add to map matrix (maybe rooms should have coordinates?)
+            if (roomMap[curExit.x, curExit.y] != null)
+            {
+                // skip exit
+                // TODO:  Deactivate teleporter object?
+                curExit.Teleporter.gameObject.SetActive(false);
+                remainingExitsToCreate++;
+                // Debug.Log($"ROOM COLLISION AT ({curExit.x}, {curExit.y})");
+                continue;
+            }
+
+
             RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
+            newRoomEntrances.x = curExit.x;
+            newRoomEntrances.y = curExit.y;
+            roomMap[curExit.x, curExit.y] = newRoomEntrances.GetComponent<Room>();
 
             remainingExitsToCreate -= newRoomEntrances.NExits - 1;
             if (remainingExitsToCreate < 0)
@@ -67,8 +87,9 @@ public class MissionManager : MonoBehaviour
                 if (exit.ExitDirection == curExit.RequiredEntranceDirection || !exit.gameObject.activeSelf)
                     continue;
                 // if (unspawnedExits.Count < 2)
+                exit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
                 unspawnedExits.Enqueue(exit);
-                Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
+                // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
             }
         }
     }
@@ -95,7 +116,7 @@ public class MissionManager : MonoBehaviour
             int nRoomAdittionalExits = room.GetComponent<RoomEntrances>().NExits - 1; //-1 because one of the exits is already connected
             // int nRoomAdittionalExits = 5;
 
-            Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
+            // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
 
             // if (remainingExitsToCreate <= howManyDeadEnds)
             // {
@@ -115,7 +136,7 @@ public class MissionManager : MonoBehaviour
             if (nRoomAdittionalExits <= remainingExitsToCreate)
             {
                 // TODO: Check for exit collision with other rooms
-                Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
+                // Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
                 return room;
             }
             else
