@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047e0847348712f4eb64bce2d5f78b99, type: 3}
+  m_Name: RoomPrefabs
+  m_EditorClassIdentifier: 
+  topDoorRooms:
+  - {fileID: 7517641195257814936, guid: 4dbebdb1b0c8ee241a9bd289add5ccee, type: 3}
+  - {fileID: 1479454116637185649, guid: 5f88df84495232341bf72bdca92ba35b, type: 3}
+  - {fileID: 5891140156072154698, guid: 1d95505ebd9ca3f488b3a5546aa71763, type: 3}
+  - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
+  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
+  - {fileID: 6023105503356485424, guid: 6f7fb0d6716281544b864d326a3b641a, type: 3}
+  - {fileID: 6522084229932423413, guid: 5d30411cd4158b1418a9494c4e458429, type: 3}
+  bottomDoorRooms:
+  - {fileID: 1274066756872582856, guid: 5ec6d61b14b7341458c2152dbc2748c6, type: 3}
+  - {fileID: 8633152878446974182, guid: a86f2010f90a7c84cb1d5d3b63eacfab, type: 3}
+  - {fileID: 6998606759956459310, guid: 074510e3099483c47a88fb46fab7f5dd, type: 3}
+  - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
+  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
+  - {fileID: 6023105503356485424, guid: 6f7fb0d6716281544b864d326a3b641a, type: 3}
+  - {fileID: 8672406322151948058, guid: a098cb5e4485b684d8359f6f25bc219d, type: 3}
+  leftDoorRooms:
+  - {fileID: 8493166997045477191, guid: bfb68e7f0db64054a936132334438eeb, type: 3}
+  - {fileID: 8633152878446974182, guid: a86f2010f90a7c84cb1d5d3b63eacfab, type: 3}
+  - {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c, type: 3}
+  - {fileID: 7517641195257814936, guid: 4dbebdb1b0c8ee241a9bd289add5ccee, type: 3}
+  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
+  - {fileID: 6522084229932423413, guid: 5d30411cd4158b1418a9494c4e458429, type: 3}
+  - {fileID: 8672406322151948058, guid: a098cb5e4485b684d8359f6f25bc219d, type: 3}
+  rightDoorRooms:
+  - {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c, type: 3}
+  - {fileID: 4153047158767450402, guid: 242c00858e7a641498f67107c53092a4, type: 3}
+  - {fileID: 6998606759956459310, guid: 074510e3099483c47a88fb46fab7f5dd, type: 3}
+  - {fileID: 1479454116637185649, guid: 5f88df84495232341bf72bdca92ba35b, type: 3}
+  - {fileID: 6023105503356485424, guid: 6f7fb0d6716281544b864d326a3b641a, type: 3}
+  - {fileID: 6522084229932423413, guid: 5d30411cd4158b1418a9494c4e458429, type: 3}
+  - {fileID: 8672406322151948058, guid: a098cb5e4485b684d8359f6f25bc219d, type: 3}

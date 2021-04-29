@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3471998535061052381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3471998535061052382}
+  m_Layer: 0
+  m_Name: Right Spawn
+  m_TagString: RoomSpawn
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3471998535061052382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471998535061052381}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 50, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6063875829265102244}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6063875828538333859
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,8 +350,9 @@ GameObject:
   - component: {fileID: 6063875829265102244}
   - component: {fileID: 9043559428749184974}
   - component: {fileID: 170719405186408278}
+  - component: {fileID: 3471998535665799039}
   m_Layer: 0
-  m_Name: DungeonGateVertical
+  m_Name: Right Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,6 +372,7 @@ Transform:
   - {fileID: 6063875828538333884}
   - {fileID: 6063875829496578692}
   - {fileID: 6063875828830206745}
+  - {fileID: 3471998535061052382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -476,6 +508,20 @@ MonoBehaviour:
   DelayBetweenFades: 0.2
   FadeInDuration: 0.5
   FinalDelay: 0
+--- !u!114 &3471998535665799039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063875829265102251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69087b96f465fbe45a344dae6e5531eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitDirection: 3
+  roomSpawnPoint: {fileID: 3471998535061052382}
 --- !u!1 &6063875829496578699
 GameObject:
   m_ObjectHideFlags: 0
