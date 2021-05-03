@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 1758245710283459558}
   - component: {fileID: 6566368070390497805}
   - component: {fileID: 3471998535665799038}
+  - component: {fileID: 3251723470717531176}
   m_Layer: 0
   m_Name: Top Portal
   m_TagString: Untagged
@@ -456,6 +457,36 @@ MonoBehaviour:
   y: 0
   exitDirection: 0
   roomSpawnPoint: {fileID: 0}
+--- !u!114 &3251723470717531176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585907733339030869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000e9f72b6bdfb2e38817358f5f9f97d30259625239
+  m_ShapePath:
+  - {x: 0.50982445, y: -0.67076015, z: 0}
+  - {x: 0.9746433, y: -0.69259024, z: 0}
+  - {x: 1.0065153, y: 0.9, z: 0}
+  - {x: -1.0065145, y: 0.9, z: 0}
+  - {x: -0.97669643, y: -0.68452215, z: 0}
+  - {x: -0.54008824, y: -0.6845226, z: 0}
+  - {x: -0.5182578, y: -0.48804855, z: 0}
+  - {x: 0.46411037, y: -0.46621847, z: 0}
+  m_ShapePathHash: -893558626
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -503594
 --- !u!1 &1585907733769519115
 GameObject:
   m_ObjectHideFlags: 0
