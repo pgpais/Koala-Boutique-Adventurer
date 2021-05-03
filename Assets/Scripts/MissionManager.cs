@@ -134,17 +134,15 @@ public class MissionManager : MonoBehaviour
 
             if (remainingExitsToCreate <= howManyDeadEnds)
             {
-                // Debug.Log("Spawning dead end | nexits = " + nRoomAdittionalExits);
-                // Spawn dead end
-                // TODO: Dead ends could be secrets?
-                if (nRoomAdittionalExits > 0)
+
+                List<GameObject> deadEnds = roomList.FindAll(delegate (GameObject obj)
                 {
-                    continue;
-                }
-                else
-                {
-                    return room;
-                }
+                    RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                    return entrances.NExits == 1;
+                });
+
+                return SelectDeadEnd(deadEnds);
             }
             else
             if (nRoomAdittionalExits <= remainingExitsToCreate && nRoomAdittionalExits > 0)
@@ -161,6 +159,19 @@ public class MissionManager : MonoBehaviour
 
         Debug.LogError("Couldn't find any room to fit this exit. Why? Stopped at index: " + ((i + startingPoint) % roomList.Count) + " | remianingExits: " + remainingExitsToCreate);
         return null;
+    }
+
+    private GameObject SelectDeadEnd(List<GameObject> deadEndList)
+    {
+        // TODO: Make conditions for how many of each room type should show up.
+        //? (one exit; distance from center; how many valuables;) 
+
+        return deadEndList.Find(delegate (GameObject obj)
+                {
+                    RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                    return entrances.Type == RoomType.Exit;
+                });
     }
 
     private RoomEntrances SpawnRoom(GameObject roomToSpawn, Exit connectedExit)

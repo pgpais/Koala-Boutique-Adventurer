@@ -15,6 +15,21 @@ public class RoomEntrances : MonoBehaviour
         Right
     }
 
+    public enum RoomType
+    {
+        Default,
+        Exit,
+        Loot,
+        Trap,
+        Enemies,
+        Secret,
+        Buff,
+        Healing
+
+    }
+    public RoomType Type => type;
+    [SerializeField] RoomType type;
+
     // public int nEntrances => exitDirections.Count;
     // public int nEntrancesPrefab
     // {
