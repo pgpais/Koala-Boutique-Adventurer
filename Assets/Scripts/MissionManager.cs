@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
@@ -5,7 +6,9 @@ using static RoomEntrances;
 
 public class MissionManager : MonoBehaviour
 {
-    [SerializeField] int seed; // TODO: Start using seeds
+    public static MissionManager instance;
+
+    [SerializeField] uint seed = 100; // TODO: Figure out a good way of using seeds
     [SerializeField] RoomPrefabs roomPrefabs;
 
     [Space]
@@ -22,11 +25,19 @@ public class MissionManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
         remainingExitsToCreate = howManyRooms;
         initialRoomTransform = initialRoom.transform;
         unspawnedExits = new Queue<Exit>();
         roomMap = new Room[howManyRooms * 2, howManyRooms * 2]; //! Can be terrible memory eater
-
     }
 
     // Start is called before the first frame update
@@ -115,17 +126,18 @@ public class MissionManager : MonoBehaviour
         List<GameObject> roomList = roomPrefabs.GetRoomListFromDirection(requiredDirection);
 
         // TODO: Check if matrix spot is occupied
-        return SelectRandomRoomFromList(roomList);
+        return SelectRoomFromList(roomList);
     }
 
-    private GameObject SelectRandomRoomFromList(List<GameObject> roomList)
+    private GameObject SelectRoomFromList(List<GameObject> roomList)
     {
+        int startingIndex = Convert.ToInt32(seed / 2) % roomList.Count;
+        seed *= seed + 3;
 
-        int startingPoint = Random.Range(0, roomList.Count - 1);
         int i = 0;
         for (i = 0; i < roomList.Count; i++)
         {
-            GameObject room = roomList[(i + startingPoint) % roomList.Count];
+            GameObject room = roomList[(i + startingIndex) % roomList.Count];
 
             int nRoomAdittionalExits = room.GetComponent<RoomEntrances>().NExits - 1; //-1 because one of the exits is already connected
             // int nRoomAdittionalExits = 5;
@@ -157,7 +169,7 @@ public class MissionManager : MonoBehaviour
             }
         }
 
-        Debug.LogError("Couldn't find any room to fit this exit. Why? Stopped at index: " + ((i + startingPoint) % roomList.Count) + " | remianingExits: " + remainingExitsToCreate);
+        Debug.LogError("Couldn't find any room to fit this exit. Why? Stopped at index: " + ((i + startingIndex) % roomList.Count) + " | remianingExits: " + remainingExitsToCreate);
         return null;
     }
 
