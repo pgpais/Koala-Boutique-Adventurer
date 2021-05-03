@@ -98,6 +98,8 @@ MonoBehaviour:
   CharacterModel: {fileID: 1997364199477008}
   SendStateChangeEvents: 1
   SendStateUpdateEvents: 1
+  AdditionalAbilityNodes: []
+  CharacterBrain: {fileID: 0}
   OptimizeForMobile: 1
 --- !u!50 &50838826569141916
 Rigidbody2D:
@@ -211,17 +213,31 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   MaximumSpeed: 16
   Acceleration: 20
   CurrentSpeed: 0
   MaximumSpeedMultiplier: 1
   AccelerationMultiplier: 1
+  InputMode: 0
   UseInputBuffer: 1
   BufferSize: 2
   FastDirectionChanges: 1
   IdleThreshold: 0.05
   ObstacleDetectionOffset: {x: 0, y: 0, z: 0}
   PerfectTile: 0
+  CurrentCellCoordinates: {x: 0, y: 0, z: 0}
+  DimensionMode: 0
+  LeftButton: 0
+  RightButton: 0
+  UpButton: 0
+  DownButton: 0
+  StopButton: 0
+  LeftOneCellButton: 0
+  RightOneCellButton: 0
+  UpOneCellButton: 0
+  DownOneCellButton: 0
 --- !u!114 &114419516946932276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +256,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   FacingMode: 1
   ModelShouldFlip: 1
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
@@ -271,6 +289,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   JumpDuration: 1
   JumpProportionalToPress: 1
   MinimumPressTime: 0.4
@@ -294,6 +314,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   RunSpeed: 16
   AutoRun: 0
   AutoRunThreshold: 0.6
@@ -315,6 +337,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   ButtonActivatedZone: {fileID: 0}
 --- !u!114 &114042670615466288
 MonoBehaviour:
@@ -334,6 +358,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
 --- !u!114 &114450207927170996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +378,8 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   TimeScale: 0.5
   Duration: 1
   LerpTimeScale: 1
@@ -390,6 +418,11 @@ MonoBehaviour:
   DisableControllerOnDeath: 1
   DisableModelOnDeath: 1
   DisableCollisionsOnDeath: 1
+  DisableChildCollisionsOnDeath: 0
+  ChangeLayerOnDeath: 0
+  ChangeLayersRecursivelyOnDeath: 0
+  LayerOnDeath:
+    _layerIndex: 0
   DeathMMFeedbacks: {fileID: 0}
 --- !u!114 &114654745524214770
 MonoBehaviour:
@@ -409,12 +442,15 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   InitialWeapon: {fileID: 0}
   CanPickupWeapons: 1
   WeaponUseFeedback: {fileID: 0}
   WeaponAttachment: {fileID: 4539632890920534}
   ProjectileSpawn: {fileID: 0}
   AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
   AutoIK: 1
   ContinuousPress: 0
   GettingHitInterruptsAttack: 0
@@ -441,9 +477,15 @@ MonoBehaviour:
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
   MainInventoryName: KoalaMainInventory
   WeaponInventoryName: KoalaWeaponInventory
   HotbarInventoryName: 
+  WeaponRotationMode: 0
+  AutoPickItems: []
+  AutoEquipWeaponOnStart: {fileID: 0}
+  CharacterHandleWeapon: {fileID: 0}
 --- !u!1 &1997364199477008
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,10 +531,12 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

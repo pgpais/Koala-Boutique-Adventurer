@@ -46,10 +46,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,10 +129,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,10 +247,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,6 +299,7 @@ MonoBehaviour:
   TargetRenderer: {fileID: 405812846905436107}
   TargetMaterialID: 0
   TargetImage: {fileID: 0}
+  UseMaterialForRendering: 0
   TargetRawImage: {fileID: 0}
   TargetText: {fileID: 0}
   CacheMaterial: 1
@@ -325,9 +329,13 @@ MonoBehaviour:
   MaxValue: 1
   Duration: 1
   PingPongPauseDuration: 1
+  DrivenLevel: 0
   Amplitude: {x: 0, y: 5}
   Frequency: {x: 1, y: 1}
   Shift: {x: 0, y: 1}
+  RemapNoiseValues: 0
+  RemapNoiseZero: 0
+  RemapNoiseOne: 1
   OneTimeDuration: 1
   OneTimeAmplitude: 1
   OneTimeRemapMin: 0
@@ -367,6 +375,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   OneTimeButton: 0
   DisableAfterOneTime: 0
+  DisableGameObjectAfterOneTime: 0
   AudioAnalyzer: {fileID: 0}
   BeatID: 0
   AudioAnalyzerMultiplier: 1
@@ -411,6 +420,7 @@ MonoBehaviour:
   DisableAfterToDestination: 0
   InitialValue: 0
   CurrentValue: 0
+  CurrentValueNormalized: 0
   InitialColor: {r: 0, g: 0, b: 0, a: 0}
   PropertyID: 0
   PropertyFound: 0
@@ -491,6 +501,8 @@ MonoBehaviour:
   RequiresButtonActivationAbility: 1
   Activable: 1
   AutoActivation: 1
+  AutoActivationDelay: 0
+  AutoActivationDelayResetsOnExit: 1
   CanOnlyActivateIfGrounded: 0
   ShouldUpdateState: 1
   OnlyOneActivationAtOnce: 1
@@ -531,6 +543,7 @@ MonoBehaviour:
   TweenCurve: 4
   MaintainXEntryPositionOnExit: 0
   MaintainYEntryPositionOnExit: 0
+  MaintainZEntryPositionOnExit: 0
   Destination: {fileID: 0}
   AddToDestinationIgnoreList: 0
   CameraMode: 2
