@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 using static RoomEntrances;
+using Random = System.Random;
 
 public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance;
 
-    [SerializeField] uint seed = 100; // TODO: Figure out a good way of using seeds
+    [SerializeField] int seed = 100; // TODO: Figure out a good way of using seeds
     [SerializeField] RoomPrefabs roomPrefabs;
 
     [Space]
@@ -22,6 +23,7 @@ public class MissionManager : MonoBehaviour
     private Room[,] roomMap;
     private Queue<Exit> unspawnedExits;
     private int remainingExitsToCreate;
+    private Random random;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class MissionManager : MonoBehaviour
         {
             instance = this;
         }
+
+        random = new Random(seed);
 
         remainingExitsToCreate = howManyRooms;
         initialRoomTransform = initialRoom.transform;
@@ -131,8 +135,7 @@ public class MissionManager : MonoBehaviour
 
     private GameObject SelectRoomFromList(List<GameObject> roomList)
     {
-        int startingIndex = Convert.ToInt32(seed / 2) % roomList.Count;
-        seed *= seed + 3;
+        int startingIndex = random.Next(roomList.Count);
 
         int i = 0;
         for (i = 0; i < roomList.Count; i++)
