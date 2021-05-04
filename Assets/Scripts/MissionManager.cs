@@ -36,8 +36,6 @@ public class MissionManager : MonoBehaviour
             instance = this;
         }
 
-        random = new Random(seed);
-
         remainingExitsToCreate = howManyRooms;
         initialRoomTransform = initialRoom.transform;
         unspawnedExits = new Queue<Exit>();
@@ -47,6 +45,12 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameManager.instance != null)
+        {
+            seed = GameManager.instance.CurrentMission.seed;
+        }
+
+        random = new Random(seed);
         GenerateMap();
     }
 
@@ -205,5 +209,13 @@ public class MissionManager : MonoBehaviour
             }
         }
         return nExits;
+    }
+
+    public void FinishLevel()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FinishLevel();
+        }
     }
 }
