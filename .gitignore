@@ -72,3 +72,5 @@ UserSettings/
 # Ignore Firebase stuff
 *[Ff]irebase*
 [Aa]ssets/ExternalDependencyManager
+
+Assets/Parse/
