@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a7aaac622d0ef42be182065b8d3139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 5
+  timeLimit: 300
   maxLightRadius: 10
 --- !u!1 &6663804205075722762
 GameObject:
