@@ -22,7 +22,7 @@ public class FirebaseCommunicator : MonoBehaviour
     DatabaseReference database;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -33,6 +33,11 @@ public class FirebaseCommunicator : MonoBehaviour
         {
             Destroy(this);
         }
+
+#if UNITY_EDITOR
+        var db = FirebaseDatabase.DefaultInstance;
+        db.SetPersistenceEnabled(false);
+#endif
 
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         database = FirebaseDatabase.DefaultInstance.RootReference;
@@ -115,6 +120,26 @@ public class FirebaseCommunicator : MonoBehaviour
         database.Child(firebaseReferenceName).Child(familyId.ToString()).SetRawJsonValueAsync(objJSON).ContinueWith(afterSendAction, scheduler);
     }
 
+    public void UpdateObject(Dictionary<string, System.Object> updates, string firebaseReferenceName, Action<Task> afterUpdateAction)
+    {
+        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
+        foreach (var key in updates.Keys)
+        {
+            Debug.Log($"updating {firebaseReferenceName}/{familyId.ToString()}/{key}");
+        }
+
+        database.Child(firebaseReferenceName).Child(familyId.ToString()).UpdateChildrenAsync(updates).ContinueWith(afterUpdateAction, scheduler);
+    }
+
+    public void GetObject(string firebaseReferenceName, Action<Task<DataSnapshot>> afterSendAction)
+    {
+        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        Debug.Log($"getting from {firebaseReferenceName}/{familyId.ToString()}");
+
+        database.Child(firebaseReferenceName).Child(familyId.ToString()).GetValueAsync().ContinueWith(afterSendAction, scheduler);
+    }
+
     public void SetupListenForEvents(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)
     {
         DatabaseReference dbReference = database;
@@ -137,14 +162,12 @@ public class FirebaseCommunicator : MonoBehaviour
         dbReference.ValueChanged -= onValueChangedAction;
     }
 
-    public void GetMissionByFamilyId(Action<Mission> afterFetchAction)
+    private void OnApplicationQuit()
     {
-        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-
-        database.Child("missions").Child(familyId.ToString()).GetValueAsync().ContinueWith((task) =>
-        {
-            afterFetchAction(JsonUtility.FromJson<Mission>(task.Result.GetRawJsonValue()));
-        }, scheduler);
+#if UNITY_EDITOR
+        var db = FirebaseDatabase.DefaultInstance;
+        db.SetPersistenceEnabled(false);
+#endif
     }
 
     // public IEnumerator CreateNewRoom(string roomId)

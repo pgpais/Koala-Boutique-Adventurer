@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,11 +40,19 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        FirebaseCommunicator.instance.GetMissionByFamilyId((mission) =>
+        FirebaseCommunicator.instance.GetObject("missions", (task) =>
         {
-            currentMission = mission;
+            if (task.IsFaulted)
+            {
+                Debug.LogError("smth went wrong. " + task.Exception.ToString());
+            }
 
-            SceneManager.LoadScene(1);
+            if (task.IsCompleted)
+            {
+                Debug.Log("yey got mission");
+                currentMission = JsonConvert.DeserializeObject<Mission>(task.Result.GetRawJsonValue());
+                SceneManager.LoadScene(1);
+            }
         });
     }
 
