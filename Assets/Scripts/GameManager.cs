@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("ahisbdahdn");
         FirebaseCommunicator.instance.GetMissionByFamilyId((mission) =>
         {
             currentMission = mission;

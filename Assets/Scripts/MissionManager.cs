@@ -9,7 +9,7 @@ public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance;
 
-    [SerializeField] int seed = 100; // TODO: Figure out a good way of using seeds
+    [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
 
     [Space]
@@ -47,10 +47,10 @@ public class MissionManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            seed = GameManager.instance.CurrentMission.seed;
+            Seed = GameManager.instance.CurrentMission.seed;
         }
 
-        random = new Random(seed);
+        random = new Random(Seed);
         GenerateMap();
     }
 
