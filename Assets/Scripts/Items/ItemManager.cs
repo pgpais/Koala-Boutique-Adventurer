@@ -62,10 +62,39 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    public void AddItems(Dictionary<string, int> items)
+    {
+        foreach (var itemName in items.Keys)
+        {
+            AddItem(itemName, items[itemName]);
+        }
+    }
+
     private void UpdateCloudItem(string itemName, int amount)
     {
         var dictionary = new Dictionary<string, object>();
         dictionary[itemName] = amount;
+        FirebaseCommunicator.instance.UpdateObject(dictionary, "items", (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("smth went wrong. " + task.Exception.ToString());
+            }
+
+            if (task.IsCompleted)
+            {
+                Debug.Log("yey updated items");
+            }
+        });
+    }
+
+    public void UpdateCloudWithItems()
+    {
+        var dictionary = new Dictionary<string, object>();
+        foreach (var item in itemQuantity.Keys)
+        {
+            dictionary.Add(item, itemQuantity[item]);
+        }
         FirebaseCommunicator.instance.UpdateObject(dictionary, "items", (task) =>
         {
             if (task.IsFaulted)
@@ -101,5 +130,10 @@ public class ItemManager : MonoBehaviour
                 }
             }
         });
+    }
+
+    public Item GetRandomItem()
+    {
+        return itemsData.GetRandomitem();
     }
 }

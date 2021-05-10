@@ -11,6 +11,8 @@ public class MissionManager : MonoBehaviour
 
     [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
+    [SerializeField] ItemsList items;
+    //TODO: This should have the items from run. Then send them to ItemManager and update cloud with that (assuming ItemManager is synced with cloud (set up OnChange events))
 
     [Space]
 
@@ -21,6 +23,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] int howManyDeadEnds = 1;
     private Transform initialRoomTransform;
     private Room[,] roomMap;
+
     private Queue<Exit> unspawnedExits;
     private int remainingExitsToCreate;
     private Random random;
@@ -58,6 +61,19 @@ public class MissionManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void FinishLevel()
+    {
+        //! DEBUG
+        InventoryManager.instance.AddRandomItem();
+
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FinishLevel();
+        }
+
+        InventoryManager.instance.AddInventoryToGlobalItems();
     }
 
     void GenerateMap()
@@ -211,11 +227,4 @@ public class MissionManager : MonoBehaviour
         return nExits;
     }
 
-    public void FinishLevel()
-    {
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.FinishLevel();
-        }
-    }
 }

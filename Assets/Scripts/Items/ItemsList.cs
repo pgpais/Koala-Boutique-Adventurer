@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "ItemsList", menuName = "Ye Olde Shop/ItemsList", order = 0)]
 public class ItemsList : ScriptableObject
@@ -24,5 +25,10 @@ public class ItemsList : ScriptableObject
         {
             item.InitializeEvent();
         }
+    }
+
+    public Item GetRandomitem()
+    {
+        return items[Random.Range(0, items.Count)];
     }
 }

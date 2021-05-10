@@ -26,8 +26,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuObject.SetActive(false);
-        FirebaseCommunicator.LoggedIn.AddListener(() => menuObject.SetActive(true));
+        // menuObject.SetActive(false);
+        // FirebaseCommunicator.LoggedIn.AddListener(() => menuObject.SetActive(true));
 
         playButton.onClick.AddListener(OnPlayButton);
     }
