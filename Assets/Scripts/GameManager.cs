@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             if (task.IsCompleted)
             {
-                Debug.Log("yey!");
+                Debug.Log("Level finished!");
 
                 SceneManager.UnloadSceneAsync(2);
                 LoadSceneAdditivelyAndSetActive(1);

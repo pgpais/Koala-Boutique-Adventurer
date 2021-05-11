@@ -66,12 +66,14 @@ public class MissionManager : MonoBehaviour
         //! DEBUG
         InventoryManager.instance.AddRandomItem();
 
+
+        InventoryManager.instance.AddInventoryToGlobalItems();
+
         if (GameManager.instance != null)
         {
             GameManager.instance.FinishLevel();
         }
 
-        InventoryManager.instance.AddInventoryToGlobalItems();
     }
 
     void GenerateMap()

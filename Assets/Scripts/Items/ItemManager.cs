@@ -118,6 +118,8 @@ public class ItemManager : MonoBehaviour
 
     private void GetCloudItems(Action<Task<DataSnapshot>> afterGetTask)
     {
+        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
         FirebaseCommunicator.instance.GetObject("items", (task) =>
         {
             if (task.IsFaulted)
@@ -129,6 +131,7 @@ public class ItemManager : MonoBehaviour
             {
                 Debug.Log("yey got items");
                 Dictionary<string, object> dictionary = task.Result.Value as Dictionary<string, object>;
+                itemQuantity = new Dictionary<string, int>();
                 foreach (var key in dictionary.Keys)
                 {
                     Debug.Log($"Found item {key} with amount {dictionary[key]}");
