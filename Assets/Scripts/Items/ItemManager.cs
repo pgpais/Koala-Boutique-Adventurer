@@ -35,6 +35,11 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
+        FirebaseCommunicator.GameStarted.AddListener(OnGameStart);
+    }
+
+    private void OnGameStart()
+    {
         GetCloudItems((task) => { });
     }
 

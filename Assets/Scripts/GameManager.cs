@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        FirebaseCommunicator.GameStarted.AddListener(OnGameStarted);
+    }
+
+    private void OnGameStarted()
+    {
         FirebaseCommunicator.instance.GetObject("missions", (task) =>
             {
                 if (task.IsFaulted)
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
             });
     }
 
-    public void StartGame()
+    public void StartRun()
     {
         SceneManager.UnloadSceneAsync(1);
 
