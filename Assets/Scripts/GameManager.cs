@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+
+        FirebaseCommunicator.LoggedIn.AddListener(() => LoadSceneAdditivelyAndSetActive(1));
     }
 
     private void Start()
     {
-        FirebaseCommunicator.LoggedIn.AddListener(() => LoadSceneAdditivelyAndSetActive(1));
-
         FirebaseCommunicator.instance.GetObject("missions", (task) =>
             {
                 if (task.IsFaulted)
