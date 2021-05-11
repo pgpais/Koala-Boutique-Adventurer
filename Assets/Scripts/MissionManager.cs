@@ -11,8 +11,6 @@ public class MissionManager : MonoBehaviour
 
     [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
-    [SerializeField] ItemsList items;
-    //TODO: This should have the items from run. Then send them to ItemManager and update cloud with that (assuming ItemManager is synced with cloud (set up OnChange events))
 
     [Space]
 
