@@ -54,6 +54,6 @@ public class InventoryManager : MonoBehaviour
 
     public void AddInventoryToGlobalItems()
     {
-        ItemManager.instance.AddItems(itemQuantity);
+        ItemManager.instance.AddItemsAfterGetting(itemQuantity);
     }
 }

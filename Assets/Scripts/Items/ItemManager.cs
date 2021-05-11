@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 using System;
+using System.Threading.Tasks;
+using Firebase.Database;
 
 public class ItemManager : MonoBehaviour
 {
@@ -33,7 +35,7 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        GetCloudItems();
+        GetCloudItems((task) => { });
     }
 
     public bool HasEnoughItem(string itemName, int amount)
@@ -68,6 +70,11 @@ public class ItemManager : MonoBehaviour
         {
             AddItem(itemName, items[itemName]);
         }
+    }
+
+    public void AddItemsAfterGetting(Dictionary<string, int> items)
+    {
+        GetCloudItems((task) => AddItems(items));
     }
 
     private void UpdateCloudItem(string itemName, int amount)
@@ -109,7 +116,7 @@ public class ItemManager : MonoBehaviour
         });
     }
 
-    private void GetCloudItems()
+    private void GetCloudItems(Action<Task<DataSnapshot>> afterGetTask)
     {
         FirebaseCommunicator.instance.GetObject("items", (task) =>
         {
@@ -128,6 +135,8 @@ public class ItemManager : MonoBehaviour
                     itemQuantity.Add(key, Convert.ToInt32(dictionary[key]));
                     NewItemAdded.Invoke(itemsData.GetItemByName(key), Convert.ToInt32(dictionary[key]));
                 }
+
+                afterGetTask(task);
             }
         });
     }
