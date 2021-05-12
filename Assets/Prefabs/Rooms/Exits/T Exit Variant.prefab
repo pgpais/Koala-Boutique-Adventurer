@@ -109,6 +109,16 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -239886
       objectReference: {fileID: 0}
+    - target: {fileID: 1032408738655136391, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222188033502186947, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5891140155873228532, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
       propertyPath: m_Tiles.Array.size

@@ -17,12 +17,11 @@ GameObject:
   - component: {fileID: 5985053928337966371}
   - component: {fileID: 8574348736278151291}
   - component: {fileID: 7215548473737642024}
-  - component: {fileID: 8329455599597059442}
   - component: {fileID: 3312761114649417423}
   - component: {fileID: 4922721632995168850}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Abilities
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,38 +283,6 @@ MonoBehaviour:
     CanInterruptRefill: 1
     CooldownState: 0
     CurrentDurationLeft: 0
---- !u!114 &8329455599597059442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432555529273877535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01754710d9f92ec4d9a21b81f5682667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Model: {fileID: 0}
-  CurrentHealth: 100
-  Invulnerable: 0
-  InitialHealth: 100
-  MaximumHealth: 100
-  ImmuneToKnockback: 0
-  DamageMMFeedbacks: {fileID: 0}
-  DestroyOnDeath: 1
-  DelayBeforeDestruction: 0
-  PointsWhenDestroyed: 0
-  RespawnAtInitialLocation: 0
-  DisableControllerOnDeath: 1
-  DisableModelOnDeath: 1
-  DisableCollisionsOnDeath: 1
-  DisableChildCollisionsOnDeath: 0
-  ChangeLayerOnDeath: 0
-  ChangeLayersRecursivelyOnDeath: 0
-  LayerOnDeath:
-    _layerIndex: 0
-  DeathMMFeedbacks: {fileID: 0}
 --- !u!114 &3312761114649417423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +407,7 @@ MonoBehaviour:
   - {x: -0.31, y: -0.01, z: 0}
   m_ShapePathHash: 789683653
   m_Mesh: {fileID: 0}
-  m_InstanceId: 59684
+  m_InstanceId: 62812
 --- !u!114 &4525908484810156498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +434,7 @@ GameObject:
   - component: {fileID: 180410015726536972}
   m_Layer: 10
   m_Name: Point Light 2D
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,9 +501,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1399145012827632, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1790328835693532, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
       propertyPath: m_Name
       value: CheeseMinimalCharacter2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997364199477008, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4319614708212260, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
       propertyPath: m_RootOrder
@@ -612,7 +587,6 @@ PrefabInstance:
     - {fileID: 114547587046617724, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
     - {fileID: 114042670615466288, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
     - {fileID: 114450207927170996, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
-    - {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
     - {fileID: 114654745524214770, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
     - {fileID: 114704504716019314, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}

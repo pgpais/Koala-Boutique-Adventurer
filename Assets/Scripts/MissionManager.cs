@@ -24,7 +24,7 @@ public class MissionManager : MonoBehaviour
 
     private Queue<Exit> unspawnedExits;
     private int remainingExitsToCreate;
-    private Random random;
+    public Random Rand { get; private set; }
 
     private void Awake()
     {
@@ -51,7 +51,7 @@ public class MissionManager : MonoBehaviour
             Seed = GameManager.instance.CurrentMission.seed;
         }
 
-        random = new Random(Seed);
+        Rand = new Random(Seed);
         GenerateMap();
     }
 
@@ -155,7 +155,7 @@ public class MissionManager : MonoBehaviour
 
     private GameObject SelectRoomFromList(List<GameObject> roomList)
     {
-        int startingIndex = random.Next(roomList.Count);
+        int startingIndex = Rand.Next(roomList.Count);
 
         int i = 0;
         for (i = 0; i < roomList.Count; i++)

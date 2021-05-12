@@ -31271,6 +31271,16 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -244994
       objectReference: {fileID: 0}
+    - target: {fileID: 5637440698051594757, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843140542301465921, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6d61b14b7341458c2152dbc2748c6, type: 3}
 --- !u!4 &5702207936278299169 stripped

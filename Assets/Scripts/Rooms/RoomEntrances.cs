@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class RoomEntrances : MonoBehaviour
 {
+    [field: SerializeField] public UnityEvent RoomGenerated { get; private set; }
+
     public enum ExitDirection
     {
         Top,
@@ -65,6 +68,20 @@ public class RoomEntrances : MonoBehaviour
     {
         // exitDirections = new Dictionary<ExitDirection, Teleporter>();
         // AddExitsToDictionary();
+
+        RoomGenerated = new UnityEvent();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(LateStart());
+    }
+
+    private IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("Room generated");
+        RoomGenerated.Invoke();
     }
 
     private void AddExitsToDictionary()

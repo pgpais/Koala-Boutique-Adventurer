@@ -13714,6 +13714,16 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[17].Array.data[19].Y
       value: -50000100
       objectReference: {fileID: 0}
+    - target: {fileID: 4959760959957017259, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363601884482061807, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 242c00858e7a641498f67107c53092a4, type: 3}
 --- !u!4 &5570881342068267497 stripped

@@ -87,5 +87,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8051687094878517983, guid: 8918b29ad8d827b40a6f254ec1990982,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8918b29ad8d827b40a6f254ec1990982, type: 3}
