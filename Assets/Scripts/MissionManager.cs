@@ -1,13 +1,20 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
+using UnityEngine.Events;
 using static RoomEntrances;
 using Random = System.Random;
 
 public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance;
+
+    public static UnityEvent<float> MissionStarted = new UnityEvent<float>();
+
+    [field: SerializeField] public float LanternTimeLimit { get; private set; } = 300f;
+
 
     [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
@@ -53,6 +60,14 @@ public class MissionManager : MonoBehaviour
 
         Rand = new Random(Seed);
         GenerateMap();
+
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        MissionStarted.Invoke(LanternTimeLimit);
     }
 
     // Update is called once per frame

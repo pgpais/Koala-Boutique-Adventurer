@@ -6,9 +6,10 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerLantern : MonoBehaviour
 {
     [Tooltip("How long the player has to finish the run (in seconds).")]
-    [SerializeField] float timeLimit = 5f;
+
     [SerializeField] float maxLightRadius = 10f;
 
+    float timeLimit;
     float timeRemaining;
 
     Light2D lantern;
@@ -23,10 +24,20 @@ public class PlayerLantern : MonoBehaviour
         {
             Debug.LogException(new MissingComponentException("This objects needs to have a point light in a child object! fix this!"));
         }
+
+        MissionManager.MissionStarted.AddListener(InitLantern);
     }
 
     private void Start()
     {
+
+    }
+
+    void InitLantern(float timeLimit)
+    {
+        Debug.Log("Starting Lantern");
+        this.timeLimit = timeLimit;
+        this.timeRemaining = timeLimit;
         lantern.pointLightOuterRadius = maxLightRadius;
     }
 
