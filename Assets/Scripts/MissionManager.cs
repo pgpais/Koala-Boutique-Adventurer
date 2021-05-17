@@ -79,7 +79,7 @@ public class MissionManager : MonoBehaviour
     public void FinishLevel()
     {
         //! DEBUG
-        InventoryManager.instance.AddRandomItem();
+        InventoryManager.instance.AddRandomValuable();
 
 
         InventoryManager.instance.AddInventoryToGlobalItems();

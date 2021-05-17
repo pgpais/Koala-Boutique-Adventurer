@@ -149,7 +149,7 @@ public class ItemManager : MonoBehaviour
         });
     }
 
-    public Item GetRandomItem()
+    public Item GetRandomValuable()
     {
         return itemsData.GetRandomitem();
     }

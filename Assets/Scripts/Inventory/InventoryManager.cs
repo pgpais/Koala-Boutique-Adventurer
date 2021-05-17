@@ -47,9 +47,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddRandomItem()
+    public void AddRandomValuable()
     {
-        Item item = ItemManager.instance.GetRandomItem();
+        Item item = ItemManager.instance.GetRandomValuable();
         AddItem(item.ItemName, 1);
     }
 

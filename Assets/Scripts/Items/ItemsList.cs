@@ -29,6 +29,7 @@ public class ItemsList : ScriptableObject
 
     public Item GetRandomitem()
     {
-        return items[Random.Range(0, items.Count)];
+        var valuables = items.FindAll(item => item.Type == Item.ItemType.Valuable);
+        return valuables[Random.Range(0, valuables.Count)];
     }
 }
