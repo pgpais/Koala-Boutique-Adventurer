@@ -43,6 +43,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             ItemAdded.Invoke(itemName);
+            Debug.Log("Added item " + itemName + "!");
         }
     }
 
