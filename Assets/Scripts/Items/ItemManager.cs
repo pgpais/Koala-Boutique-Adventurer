@@ -57,14 +57,14 @@ public class ItemManager : MonoBehaviour
             if (itemQuantity.ContainsKey(itemName))
             {
                 itemQuantity[itemName] += amount;
-                item.ItemUpdated.Invoke(itemQuantity[itemName]);
                 UpdateCloudItem(itemName, itemQuantity[itemName]);
+                item.ItemUpdated.Invoke(itemQuantity[itemName]);
             }
             else
             {
                 itemQuantity.Add(itemName, amount);
-                NewItemAdded.Invoke(item, amount);
                 UpdateCloudItem(itemName, amount);
+                NewItemAdded.Invoke(item, amount);
             }
         }
     }
@@ -79,11 +79,13 @@ public class ItemManager : MonoBehaviour
 
     public void AddItemsAfterGetting(Dictionary<string, int> items)
     {
+        Debug.Log("Adding after getting");
         GetCloudItems((task) => AddItems(items));
     }
 
     private void UpdateCloudItem(string itemName, int amount)
     {
+        Debug.Log("Updating items");
         var dictionary = new Dictionary<string, object>();
         dictionary[itemName] = amount;
         FirebaseCommunicator.instance.UpdateObject(dictionary, "items", (task) =>
@@ -135,13 +137,22 @@ public class ItemManager : MonoBehaviour
             if (task.IsCompleted)
             {
                 Debug.Log("yey got items");
-                Dictionary<string, object> dictionary = task.Result.Value as Dictionary<string, object>;
-                itemQuantity = new Dictionary<string, int>();
-                foreach (var key in dictionary.Keys)
+                Debug.Log(task.Result.GetRawJsonValue());
+                if (!string.IsNullOrEmpty(task.Result.GetRawJsonValue()))
                 {
-                    Debug.Log($"Found item {key} with amount {dictionary[key]}");
-                    itemQuantity.Add(key, Convert.ToInt32(dictionary[key]));
-                    NewItemAdded.Invoke(itemsData.GetItemByName(key), Convert.ToInt32(dictionary[key]));
+                    Debug.Log("no items!");
+                    Dictionary<string, object> dictionary = task.Result.Value as Dictionary<string, object>;
+                    itemQuantity = new Dictionary<string, int>();
+                    foreach (var key in dictionary.Keys)
+                    {
+                        Debug.Log($"Found item {key} with amount {dictionary[key]}");
+                        itemQuantity.Add(key, Convert.ToInt32(dictionary[key]));
+                        NewItemAdded.Invoke(itemsData.GetItemByName(key), Convert.ToInt32(dictionary[key]));
+                    }
+                }
+                else
+                {
+                    Debug.Log("no items!");
                 }
 
                 afterGetTask(task);
