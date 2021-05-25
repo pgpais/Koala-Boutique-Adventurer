@@ -10,6 +10,8 @@ using UnityEngine.Events;
 
 public class FirebaseCommunicator : MonoBehaviour
 {
+
+    public static string familyIDSavePath = "family.dat";
     public static FirebaseCommunicator instance;
     public static UnityEvent LoggedIn = new UnityEvent();
 
@@ -20,7 +22,7 @@ public class FirebaseCommunicator : MonoBehaviour
     public int FamilyId => familyId;
     [SerializeField] int familyId = 1234;
 
-    Firebase.Auth.FirebaseAuth auth;
+    FirebaseAuth auth;
     DatabaseReference database;
 
     // Start is called before the first frame update
@@ -41,18 +43,32 @@ public class FirebaseCommunicator : MonoBehaviour
         db.SetPersistenceEnabled(false);
 #endif
 
-        auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        auth = FirebaseAuth.DefaultInstance;
         database = FirebaseDatabase.DefaultInstance.RootReference;
+    }
 
-        StartCoroutine(LoginAnonymously());
+    private void Start()
+    {
+        string familyId = FileUtils.ReadFileToString(FileUtils.GetPathToPersistent(familyIDSavePath));
+        if (!string.IsNullOrEmpty(familyId))
+        {
+            Debug.Log("Already have id! Logging in...");
+            LoginAnonymously(familyId);
+        }
     }
 
     public void StartGame()
     {
-        familyId = PlayerPrefs.GetInt(PlayerSettingsKeys.familyId);
+        // familyId = PlayerPrefs.GetInt(PlayerSettingsKeys.familyId);
+
+
         GameStarted.Invoke();
     }
-
+    public void LoginAnonymously(string familyId)
+    {
+        this.familyId = Int32.Parse(familyId);
+        StartCoroutine(LoginAnonymously());
+    }
     public IEnumerator LoginAnonymously()
     {
         var task = new YieldTask<Firebase.Auth.FirebaseUser>(auth.SignInAnonymouslyAsync());

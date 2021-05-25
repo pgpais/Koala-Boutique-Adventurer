@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        FirebaseCommunicator.LoggedIn.AddListener(() => LoadSceneAdditivelyAndSetActive(1));
+        LoadSceneAdditivelyAndSetActive(1);
     }
 
     private void Start()
