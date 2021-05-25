@@ -33,24 +33,6 @@ public class RoomEntrances : MonoBehaviour
     public RoomType Type => type;
     [SerializeField] RoomType type;
 
-    // public int nEntrances => exitDirections.Count;
-    // public int nEntrancesPrefab
-    // {
-    //     get
-    //     {
-    //         //! terrible way of doing it, can't this be stored? (maybe run script in editor? OnValidate?)
-    //         int nExits = 0;
-    //         foreach (var exit in Exits)
-    //         {
-    //             if (exit.gameObject.activeSelf)
-    //             {
-    //                 nExits++;
-    //             }
-    //         }
-    //         return nExits;
-    //     }
-    // }
-
     public int x, y;
 
     public int NExits => nExits;

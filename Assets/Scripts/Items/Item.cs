@@ -20,12 +20,17 @@ public class Item : ScriptableObject
     [field: SerializeField] public string ItemName { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public ItemType Type { get; private set; }
+    [field: SerializeField] public Sprite image { get; private set; }
 
 
     public Item ProcessResult => processResult;
 
     [HideIf("@this.Type == ItemType.Valuable || this.Type == ItemType.Processed")]
     [SerializeField] Item processResult;
+
+    [ShowIf("@this.Type == ItemType.Gatherable")]
+    [Tooltip("How many interactions needed before the player can collect the gatherable")]
+    [SerializeField] int numberOfInteractions = 5;
 
     internal void InitializeEvent()
     {

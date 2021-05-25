@@ -39,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
                 AIBrain enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation);
                 enemies.Add(enemy);
                 enemy.BrainActive = false;
+                enemy.transform.parent = room.transform;
             }
         }
 

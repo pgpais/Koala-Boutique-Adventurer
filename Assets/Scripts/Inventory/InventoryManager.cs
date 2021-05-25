@@ -56,6 +56,12 @@ public class InventoryManager : MonoBehaviour
     public void AddInventoryToGlobalItems()
     {
         Debug.Log("inventory > global");
+        Debug.Log("Local inventory:");
+        foreach (var itemName in itemQuantity.Keys)
+        {
+            int quantity = itemQuantity[itemName];
+            Debug.Log($"{itemName}: {quantity}");
+        }
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
 
     }
