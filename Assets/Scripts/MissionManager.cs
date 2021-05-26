@@ -110,24 +110,26 @@ public class MissionManager : MonoBehaviour
             Exit curExit = unspawnedExits.Dequeue();
             // Debug.Log("Doing exit " + curExit.ExitDirection);
 
-            GameObject roomToSpawn = GetRoomForExit(curExit);
-
-            if (roomMap[curExit.x, curExit.y] != null)
+            if (roomMap[curExit.x, curExit.y] != null) // Room already created at exit position
             {
-                // skip exit
-                // TODO:  Deactivate teleporter object?
-                curExit.Teleporter.gameObject.SetActive(false);
-                remainingExitsToCreate++;
+                Debug.Log($"Room at ({curExit.x}, {curExit.y}) = {roomMap[curExit.x, curExit.y]}");
+                Debug.Log($"Has direction {curExit.RequiredEntranceDirection}? {roomMap[curExit.x, curExit.y].GetComponent<RoomEntrances>().HasDirection(curExit.RequiredEntranceDirection)}");
+
+
+                ResolveExitCollision(curExit, roomMap[curExit.x, curExit.y].GetComponent<RoomEntrances>());
+
                 // Debug.Log($"ROOM COLLISION AT ({curExit.x}, {curExit.y})");
                 continue;
             }
             else
             {
+                GameObject roomToSpawn = GetRoomForExit(curExit);
                 // Add room at exit
                 RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
+                Room newRoom = newRoomEntrances.GetComponent<Room>();
                 newRoomEntrances.x = curExit.x;
                 newRoomEntrances.y = curExit.y;
-                roomMap[curExit.x, curExit.y] = newRoomEntrances.GetComponent<Room>();
+                roomMap[curExit.x, curExit.y] = newRoom;
 
                 remainingExitsToCreate -= newRoomEntrances.NExits - 1;
                 if (remainingExitsToCreate < 0)
@@ -135,27 +137,54 @@ public class MissionManager : MonoBehaviour
 
                 foreach (var newRoomExit in newRoomEntrances.Exits)
                 {
+                    newRoomExit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
+
                     if (!newRoomExit.gameObject.activeSelf)
                     {
+                        // if (roomMap[newRoomExit.x, newRoomExit.y] != null)
+                        // {
+                        //     ResolveExitCollision(newRoomExit, roomMap[newRoomExit.x, newRoomExit.y].GetComponent<RoomEntrances>());
+                        // }
                         continue;
                     }
 
                     if (newRoomExit.ExitDirection == curExit.RequiredEntranceDirection)
                     {
-                        curExit.Teleporter.Destination = newRoomExit.Teleporter;
-                        curExit.Teleporter.TargetRoom = newRoomExit.Teleporter.CurrentRoom;
 
-                        newRoomExit.Teleporter.Destination = curExit.Teleporter;
-                        newRoomExit.Teleporter.TargetRoom = curExit.Teleporter.CurrentRoom;
+                        SetupTeleporters(curExit.Teleporter, newRoomExit.Teleporter);
                         continue;
                     }
 
-                    newRoomExit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
                     unspawnedExits.Enqueue(newRoomExit);
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
             }
         }
+    }
+
+    private void SetupTeleporters(Teleporter current, Teleporter destination)
+    {
+        current.Destination = destination;
+        current.TargetRoom = destination.CurrentRoom;
+
+        destination.Destination = current;
+        destination.TargetRoom = current.CurrentRoom;
+    }
+
+    private void ResolveExitCollision(Exit curExit, RoomEntrances otherEntrances)
+    {
+        if (otherEntrances.Type == RoomType.Exit)
+        {
+            Debug.Log("Tried connecting room to exit. just return.");
+            curExit.gameObject.SetActive(false);
+            return;
+        }
+
+        // TODO: #11 Enable door if next to other room (Maybe some can be secret?)
+        Teleporter otherTeleporter = otherEntrances.GetTeleporterFromDirection(curExit.RequiredEntranceDirection);
+        otherTeleporter.gameObject.SetActive(true);
+        curExit.gameObject.SetActive(true);
+        SetupTeleporters(curExit.Teleporter, otherTeleporter);
     }
 
     private GameObject GetRoomForExit(Exit curExit)
@@ -164,7 +193,6 @@ public class MissionManager : MonoBehaviour
 
         List<GameObject> roomList = roomPrefabs.GetRoomListFromDirection(requiredDirection);
 
-        // TODO: Check if matrix spot is occupied
         return SelectRoomFromList(roomList);
     }
 
@@ -178,13 +206,13 @@ public class MissionManager : MonoBehaviour
             GameObject room = roomList[(i + startingIndex) % roomList.Count];
 
             int nRoomAdittionalExits = room.GetComponent<RoomEntrances>().NExits - 1; //-1 because one of the exits is already connected
-            // int nRoomAdittionalExits = 5;
 
             // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
 
             if (remainingExitsToCreate <= howManyDeadEnds)
             {
 
+                // Find rooms with one exit to connect to this exit
                 List<GameObject> deadEnds = roomList.FindAll(delegate (GameObject obj)
                 {
                     RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
@@ -197,7 +225,6 @@ public class MissionManager : MonoBehaviour
             else
             if (nRoomAdittionalExits <= remainingExitsToCreate && nRoomAdittionalExits > 0)
             {
-                // TODO: Check for exit collision with other rooms
                 // Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
                 return room;
             }
@@ -210,6 +237,8 @@ public class MissionManager : MonoBehaviour
         Debug.LogError("Couldn't find any room to fit this exit. Why? Stopped at index: " + ((i + startingIndex) % roomList.Count) + " | remianingExits: " + remainingExitsToCreate);
         return null;
     }
+
+
 
     private GameObject SelectDeadEnd(List<GameObject> deadEndList)
     {

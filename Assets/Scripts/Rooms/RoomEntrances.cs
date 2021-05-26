@@ -48,8 +48,8 @@ public class RoomEntrances : MonoBehaviour
 
     private void Awake()
     {
-        // exitDirections = new Dictionary<ExitDirection, Teleporter>();
-        // AddExitsToDictionary();
+        exitDirections = new Dictionary<ExitDirection, Teleporter>();
+        AddExitsToDictionary();
 
         RoomGenerated = new UnityEvent();
     }
@@ -70,10 +70,7 @@ public class RoomEntrances : MonoBehaviour
     {
         foreach (var exit in exits)
         {
-            if (exit.gameObject.activeSelf)
-            {
-                exitDirections.Add(exit.ExitDirection, exit.GetComponent<Teleporter>());
-            }
+            exitDirections.Add(exit.ExitDirection, exit.GetComponent<Teleporter>());
         }
     }
 
