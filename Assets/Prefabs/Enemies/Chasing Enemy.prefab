@@ -537,7 +537,7 @@ MonoBehaviour:
     m_Bits: 1024
   PerfectImpact: 0
   DamageCaused: 10
-  DamageCausedKnockbackType: 2
+  DamageCausedKnockbackType: 1
   DamageCausedKnockbackDirection: 0
   DamageCausedKnockbackForce: {x: 500, y: 500, z: 0}
   InvincibilityDuration: 1
