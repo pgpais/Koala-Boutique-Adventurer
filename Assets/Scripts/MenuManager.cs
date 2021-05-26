@@ -61,7 +61,8 @@ public class MenuManager : MonoBehaviour
 
     void OnPlayButton()
     {
-        playButton.gameObject.SetActive(false);
+        playButton.interactable = false;
+        logoutButton.interactable = false;
 
         GameManager.instance.StartRun();
     }
