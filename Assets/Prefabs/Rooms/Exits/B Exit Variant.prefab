@@ -31261,6 +31261,11 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[8].Array.data[159].Y
       value: -40000100
       objectReference: {fileID: 0}
+    - target: {fileID: 3396119504579859347, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3753673119473119683, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_Mesh
@@ -31279,7 +31284,7 @@ PrefabInstance:
     - target: {fileID: 7843140542301465921, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6d61b14b7341458c2152dbc2748c6, type: 3}

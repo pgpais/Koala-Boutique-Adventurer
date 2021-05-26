@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GatherablesSpawner : MonoBehaviour
 {
+    [SerializeField] bool spawnGatherablesInThisRoom = true;
     [SerializeField] Gatherable prefabToSpawn;
 
     [Space]
@@ -24,24 +25,42 @@ public class GatherablesSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        room.GetComponent<RoomEntrances>().RoomGenerated.AddListener(SpawnGatherables);
+        if (!spawnGatherablesInThisRoom)
+        {
+            Destroy(this);
+        }
 
+        spawners = new List<Transform>();
+        foreach (Transform child in spawnersParent)
+        {
+            Debug.Log("spawning gatherables");
+            if (child.gameObject.activeSelf)
+            {
+                spawners.Add(child);
+            }
+        }
+
+        if (spawners.Count <= 0)
+        {
+            Debug.LogWarning("No gatherable spawners found! This script will not work this way!", this);
+            return;
+        }
+
+        room.GetComponent<RoomEntrances>().RoomGenerated.AddListener(SpawnGatherables);
     }
 
     private void SpawnGatherables()
     {
         System.Random rand = MissionManager.instance.Rand;
 
-        foreach (Transform child in spawnersParent)
+        foreach (Transform spawner in spawners)
         {
             Debug.Log("spawning gatherables");
-            if (child.gameObject.activeSelf)
-            {
-                var item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
-                Gatherable gatherable = Instantiate(prefabToSpawn, child.position, child.rotation);
-                gatherable.Init(item);
-                gatherable.transform.parent = room.transform;
-            }
+
+            var item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
+            Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);
+            gatherable.Init(item);
+            gatherable.transform.parent = room.transform;
         }
     }
 

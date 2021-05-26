@@ -102,11 +102,16 @@ PrefabInstance:
     - target: {fileID: 624804427985233102, guid: bfb68e7f0db64054a936132334438eeb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3048823594193994634, guid: bfb68e7f0db64054a936132334438eeb,
         type: 3}
       propertyPath: spawnEnemiesInRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427644763076778524, guid: bfb68e7f0db64054a936132334438eeb,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5792780609622505548, guid: bfb68e7f0db64054a936132334438eeb,

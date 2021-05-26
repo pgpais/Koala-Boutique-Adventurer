@@ -16,12 +16,21 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] List<AIBrain> enemiesPrefabs;
 
+    private
     List<AIBrain> enemies;
 
     private void Start()
     {
-        if (enemiesPrefabs.Count == 0 || !spawnEnemiesInRoom)
+        if (!spawnEnemiesInRoom)
+        {
+            Destroy(this);
+        }
+
+        if (enemiesPrefabs.Count == 0)
+        {
+            Debug.LogWarning("No enemy spawners found! This script will not work this way!", this);
             return;
+        }
 
         enemies = new List<AIBrain>();
 

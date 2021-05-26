@@ -117,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 3222188033502186947, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5891140155873228532, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
@@ -16530,6 +16530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020520091210511121, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392552347944800577, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}

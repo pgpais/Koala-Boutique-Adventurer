@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1053859907811713865, guid: 8918b29ad8d827b40a6f254ec1990982,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1555669740465553689, guid: 8918b29ad8d827b40a6f254ec1990982,
         type: 3}
       propertyPath: m_Mesh
