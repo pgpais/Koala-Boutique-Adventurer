@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6352068274253367264}
   - component: {fileID: 6352068274253367268}
   - component: {fileID: 6352068274253367195}
+  - component: {fileID: 182488718}
   m_Layer: 0
   m_Name: ProtoGatherable
   m_TagString: Untagged
@@ -192,6 +193,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &182488718
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352068274253367265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d201996bb15a7264da069d82480082b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6352068274450605937
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,9 +284,9 @@ SpriteRenderer:
   m_SortingLayerID: 1603220759
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+  m_Sprite: {fileID: -4987031940289456647, guid: 8777314c6a5b7a94a9023c7a976d4c9c,
     type: 3}
-  m_Color: {r: 0.33232188, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

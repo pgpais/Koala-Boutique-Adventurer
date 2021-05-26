@@ -18,4 +18,4 @@ MonoBehaviour:
   <image>k__BackingField: {fileID: -4987031940289456647, guid: 8777314c6a5b7a94a9023c7a976d4c9c,
     type: 3}
   processResult: {fileID: 11400000, guid: f2ee9747288156b47a88b7d033c5dd4c, type: 2}
-  numberOfInteractions: 5
+  numberOfInteractions: 3

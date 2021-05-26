@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gatherable : MonoBehaviour
 {
+    private static int animIdleClipHash = Animator.StringToHash("Idle");
+    private static int animInteractedClipHash = Animator.StringToHash("Interacted");
+
     private Item gatherableItem;
 
     #region Components
@@ -11,11 +14,12 @@ public class Gatherable : MonoBehaviour
     private Animator anim;
     #endregion
 
-    private int interactionsLeft = 5;
+    private int interactionsLeft = 3;
 
     private void Awake()
     {
         sprRen = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -29,6 +33,8 @@ public class Gatherable : MonoBehaviour
         this.gatherableItem = gatherableItem;
         sprRen.sprite = gatherableItem.image;
         sprRen.color = Color.white;
+        interactionsLeft = gatherableItem.NumberOfInteractions;
+        gameObject.name = this.gatherableItem.ItemName;
     }
 
     // Update is called once per frame
@@ -39,6 +45,11 @@ public class Gatherable : MonoBehaviour
 
     public void Interact()
     {
+        if (anim.GetCurrentAnimatorStateInfo(0).shortNameHash == animInteractedClipHash)
+        {
+            return;
+        }
+
         Debug.Log("Interacted!");
         interactionsLeft--;
         if (interactionsLeft <= 0)
@@ -59,6 +70,7 @@ public class Gatherable : MonoBehaviour
         else
         {
             Debug.Log($"Got interacted once! {interactionsLeft} interactions left");
+            anim.SetTrigger(animInteractedClipHash);
         }
     }
 }
