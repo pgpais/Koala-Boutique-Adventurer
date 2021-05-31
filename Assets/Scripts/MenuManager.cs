@@ -28,24 +28,20 @@ public class MenuManager : MonoBehaviour
         {
             instance = this;
         }
+
+        menuObject.SetActive(false);
+        askForIDParent.SetActive(true);
+        FirebaseCommunicator.LoggedIn.AddListener(() =>
+        {
+            menuObject.SetActive(true);
+            askForIDParent.SetActive(false);
+            FirebaseCommunicator.instance.StartGame();
+        });
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // menuObject.SetActive(false);
-        // FirebaseCommunicator.LoggedIn.AddListener(() => menuObject.SetActive(true));
-
-        bool hasId = PlayerPrefs.HasKey(PlayerSettingsKeys.familyId);
-
-        menuObject.SetActive(hasId);
-        askForIDParent.SetActive(!hasId);
-
-        if (hasId)
-        {
-            FirebaseCommunicator.instance.StartGame();
-        }
-
         askForIDButton.onClick.AddListener(() => OnSubmitFamilyID(askForIDInputField.text));
         askForIDInputField.onSubmit.AddListener(OnSubmitFamilyID);
 
@@ -69,8 +65,10 @@ public class MenuManager : MonoBehaviour
 
     void OnSubmitFamilyID(string familyId)
     {
-        PlayerPrefs.SetInt(PlayerSettingsKeys.familyId, int.Parse(familyId));
-        FirebaseCommunicator.instance.StartGame();
+        FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
+        FileUtils.WriteStringToFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath), familyId);
+
+        FirebaseCommunicator.instance.LoginAnonymously(familyId);
 
         menuObject.SetActive(true);
         askForIDParent.SetActive(false);
@@ -79,6 +77,7 @@ public class MenuManager : MonoBehaviour
     void OnLogout()
     {
         PlayerPrefs.DeleteKey(PlayerSettingsKeys.familyId);
+        FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
 
         askForIDParent.SetActive(true);
         menuObject.SetActive(false);
