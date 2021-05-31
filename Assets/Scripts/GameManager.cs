@@ -1,13 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+
+    public static UnityEvent NoMissionExists = new UnityEvent();
+    public static UnityEvent NewMissionAdded = new UnityEvent();
 
     public Mission CurrentMission => currentMission;
     private Mission currentMission;
@@ -31,9 +37,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         FirebaseCommunicator.GameStarted.AddListener(OnGameStarted);
+
+        // Setup listener for new missions
+        FirebaseCommunicator.instance.SetupListenForChildAddedEvents(new string[] { Mission.firebaseReferenceName, FirebaseCommunicator.instance.FamilyId.ToString() }, OnMissionAdded);
     }
 
     private void OnGameStarted()
+    {
+        GetMissions();
+    }
+
+    void GetMissions()
     {
         FirebaseCommunicator.instance.GetObject("missions", (task) =>
             {
@@ -45,7 +59,14 @@ public class GameManager : MonoBehaviour
                 if (task.IsCompleted)
                 {
                     Debug.Log("yey got mission");
-                    currentMission = JsonConvert.DeserializeObject<Mission>(task.Result.GetRawJsonValue());
+                    string json = task.Result.GetRawJsonValue();
+                    if (json == null)
+                    {
+                        OnNoMissionExists();
+                        return;
+                    }
+
+                    currentMission = JsonConvert.DeserializeObject<Mission>(json);
                 }
             });
     }
@@ -88,5 +109,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.SetActiveScene(scene);
         SceneManager.sceneLoaded -= SetActiveScene;
+    }
+
+    void OnNoMissionExists()
+    {
+        Debug.Log("Mission is null! Disable gameplay until we get a new mission");
+        NoMissionExists.Invoke();
+    }
+
+    void OnMissionAdded(object sender, ChildChangedEventArgs args)
+    {
+        Debug.Log("Mission added!");
+        NewMissionAdded.Invoke();
+        GetMissions();
     }
 }

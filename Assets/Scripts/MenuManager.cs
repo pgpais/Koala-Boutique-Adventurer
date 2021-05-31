@@ -37,6 +37,9 @@ public class MenuManager : MonoBehaviour
             askForIDParent.SetActive(false);
             FirebaseCommunicator.instance.StartGame();
         });
+
+        GameManager.NoMissionExists.AddListener(OnNoMissionExists);
+        GameManager.NewMissionAdded.AddListener(OnNewMissionAdded);
     }
 
     // Start is called before the first frame update
@@ -53,6 +56,16 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void OnNoMissionExists()
+    {
+        playButton.interactable = false;
+    }
+
+    void OnNewMissionAdded()
+    {
+        playButton.interactable = true;
     }
 
     void OnPlayButton()
