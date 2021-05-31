@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
                     }
 
                     currentMission = JsonConvert.DeserializeObject<Mission>(json);
+                    NewMissionAdded.Invoke();
                 }
             });
     }
@@ -120,7 +121,6 @@ public class GameManager : MonoBehaviour
     void OnMissionAdded(object sender, ChildChangedEventArgs args)
     {
         Debug.Log("Mission added!");
-        NewMissionAdded.Invoke();
         GetMissions();
     }
 }
