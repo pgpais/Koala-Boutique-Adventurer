@@ -11,7 +11,8 @@ public class ArrowTrap : MonoBehaviour
 
     [SerializeField] Transform shootingPoint;
     [SerializeField] float range;
-    [SerializeField] LayerMask targetLayer;
+    [SerializeField] LayerMask hitLayer;
+
 
     private float nextShotTime;
 
@@ -25,8 +26,9 @@ public class ArrowTrap : MonoBehaviour
     {
         if (Time.time >= nextShotTime)
         {
-            RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, shootingPoint.right, range, targetLayer);
-            if (hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, shootingPoint.right, range, hitLayer);
+            var gameObj = hit.collider.gameObject;
+            if (hit.collider != null && gameObj.CompareTag("Player"))
             {
                 Instantiate(arrowPrefab, shootingPoint.position, shootingPoint.rotation).Init(projectileInitialVelocity);
                 Debug.Log("Shot an arrow!");

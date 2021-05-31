@@ -163,9 +163,9 @@ MonoBehaviour:
   shotCooldown: 1
   shootingPoint: {fileID: 3677936706049192426}
   range: 200
-  targetLayer:
+  hitLayer:
     serializedVersion: 2
-    m_Bits: 9216
+    m_Bits: 11520
 --- !u!1 &3677936706049192427
 GameObject:
   m_ObjectHideFlags: 0
