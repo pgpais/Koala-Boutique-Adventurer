@@ -43,12 +43,13 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 2147483647
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -113,6 +114,8 @@ GameObject:
   - component: {fileID: 5634772774784439357}
   - component: {fileID: 5592409469002045262}
   - component: {fileID: 679049991151231890}
+  - component: {fileID: 5169787317454174366}
+  - component: {fileID: -4279486373973280169}
   m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
@@ -152,7 +155,7 @@ MonoBehaviour:
   TriggerMode: 0
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.5
+  TimeBetweenUses: 0.03
   TimeBetweenUsesReleaseInterruption: 0
   MagazineBased: 0
   MagazineSize: 30
@@ -171,7 +174,7 @@ MonoBehaviour:
   RightHandHandle: {fileID: 0}
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
-  PreventAllMovementWhileInUse: 0
+  PreventAllMovementWhileInUse: 1
   RecoilForce: 0
   Animators:
   - {fileID: 5634772773055356260}
@@ -197,18 +200,18 @@ MonoBehaviour:
   Interruptable: 0
   Flipped: 0
   DamageAreaShape: 0
-  AreaSize: {x: 1.25, y: 1, z: 0}
-  AreaOffset: {x: 0.75, y: 0, z: 0}
+  AreaSize: {x: 2, y: 1, z: 0}
+  AreaOffset: {x: 1.5, y: 0, z: 0}
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}
-  InitialDelay: 0.15
-  ActiveDuration: 0.25
+  InitialDelay: 0.01
+  ActiveDuration: 0.03
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8192
   DamageCaused: 10
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 700, y: 0}
   InvincibilityDuration: 0.5
   CanDamageOwner: 0
 --- !u!114 &679049991151231890
@@ -226,10 +229,10 @@ MonoBehaviour:
   AimControl: 5
   RotationMode: 0
   WeaponRotationSpeed: 0
-  MinimumAngle: -90
-  MaximumAngle: 90
+  MinimumAngle: -89
+  MaximumAngle: 89
   MinimumMagnitude: 0.2
-  ReticleType: 0
+  ReticleType: 2
   Reticle: {fileID: 1373789777524232, guid: f31b518c2b50cc2479370c46d4485485, type: 3}
   ReticleDistance: 0
   ReticleHeight: 0
@@ -242,3 +245,55 @@ MonoBehaviour:
   CameraTargetOffset: 0.3
   CameraTargetMaxDistance: 10
   CameraTargetSpeed: 5
+--- !u!114 &5169787317454174366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634772774784439354}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks:
+  - {fileID: -4279486373973280169}
+  InitializationMode: 2
+  SafeMode: 3
+  AutoPlayOnStart: 0
+  DebugActive: 0
+--- !u!114 &-4279486373973280169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634772774784439354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f387a825823ff64cacd01b702865516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Rigidbody2D
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  TargetRigidbody2D: {fileID: 0}
+  Mode: 0
+  MinForce: {x: 0, y: 0}
+  MaxForce: {x: 0, y: 0}
+  MinTorque: 0
+  MaxTorque: 0
+  AppliedForceMode: 1

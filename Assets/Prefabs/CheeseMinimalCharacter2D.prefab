@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 5985053928337966371}
   - component: {fileID: 8574348736278151291}
   - component: {fileID: 7215548473737642024}
-  - component: {fileID: 3312761114649417423}
   - component: {fileID: 4922721632995168850}
   m_Layer: 10
   m_Name: Abilities
@@ -60,7 +59,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  FacingMode: 1
+  FacingMode: 3
   ModelShouldFlip: 1
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
   ModelFlipValueRight: {x: 1, y: 1, z: 1}
@@ -178,11 +177,11 @@ MonoBehaviour:
   Movement: 0
   InputAuthorized: 1
   AnalogInput: 0
-  WalkSpeed: 10
+  WalkSpeed: 7
   ShouldSetMovement: 1
   IdleThreshold: 0.05
-  Acceleration: 10
-  Deceleration: 10
+  Acceleration: 30
+  Deceleration: 20
   InterpolateMovementSpeed: 0
   WalkParticles: []
   TouchTheGroundParticles: []
@@ -283,13 +282,40 @@ MonoBehaviour:
     CanInterruptRefill: 1
     CooldownState: 0
     CurrentDurationLeft: 0
---- !u!114 &3312761114649417423
+--- !u!114 &4922721632995168850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432555529273877535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b56d00552d6cd44b46000232e9d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  MainInventoryName: KoalaMainInventory
+  WeaponInventoryName: KoalaWeaponInventory
+  HotbarInventoryName: 
+  WeaponRotationMode: 0
+  AutoPickItems: []
+  AutoEquipWeaponOnStart: {fileID: 0}
+  CharacterHandleWeapon: {fileID: 0}
+--- !u!114 &151847160499828837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093990846669802723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
@@ -319,33 +345,6 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
---- !u!114 &4922721632995168850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432555529273877535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b56d00552d6cd44b46000232e9d83a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartSfx: {fileID: 0}
-  AbilityInProgressSfx: {fileID: 0}
-  AbilityStopSfx: {fileID: 0}
-  AbilityStartFeedbacks: {fileID: 0}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  MainInventoryName: KoalaMainInventory
-  WeaponInventoryName: KoalaWeaponInventory
-  HotbarInventoryName: 
-  WeaponRotationMode: 0
-  AutoPickItems: []
-  AutoEquipWeaponOnStart: {fileID: 0}
-  CharacterHandleWeapon: {fileID: 0}
 --- !u!114 &1604692901373754486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +380,7 @@ MonoBehaviour:
     m_Bits: 32768
   ObstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &4189790564772753804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +406,7 @@ MonoBehaviour:
   - {x: -0.31, y: -0.01, z: 0}
   m_ShapePathHash: 789683653
   m_Mesh: {fileID: 0}
-  m_InstanceId: 69092
+  m_InstanceId: 133352
 --- !u!114 &4525908484810156498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +992,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50838826569141916, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f6875cb4a8355a84fa2134d2e5112d10, type: 2}
     - target: {fileID: 61063304230422582, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
         type: 3}
       propertyPath: m_Size.x
@@ -1034,6 +1038,11 @@ PrefabInstance:
       propertyPath: Model
       value: 
       objectReference: {fileID: 4093990846669802723}
+    - target: {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
         type: 3}
       propertyPath: DamageMMFeedbacks

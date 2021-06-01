@@ -65,6 +65,11 @@ PrefabInstance:
       propertyPath: PreventAllMovementWhileInUse
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114140059323251502, guid: ea4d9a1282e7d5748a3393a32892ddbf,
+        type: 3}
+      propertyPath: AimControl
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 114290391021249986, guid: ea4d9a1282e7d5748a3393a32892ddbf,
         type: 3}
       propertyPath: DelayBeforeUse
