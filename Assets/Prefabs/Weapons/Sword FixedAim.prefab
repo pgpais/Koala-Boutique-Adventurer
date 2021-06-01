@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 679049991151231890, guid: bf1c90bd3e81ce248a9f5530493fd9a9,
         type: 3}
       propertyPath: AimControl
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5592409469002045262, guid: bf1c90bd3e81ce248a9f5530493fd9a9,
         type: 3}
