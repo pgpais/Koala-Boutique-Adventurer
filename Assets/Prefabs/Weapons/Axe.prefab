@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: 
   WeaponCurrentlyActive: 1
-  TriggerMode: 1
+  TriggerMode: 0
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.6
+  TimeBetweenUses: 0.3
   TimeBetweenUsesReleaseInterruption: 0
   MagazineBased: 0
   MagazineSize: 30
@@ -69,7 +69,7 @@ MonoBehaviour:
   RightHandHandle: {fileID: 0}
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
-  PreventAllMovementWhileInUse: 0
+  PreventAllMovementWhileInUse: 1
   RecoilForce: 0
   Animators:
   - {fileID: 4175632247513591785}
@@ -106,7 +106,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 0
-  KnockbackForce: {x: 1000, y: 2}
+  KnockbackForce: {x: 3000, y: 2}
   InvincibilityDuration: 0.5
   CanDamageOwner: 0
 --- !u!114 &4175632246771360357
