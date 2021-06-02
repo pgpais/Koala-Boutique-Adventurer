@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c3994b5660e7544b5e2c441326ca92, type: 3}
   m_Name: Ranger Class
   m_EditorClassIdentifier: 
+  className: Ranger
   healthModifier: -30
   meleeAttackDamageModifier: -5
   rangedAttackDamageModifier: 5

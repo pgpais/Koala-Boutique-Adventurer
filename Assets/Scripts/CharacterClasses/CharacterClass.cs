@@ -12,6 +12,10 @@ public class CharacterClass : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
+        if (GameManager.instance != null)
+        {
+            data = GameManager.instance.currentSelectedClass;
+        }
     }
 
     // Start is called before the first frame update

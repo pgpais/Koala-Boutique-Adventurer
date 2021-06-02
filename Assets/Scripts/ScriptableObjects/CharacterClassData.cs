@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ClassData", menuName = "Ye-Olde-Shop-Adventurer/Class Data", order = 0)]
 public class CharacterClassData : ScriptableObject
 {
+    [Tooltip("The name given to this class")]
+    public string className;
+
     [Tooltip("How much health this class adds (or subtracts) to base value")]
     public int healthModifier = 0;
 
