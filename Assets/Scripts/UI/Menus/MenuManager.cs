@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -39,15 +40,13 @@ public class MenuManager : MonoBehaviour
             askForIDParent.SetActive(true);
             FirebaseCommunicator.LoggedIn.AddListener(() =>
             {
-                menuObject.SetActive(true);
-                askForIDParent.SetActive(false);
+                ShowMenuScreen();
                 FirebaseCommunicator.instance.StartGame();
             });
         }
         else
         {
-            menuObject.SetActive(true);
-            askForIDParent.SetActive(false);
+            ShowMenuScreen();
         }
 
         GameManager.NoMissionExists.AddListener(OnNoMissionExists);
@@ -94,8 +93,7 @@ public class MenuManager : MonoBehaviour
 
         FirebaseCommunicator.instance.LoginAnonymously(familyId);
 
-        menuObject.SetActive(true);
-        askForIDParent.SetActive(false);
+        ShowMenuScreen();
     }
 
     void OnLogout()
@@ -109,13 +107,23 @@ public class MenuManager : MonoBehaviour
 
     void ShowClassSelectScreen()
     {
+        askForIDParent.SetActive(false);
         classSelectScreen.SetActive(true);
         menuScreen.SetActive(false);
+        SetSelectedMenuItem(selectClassBackButton.gameObject);
     }
 
     void ShowMenuScreen()
     {
+        askForIDParent.SetActive(false);
         classSelectScreen.SetActive(false);
         menuScreen.SetActive(true);
+        SetSelectedMenuItem(playButton.gameObject);
+    }
+
+    void SetSelectedMenuItem(GameObject obj)
+    {
+        var eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(obj);
     }
 }
