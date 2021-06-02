@@ -55,7 +55,7 @@ public class GatherablesSpawner : MonoBehaviour
 
         foreach (Transform spawner in spawners)
         {
-            Debug.Log("spawning gatherables");
+            // Debug.Log("spawning gatherables");
 
             var item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
             Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);
