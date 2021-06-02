@@ -33,14 +33,22 @@ public class MenuManager : MonoBehaviour
             instance = this;
         }
 
-        menuObject.SetActive(false);
-        askForIDParent.SetActive(true);
-        FirebaseCommunicator.LoggedIn.AddListener(() =>
+        if (!FirebaseCommunicator.instance.IsLoggedIn)
+        {
+            menuObject.SetActive(false);
+            askForIDParent.SetActive(true);
+            FirebaseCommunicator.LoggedIn.AddListener(() =>
+            {
+                menuObject.SetActive(true);
+                askForIDParent.SetActive(false);
+                FirebaseCommunicator.instance.StartGame();
+            });
+        }
+        else
         {
             menuObject.SetActive(true);
             askForIDParent.SetActive(false);
-            FirebaseCommunicator.instance.StartGame();
-        });
+        }
 
         GameManager.NoMissionExists.AddListener(OnNoMissionExists);
         GameManager.NewMissionAdded.AddListener(OnNewMissionAdded);

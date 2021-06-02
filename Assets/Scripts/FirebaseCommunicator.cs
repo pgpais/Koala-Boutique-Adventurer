@@ -18,9 +18,11 @@ public class FirebaseCommunicator : MonoBehaviour
     public static UnityEvent GameStarted = new UnityEvent();
 
     public FirebaseUser User { get; private set; }
+    public bool IsLoggedIn { get; private set; } = false;
 
     public int FamilyId => familyId;
     [SerializeField] int familyId = 1234;
+
 
     FirebaseAuth auth;
     DatabaseReference database;
@@ -96,6 +98,7 @@ public class FirebaseCommunicator : MonoBehaviour
         User = user;
 
         Debug.LogFormat("User signed in successfully: {0} ({1})", user.DisplayName, user.UserId);
+        IsLoggedIn = true;
         LoggedIn.Invoke();
         yield break;
     }
