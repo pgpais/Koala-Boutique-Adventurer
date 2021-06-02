@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878801190267460481}
-  - component: {fileID: 3492028864655377965}
+  - component: {fileID: 8449325544386354467}
   - component: {fileID: 3032870730358404108}
   - component: {fileID: 4983243396481138513}
   - component: {fileID: -4584328730528359333}
@@ -38,7 +38,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3492028864655377965
+--- !u!114 &8449325544386354467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534737054845033806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1a732e2aa364c569bbb79498af8c5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b23a515a33fd7f448cfb9c81c5fa918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BoundsBasedOn: 1
   LifeTime: 5
   FaceDirection: 1
-  Speed: 100
+  Speed: 300
   Acceleration: 0
   Direction: {x: 1, y: 0, z: 0}
   DirectionCanBeChangedBySpawner: 1

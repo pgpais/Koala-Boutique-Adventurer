@@ -50,9 +50,9 @@ MonoBehaviour:
   WeaponCurrentlyActive: 1
   TriggerMode: 0
   DelayBeforeUse: 0
-  DelayBeforeUseReleaseInterruption: 1
-  TimeBetweenUses: 1
-  TimeBetweenUsesReleaseInterruption: 1
+  DelayBeforeUseReleaseInterruption: 0
+  TimeBetweenUses: 0.5
+  TimeBetweenUsesReleaseInterruption: 0
   MagazineBased: 0
   MagazineSize: 30
   AutoReload: 0
@@ -61,16 +61,16 @@ MonoBehaviour:
   AutoDestroyWhenEmpty: 0
   AutoDestroyWhenEmptyDelay: 1
   CurrentAmmoLoaded: 0
-  WeaponAttachmentOffset: {x: 0.5, y: 0, z: 0}
+  WeaponAttachmentOffset: {x: 0, y: 0, z: 0}
   FlipWeaponOnCharacterFlip: 1
   RightFacingFlipValue: {x: -1, y: 1, z: 1}
   LeftFacingFlipValue: {x: 1, y: 1, z: 1}
   WeaponUseTransform: {fileID: 0}
   LeftHandHandle: {fileID: 0}
   RightHandHandle: {fileID: 0}
-  ModifyMovementWhileAttacking: 0
-  MovementMultiplier: 0
-  PreventAllMovementWhileInUse: 1
+  ModifyMovementWhileAttacking: 1
+  MovementMultiplier: 0.2
+  PreventAllMovementWhileInUse: 0
   RecoilForce: 0
   Animators: []
   WeaponAnimationID: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   Spread: {x: 0, y: 0, z: 0}
   RotateWeaponOnSpread: 0
   RandomSpread: 1
-  SpawnPosition: {x: 1.6099999, y: -3.78, z: 0}
+  SpawnPosition: {x: 2.61, y: -3.78, z: 0}
   TestShootButton: 0
 --- !u!114 &-6057076994816178251
 MonoBehaviour:
@@ -175,7 +175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6034786566947506980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461649955054378885}

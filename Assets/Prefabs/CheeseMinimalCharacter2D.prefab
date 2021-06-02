@@ -329,8 +329,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  InitialWeapon: {fileID: 5592409469002045262, guid: bf1c90bd3e81ce248a9f5530493fd9a9,
-    type: 3}
+  InitialWeapon: {fileID: 0}
   CanPickupWeapons: 1
   WeaponUseFeedback: {fileID: 0}
   WeaponAttachment: {fileID: 4091162324241721705}
@@ -345,6 +344,19 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
+--- !u!114 &1143283199505320895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093990846669802723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5473948926b2aa0468d76107920e9383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 29200d783c8fc2445ad8c93bfac92c41, type: 2}
 --- !u!114 &1604692901373754486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +418,7 @@ MonoBehaviour:
   - {x: -0.31, y: -0.01, z: 0}
   m_ShapePathHash: 789683653
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133352
+  m_InstanceId: 55176
 --- !u!114 &4525908484810156498
 MonoBehaviour:
   m_ObjectHideFlags: 0
