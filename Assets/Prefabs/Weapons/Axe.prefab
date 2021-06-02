@@ -105,8 +105,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   DamageCaused: 10
-  Knockback: 0
-  KnockbackForce: {x: 3000, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 1500, y: 0}
   InvincibilityDuration: 0.5
   CanDamageOwner: 0
 --- !u!114 &4175632246771360357
