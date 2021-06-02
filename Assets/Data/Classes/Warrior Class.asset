@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6c3994b5660e7544b5e2c441326ca92, type: 3}
-  m_Name: DefaultClassData
+  m_Name: Warrior Class
   m_EditorClassIdentifier: 
-  healthModifier: 10
-  meleeAttackDamageModifier: 10
-  rangedAttackDamageModifier: 5
-  movementSpeedModifier: 0
-  initialWeapon: {fileID: 3370565154181109150, guid: 2f9f290ca8059e04c80e86be663bf601,
+  healthModifier: 30
+  meleeAttackDamageModifier: 5
+  rangedAttackDamageModifier: 0
+  movementSpeedMultiplier: 0.8
+  initialWeapon: {fileID: 588063320836418560, guid: 94808c06380eef14d9fec5a662872a1e,
     type: 3}
