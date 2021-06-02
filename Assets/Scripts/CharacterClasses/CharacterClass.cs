@@ -8,8 +8,6 @@ public class CharacterClass : MonoBehaviour
     [SerializeField] CharacterClassData data;
 
     private Character character;
-    private CharacterHandleWeapon weaponHandle;
-    private Weapon weapon;
 
     private void Awake()
     {
@@ -20,12 +18,23 @@ public class CharacterClass : MonoBehaviour
     void Start()
     {
         character._health.MaximumHealth += data.healthModifier;
-        weaponHandle = character.FindAbility<CharacterHandleWeapon>();
         if (data.initialWeapon != null)
         {
-            weaponHandle.ChangeWeapon(data.initialWeapon, data.initialWeapon.WeaponName);
+            SetWeapon();
         }
         // weapon = weaponHandle.CurrentWeapon;
+    }
+
+    void SetWeapon()
+    {
+        var weaponHandle = character.FindAbility<CharacterHandleWeapon>();
+        weaponHandle.ChangeWeapon(data.initialWeapon, data.initialWeapon.WeaponName);
+    }
+
+    void ModifyMovementSpeed()
+    {
+        var movementAbility = character.FindAbility<CharacterMovement>();
+        movementAbility.WalkSpeed *= data.movementSpeedMultiplier;
     }
 
     // Update is called once per frame
@@ -34,10 +43,19 @@ public class CharacterClass : MonoBehaviour
 
     }
 
-    public void AddModifier(DamageOnTouch damagingScript)
+    public void AddModifier(DamageOnTouch damagingScript, bool isRanged)
     {
         Debug.Log("Adding modifier from " + this.gameObject.name + " to " + damagingScript.gameObject.name);
-        Debug.Log("Changing from " + damagingScript.DamageCaused + " to " + (damagingScript.DamageCaused + data.attackDamageModifier));
-        damagingScript.DamageCaused += data.attackDamageModifier;
+
+        if (isRanged)
+        {
+            Debug.Log("Changing from " + damagingScript.DamageCaused + " to " + (damagingScript.DamageCaused + data.rangedAttackDamageModifier));
+            damagingScript.DamageCaused += data.rangedAttackDamageModifier;
+        }
+        else
+        {
+            Debug.Log("Changing from " + damagingScript.DamageCaused + " to " + (damagingScript.DamageCaused + data.meleeAttackDamageModifier));
+            damagingScript.DamageCaused += data.meleeAttackDamageModifier;
+        }
     }
 }

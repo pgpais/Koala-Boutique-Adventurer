@@ -22,7 +22,7 @@ public class ProjectileWithClass : Projectile
         var characterClass = newOwner.GetComponent<CharacterClass>();
         if (characterClass != null)
         {
-            characterClass.AddModifier(_damageOnTouch);
+            characterClass.AddModifier(_damageOnTouch, true);
         }
     }
 }
