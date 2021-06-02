@@ -35,7 +35,7 @@ public class PlayerLantern : MonoBehaviour
 
     void InitLantern(float timeLimit)
     {
-        Debug.Log("Starting Lantern");
+        // Debug.Log("Starting Lantern");
         this.timeLimit = timeLimit;
         this.timeRemaining = timeLimit;
         lantern.pointLightOuterRadius = maxLightRadius;

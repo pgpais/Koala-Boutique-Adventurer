@@ -33,7 +33,7 @@ public class GatherablesSpawner : MonoBehaviour
         spawners = new List<Transform>();
         foreach (Transform child in spawnersParent)
         {
-            Debug.Log("spawning gatherables");
+            // Debug.Log("spawning gatherables");
             if (child.gameObject.activeSelf)
             {
                 spawners.Add(child);
