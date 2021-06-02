@@ -192,7 +192,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5782678}
+  m_Offset: {x: 0, y: 0.5621538}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.2765355}
+  m_Size: {x: 0.7176387, y: 1.3087635}
   m_EdgeRadius: 0
 --- !u!210 &210462174901479078
 SortingGroup:
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Bits: 32768
   ObstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &114184945564206620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   ChangeLayerOnDeath: 0
   ChangeLayersRecursivelyOnDeath: 0
   LayerOnDeath:
-    _layerIndex: 0
+    _layerIndex: 13
   DeathMMFeedbacks: {fileID: 2606192527695501269}
 --- !u!114 &114675271368606418
 MonoBehaviour:
@@ -479,7 +479,7 @@ MonoBehaviour:
   ObstacleDetection: 1
   ObstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!114 &114631777180868210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5725,7 +5725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4496879671627880}
   - component: {fileID: 61836836834619094}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

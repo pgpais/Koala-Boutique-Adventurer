@@ -47,10 +47,11 @@ public class EnemySpawner : MonoBehaviour
             {
                 AIBrain enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation);
                 enemies.Add(enemy);
-                enemy.gameObject.SetActive(false);
                 enemy.transform.parent = room.transform;
             }
         }
+
+        DisableAI();
 
         room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEnteredRoom);
         room.OnPlayerEntersRoom.AddListener(OnPlayerEnteredRoom);
@@ -59,17 +60,35 @@ public class EnemySpawner : MonoBehaviour
 
     void OnPlayerEnteredRoom()
     {
-        foreach (var enemy in enemies)
-        {
-            enemy.gameObject.SetActive(true);
-        }
+        EnableAI();
     }
 
     void OnPlayerLeftRoom()
     {
+        DisableAI();
+    }
+
+    void EnableAI()
+    {
         foreach (var enemy in enemies)
         {
-            enemy.gameObject.SetActive(false);
+            if (enemy.GetComponent<Character>().ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
+
+            enemy.GetComponent<Character>().UnFreeze();
+            enemy.BrainActive = true;
+            enemy.ResetBrain();
+        }
+    }
+
+    void DisableAI()
+    {
+        foreach (var enemy in enemies)
+        {
+            if (enemy.GetComponent<Character>().ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
+
+            enemy.GetComponent<Character>().Freeze();
+            enemy.ResetBrain();
+            enemy.BrainActive = false;
         }
     }
 }
