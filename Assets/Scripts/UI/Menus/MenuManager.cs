@@ -15,7 +15,11 @@ public class MenuManager : MonoBehaviour
     [Space]
 
     [SerializeField] GameObject menuObject;
+    [SerializeField] GameObject menuScreen;
+    [SerializeField] GameObject classSelectScreen;
     [SerializeField] Button playButton;
+    [SerializeField] Button selectClassButton;
+    [SerializeField] Button selectClassBackButton;
     [SerializeField] Button logoutButton;
 
     private void Awake()
@@ -50,12 +54,11 @@ public class MenuManager : MonoBehaviour
 
         playButton.onClick.AddListener(OnPlayButton);
         logoutButton.onClick.AddListener(OnLogout);
-    }
+        selectClassButton.onClick.AddListener(ShowClassSelectScreen);
+        selectClassBackButton.onClick.AddListener(ShowMenuScreen);
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        classSelectScreen.SetActive(false);
+        menuScreen.SetActive(true);
     }
 
     void OnNoMissionExists()
@@ -94,5 +97,17 @@ public class MenuManager : MonoBehaviour
 
         askForIDParent.SetActive(true);
         menuObject.SetActive(false);
+    }
+
+    void ShowClassSelectScreen()
+    {
+        classSelectScreen.SetActive(true);
+        menuScreen.SetActive(false);
+    }
+
+    void ShowMenuScreen()
+    {
+        classSelectScreen.SetActive(false);
+        menuScreen.SetActive(true);
     }
 }

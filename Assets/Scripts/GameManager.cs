@@ -9,14 +9,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-
-
     public static UnityEvent NoMissionExists = new UnityEvent();
     public static UnityEvent NewMissionAdded = new UnityEvent();
 
+
+    public static GameManager instance;
+
+
+    public CharacterClassData currentSelectedClass;
+
+
     public Mission CurrentMission => currentMission;
     private Mission currentMission;
+
 
     void Awake()
     {
