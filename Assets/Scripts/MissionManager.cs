@@ -112,8 +112,8 @@ public class MissionManager : MonoBehaviour
 
             if (roomMap[curExit.x, curExit.y] != null) // Room already created at exit position
             {
-                Debug.Log($"Room at ({curExit.x}, {curExit.y}) = {roomMap[curExit.x, curExit.y]}");
-                Debug.Log($"Has direction {curExit.RequiredEntranceDirection}? {roomMap[curExit.x, curExit.y].GetComponent<RoomEntrances>().HasDirection(curExit.RequiredEntranceDirection)}");
+                // Debug.Log($"Room at ({curExit.x}, {curExit.y}) = {roomMap[curExit.x, curExit.y]}");
+                // Debug.Log($"Has direction {curExit.RequiredEntranceDirection}? {roomMap[curExit.x, curExit.y].GetComponent<RoomEntrances>().HasDirection(curExit.RequiredEntranceDirection)}");
 
 
                 ResolveExitCollision(curExit, roomMap[curExit.x, curExit.y].GetComponent<RoomEntrances>());
@@ -175,7 +175,7 @@ public class MissionManager : MonoBehaviour
     {
         if (otherEntrances.Type == RoomType.Exit)
         {
-            Debug.Log("Tried connecting room to exit. just return.");
+            // Debug.Log("Tried connecting room to exit. just return.");
             curExit.gameObject.SetActive(false);
             return;
         }

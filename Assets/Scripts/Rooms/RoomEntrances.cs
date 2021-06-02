@@ -62,7 +62,7 @@ public class RoomEntrances : MonoBehaviour
     private IEnumerator LateStart()
     {
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("Room generated");
+        // Debug.Log("Room generated");
         RoomGenerated.Invoke();
     }
 
