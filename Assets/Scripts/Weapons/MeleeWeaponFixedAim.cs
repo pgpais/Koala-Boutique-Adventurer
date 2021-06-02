@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class MeleeWeaponFixedAim : MeleeWeapon
 {
-    public override void WeaponUse()
+    protected override IEnumerator MeleeWeaponAttack()
     {
+        Debug.Log("Disabling aim", _aimableWeapon);
         _aimableWeapon.enabled = false;
-        base.WeaponUse();
+        yield return base.MeleeWeaponAttack();
         _aimableWeapon.enabled = true;
+        Debug.Log("Enabling aim", _aimableWeapon);
+
     }
 }
