@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 114103483350062584}
   - component: {fileID: 114778105809703722}
   - component: {fileID: 4715256016921185788}
+  - component: {fileID: 1733475038040493563}
   m_Layer: 13
   m_Name: Chasing Enemy
   m_TagString: Enemy
@@ -411,12 +412,12 @@ MonoBehaviour:
   RespawnAtInitialLocation: 0
   DisableControllerOnDeath: 1
   DisableModelOnDeath: 1
-  DisableCollisionsOnDeath: 1
+  DisableCollisionsOnDeath: 0
   DisableChildCollisionsOnDeath: 0
   ChangeLayerOnDeath: 0
   ChangeLayersRecursivelyOnDeath: 0
   LayerOnDeath:
-    _layerIndex: 13
+    _layerIndex: 0
   DeathMMFeedbacks: {fileID: 2606192527695501269}
 --- !u!114 &114675271368606418
 MonoBehaviour:
@@ -830,6 +831,32 @@ MonoBehaviour:
   GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
   GimosSize: 1
   SpawnLootButton: 0
+--- !u!61 &1733475038040493563
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561694053617324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.57475567}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 1.5}
+    newSize: {x: 0.24, y: 0.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1.1541958}
+  m_EdgeRadius: 0
 --- !u!1 &1671905898232590
 GameObject:
   m_ObjectHideFlags: 0
@@ -10685,6 +10712,7 @@ GameObject:
   - component: {fileID: 2606192527695501269}
   - component: {fileID: 7872318521523879776}
   - component: {fileID: 1625163091612106691}
+  - component: {fileID: 5653218568429358449}
   m_Layer: 13
   m_Name: DeathFeedback
   m_TagString: Untagged
@@ -10721,6 +10749,7 @@ MonoBehaviour:
   Feedbacks:
   - {fileID: 7872318521523879776}
   - {fileID: 1625163091612106691}
+  - {fileID: 5653218568429358449}
   InitializationMode: 2
   SafeMode: 3
   AutoPlayOnStart: 0
@@ -10793,6 +10822,42 @@ MonoBehaviour:
   BoundParticleSystem: {fileID: 198955948927090288}
   MoveToPosition: 0
   RandomParticleSystems: []
+--- !u!114 &5653218568429358449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278138783316840189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d32bf9d337140142b62c61d26aff604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Enable Behaviour
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  TargetBehaviour: {fileID: 114103483350062584}
+  SetStateOnInit: 0
+  StateOnInit: 1
+  SetStateOnPlay: 1
+  StateOnPlay: 1
+  SetStateOnStop: 0
+  StateOnStop: 1
+  SetStateOnReset: 0
+  StateOnReset: 1
 --- !u!1 &293426325824734777
 GameObject:
   m_ObjectHideFlags: 0
