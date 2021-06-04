@@ -6,9 +6,11 @@ using UnityEngine.Events;
 
 public class CharacterClass : MonoBehaviour
 {
+    [HideInInspector]
     public UnityEvent<Health> DamagedEnemy;
 
     [SerializeField] CharacterClassData data;
+    [SerializeField] List<Buff> currentBuffs;
 
     private Character character;
 
@@ -21,6 +23,11 @@ public class CharacterClass : MonoBehaviour
         }
         DamagedEnemy = new UnityEvent<Health>();
         DamagedEnemy.AddListener((health) => Debug.Log("Event fired"));
+
+        foreach (var buff in currentBuffs)
+        {
+            buff.Initialize(this);
+        }
     }
 
     // Start is called before the first frame update
