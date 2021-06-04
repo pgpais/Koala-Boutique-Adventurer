@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterClass : MonoBehaviour
 {
+    public UnityEvent<Health> DamagedEnemy;
+
     [SerializeField] CharacterClassData data;
 
     private Character character;
@@ -16,6 +19,8 @@ public class CharacterClass : MonoBehaviour
         {
             data = GameManager.instance.currentSelectedClass;
         }
+        DamagedEnemy = new UnityEvent<Health>();
+        DamagedEnemy.AddListener((health) => Debug.Log("Event fired"));
     }
 
     // Start is called before the first frame update
