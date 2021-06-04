@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 878801190267460481}
   - component: {fileID: 8449325544386354467}
-  - component: {fileID: 3032870730358404108}
   - component: {fileID: 4983243396481138513}
   - component: {fileID: -4584328730528359333}
   - component: {fileID: 2032652839733204155}
   - component: {fileID: -4495691901952150847}
   - component: {fileID: 4666843834987772792}
-  m_Layer: 0
+  - component: {fileID: -7806492754932557636}
+  m_Layer: 18
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,37 +61,6 @@ MonoBehaviour:
   ProjectileIsFacingRight: 1
   InitialInvulnerabilityDuration: 0
   DamageOwner: 0
---- !u!114 &3032870730358404108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534737054845033806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 8448
-  PerfectImpact: 0
-  DamageCaused: 10
-  DamageCausedKnockbackType: 1
-  DamageCausedKnockbackDirection: 1
-  DamageCausedKnockbackForce: {x: 10, y: 10, z: 0}
-  InvincibilityDuration: 0.5
-  DamageTakenEveryTime: 10
-  DamageTakenDamageable: 10
-  DamageTakenNonDamageable: 10
-  DamageTakenKnockbackType: 0
-  DamagedTakenKnockbackDirection: 0
-  DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
-  DamageTakenInvincibilityDuration: 0.5
-  HitDamageableFeedback: {fileID: 0}
-  HitNonDamageableFeedback: {fileID: 0}
-  Owner: {fileID: 0}
 --- !u!114 &4983243396481138513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +150,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -201,7 +170,38 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   SkinWidth: 0.1
-  RepositionRigidbody: 1
+  RepositionRigidbody: 0
+--- !u!114 &-7806492754932557636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534737054845033806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f505e565b8ec6cd46865b6b1c5905be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8448
+  PerfectImpact: 0
+  DamageCaused: 10
+  DamageCausedKnockbackType: 1
+  DamageCausedKnockbackDirection: 1
+  DamageCausedKnockbackForce: {x: 10, y: 10, z: 0}
+  InvincibilityDuration: 0.5
+  DamageTakenEveryTime: 10
+  DamageTakenDamageable: 10
+  DamageTakenNonDamageable: 10
+  DamageTakenKnockbackType: 0
+  DamagedTakenKnockbackDirection: 0
+  DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
+  DamageTakenInvincibilityDuration: 0.5
+  HitDamageableFeedback: {fileID: 0}
+  HitNonDamageableFeedback: {fileID: 0}
+  Owner: {fileID: 0}
 --- !u!1 &2989964853518808184
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2233416131603653138}
   - component: {fileID: 3247533131647891459}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ice Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
