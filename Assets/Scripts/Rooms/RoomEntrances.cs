@@ -48,6 +48,15 @@ public class RoomEntrances : MonoBehaviour
 
     private void Awake()
     {
+        nExits = 0;
+        foreach (var exit in exits)
+        {
+            if (exit.gameObject.activeSelf)
+            {
+                nExits++;
+            }
+        }
+
         exitDirections = new Dictionary<ExitDirection, Teleporter>();
         AddExitsToDictionary();
 

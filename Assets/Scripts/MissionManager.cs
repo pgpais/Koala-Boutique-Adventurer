@@ -33,6 +33,9 @@ public class MissionManager : MonoBehaviour
     private int remainingExitsToCreate;
     public Random Rand { get; private set; }
 
+
+    private int howManyMissionExitsCreated = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -126,6 +129,12 @@ public class MissionManager : MonoBehaviour
                 GameObject roomToSpawn = GetRoomForExit(curExit);
                 // Add room at exit
                 RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
+
+                if (newRoomEntrances.Type == RoomType.Exit)
+                {
+                    howManyMissionExitsCreated++;
+                }
+
                 Room newRoom = newRoomEntrances.GetComponent<Room>();
                 newRoomEntrances.x = curExit.x;
                 newRoomEntrances.y = curExit.y;
@@ -244,13 +253,25 @@ public class MissionManager : MonoBehaviour
     {
         // TODO: Make conditions for how many of each room type should show up.
         //? (one exit; distance from center; how many valuables;) 
+        if (howManyMissionExitsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-        return deadEndList.Find(delegate (GameObject obj)
-                {
-                    RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+                        return entrances.Type == RoomType.Exit;
+                    });
+        }
+        else
+        {
+            var resultRooms = deadEndList.FindAll(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                    return entrances.Type == RoomType.Exit;
-                });
+                        return entrances.Type != RoomType.Exit && entrances.NExits == 1;
+                    });
+            return resultRooms[Rand.Next(0, resultRooms.Count)];
+        }
     }
 
     private RoomEntrances SpawnRoom(GameObject roomToSpawn, Exit connectedExit)

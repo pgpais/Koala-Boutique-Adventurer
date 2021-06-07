@@ -84,7 +84,7 @@ PrefabInstance:
     - target: {fileID: 1274066756872582856, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_Name
-      value: B Buff Room
+      value: B Buff
       objectReference: {fileID: 0}
     - target: {fileID: 1274066756872582860, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
@@ -1627,6 +1627,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[433].second.m_TileSpriteIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3396119504579859347, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3753673119473119683, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_InstanceId
@@ -1640,6 +1645,11 @@ PrefabInstance:
     - target: {fileID: 5515241503824105027, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637440698051594757, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6489984935534229460, guid: 5ec6d61b14b7341458c2152dbc2748c6,
