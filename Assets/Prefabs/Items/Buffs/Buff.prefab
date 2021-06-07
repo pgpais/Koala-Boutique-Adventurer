@@ -76,9 +76,9 @@ MonoBehaviour:
   DisableColliderOnPick: 0
   DisableObjectOnPick: 1
   DisableDelay: 0
-  DisableModelOnPick: 0
-  Model: {fileID: 0}
-  BuffToGive: {fileID: 11400000, guid: 2de76e0ede2b90548ba68bb48560326f, type: 2}
+  DisableModelOnPick: 1
+  Model: {fileID: 8941860872862626026}
+  buffToGive: {fileID: 0}
   tooltip: {fileID: 2989529418680000755}
   playerDetectionLayer:
     serializedVersion: 2

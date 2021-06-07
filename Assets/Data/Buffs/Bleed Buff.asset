@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e570c20d0845d5438f53f32978f2255, type: 3}
-  m_Name: Poison Buff
+  m_Name: Bleed Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: -5227622578618380066, guid: 94f8b294102840a4ab78bb8a1bd4af74,
+  <icon>k__BackingField: {fileID: 946753061179584902, guid: 94f8b294102840a4ab78bb8a1bd4af74,
     type: 3}
-  <buffName>k__BackingField: Poison Coating
-  <description>k__BackingField: Coats your weapon with poison, dealing damage over
-    time to enemies hit.
+  <buffName>k__BackingField: test
+  <description>k__BackingField: 123
   <poisonDamage>k__BackingField: 1
   <poisonCooldown>k__BackingField: 0.2
   <poisonTime>k__BackingField: 1

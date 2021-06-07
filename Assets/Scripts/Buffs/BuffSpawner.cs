@@ -10,6 +10,6 @@ public class BuffSpawner : MonoBehaviour
 
     public void Initialize(Buff buff)
     {
-        Instantiate(buffPickablePrefab, transform).BuffToGive = buff;
+        Instantiate(buffPickablePrefab, transform).buffToGive = buff;
     }
 }

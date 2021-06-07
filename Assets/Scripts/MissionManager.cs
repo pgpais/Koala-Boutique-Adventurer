@@ -18,6 +18,7 @@ public class MissionManager : MonoBehaviour
 
     [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
+    [SerializeField] BuffList buffList;
 
     [Space]
 
@@ -130,10 +131,9 @@ public class MissionManager : MonoBehaviour
                 // Add room at exit
                 RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
 
-                if (newRoomEntrances.Type == RoomType.Exit)
-                {
-                    howManyMissionExitsCreated++;
-                }
+
+                HandleNewRoomType(newRoomEntrances);
+
 
                 Room newRoom = newRoomEntrances.GetComponent<Room>();
                 newRoomEntrances.x = curExit.x;
@@ -168,6 +168,26 @@ public class MissionManager : MonoBehaviour
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
             }
+        }
+    }
+
+    private void HandleNewRoomType(RoomEntrances newRoomEntrances)
+    {
+        switch (newRoomEntrances.Type)
+        {
+            case RoomType.Exit:
+                howManyMissionExitsCreated++;
+                break;
+            case RoomType.Buff:
+                newRoomEntrances.GetComponent<BuffSpawner>().Initialize(buffList.buffs[Rand.Next(0, buffList.buffs.Count)]);
+                break;
+            default:
+                break;
+        }
+
+        if (newRoomEntrances.Type == RoomType.Exit)
+        {
+            howManyMissionExitsCreated++;
         }
     }
 

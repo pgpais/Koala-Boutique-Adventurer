@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Poison Buff", menuName = "Ye Olde Shop Adventurer/Poison Buff", order = 0)]
+[CreateAssetMenu(fileName = "Poison Buff", menuName = "Ye Olde Shop/Poison Buff", order = 0)]
 public class PoisonBuff : Buff
 {
     [field: SerializeField] public int poisonDamage { get; private set; } = 1;

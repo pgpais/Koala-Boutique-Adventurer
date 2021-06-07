@@ -6,7 +6,7 @@ using UnityEngine;
 public class BuffPickable : PickableItem
 {
 
-    public Buff BuffToGive;
+    public Buff buffToGive;
 
     [SerializeField] BuffUI tooltip;
     [SerializeField] LayerMask playerDetectionLayer;
@@ -15,8 +15,9 @@ public class BuffPickable : PickableItem
     protected override void Start()
     {
         base.Start();
-        Model.GetComponent<SpriteRenderer>().sprite = BuffToGive.icon;
+        Model.GetComponent<SpriteRenderer>().sprite = buffToGive.icon;
         tooltip.gameObject.SetActive(false);
+        tooltip.Initialize(buffToGive);
     }
 
     private void FixedUpdate()
@@ -31,7 +32,7 @@ public class BuffPickable : PickableItem
     protected override void Pick(GameObject picker)
     {
         CharacterClass characterClass = picker.GetComponent<CharacterClass>();
-        characterClass.AddBuff(BuffToGive);
+        characterClass.AddBuff(buffToGive);
     }
 
     private void OnDrawGizmosSelected()
