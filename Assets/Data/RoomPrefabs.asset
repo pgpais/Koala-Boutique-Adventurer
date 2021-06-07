@@ -30,6 +30,7 @@ MonoBehaviour:
   - {fileID: 8672406322151948058, guid: 9b4d30d81dcc6f74cba8181f454ebe26, type: 3}
   - {fileID: 5702207936278299174, guid: 8f0329bc598eb5441a5530c58c31bd36, type: 3}
   - {fileID: 2495203568519362808, guid: 8c37d4758cc0d2c448c6d7b7ff960a95, type: 3}
+  - {fileID: 5224089368830207901, guid: 2d24fa4bfe1a604419c5a20cda181e72, type: 3}
   leftDoorRooms:
   - {fileID: 8493166997045477191, guid: bfb68e7f0db64054a936132334438eeb, type: 3}
   - {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c, type: 3}

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e570c20d0845d5438f53f32978f2255, type: 3}
   m_Name: Poison Buff
   m_EditorClassIdentifier: 
+  icon: {fileID: -5227622578618380066, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
+  buffName: Poison Coating
+  description: Your attacks are coated with poison, dealing damage over time.
   <poisonDamage>k__BackingField: 1
   <poisonCooldown>k__BackingField: 0.2
   <poisonTime>k__BackingField: 1
