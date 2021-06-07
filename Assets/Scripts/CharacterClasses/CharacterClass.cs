@@ -74,4 +74,13 @@ public class CharacterClass : MonoBehaviour
             damagingScript.DamageCaused += data.meleeAttackDamageModifier;
         }
     }
+
+    public void AddBuff(Buff buff)
+    {
+        if (!currentBuffs.Contains(buff))
+        {
+            currentBuffs.Add(buff);
+            buff.Initialize(this);
+        }
+    }
 }

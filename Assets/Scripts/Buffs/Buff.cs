@@ -5,5 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Buff", menuName = "Ye-Olde-Shop-Adventurer/Buff", order = 0)]
 abstract public class Buff : ScriptableObject
 {
+    [field: SerializeField] public Sprite icon { get; private set; }
+    [field: SerializeField] public string buffName { get; private set; }
+    [field: SerializeField] public string description { get; private set; }
+
     public abstract void Initialize(CharacterClass characterClass);
 }
