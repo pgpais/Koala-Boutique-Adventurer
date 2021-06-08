@@ -32,6 +32,7 @@ public class RoomEntrances : MonoBehaviour
     }
     public RoomType Type => type;
     [SerializeField] RoomType type;
+    [SerializeField] bool closeDoorsUntilRoomIsCleared = true;
 
     public int x, y;
 
@@ -83,6 +84,7 @@ public class RoomEntrances : MonoBehaviour
         }
 
         var room = GetComponent<Room>();
+
         room.OnPlayerEntersRoom.AddListener(OnPlayerEnteredRoom);
         room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEnteredRoom);
 
@@ -130,7 +132,7 @@ public class RoomEntrances : MonoBehaviour
 
     private void OnPlayerEnteredRoom()
     {
-        if (Type == RoomType.Enemies)
+        if (Type == RoomType.Enemies && closeDoorsUntilRoomIsCleared)
         {
             foreach (var exit in activeExits)
             {

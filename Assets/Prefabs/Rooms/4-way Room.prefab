@@ -373,6 +373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   type: 4
+  closeDoorsUntilRoomIsCleared: 1
   x: 0
   y: 0
   nExits: 4
