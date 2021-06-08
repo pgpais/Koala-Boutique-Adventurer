@@ -2,7 +2,7 @@ using MoreMountains.TopDownEngine;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ClassData", menuName = "Ye-Olde-Shop-Adventurer/Class Data", order = 0)]
-public class CharacterClassData : ScriptableObject
+public class CharacterClassData : UnlockableRewards
 {
     [Tooltip("The name given to this class")]
     public string className;

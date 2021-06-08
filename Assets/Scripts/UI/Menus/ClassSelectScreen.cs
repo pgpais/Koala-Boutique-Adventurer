@@ -23,7 +23,12 @@ public class ClassSelectScreen : MonoBehaviour
 
         foreach (var characterClass in possibleStartingClasses)
         {
+
             var button = Instantiate(buttonPrefab, layoutGroup).GetComponent<Button>();
+            if (!characterClass.Unlocked)
+            {
+                button.interactable = false;
+            }
             button.GetComponentInChildren<TMPro.TMP_Text>().text = characterClass.className;
             button.onClick.AddListener(() =>
             {

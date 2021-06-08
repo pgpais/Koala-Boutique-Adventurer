@@ -22,7 +22,13 @@ public class BuffSpawner : MonoBehaviour
     {
         var rand = MissionManager.instance.Rand;
         var missionManager = MissionManager.instance;
-        SpawnBuff(missionManager.BuffList.buffs[rand.Next(0, missionManager.BuffList.buffs.Count)]);
+        List<Buff> unlockedBuffs = missionManager.BuffList.GetUnlockedBuffs();
+        if (unlockedBuffs.Count <= 0)
+        {
+            Debug.LogError("No unlocked buffs!");
+            return;
+        }
+        SpawnBuff(unlockedBuffs[rand.Next(0, unlockedBuffs.Count)]);
     }
 
     void SpawnBuff(Buff buff)

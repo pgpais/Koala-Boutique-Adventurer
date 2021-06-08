@@ -5,4 +5,7 @@ using UnityEngine;
 public class BuffList : ScriptableObject
 {
     [field: SerializeField] public List<Buff> buffs { get; private set; }
+
+    public List<Buff> GetUnlockedBuffs() => buffs.FindAll((buff) => buff.Unlocked);
+
 }
