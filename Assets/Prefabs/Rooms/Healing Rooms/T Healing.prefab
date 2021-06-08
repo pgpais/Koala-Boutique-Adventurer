@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -348734
       objectReference: {fileID: 0}
+    - target: {fileID: 1032408738655136391, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5891140155889158980, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.size
@@ -1343,6 +1348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020520091210511121, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392552347944800577, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}

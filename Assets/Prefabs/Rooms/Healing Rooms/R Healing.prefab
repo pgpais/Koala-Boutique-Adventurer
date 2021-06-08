@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 517212632927919225, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2025295214731722281, guid: 242c00858e7a641498f67107c53092a4,
         type: 3}
       propertyPath: m_InstanceId
@@ -1288,6 +1293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[82].Y
       value: 70000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363601884482061807, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 242c00858e7a641498f67107c53092a4, type: 3}

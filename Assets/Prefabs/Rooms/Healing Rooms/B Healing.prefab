@@ -86,6 +86,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: B Healing
       objectReference: {fileID: 0}
+    - target: {fileID: 1274066756872582860, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: type
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1274066756872582863, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1245,10 +1250,20 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[433].second.m_TileSpriteIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3396119504579859347, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnGatherablesInThisRoom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3753673119473119683, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: m_InstanceId
       value: -346402
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637440698051594757, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: spawnEnemiesInRoom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6d61b14b7341458c2152dbc2748c6, type: 3}

@@ -38,6 +38,7 @@ public class MissionManager : MonoBehaviour
 
 
     private int howManyMissionExitsCreated = 0;
+    private int howManyHealingRoomsCreated = 0;
 
     private void Awake()
     {
@@ -183,6 +184,9 @@ public class MissionManager : MonoBehaviour
             case RoomType.Buff:
 
                 break;
+            case RoomType.Healing:
+                howManyHealingRoomsCreated++;
+                break;
             default:
                 break;
         }
@@ -284,13 +288,22 @@ public class MissionManager : MonoBehaviour
                         return entrances.Type == RoomType.Exit;
                     });
         }
+        else if (howManyHealingRoomsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                        return entrances.Type == RoomType.Healing;
+                    });
+        }
         else
         {
             var resultRooms = deadEndList.FindAll(delegate (GameObject obj)
                     {
                         RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                        return entrances.Type != RoomType.Exit && entrances.NExits == 1;
+                        return entrances.Type != RoomType.Exit && entrances.Type != RoomType.Healing && entrances.NExits == 1;
                     });
             return resultRooms[Rand.Next(0, resultRooms.Count)];
         }
