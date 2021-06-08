@@ -16,8 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] List<AIBrain> enemiesPrefabs;
 
-    private
-    List<AIBrain> enemies;
+    private List<Character> enemies;
 
     private void Start()
     {
@@ -32,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        enemies = new List<AIBrain>();
+        enemies = new List<Character>();
 
         room.GetComponent<RoomEntrances>().RoomGenerated.AddListener(SpawnEnemies);
     }
@@ -45,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (child.gameObject.activeSelf)
             {
-                AIBrain enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation);
+                Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation).GetComponent<Character>();
                 enemies.Add(enemy);
                 enemy.transform.parent = room.transform;
             }
@@ -72,11 +71,12 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in enemies)
         {
-            if (enemy.GetComponent<Character>().ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
+            if (enemy.ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
 
-            enemy.GetComponent<Character>().UnFreeze();
-            enemy.BrainActive = true;
-            enemy.ResetBrain();
+            enemy.UnFreeze();
+            var enemyBrain = enemy.CharacterBrain;
+            enemyBrain.BrainActive = true;
+            enemyBrain.ResetBrain();
         }
     }
 
@@ -84,7 +84,14 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in enemies)
         {
-            if (enemy.GetComponent<Character>().ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
+            if (enemy.ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead) { continue; }
+
+            enemy.Freeze();
+            var enemyBrain = enemy.CharacterBrain;
+            enemyBrain.ResetBrain();
+            enemyBrain.BrainActive = false;
+        }
+    }
 
             enemy.GetComponent<Character>().Freeze();
             enemy.ResetBrain();
