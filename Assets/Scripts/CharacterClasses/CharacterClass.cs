@@ -29,7 +29,8 @@ public class CharacterClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        character._health.MaximumHealth += data.healthModifier;
+        ModifyMaximumHealth();
+
         if (data.initialWeapon != null)
         {
             SetWeapon();
@@ -52,6 +53,12 @@ public class CharacterClass : MonoBehaviour
     {
         var movementAbility = character.FindAbility<CharacterMovement>();
         movementAbility.WalkSpeed *= data.movementSpeedMultiplier;
+    }
+
+    void ModifyMaximumHealth()
+    {
+        character._health.MaximumHealth += data.healthModifier;
+        character._health.GetHealth(data.healthModifier, gameObject);
     }
 
     // Update is called once per frame
