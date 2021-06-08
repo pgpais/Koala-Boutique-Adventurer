@@ -39,6 +39,7 @@ public class MissionManager : MonoBehaviour
 
     private int howManyMissionExitsCreated = 0;
     private int howManyHealingRoomsCreated = 0;
+    private int howManyLootRoomsCreated = 0;
 
     private void Awake()
     {
@@ -187,6 +188,9 @@ public class MissionManager : MonoBehaviour
             case RoomType.Healing:
                 howManyHealingRoomsCreated++;
                 break;
+            case RoomType.Loot:
+                howManyLootRoomsCreated++;
+                break;
             default:
                 break;
         }
@@ -295,6 +299,15 @@ public class MissionManager : MonoBehaviour
                         RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
                         return entrances.Type == RoomType.Healing;
+                    });
+        }
+        else if (howManyLootRoomsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                        return entrances.Type == RoomType.Loot;
                     });
         }
         else
