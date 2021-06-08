@@ -213,8 +213,8 @@ public class MissionManager : MonoBehaviour
 
         // TODO: #11 Enable door if next to other room (Maybe some can be secret?)
         Teleporter otherTeleporter = otherEntrances.GetTeleporterFromDirection(curExit.RequiredEntranceDirection);
-        otherTeleporter.gameObject.SetActive(true);
-        curExit.gameObject.SetActive(true);
+        otherTeleporter.GetComponent<Exit>().EnableExit();
+        curExit.EnableExit();
         SetupTeleporters(curExit.Teleporter, otherTeleporter);
     }
 

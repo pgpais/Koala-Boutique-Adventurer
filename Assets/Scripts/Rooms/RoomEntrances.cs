@@ -42,12 +42,15 @@ public class RoomEntrances : MonoBehaviour
     [SerializeField] List<Exit> exits;
 
     Dictionary<ExitDirection, Teleporter> exitDirections;
+    List<Exit> activeExits;
 
     public bool HasDirection(ExitDirection direction) => exitDirections.ContainsKey(direction);
     public Teleporter GetTeleporterFromDirection(ExitDirection direction) => exitDirections[direction];
 
     private void Awake()
     {
+        activeExits = new List<Exit>();
+
         nExits = 0;
         foreach (var exit in exits)
         {
@@ -60,11 +63,29 @@ public class RoomEntrances : MonoBehaviour
         exitDirections = new Dictionary<ExitDirection, Teleporter>();
         AddExitsToDictionary();
 
+
         RoomGenerated = new UnityEvent();
     }
 
     private void Start()
     {
+        foreach (var exit in exits)
+        {
+
+            if (exit.gameObject.activeSelf)
+            {
+                activeExits.Add(exit);
+            }
+            else
+            {
+                exit.ExitAdded.AddListener(activeExits.Add);
+            }
+        }
+
+        var room = GetComponent<Room>();
+        room.OnPlayerEntersRoom.AddListener(OnPlayerEnteredRoom);
+        room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEnteredRoom);
+
         StartCoroutine(LateStart());
     }
 
@@ -103,6 +124,26 @@ public class RoomEntrances : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+
+    private void OnPlayerEnteredRoom()
+    {
+        if (Type == RoomType.Enemies)
+        {
+            foreach (var exit in activeExits)
+            {
+                exit.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    internal void OpenDoors()
+    {
+        foreach (var exit in activeExits)
+        {
+            exit.gameObject.SetActive(true);
         }
     }
 }

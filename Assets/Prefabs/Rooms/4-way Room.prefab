@@ -372,7 +372,7 @@ MonoBehaviour:
   <RoomGenerated>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  type: 0
+  type: 4
   x: 0
   y: 0
   nExits: 4

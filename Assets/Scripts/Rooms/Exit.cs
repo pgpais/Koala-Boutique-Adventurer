@@ -1,10 +1,13 @@
 using MoreMountains.TopDownEngine;
 using UnityEngine;
+using UnityEngine.Events;
 using static RoomEntrances;
 
 [RequireComponent(typeof(Teleporter))]
 public class Exit : MonoBehaviour
 {
+    public UnityEvent<Exit> ExitAdded;
+
     public int x, y;
 
 
@@ -42,6 +45,8 @@ public class Exit : MonoBehaviour
         }
 
         teleporter = GetComponent<Teleporter>();
+
+        ExitAdded = new UnityEvent<Exit>();
     }
 
     public void SetCoordinates(int roomX, int roomY)
@@ -67,6 +72,19 @@ public class Exit : MonoBehaviour
             default:
                 Debug.LogError("This Exit has a weird direction! HALP", this);
                 break;
+        }
+    }
+
+    public void EnableExit()
+    {
+        if (gameObject.activeSelf)
+        {
+            return;
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            ExitAdded.Invoke(this);
         }
     }
 }

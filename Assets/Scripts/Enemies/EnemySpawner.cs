@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
+using static MoreMountains.TopDownEngine.CharacterStates;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation).GetComponent<Character>();
                 enemies.Add(enemy);
+                var enemyHealth = enemy.GetComponent<Health>();
+                enemyHealth.OnDeath += CheckIfEnemiesAreAllDead;
                 enemy.transform.parent = room.transform;
             }
         }
@@ -93,9 +96,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-            enemy.GetComponent<Character>().Freeze();
-            enemy.ResetBrain();
-            enemy.BrainActive = false;
+    void CheckIfEnemiesAreAllDead()
+    {
+        foreach (var enemy in enemies)
+        {
+            if (enemy.ConditionState.CurrentState != CharacterConditions.Dead)
+            {
+                Debug.Log("Still people alive!");
+                return;
+            }
         }
+        Debug.Log("All dead! Open Doors!");
+        GetComponent<RoomEntrances>().OpenDoors();
     }
 }
