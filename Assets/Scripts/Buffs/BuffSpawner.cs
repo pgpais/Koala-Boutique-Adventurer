@@ -8,8 +8,25 @@ public class BuffSpawner : MonoBehaviour
 
     [SerializeField] BuffPickable buffPickablePrefab;
 
-    public void Initialize(Buff buff)
+    [SerializeField] bool spawnOnStart;
+
+    private void Start()
     {
-        Instantiate(buffPickablePrefab, transform).buffToGive = buff;
+
+        var entrances = GetComponent<RoomEntrances>();
+        entrances.RoomGenerated.AddListener(Initialize);
+        Debug.Log("listener");
+    }
+
+    public void Initialize()
+    {
+        var rand = MissionManager.instance.Rand;
+        var missionManager = MissionManager.instance;
+        SpawnBuff(missionManager.BuffList.buffs[rand.Next(0, missionManager.BuffList.buffs.Count)]);
+    }
+
+    void SpawnBuff(Buff buff)
+    {
+        Instantiate(buffPickablePrefab, Spawner).buffToGive = buff;
     }
 }

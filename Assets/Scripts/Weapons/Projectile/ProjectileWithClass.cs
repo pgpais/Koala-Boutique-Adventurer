@@ -6,11 +6,13 @@ using UnityEngine;
 public class ProjectileWithClass : Projectile
 {
     private int oldDamage;
+    private Rigidbody2D rb;
 
     protected override void Awake()
     {
         base.Awake();
         oldDamage = _damageOnTouch.DamageCaused;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public override void SetOwner(GameObject newOwner)
@@ -24,5 +26,11 @@ public class ProjectileWithClass : Projectile
         {
             characterClass.AddModifier(_damageOnTouch, true);
         }
+    }
+
+    public override void Movement()
+    {
+        base.Movement();
+        transform.right = Direction;
     }
 }

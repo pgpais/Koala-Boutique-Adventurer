@@ -18,6 +18,8 @@ public class MissionManager : MonoBehaviour
 
     [field: SerializeField] public int Seed { get; private set; } = 100;
     [SerializeField] RoomPrefabs roomPrefabs;
+
+    public BuffList BuffList => buffList;
     [SerializeField] BuffList buffList;
 
     [Space]
@@ -179,7 +181,7 @@ public class MissionManager : MonoBehaviour
                 howManyMissionExitsCreated++;
                 break;
             case RoomType.Buff:
-                newRoomEntrances.GetComponent<BuffSpawner>().Initialize(buffList.buffs[Rand.Next(0, buffList.buffs.Count)]);
+
                 break;
             default:
                 break;

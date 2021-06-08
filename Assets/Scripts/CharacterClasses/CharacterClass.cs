@@ -12,6 +12,7 @@ public class CharacterClass : MonoBehaviour
     [SerializeField] CharacterClassData data;
     [SerializeField] List<Buff> currentBuffs;
 
+    public Character Character => character;
     private Character character;
 
     private void Awake()
@@ -23,11 +24,6 @@ public class CharacterClass : MonoBehaviour
         }
         DamagedEnemy = new UnityEvent<Health>();
         DamagedEnemy.AddListener((health) => Debug.Log("Event fired"));
-
-        foreach (var buff in currentBuffs)
-        {
-            buff.Initialize(this);
-        }
     }
 
     // Start is called before the first frame update
@@ -39,6 +35,11 @@ public class CharacterClass : MonoBehaviour
             SetWeapon();
         }
         // weapon = weaponHandle.CurrentWeapon;
+
+        foreach (var buff in currentBuffs)
+        {
+            buff.Initialize(this);
+        }
     }
 
     void SetWeapon()
