@@ -48,6 +48,8 @@ public class RoomEntrances : MonoBehaviour
     public bool HasDirection(ExitDirection direction) => exitDirections.ContainsKey(direction);
     public Teleporter GetTeleporterFromDirection(ExitDirection direction) => exitDirections[direction];
 
+    bool roomCleared = false;
+
     private void Awake()
     {
         activeExits = new List<Exit>();
@@ -132,7 +134,7 @@ public class RoomEntrances : MonoBehaviour
 
     private void OnPlayerEnteredRoom()
     {
-        if (Type == RoomType.Enemies && closeDoorsUntilRoomIsCleared)
+        if (Type == RoomType.Enemies && closeDoorsUntilRoomIsCleared && !roomCleared)
         {
             foreach (var exit in activeExits)
             {
@@ -143,6 +145,7 @@ public class RoomEntrances : MonoBehaviour
 
     internal void OpenDoors()
     {
+        roomCleared = true;
         foreach (var exit in activeExits)
         {
             exit.gameObject.SetActive(true);
