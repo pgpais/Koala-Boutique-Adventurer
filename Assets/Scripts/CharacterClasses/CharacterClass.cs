@@ -36,6 +36,12 @@ public class CharacterClass : MonoBehaviour
             SetWeapon();
         }
         // weapon = weaponHandle.CurrentWeapon;
+        List<string> boughtBuffs = MissionManager.instance.GetStartingBuffs();
+
+        foreach (var buffName in boughtBuffs)
+        {
+            currentBuffs.Add(MissionManager.instance.BuffList.GetBuffByName(buffName));
+        }
 
         foreach (var buff in currentBuffs)
         {

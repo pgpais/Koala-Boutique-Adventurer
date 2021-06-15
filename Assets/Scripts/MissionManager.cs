@@ -341,4 +341,9 @@ public class MissionManager : MonoBehaviour
         return nExits;
     }
 
+
+    public List<string> GetStartingBuffs()
+    {
+        return GameManager.instance.CurrentMission.boughtBuffs;
+    }
 }

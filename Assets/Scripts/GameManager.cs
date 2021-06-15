@@ -12,16 +12,16 @@ public class GameManager : MonoBehaviour
     public static UnityEvent NoMissionExists = new UnityEvent();
     public static UnityEvent NewMissionAdded = new UnityEvent();
 
-
     public static GameManager instance;
 
 
     public CharacterClassData currentSelectedClass;
 
-
     public Mission CurrentMission => currentMission;
     private Mission currentMission;
 
+
+    private bool performingMission;
 
     void Awake()
     {
@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
 
     public void StartRun()
     {
+        performingMission = true;
+
         SceneManager.UnloadSceneAsync(1);
 
         LoadSceneAdditivelyAndSetActive(2);
@@ -86,9 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void FinishLevel()
     {
-
-
-        currentMission.successfulRun = true;
+        currentMission.completed = true;
         FirebaseCommunicator.instance.SendObject(JsonUtility.ToJson(currentMission), "missions", (task) =>
         {
             if (task.IsCompleted)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Buff", menuName = "Ye-Olde-Shop-Adventurer/Buff", order = 0)]
+[CreateAssetMenu(fileName = "Buff", menuName = "Ye Olde Shop/Buff", order = 0)]
 abstract public class Buff : UnlockableRewards
 {
     [field: SerializeField] public Sprite icon { get; private set; }
