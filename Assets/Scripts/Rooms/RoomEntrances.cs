@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class RoomEntrances : MonoBehaviour
 {
+    public static UnityEvent<RoomEntrances> RoomEntered = new UnityEvent<RoomEntrances>();
     [field: SerializeField] public UnityEvent RoomGenerated { get; private set; }
 
     public enum ExitDirection
@@ -43,6 +44,8 @@ public class RoomEntrances : MonoBehaviour
     [SerializeField] List<Exit> exits;
 
     Dictionary<ExitDirection, Teleporter> exitDirections;
+
+    public List<Exit> ActiveExits => activeExits;
     List<Exit> activeExits;
 
     public bool HasDirection(ExitDirection direction) => exitDirections.ContainsKey(direction);
@@ -141,6 +144,8 @@ public class RoomEntrances : MonoBehaviour
                 exit.gameObject.SetActive(false);
             }
         }
+
+        RoomEntered.Invoke(this);
     }
 
     internal void OpenDoors()

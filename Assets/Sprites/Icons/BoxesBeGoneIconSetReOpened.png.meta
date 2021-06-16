@@ -154,7 +154,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_49
   - first:
       213: -6299042418654901605
-    second: BoxesBeGoneIconSetReOpened_50
+    second: Exit fat
   - first:
       213: -7713052086591473757
     second: BoxesBeGoneIconSetReOpened_51
@@ -235,7 +235,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_76
   - first:
       213: -1618590777960108968
-    second: BoxesBeGoneIconSetReOpened_77
+    second: Buffed
   - first:
       213: 701337413090953078
     second: BoxesBeGoneIconSetReOpened_78
@@ -532,7 +532,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_175
   - first:
       213: -848916584108574680
-    second: BoxesBeGoneIconSetReOpened_176
+    second: Exit thin
   - first:
       213: -7207090019021384416
     second: BoxesBeGoneIconSetReOpened_177
@@ -1249,7 +1249,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_414
   - first:
       213: -6587150317201689214
-    second: BoxesBeGoneIconSetReOpened_415
+    second: Healing
   - first:
       213: 1888528020994130076
     second: BoxesBeGoneIconSetReOpened_416
@@ -3895,7 +3895,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_1296
   - first:
       213: -3841569671357828817
-    second: BoxesBeGoneIconSetReOpened_1297
+    second: Key
   - first:
       213: -3757238109465355643
     second: BoxesBeGoneIconSetReOpened_1298
@@ -4111,7 +4111,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_1368
   - first:
       213: -2704089536514798322
-    second: BoxesBeGoneIconSetReOpened_1369
+    second: Loot
   - first:
       213: -9028242148354380327
     second: BoxesBeGoneIconSetReOpened_1370
@@ -7381,7 +7381,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_2458
   - first:
       213: -7171116582139107308
-    second: BoxesBeGoneIconSetReOpened_2459
+    second: Run away jumping
   - first:
       213: 7991066708141373678
     second: BoxesBeGoneIconSetReOpened_2460
@@ -7408,7 +7408,7 @@ TextureImporter:
     second: BoxesBeGoneIconSetReOpened_2467
   - first:
       213: -659786605613242303
-    second: BoxesBeGoneIconSetReOpened_2468
+    second: Locked Door
   - first:
       213: -9186917590108380183
     second: BoxesBeGoneIconSetReOpened_2469
@@ -10156,7 +10156,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_50
+      name: Exit fat
       rect:
         serializedVersion: 2
         x: 0
@@ -10723,7 +10723,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_77
+      name: Buffed
       rect:
         serializedVersion: 2
         x: 352
@@ -12802,7 +12802,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_176
+      name: Exit thin
       rect:
         serializedVersion: 2
         x: 0
@@ -17821,7 +17821,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_415
+      name: Healing
       rect:
         serializedVersion: 2
         x: 0
@@ -36343,7 +36343,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_1297
+      name: Key
       rect:
         serializedVersion: 2
         x: 0
@@ -37855,7 +37855,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_1369
+      name: Loot
       rect:
         serializedVersion: 2
         x: 256
@@ -60745,7 +60745,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_2459
+      name: Run away jumping
       rect:
         serializedVersion: 2
         x: 256
@@ -60934,7 +60934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoxesBeGoneIconSetReOpened_2468
+      name: Locked Door
       rect:
         serializedVersion: 2
         x: 32

@@ -13,6 +13,8 @@ public class MissionManager : MonoBehaviour
 
     public static UnityEvent<float> MissionStarted = new UnityEvent<float>();
 
+    public Room[,] RoomMap => roomMap;
+
     [field: SerializeField] public float LanternTimeLimit { get; private set; } = 300f;
 
 
