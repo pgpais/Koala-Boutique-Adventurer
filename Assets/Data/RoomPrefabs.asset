@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomPrefabs
   m_EditorClassIdentifier: 
   topDoorRooms:
+  - {fileID: 7156553355788820110, guid: 0e543de665cb1104983c000ae90a3695, type: 3}
   - {fileID: 7517641195257814936, guid: 4dbebdb1b0c8ee241a9bd289add5ccee, type: 3}
   - {fileID: 1479454116637185649, guid: 5f88df84495232341bf72bdca92ba35b, type: 3}
   - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   - {fileID: 4967193925590252893, guid: 9f50d6d7a46741340ba03ae3c655d856, type: 3}
   - {fileID: 1416473925251843848, guid: 8316f0ba250558b4ab7730c5930c4324, type: 3}
   bottomDoorRooms:
+  - {fileID: 6541945538768359495, guid: ebcbd6e2b8066a540b6ea3553c129b12, type: 3}
   - {fileID: 6998606759956459310, guid: 074510e3099483c47a88fb46fab7f5dd, type: 3}
   - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
   - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
@@ -35,6 +37,7 @@ MonoBehaviour:
   - {fileID: 2160336790654408494, guid: fe62bc57eb99d8f41b1533d7466bbacf, type: 3}
   - {fileID: 8854632680321996915, guid: cf12e5067387a774088e55e67474dd7d, type: 3}
   leftDoorRooms:
+  - {fileID: 6032191794252686664, guid: 15dd3d241f4f1a843b26309912dad61b, type: 3}
   - {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c, type: 3}
   - {fileID: 7517641195257814936, guid: 4dbebdb1b0c8ee241a9bd289add5ccee, type: 3}
   - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
@@ -46,6 +49,7 @@ MonoBehaviour:
   - {fileID: 3995910792088795550, guid: f791c547cc561654788bbcb23f55876f, type: 3}
   - {fileID: 7795704978688086192, guid: 4e4dfade34744f048ae8da54fb3fe188, type: 3}
   rightDoorRooms:
+  - {fileID: 3996636755736083123, guid: 09fec168b737b6741910f1b82b7e6c47, type: 3}
   - {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c, type: 3}
   - {fileID: 6998606759956459310, guid: 074510e3099483c47a88fb46fab7f5dd, type: 3}
   - {fileID: 1479454116637185649, guid: 5f88df84495232341bf72bdca92ba35b, type: 3}

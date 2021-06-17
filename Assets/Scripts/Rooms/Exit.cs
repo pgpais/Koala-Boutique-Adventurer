@@ -87,4 +87,13 @@ public class Exit : MonoBehaviour
             ExitAdded.Invoke(this);
         }
     }
+
+    public void EnableExit(bool enable)
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(enable);
+        }
+        teleporter.Activable = enable;
+    }
 }

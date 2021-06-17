@@ -7,6 +7,13 @@ public class KeyBuff : Buff
 {
     public override void Initialize(CharacterClass characterClass)
     {
-
+        characterClass.DamagedEnemy.AddListener((health) =>
+        {
+            Exit exit = health.GetComponent<Exit>();
+            if (exit != null)
+            {
+                exit.EnableExit(true);
+            }
+        });
     }
 }

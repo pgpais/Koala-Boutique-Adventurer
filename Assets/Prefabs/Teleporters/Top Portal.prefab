@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907731948563539}
   - component: {fileID: 1585907731948563538}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: DungeonDoors_GateGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907731979903820}
   - component: {fileID: 1585907731979903821}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: DungeonDoors_GateBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907732212538275}
   - component: {fileID: 1585907732212538274}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: BottomSortingGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907733088503915}
   - component: {fileID: 1585907733088503914}
-  m_Layer: 8
+  m_Layer: 23
   m_Name: RightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 6566368070390497805}
   - component: {fileID: 3471998535665799038}
   - component: {fileID: 3251723470717531176}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Top Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,6 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69087b96f465fbe45a344dae6e5531eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExitAdded:
+    m_PersistentCalls:
+      m_Calls: []
   x: 0
   y: 0
   exitDirection: 0
@@ -499,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907733769519114}
   - component: {fileID: 1585907733769519113}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: DungeonDoors_GateTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585907733957301551}
   - component: {fileID: 1585907733957301549}
-  m_Layer: 8
+  m_Layer: 23
   m_Name: LeftCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5959530692990140830}
   - component: {fileID: 8324937091438924500}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

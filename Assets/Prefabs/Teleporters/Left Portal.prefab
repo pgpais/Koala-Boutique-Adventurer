@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69087b96f465fbe45a344dae6e5531eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExitAdded:
+    m_PersistentCalls:
+      m_Calls: []
   x: 0
   y: 0
   exitDirection: 2

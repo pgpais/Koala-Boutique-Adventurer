@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 8397056
   SkinWidth: 0.1
   RepositionRigidbody: 0
 --- !u!114 &-7806492754932557636
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 8397056
   PerfectImpact: 0
   DamageCaused: 10
   DamageCausedKnockbackType: 1

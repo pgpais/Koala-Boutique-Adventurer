@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,6 +44,7 @@ public class MissionManager : MonoBehaviour
     private int howManyHealingRoomsCreated = 0;
     private int howManyLootRoomsCreated = 0;
     private int howManyBuffRoomsCreated = 0;
+    private int howManySecretRoomsCreated = 0;
 
     private void Awake()
     {
@@ -139,7 +141,6 @@ public class MissionManager : MonoBehaviour
                 RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
 
 
-                HandleNewRoomType(newRoomEntrances);
 
 
                 Room newRoom = newRoomEntrances.GetComponent<Room>();
@@ -174,6 +175,8 @@ public class MissionManager : MonoBehaviour
                     unspawnedExits.Enqueue(newRoomExit);
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
+
+                HandleNewRoomType(newRoomEntrances);
             }
         }
     }
@@ -194,6 +197,10 @@ public class MissionManager : MonoBehaviour
             case RoomType.Loot:
                 howManyLootRoomsCreated++;
                 break;
+            case RoomType.Secret:
+                howManySecretRoomsCreated++;
+                HandleSecretRoom(newRoomEntrances);
+                break;
             default:
                 break;
         }
@@ -202,6 +209,36 @@ public class MissionManager : MonoBehaviour
         {
             howManyMissionExitsCreated++;
         }
+    }
+
+    private void HandleSecretRoom(RoomEntrances entrances)
+    {
+        List<Exit> activeExits = entrances.Exits.FindAll((exit) =>
+        {
+            return exit.gameObject.activeSelf;
+        });
+
+        if (activeExits.Count > 1)
+        {
+            Debug.LogWarning("For some reason secret room has more than one exit!");
+        }
+
+        Teleporter exitTP = activeExits[0].Teleporter;
+        var room = exitTP.Destination.CurrentRoom;
+        Exit destinationExit = exitTP.Destination.GetComponent<Exit>();
+
+        Debug.Log($"{entrances.gameObject.name} has exit to room {exitTP.Destination.CurrentRoom.gameObject.name}");
+
+        var health = destinationExit.gameObject.AddComponent<Health>();
+        health.DestroyOnDeath = false;
+        health.ChangeLayerOnDeath = false;
+        health.DisableModelOnDeath = false;
+        health.DisableCollisionsOnDeath = false;
+        health.DisableControllerOnDeath = false;
+        health.DisableChildCollisionsOnDeath = false;
+        health.ChangeLayersRecursivelyOnDeath = false;
+
+        destinationExit.EnableExit(false);
     }
 
     private void SetupTeleporters(Teleporter current, Teleporter destination)
@@ -295,6 +332,15 @@ public class MissionManager : MonoBehaviour
                         return entrances.Type == RoomType.Exit;
                     });
         }
+        else if (howManySecretRoomsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                        return entrances.Type == RoomType.Secret;
+                    });
+        }
         else if (howManyHealingRoomsCreated < 1)
         {
             return deadEndList.Find(delegate (GameObject obj)
@@ -319,7 +365,7 @@ public class MissionManager : MonoBehaviour
                     {
                         RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                        return entrances.Type != RoomType.Exit && entrances.Type != RoomType.Healing && entrances.Type != RoomType.Loot && entrances.NExits == 1;
+                        return entrances.Type != RoomType.Exit && entrances.Type != RoomType.Healing && entrances.Type != RoomType.Loot && entrances.Type != RoomType.Secret && entrances.NExits == 1;
                     });
             return resultRooms[Rand.Next(0, resultRooms.Count)];
         }
