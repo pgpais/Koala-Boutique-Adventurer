@@ -31,7 +31,7 @@ public class Gatherable : MonoBehaviour
     public void Init(Item gatherableItem)
     {
         this.gatherableItem = gatherableItem;
-        sprRen.sprite = gatherableItem.image;
+        sprRen.sprite = gatherableItem.sprite;
         sprRen.color = Color.white;
         interactionsLeft = gatherableItem.NumberOfInteractions;
         gameObject.name = this.gatherableItem.ItemName;

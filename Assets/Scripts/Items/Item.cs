@@ -20,7 +20,7 @@ public class Item : ScriptableObject
     [field: SerializeField] public string ItemName { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public ItemType Type { get; private set; }
-    [field: SerializeField] public Sprite image { get; private set; }
+    [field: SerializeField] public Sprite sprite { get; private set; }
 
     public int NumberOfInteractions => numberOfInteractions;
     [ShowIf("@this.Type == ItemType.Gatherable")]

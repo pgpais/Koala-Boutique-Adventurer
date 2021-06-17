@@ -15,4 +15,7 @@ MonoBehaviour:
   <ItemName>k__BackingField: Lootable1
   <Description>k__BackingField: Just an item dropped from an enemy
   <Type>k__BackingField: 1
+  <sprite>k__BackingField: {fileID: -4383676876259092012, guid: 94f8b294102840a4ab78bb8a1bd4af74,
+    type: 3}
+  numberOfInteractions: 3
   processResult: {fileID: 11400000, guid: 02562ba8b0540c6429aaa3791db2dbef, type: 2}
