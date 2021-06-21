@@ -41,4 +41,4 @@ The game generates a map with several rooms. These rooms have no random generati
 
 ### Gameplay:
 
-The player goes on missions to provide the Manager (other game) with resources to unlock more classes/items/buffs. These new mechanics incentivize and the prospect of unlocking more incentivize the player into coming back.
+The player goes on missions to provide the Manager (other game) with resources to unlock more classes/items/buffs. These new mechanics and the prospect of unlocking more incentivize the player into coming back.
