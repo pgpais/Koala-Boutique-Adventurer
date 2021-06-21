@@ -43,6 +43,13 @@ Some objects can be interacted with in order to receive another type of item. (r
 - Rogue (uses sword, less health but faster)
 - Ranger (uses bow, slightly faster than warrior)
 
+#### UI
+
+- Player Health (and icon)
+- Lantern time left
+- Map UI showing explored rooms
+- Picked up item UI feedback
+
 ### Gameplay:
 
 The player goes on missions to provide the Manager (other game) with resources to unlock more classes/items/buffs. These new mechanics and the prospect of unlocking more incentivize the player into coming back.
