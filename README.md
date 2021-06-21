@@ -49,6 +49,7 @@ Some objects can be interacted with in order to receive another type of item. (r
 - Lantern time left
 - Map UI showing explored rooms
 - Picked up item UI feedback
+- Mission End Screen (first draft)
 
 ### Gameplay:
 
