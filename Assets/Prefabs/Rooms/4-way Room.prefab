@@ -399,6 +399,7 @@ MonoBehaviour:
   spawnersParent: {fileID: 5573501914860051867}
   enemiesPrefabs:
   - {fileID: 114675271368606418, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
+  - {fileID: 3050801256328987423, guid: 40bebf9342482cd4fbf3ae0247a5bc47, type: 3}
 --- !u!114 &1053859907811713865
 MonoBehaviour:
   m_ObjectHideFlags: 0
