@@ -27,6 +27,10 @@ The game generates a map with several rooms. These rooms have no random generati
 - Spike trap
 - Arrow trap (Missing sprites)
 
+### Gatherables
+
+Some objects can be interacted with in order to receive another type of item. (right now, the only example of this are the mushrooms)
+
 #### Weapons
 
 - Mace (Slow but heavy hits)
