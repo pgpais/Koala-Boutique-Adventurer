@@ -406,8 +406,8 @@ MonoBehaviour:
   MaximumHealth: 30
   ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 3547864438223399480}
-  DestroyOnDeath: 0
-  DelayBeforeDestruction: 0
+  DestroyOnDeath: 1
+  DelayBeforeDestruction: 1
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
   DisableControllerOnDeath: 1
