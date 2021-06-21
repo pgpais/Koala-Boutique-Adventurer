@@ -8,12 +8,18 @@ public class MissionUIManager : MonoBehaviour
     [SerializeField] TMP_Text seedText;
     [SerializeField] TMP_Text timeRemainingText;
 
+    [SerializeField] GameObject hud;
+    [SerializeField] MissionEndScreen endScreen;
+
+
     private float timeRemaining;
     // Start is called before the first frame update
 
     private void Awake()
     {
         MissionManager.MissionStarted.AddListener((time) => timeRemaining = time);
+        MissionManager.MissionEnded.AddListener(ShowMissionEndScreen);
+        hud.SetActive(true);
     }
     void Start()
     {
@@ -40,5 +46,10 @@ public class MissionUIManager : MonoBehaviour
     {
         string timeString = $"{(int)timeRemaining / 60}:{(int)timeRemaining % 60}";
         timeRemainingText.text = timeString;
+    }
+
+    void ShowMissionEndScreen()
+    {
+        endScreen.gameObject.SetActive(true);
     }
 }

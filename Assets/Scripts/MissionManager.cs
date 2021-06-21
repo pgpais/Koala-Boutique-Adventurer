@@ -13,6 +13,7 @@ public class MissionManager : MonoBehaviour
     public static MissionManager instance;
 
     public static UnityEvent<float> MissionStarted = new UnityEvent<float>();
+    public static UnityEvent MissionEnded = new UnityEvent();
 
     public Room[,] RoomMap => roomMap;
 
@@ -94,14 +95,7 @@ public class MissionManager : MonoBehaviour
         //! DEBUG
         InventoryManager.instance.AddRandomValuable();
 
-
-        InventoryManager.instance.AddInventoryToGlobalItems();
-
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.FinishLevel();
-        }
-
+        MissionEnded.Invoke();
     }
 
     void GenerateMap()

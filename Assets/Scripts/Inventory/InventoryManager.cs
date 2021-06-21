@@ -8,9 +8,13 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
     public static UnityEvent<string> ItemAdded = new UnityEvent<string>();
 
+    public Dictionary<string, int> ItemQuantity => itemQuantity;
+
+
     [SerializeField] ItemsList itemsData;
 
     private Dictionary<string, int> itemQuantity;
+
 
     private void Awake()
     {
