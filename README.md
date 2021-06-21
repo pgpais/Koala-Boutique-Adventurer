@@ -4,6 +4,10 @@
 
 ### Implemented features:
 
+#### Map generation
+
+The game generates a map with several rooms. These rooms have no random generation elements in themselves (yet).
+
 #### Rooms
 
 - Trap and/or Enemy
@@ -34,3 +38,7 @@
 - Warrior (uses mace, has more health and is slower)
 - Rogue (uses sword, less health but faster)
 - Ranger (uses bow, slightly faster than warrior)
+
+### Gameplay:
+
+The player goes on missions to provide the Manager (other game) with resources to unlock more classes/items/buffs. These new mechanics incentivize and the prospect of unlocking more incentivize the player into coming back.
