@@ -10,6 +10,7 @@ public class Mission
     public bool completed;
     public List<string> boughtBuffs;
     public string diseasedItemName;
+    public string gatherableItemName;
 
     public Mission()
     {
