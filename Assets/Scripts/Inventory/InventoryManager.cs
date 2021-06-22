@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
 
 
     [SerializeField] ItemsList itemsData;
+    [SerializeField] int diseaseModifier = -10;
 
     private Dictionary<string, int> itemQuantity;
 
@@ -61,12 +62,21 @@ public class InventoryManager : MonoBehaviour
     {
         Debug.Log("inventory > global");
         Debug.Log("Local inventory:");
+
         foreach (var itemName in itemQuantity.Keys)
         {
             int quantity = itemQuantity[itemName];
             Debug.Log($"{itemName}: {quantity}");
         }
+
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
 
+        foreach (var itemName in itemQuantity.Keys)
+        {
+            if (string.Equals(GameManager.instance.CurrentMission.diseasedItemName, itemName))
+            {
+                GoldManager.GetGoldSendWithModifier(diseaseModifier);
+            }
+        }
     }
 }

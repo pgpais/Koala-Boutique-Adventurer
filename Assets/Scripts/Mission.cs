@@ -9,6 +9,7 @@ public class Mission
     public int seed;
     public bool completed;
     public List<string> boughtBuffs;
+    public string diseasedItemName;
 
     public Mission()
     {
