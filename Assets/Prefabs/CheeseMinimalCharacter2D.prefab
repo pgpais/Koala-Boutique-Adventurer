@@ -309,6 +309,24 @@ MonoBehaviour:
   AutoPickItems: []
   AutoEquipWeaponOnStart: {fileID: 0}
   CharacterHandleWeapon: {fileID: 0}
+--- !u!114 &-453105748029578676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093990846669802723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks:
+  - {fileID: 6812208710968019664}
+  InitializationMode: 2
+  SafeMode: 3
+  AutoPlayOnStart: 0
+  DebugActive: 0
 --- !u!114 &151847160499828837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +454,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLightRadius: 10
+--- !u!114 &6812208710968019664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093990846669802723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a102c1a91e34644aa37f1e4f00c31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Events
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  PlayEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1143283199505320895}
+        m_TargetAssemblyTypeName: CharacterClass, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StopEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  InitializationEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  ResetEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5764961502637328934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1140,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
         type: 3}
+      propertyPath: DestroyOnDeath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
+        type: 3}
+      propertyPath: DeathMMFeedbacks
+      value: 
+      objectReference: {fileID: -453105748029578676}
+    - target: {fileID: 114871673569860628, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
+        type: 3}
       propertyPath: DamageMMFeedbacks
       value: 
       objectReference: {fileID: 3176751493144111160}
@@ -1092,12 +1171,6 @@ PrefabInstance:
     - {fileID: 114654745524214770, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
     - {fileID: 114704504716019314, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ad7bd0ba7df62842842d1a8d738ba6a, type: 3}
---- !u!1 &4093990846669802723 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1790328835693532, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4095630994449372991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4096518753918121243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4319614708212260, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
@@ -1107,6 +1180,12 @@ Transform:
 --- !u!4 &4091162324241721705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4539632890920534, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4095630994449372991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4093990846669802723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1790328835693532, guid: 1ad7bd0ba7df62842842d1a8d738ba6a,
     type: 3}
   m_PrefabInstance: {fileID: 4095630994449372991}
   m_PrefabAsset: {fileID: 0}

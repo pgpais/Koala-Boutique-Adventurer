@@ -97,4 +97,12 @@ public class CharacterClass : MonoBehaviour
             buff.Initialize(this);
         }
     }
+
+    public void OnDeath()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FinishLevel();
+        }
+    }
 }
