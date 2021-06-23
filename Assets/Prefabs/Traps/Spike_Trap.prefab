@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6727432052386625564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620816963201441178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59e14ac1846b4843a9d59db16c35d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationOffset: 0
 --- !u!1001 &7622163961430627376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +22,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1628495255947690, guid: 9f39435d4b02f8c4eac603b313e0fd1a, type: 3}
       propertyPath: m_Name
-      value: DungeonSpikes
+      value: Spike_Trap
       objectReference: {fileID: 0}
     - target: {fileID: 4277188082488642, guid: 9f39435d4b02f8c4eac603b313e0fd1a, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +68,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95602597500527512, guid: 9f39435d4b02f8c4eac603b313e0fd1a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3c0beacb2ef2b244f87d7e529c5af1a8, type: 2}
+    - target: {fileID: 212007424385146368, guid: 9f39435d4b02f8c4eac603b313e0fd1a,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 212007424385146368, guid: 9f39435d4b02f8c4eac603b313e0fd1a,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1603220759
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f39435d4b02f8c4eac603b313e0fd1a, type: 3}
+--- !u!1 &7620816963201441178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1628495255947690, guid: 9f39435d4b02f8c4eac603b313e0fd1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7622163961430627376}
+  m_PrefabAsset: {fileID: 0}

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 114778105809703722}
   - component: {fileID: 4715256016921185788}
   - component: {fileID: 1733475038040493563}
+  - component: {fileID: 1159603640062058381}
   m_Layer: 13
   m_Name: Chasing Enemy
   m_TagString: Enemy
@@ -439,7 +440,7 @@ MonoBehaviour:
     Transitions:
       array:
       - Decision: {fileID: 114975266224184248}
-        TrueState: Moving
+        TrueState: Deciding
         FalseState: 
   - StateName: Moving
     Actions:
@@ -447,10 +448,22 @@ MonoBehaviour:
       - {fileID: 114113908976523258}
     Transitions:
       array:
-      - Decision: {fileID: 114975266224184248}
+      - Decision: {fileID: 1159603640062058381}
+        TrueState: 
+        FalseState: Deciding
+      - Decision: {fileID: 114631777180868210}
         TrueState: 
         FalseState: Detecting
-      - Decision: {fileID: 114631777180868210}
+  - StateName: Deciding
+    Actions:
+      array:
+      - {fileID: 114472236543704332}
+    Transitions:
+      array:
+      - Decision: {fileID: 1159603640062058381}
+        TrueState: Moving
+        FalseState: 
+      - Decision: {fileID: 114975266224184248}
         TrueState: 
         FalseState: Detecting
   BrainActive: 1
@@ -857,6 +870,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1.1541958}
   m_EdgeRadius: 0
+--- !u!114 &1159603640062058381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561694053617324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bc4e084be2f174f92c51206f77b91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  ObstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  LineOfSightOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1671905898232590
 GameObject:
   m_ObjectHideFlags: 0

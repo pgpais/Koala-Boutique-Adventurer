@@ -15,4 +15,9 @@ public class Arrow : MonoBehaviour
     {
         rb.velocity = transform.right * initialVelocity;
     }
+
+    public void GetDestroyed()
+    {
+        Destroy(gameObject);
+    }
 }

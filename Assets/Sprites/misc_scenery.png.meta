@@ -85,7 +85,7 @@ TextureImporter:
     second: misc_scenery_26
   - first:
       213: -4987031940289456647
-    second: misc_scenery_27
+    second: mushroom
   - first:
       213: -8454059307325198398
     second: misc_scenery_28
@@ -784,7 +784,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misc_scenery_27
+      name: mushroom
       rect:
         serializedVersion: 2
         x: 5

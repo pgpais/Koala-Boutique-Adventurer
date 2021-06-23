@@ -1,12 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using static MoreMountains.TopDownEngine.CharacterStates;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] bool spawnEnemiesInRoom = true;
+    [ShowIf("@spawnEnemiesInRoom")]
+    [SerializeField] int howManyEnemiesToSpawn = 0;
 
     [Space]
 
@@ -41,17 +45,43 @@ public class EnemySpawner : MonoBehaviour
     {
         System.Random rand = MissionManager.instance.Rand;
 
-        foreach (Transform child in spawnersParent)
+        List<Transform> remainingSpawns = new List<Transform>();
+
+        foreach (Transform spawn in spawnersParent)
         {
-            if (child.gameObject.activeSelf)
+            if (spawn.gameObject.activeSelf)
             {
-                Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation).GetComponent<Character>();
-                enemies.Add(enemy);
-                var enemyHealth = enemy.GetComponent<Health>();
-                enemyHealth.OnDeath += CheckIfEnemiesAreAllDead;
-                enemy.transform.parent = room.transform;
+                remainingSpawns.Add(spawn);
             }
         }
+
+        if (spawnEnemiesInRoom && howManyEnemiesToSpawn == 0) howManyEnemiesToSpawn = remainingSpawns.Count;
+
+        for (var i = 0; i < howManyEnemiesToSpawn && remainingSpawns.Count > 0; i++)
+        {
+            int index = rand.Next(0, remainingSpawns.Count);
+            Transform spawn = remainingSpawns[i];
+
+            Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], spawn.position, spawn.rotation).GetComponent<Character>();
+            var enemyHealth = enemy.GetComponent<Health>();
+
+            enemies.Add(enemy);
+
+            enemyHealth.OnDeath += CheckIfEnemiesAreAllDead;
+            enemy.transform.parent = room.transform;
+        }
+
+        // foreach (Transform child in spawnersParent)
+        // {
+        //     if (child.gameObject.activeSelf)
+        //     {
+        //         Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], child.position, child.rotation).GetComponent<Character>();
+        //         enemies.Add(enemy);
+        //         var enemyHealth = enemy.GetComponent<Health>();
+        //         enemyHealth.OnDeath += CheckIfEnemiesAreAllDead;
+        //         enemy.transform.parent = room.transform;
+        //     }
+        // }
 
         DisableAI();
 
