@@ -9,6 +9,7 @@ public class MissionEndScreen : MonoBehaviour
     [Space]
     [SerializeField] Transform itemsLootedLayout;
     [SerializeField] Button finishButton;
+    [SerializeField] bool playerDied;
 
     // Start is called before the first frame update
     void Start()
@@ -24,25 +25,28 @@ public class MissionEndScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Transform child in itemsLootedLayout)
+        if (!playerDied)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in itemsLootedLayout)
+            {
+                Destroy(child.gameObject);
+            }
+
+            ItemsList itemsList = ItemManager.instance.itemsData;
+
+            // Show items caught
+            foreach (var itemQuantity in InventoryManager.instance.ItemQuantity)
+            {
+                Item item = itemsList.GetItemByName(itemQuantity.Key);
+                Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemName, itemQuantity.Value);
+            }
+
+            // Show enemies defeated
+
+            // Show time remaining
+
+            // Other stats
         }
-
-        ItemsList itemsList = ItemManager.instance.itemsData;
-
-        // Show items caught
-        foreach (var itemQuantity in InventoryManager.instance.ItemQuantity)
-        {
-            Item item = itemsList.GetItemByName(itemQuantity.Key);
-            Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemName, itemQuantity.Value);
-        }
-
-        // Show enemies defeated
-
-        // Show time remaining
-
-        // Other stats
 
         // button listener
         finishButton.onClick.AddListener(FinishMission);
@@ -57,7 +61,10 @@ public class MissionEndScreen : MonoBehaviour
 
     void FinishMission()
     {
-        InventoryManager.instance.AddInventoryToGlobalItems();
+        if (!playerDied)
+        {
+            InventoryManager.instance.AddInventoryToGlobalItems();
+        }
 
         if (GameManager.instance != null)
         {

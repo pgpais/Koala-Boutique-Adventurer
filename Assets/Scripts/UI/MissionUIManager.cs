@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using MoreMountains.TopDownEngine;
+using MoreMountains.Tools;
 
-public class MissionUIManager : MonoBehaviour
+public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
 {
     [SerializeField] TMP_Text seedText;
     [SerializeField] TMP_Text timeRemainingText;
 
     [SerializeField] GameObject hud;
     [SerializeField] MissionEndScreen endScreen;
+    [SerializeField] MissionEndScreen failedScreen;
 
 
     private float timeRemaining;
@@ -23,7 +26,11 @@ public class MissionUIManager : MonoBehaviour
     }
     void Start()
     {
+        endScreen.gameObject.SetActive(false);
+        failedScreen.gameObject.SetActive(false);
+
         seedText.text = "Seed: " + MissionManager.instance.Seed.ToString();
+
     }
 
 
@@ -51,5 +58,25 @@ public class MissionUIManager : MonoBehaviour
     void ShowMissionEndScreen()
     {
         endScreen.gameObject.SetActive(true);
+    }
+
+    void ShowMissionFailedScreen()
+    {
+        failedScreen.gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        this.MMEventStartListening<MMGameEvent>();
+    }
+
+    private void OnDisable()
+    {
+        this.MMEventStopListening<MMGameEvent>();
+    }
+
+    public void OnMMEvent(MMGameEvent eventType)
+    {
+        LevelManager.Instance.Players[0]._health.OnDeath += ShowMissionFailedScreen;
     }
 }
