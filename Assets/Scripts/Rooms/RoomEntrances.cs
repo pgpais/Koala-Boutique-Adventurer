@@ -10,6 +10,7 @@ using UnityEngine.Events;
 public class RoomEntrances : MonoBehaviour, UnlockableReward
 {
     public static UnityEvent<RoomEntrances> RoomEntered = new UnityEvent<RoomEntrances>();
+    public static int NDeadEnds = 5;
     [field: SerializeField] public UnityEvent RoomGenerated { get; private set; }
 
     public enum ExitDirection
@@ -34,7 +35,7 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
     }
     public enum RoomDifficulty
     {
-        Easy, Medium, Hard
+        Easy = 0, Medium = 1, Hard = 2
     }
 
     public RoomType Type => type;
@@ -56,8 +57,9 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
 
     public List<Exit> ActiveExits => activeExits;
 
+    [SerializeField] bool startsUnlocked = true;
     public bool Unlocked => unlocked;
-    [SerializeField] bool unlocked = true;
+    bool unlocked = true;
 
     List<Exit> activeExits;
 
@@ -68,6 +70,8 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
 
     private void Awake()
     {
+        unlocked = startsUnlocked;
+
         activeExits = new List<Exit>();
 
         nExits = 0;

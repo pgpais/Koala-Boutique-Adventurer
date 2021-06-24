@@ -32,18 +32,22 @@ public class MissionManager : MonoBehaviour
 
     [Tooltip("How many rooms should be in the map (including initial). Could be difficulty?")]
     [SerializeField] int howManyRooms = 10;
-    [SerializeField] int difficulty = 5;
+    [SerializeField] int difficulty = 1;
     [Tooltip("How many more easy rooms should exist for every difficult room")]
-    [SerializeField] int easyToDifficultRatio = 1;
+    [SerializeField] int hardPerDifficultyRatio = 2;
+    [SerializeField] int mediumPerDifficultyRatio = 1;
     [SerializeField] int howManyDeadEnds = 1;
     private Transform initialRoomTransform;
     private Room[,] roomMap;
 
     private Queue<Exit> unspawnedExits;
     private int remainingExitsToCreate;
-    private int currentDifficulty = 0;
-    private int easyRooms = 0;
-    private int difficultRooms = 0;
+    private int remainingHardToCreate;
+    private int remainingMediumToCreate;
+    private int easyCreated;
+    private int mediumCreated;
+    private int hardCreated;
+
     public Random Rand { get; private set; }
 
 
@@ -79,10 +83,8 @@ public class MissionManager : MonoBehaviour
         }
 
         Rand = new Random(Seed);
-        if (easyToDifficultRatio == 0)
-        {
-            difficulty = 0;
-        }
+        remainingHardToCreate = difficulty / hardPerDifficultyRatio;
+        remainingMediumToCreate = difficulty / mediumPerDifficultyRatio;
         GenerateMap();
 
         StartCoroutine(LateStart());
@@ -152,16 +154,6 @@ public class MissionManager : MonoBehaviour
                 newRoomEntrances.y = curExit.y;
                 roomMap[curExit.x, curExit.y] = newRoom;
 
-                currentDifficulty += (int)newRoomEntrances.Difficulty;
-                if (newRoomEntrances.Difficulty == RoomDifficulty.Easy)
-                {
-                    easyRooms++;
-                }
-                else
-                {
-                    difficultRooms++;
-                }
-
                 remainingExitsToCreate -= newRoomEntrances.NExits - 1;
                 if (remainingExitsToCreate < 0)
                     Debug.LogError("smth went worng, negative exits to creat");
@@ -216,6 +208,20 @@ public class MissionManager : MonoBehaviour
                 HandleSecretRoom(newRoomEntrances);
                 break;
             default:
+                if (newRoomEntrances.Difficulty == RoomDifficulty.Easy)
+                {
+                    easyCreated++;
+                }
+                else if (newRoomEntrances.Difficulty == RoomDifficulty.Medium)
+                {
+                    mediumCreated++;
+                    remainingMediumToCreate--;
+                }
+                else if (newRoomEntrances.Difficulty == RoomDifficulty.Hard)
+                {
+                    hardCreated++;
+                    remainingHardToCreate--;
+                }
                 break;
         }
 
@@ -306,82 +312,72 @@ public class MissionManager : MonoBehaviour
         // {
 
         // }
-
-        int i = 0;
-        for (i = 0; i < roomList.Count; i++)
+        if (remainingExitsToCreate <= 0)
         {
-            GameObject room = roomList[(i + startingIndex) % roomList.Count];
-            RoomEntrances entrances = room.GetComponent<RoomEntrances>();
 
-            int nRoomAdditionalExits = entrances.NExits - 1; //-1 because one of the exits is already connected
-
-            // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
-
-            if (currentDifficulty >= difficulty && remainingExitsToCreate <= 0)
+            // Find rooms with one exit to connect to this exit
+            List<GameObject> deadEnds = roomList.FindAll(obj =>
             {
+                RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                // Find rooms with one exit to connect to this exit
-                List<GameObject> deadEnds = roomList.FindAll(delegate (GameObject obj)
-                {
-                    RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+                return entrances.NExits == 1;
+            });
 
-                    return entrances.NExits == 1;
-                });
+            return SelectDeadEnd(deadEnds);
+        }
+        else
+        {
+            List<GameObject> rooms = roomList.FindAll(obj =>
+            {
+                RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                return SelectDeadEnd(deadEnds);
+                return entrances.NExits > 1;
+            });
+            return SelectRoom(rooms);
+        }
+    }
+
+    private GameObject SelectRoom(List<GameObject> roomList)
+    {
+        int roomsCreated = easyCreated + mediumCreated + hardCreated;
+        RoomDifficulty diff;
+
+        if (remainingMediumToCreate < howManyRooms - roomsCreated && remainingMediumToCreate > 0)
+        {
+            diff = RoomDifficulty.Medium;
+        }
+        else if (remainingHardToCreate < howManyRooms - roomsCreated && remainingHardToCreate > 0)
+        {
+            diff = RoomDifficulty.Hard;
+
+        }
+        else
+        {
+            int nDifficulties = Enum.GetValues(typeof(RoomDifficulty)).Length;
+
+            if (remainingHardToCreate > 0 && remainingMediumToCreate > 0)
+            {
+                diff = (RoomDifficulty)Rand.Next(nDifficulties);
             }
-            // else if (nRoomAdditionalExits <= remainingExitsToCreate && nRoomAdditionalExits > 0)
-            // {
-            //     // Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
-            //     return room;
-            // }
-            else if (currentDifficulty < difficulty && difficultRooms < easyRooms * easyToDifficultRatio)
+            else if (remainingMediumToCreate > 0)
             {
-                int remainingDifficulty = difficulty - currentDifficulty;
-                if (remainingDifficulty < ((int)RoomDifficulty.Hard))
-                {
-                    // TODO: choose medium
-                    if (entrances.Difficulty != RoomDifficulty.Medium)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        return room;
-                    }
-                }
-                else
-                {
-                    // TODO: choose medium or hard
-                    if (entrances.Difficulty == RoomDifficulty.Easy)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        return room;
-                    }
-                }
+                diff = (RoomDifficulty)Rand.Next(nDifficulties - 1);
             }
             else
             {
-                // TODO: Spawn easy room
-                if (entrances.Difficulty == RoomDifficulty.Easy && nRoomAdditionalExits <= remainingExitsToCreate && nRoomAdditionalExits > 0)
-                {
-                    return room;
-                }
-                else
-                {
-                    continue;
-                }
+                diff = RoomDifficulty.Easy;
             }
         }
 
-        Debug.LogError("Couldn't find any room to fit this exit. Why? Stopped at index: " + ((i + startingIndex) % roomList.Count) + " | remianingExits: " + remainingExitsToCreate);
-        return null;
+        var rooms = roomList.FindAll(obj =>
+        {
+            RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+            return entrances.Difficulty == diff;
+        });
+
+        return rooms[Rand.Next(rooms.Count)];
     }
-
-
 
     private GameObject SelectDeadEnd(List<GameObject> deadEndList)
     {
