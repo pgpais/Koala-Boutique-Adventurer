@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MoreMountains.TopDownEngine;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,9 +32,17 @@ public class RoomEntrances : MonoBehaviour
         Healing
 
     }
+    public enum RoomDifficulty
+    {
+        Easy, Medium, Hard
+    }
+
     public RoomType Type => type;
     [SerializeField] RoomType type;
     [SerializeField] bool closeDoorsUntilRoomIsCleared = true;
+
+    [ShowIf("@Type == RoomType.Enemies")]
+    [field: SerializeField] public RoomDifficulty Difficulty { get; private set; }
 
     public int x, y;
 
