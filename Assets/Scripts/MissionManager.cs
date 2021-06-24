@@ -258,6 +258,7 @@ public class MissionManager : MonoBehaviour
         otherTeleporter.GetComponent<Exit>().EnableExit();
         curExit.EnableExit();
         SetupTeleporters(curExit.Teleporter, otherTeleporter);
+        remainingExitsToCreate++;
     }
 
     private GameObject GetRoomForExit(Exit curExit)
@@ -273,6 +274,19 @@ public class MissionManager : MonoBehaviour
     {
         int startingIndex = Rand.Next(roomList.Count);
 
+        // if (remainingExitsToCreate <= howManyDeadEnds)
+        // {
+        //     // Dead End should be picked
+        //     List<GameObject> deadEnds = roomList.FindAll(
+        //         (room) => room.GetComponent<RoomEntrances>().NExits == 1
+        //     );
+        //     SelectDeadEnd(deadEnds);
+        // }
+        // else 
+        // {
+
+        // }
+
         int i = 0;
         for (i = 0; i < roomList.Count; i++)
         {
@@ -282,7 +296,7 @@ public class MissionManager : MonoBehaviour
 
             // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
 
-            if (remainingExitsToCreate <= howManyDeadEnds)
+            if (remainingExitsToCreate <= 0)
             {
 
                 // Find rooms with one exit to connect to this exit
@@ -295,8 +309,7 @@ public class MissionManager : MonoBehaviour
 
                 return SelectDeadEnd(deadEnds);
             }
-            else
-            if (nRoomAdittionalExits <= remainingExitsToCreate && nRoomAdittionalExits > 0)
+            else if (nRoomAdittionalExits <= remainingExitsToCreate && nRoomAdittionalExits > 0)
             {
                 // Debug.Log("Spawning normal room | nexits = " + nRoomAdittionalExits);
                 return room;
