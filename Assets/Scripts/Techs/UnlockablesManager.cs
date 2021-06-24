@@ -23,6 +23,8 @@ public class UnlockablesManager : MonoBehaviour
             instance = this;
         }
 
+        FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
+
         unlockables = new Dictionary<string, Unlockable>();
 
         foreach (var unlockable in unlockablesData.unlockables)
@@ -35,7 +37,6 @@ public class UnlockablesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
     }
 
     private void OnLoggedIn()

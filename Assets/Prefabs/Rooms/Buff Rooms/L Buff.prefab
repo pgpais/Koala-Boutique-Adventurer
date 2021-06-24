@@ -178,6 +178,11 @@ PrefabInstance:
       propertyPath: unlocked
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8493166997045477187, guid: bfb68e7f0db64054a936132334438eeb,
+        type: 3}
+      propertyPath: startsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8493166997045477191, guid: bfb68e7f0db64054a936132334438eeb,
         type: 3}
       propertyPath: m_Name

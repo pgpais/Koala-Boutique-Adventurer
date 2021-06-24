@@ -1763,6 +1763,11 @@ PrefabInstance:
       propertyPath: unlocked
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5891140156072154702, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: startsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6529237928330082450, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
       propertyPath: m_RootOrder

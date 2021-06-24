@@ -17,6 +17,4 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Stronger Bow String
   <UnlockableDescription>k__BackingField: 
-  rewards:
-  - {fileID: 11400000, guid: b260b051a777ae74bbb997631cfd86bf, type: 2}
   unlocked: 0

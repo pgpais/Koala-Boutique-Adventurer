@@ -183,6 +183,11 @@ PrefabInstance:
       propertyPath: unlocked
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4153047158767450406, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: startsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4153047158950405164, guid: 242c00858e7a641498f67107c53092a4,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.size

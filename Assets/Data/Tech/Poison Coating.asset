@@ -17,6 +17,4 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Poison Coating
   <UnlockableDescription>k__BackingField: 
-  rewards:
-  - {fileID: 11400000, guid: 2de76e0ede2b90548ba68bb48560326f, type: 2}
   unlocked: 0

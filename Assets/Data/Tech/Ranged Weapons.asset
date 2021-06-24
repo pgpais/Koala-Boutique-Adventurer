@@ -18,6 +18,4 @@ MonoBehaviour:
   <UnlockableName>k__BackingField: Ranged Weapons
   <UnlockableDescription>k__BackingField: You learn how to craft a new type of weapon,
     unlocking a new class!
-  rewards:
-  - {fileID: 11400000, guid: 4589282e03ea2cc4599e29736c3a50c6, type: 2}
   unlocked: 0
