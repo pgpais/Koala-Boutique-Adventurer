@@ -2,19 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockableRewards : ScriptableObject
+public interface UnlockableReward
 {
-    public bool Unlocked => unlocked;
-    private bool unlocked;
-    [SerializeField] bool startsUnlocked = false;
+    bool Unlocked { get; }
 
-    private void OnEnable()
-    {
-        unlocked = startsUnlocked;
-    }
-
-    public void Unlock()
-    {
-        unlocked = true;
-    }
+    void Unlock();
 }

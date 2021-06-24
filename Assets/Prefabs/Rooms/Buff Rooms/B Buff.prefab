@@ -15,6 +15,7 @@ MonoBehaviour:
   <Spawner>k__BackingField: {fileID: 2383178319254544503}
   buffPickablePrefab: {fileID: 6621807074713422781, guid: 27c6f0762bacb524fb5a661c2906c86f,
     type: 3}
+  spawnOnStart: 0
 --- !u!1001 &1032494886036305862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274066756872582860, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: unlocked
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1274066756872582863, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
@@ -1709,6 +1715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Tiles.Array.data[433].second.m_TileSpriteIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942018425633200144, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3396119504579859347, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}

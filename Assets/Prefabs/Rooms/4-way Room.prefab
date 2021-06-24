@@ -556,6 +556,7 @@ MonoBehaviour:
       m_Calls: []
   type: 4
   closeDoorsUntilRoomIsCleared: 1
+  <Difficulty>k__BackingField: 0
   x: 0
   y: 0
   nExits: 4
@@ -564,6 +565,7 @@ MonoBehaviour:
   - {fileID: 4894709890714917272}
   - {fileID: 2609746855351800241}
   - {fileID: 369473245}
+  unlocked: 1
 --- !u!114 &8051687094878517983
 MonoBehaviour:
   m_ObjectHideFlags: 0

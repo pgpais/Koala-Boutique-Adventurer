@@ -13,7 +13,7 @@ public class Unlockable : ScriptableObject
     [field: SerializeField] public string UnlockableName { get; private set; }
     [field: SerializeField] public string UnlockableDescription { get; private set; }
 
-    [SerializeField] List<UnlockableRewards> rewards;
+    [SerializeField] List<UnlockableReward> rewards;
 
     // TODO: list of items required for build
 

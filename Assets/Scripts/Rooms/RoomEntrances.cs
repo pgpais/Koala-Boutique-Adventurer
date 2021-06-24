@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomEntrances : MonoBehaviour
+public class RoomEntrances : MonoBehaviour, UnlockableReward
 {
     public static UnityEvent<RoomEntrances> RoomEntered = new UnityEvent<RoomEntrances>();
     [field: SerializeField] public UnityEvent RoomGenerated { get; private set; }
@@ -55,6 +55,10 @@ public class RoomEntrances : MonoBehaviour
     Dictionary<ExitDirection, Teleporter> exitDirections;
 
     public List<Exit> ActiveExits => activeExits;
+
+    public bool Unlocked => unlocked;
+    [SerializeField] bool unlocked = true;
+
     List<Exit> activeExits;
 
     public bool HasDirection(ExitDirection direction) => exitDirections.ContainsKey(direction);
@@ -164,5 +168,11 @@ public class RoomEntrances : MonoBehaviour
         {
             exit.gameObject.SetActive(true);
         }
+    }
+
+    public void Unlock()
+    {
+
+        unlocked = true;
     }
 }

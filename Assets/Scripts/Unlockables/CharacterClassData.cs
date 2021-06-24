@@ -2,8 +2,11 @@ using MoreMountains.TopDownEngine;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ClassData", menuName = "Ye-Olde-Shop-Adventurer/Class Data", order = 0)]
-public class CharacterClassData : UnlockableRewards
+public class CharacterClassData : ScriptableObject, UnlockableReward
 {
+    public bool Unlocked => unlocked;
+    private bool unlocked = false;
+
     [Tooltip("The name given to this class")]
     public string className;
 
@@ -20,4 +23,17 @@ public class CharacterClassData : UnlockableRewards
     public float movementSpeedMultiplier = 0;
 
     public Weapon initialWeapon;
+
+    public bool startsUnlocked = false;
+
+
+    public void Unlock()
+    {
+        unlocked = true;
+    }
+
+    private void OnEnable()
+    {
+        unlocked = startsUnlocked;
+    }
 }

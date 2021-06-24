@@ -31,7 +31,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] Room initialRoom;
 
     [Tooltip("How many rooms should be in the map (including initial). Could be difficulty?")]
-    [SerializeField] int howManyRooms = 6;
+    [SerializeField] int howManyRooms = 10;
     [SerializeField] int difficulty = 5;
     [Tooltip("How many more easy rooms should exist for every difficult room")]
     [SerializeField] int easyToDifficultRatio = 1;
@@ -79,6 +79,10 @@ public class MissionManager : MonoBehaviour
         }
 
         Rand = new Random(Seed);
+        if (easyToDifficultRatio == 0)
+        {
+            difficulty = 0;
+        }
         GenerateMap();
 
         StartCoroutine(LateStart());
@@ -148,7 +152,6 @@ public class MissionManager : MonoBehaviour
                 newRoomEntrances.y = curExit.y;
                 roomMap[curExit.x, curExit.y] = newRoom;
 
-                // remainingExitsToCreate -= newRoomEntrances.NExits - 1;
                 currentDifficulty += (int)newRoomEntrances.Difficulty;
                 if (newRoomEntrances.Difficulty == RoomDifficulty.Easy)
                 {
@@ -159,6 +162,7 @@ public class MissionManager : MonoBehaviour
                     difficultRooms++;
                 }
 
+                remainingExitsToCreate -= newRoomEntrances.NExits - 1;
                 if (remainingExitsToCreate < 0)
                     Debug.LogError("smth went worng, negative exits to creat");
 
@@ -262,7 +266,7 @@ public class MissionManager : MonoBehaviour
 
     private void ResolveExitCollision(Exit curExit, RoomEntrances otherEntrances)
     {
-        if (otherEntrances.Type == RoomType.Exit)
+        if (otherEntrances.NExits == 1)
         {
             // Debug.Log("Tried connecting room to exit. just return.");
             curExit.gameObject.SetActive(false);
@@ -313,7 +317,7 @@ public class MissionManager : MonoBehaviour
 
             // Debug.Log("chose room at index: " + ((i + startingPoint) % roomList.Count) + " | nexits = " + nRoomAdittionalExits);
 
-            if (currentDifficulty >= difficulty)
+            if (currentDifficulty >= difficulty && remainingExitsToCreate <= 0)
             {
 
                 // Find rooms with one exit to connect to this exit
@@ -362,7 +366,7 @@ public class MissionManager : MonoBehaviour
             else
             {
                 // TODO: Spawn easy room
-                if (entrances.Difficulty == RoomDifficulty.Easy)
+                if (entrances.Difficulty == RoomDifficulty.Easy && nRoomAdditionalExits <= remainingExitsToCreate && nRoomAdditionalExits > 0)
                 {
                     return room;
                 }
@@ -425,10 +429,20 @@ public class MissionManager : MonoBehaviour
                     {
                         RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                        return entrances.Type != RoomType.Exit && entrances.Type != RoomType.Healing && entrances.Type != RoomType.Loot && entrances.Type != RoomType.Secret && entrances.NExits == 1;
+                        return entrances.Type == RoomType.Buff && entrances.Unlocked;
                     });
-            return resultRooms[Rand.Next(0, resultRooms.Count)];
+            if (resultRooms.Count > 0)
+            {
+                return resultRooms[Rand.Next(0, resultRooms.Count)];
+            }
         }
+
+        return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                        return entrances.Type == RoomType.Secret;
+                    });
     }
 
     private RoomEntrances SpawnRoom(GameObject roomToSpawn, Exit connectedExit)

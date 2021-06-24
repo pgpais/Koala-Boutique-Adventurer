@@ -15,6 +15,7 @@ MonoBehaviour:
   <Spawner>k__BackingField: {fileID: 485032348324756927}
   buffPickablePrefab: {fileID: 6621807074713422781, guid: 27c6f0762bacb524fb5a661c2906c86f,
     type: 3}
+  spawnOnStart: 0
 --- !u!1001 &3025793289819646478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,6 +172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493166997045477187, guid: bfb68e7f0db64054a936132334438eeb,
+        type: 3}
+      propertyPath: unlocked
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8493166997045477191, guid: bfb68e7f0db64054a936132334438eeb,
         type: 3}
@@ -1360,6 +1366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[64].Y
       value: 70000100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9115498872071786911, guid: bfb68e7f0db64054a936132334438eeb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb68e7f0db64054a936132334438eeb, type: 3}
