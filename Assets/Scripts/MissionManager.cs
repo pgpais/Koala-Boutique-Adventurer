@@ -12,6 +12,7 @@ using Random = System.Random;
 public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 {
     public static MissionManager instance;
+    public static string referenceName = "missions";
 
     public static UnityEvent<float> MissionStarted = new UnityEvent<float>();
     public static UnityEvent MissionEnded = new UnityEvent();

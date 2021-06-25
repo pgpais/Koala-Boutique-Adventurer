@@ -167,6 +167,21 @@ public class FirebaseCommunicator : MonoBehaviour
         database.Child(firebaseReferenceName).Child(familyId.ToString()).GetValueAsync().ContinueWith(afterSendAction, scheduler);
     }
 
+    public void GetObject(string[] firebaseReferenceNames, Action<Task<DataSnapshot>> afterSendAction)
+    {
+        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        Debug.Log($"getting from {firebaseReferenceNames}/{familyId.ToString()}");
+
+        var db = database;
+
+        foreach (var reference in firebaseReferenceNames)
+        {
+            db = db.Child(reference);
+        }
+
+        db.GetValueAsync().ContinueWith(afterSendAction, scheduler);
+    }
+
     public void SetupListenForEvents(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)
     {
         DatabaseReference dbReference = database;
