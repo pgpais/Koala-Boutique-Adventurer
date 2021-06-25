@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 
 [CreateAssetMenu(fileName = "Item", menuName = "Ye Olde Shop/Item", order = 0)]
-public class Item : ScriptableObject
+public class Item : ScriptableObject, UnlockableReward
 {
     public enum ItemType
     {
@@ -28,12 +28,27 @@ public class Item : ScriptableObject
     [SerializeField] int numberOfInteractions = 3;
 
     public Item ProcessResult => processResult;
+
+
     [HideIf("@this.Type == ItemType.Valuable || this.Type == ItemType.Processed")]
     [SerializeField] Item processResult;
 
+    public bool Unlocked => unlocked;
+    bool unlocked;
+    [SerializeField] bool startsUnlocked = true;
+    private void OnEnable()
+    {
+        unlocked = startsUnlocked;
+    }
 
-    internal void InitializeEvent()
+    public void InitializeEvent()
     {
         ItemUpdated = new UnityEvent<int>();
+    }
+
+
+    public void Unlock()
+    {
+        unlocked = true;
     }
 }
