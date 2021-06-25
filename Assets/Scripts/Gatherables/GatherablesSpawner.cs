@@ -71,8 +71,15 @@ public class GatherablesSpawner : MonoBehaviour
         {
             // Debug.Log("spawning gatherables");
 
-            // var item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
-            var item = ItemManager.instance.itemsData.GetItemByName(GameManager.instance.CurrentMission.gatherableItemName);
+            var item;
+            // TODO: #46 only use mission gatherable if mission exists
+            if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
+            {
+                // TODO: #43 spawn chosen gatherable with higher chance
+                item = ItemManager.instance.itemsData.GetItemByName(GameManager.instance.CurrentMission.gatherableItemName);
+            }
+            item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
+
             Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);
             gatherable.Init(item);
             gatherable.transform.parent = room.transform;
