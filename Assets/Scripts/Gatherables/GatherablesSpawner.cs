@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GatherablesSpawner : MonoBehaviour
 {
+    public static double chosenGatherablesChance = 0.6;
     [SerializeField] bool spawnGatherablesInThisRoom = true;
     [SerializeField] Gatherable prefabToSpawn;
 
@@ -71,14 +72,17 @@ public class GatherablesSpawner : MonoBehaviour
         {
             // Debug.Log("spawning gatherables");
 
-            var item;
-            // TODO: #46 only use mission gatherable if mission exists
-            if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
+            Item item;
+
+            if (GameManager.instance != null && GameManager.instance.CurrentMission != null && rand.NextDouble() < chosenGatherablesChance)
             {
                 // TODO: #43 spawn chosen gatherable with higher chance
                 item = ItemManager.instance.itemsData.GetItemByName(GameManager.instance.CurrentMission.gatherableItemName);
             }
-            item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
+            else
+            {
+                item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
+            }
 
             Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);
             gatherable.Init(item);
