@@ -26,6 +26,7 @@ public class BuffSpawner : MonoBehaviour
         if (unlockedBuffs.Count <= 0)
         {
             Debug.LogError("No unlocked buffs!");
+            // TODO: #44 warning sign sprite
             return;
         }
         SpawnBuff(unlockedBuffs[rand.Next(0, unlockedBuffs.Count)]);

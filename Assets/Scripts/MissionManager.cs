@@ -32,7 +32,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     [SerializeField] Room initialRoom;
 
     [Tooltip("How many rooms should be in the map (including initial). Could be difficulty?")]
-    [SerializeField] int howManyRooms = 10;
+    [SerializeField] int howManyRooms = 10; // TODO: #47 make map size depend on difficulty
     [SerializeField] int difficulty = 1;
     [Tooltip("How many more easy rooms should exist for every difficult room")]
     [SerializeField] int hardPerDifficultyRatio = 2;
