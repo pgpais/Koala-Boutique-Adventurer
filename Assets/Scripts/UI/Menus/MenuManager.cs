@@ -49,7 +49,7 @@ public class MenuManager : MonoBehaviour
             ShowMenuScreen();
         }
 
-        GameManager.NoMissionExists.AddListener(OnNoMissionExists);
+        // GameManager.NoMissionExists.AddListener(OnNoMissionExists);
         GameManager.NewMissionAdded.AddListener(OnNewMissionAdded);
     }
 

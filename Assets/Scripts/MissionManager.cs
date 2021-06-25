@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 using UnityEngine.Events;
 using static RoomEntrances;
 using Random = System.Random;
 
-public class MissionManager : MonoBehaviour
+public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 {
     public static MissionManager instance;
 
@@ -77,9 +78,14 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.instance != null)
+        if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
         {
             Seed = GameManager.instance.CurrentMission.seed;
+        }
+
+        if (GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
+        {
+            difficulty = 1;
         }
 
         Rand = new Random(Seed);
@@ -381,8 +387,6 @@ public class MissionManager : MonoBehaviour
 
     private GameObject SelectDeadEnd(List<GameObject> deadEndList)
     {
-        // TODO: Make conditions for how many of each room type should show up.
-        //? (one exit; distance from center; how many valuables;) 
         if (howManyMissionExitsCreated < 1)
         {
             return deadEndList.Find(delegate (GameObject obj)
@@ -425,7 +429,7 @@ public class MissionManager : MonoBehaviour
                     {
                         RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-                        return entrances.Type == RoomType.Buff && entrances.Unlocked;
+                        return entrances.Type == RoomType.Buff;
                     });
             if (resultRooms.Count > 0)
             {
@@ -463,5 +467,25 @@ public class MissionManager : MonoBehaviour
     public List<string> GetStartingBuffs()
     {
         return GameManager.instance.CurrentMission.boughtBuffs;
+    }
+
+    private void OnEnable()
+    {
+        this.MMEventStartListening<MMGameEvent>();
+    }
+
+    private void OnDisable()
+    {
+        this.MMEventStopListening<MMGameEvent>();
+    }
+
+    public void OnMMEvent(MMGameEvent eventType)
+    {
+        // LevelManager.Instance.Players[0]._health.OnDeath += OnDeath;
+    }
+
+    void OnDeath()
+    {
+        GameManager.instance.FailedMission();
     }
 }

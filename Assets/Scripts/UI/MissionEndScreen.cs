@@ -68,7 +68,7 @@ public class MissionEndScreen : MonoBehaviour
 
         if (GameManager.instance != null)
         {
-            GameManager.instance.FinishLevel();
+            GameManager.instance.FinishLevel(playerDied);
         }
     }
 }

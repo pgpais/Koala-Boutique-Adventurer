@@ -102,7 +102,7 @@ public class CharacterClass : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.FinishLevel();
+            GameManager.instance.FinishLevel(true);
         }
     }
 }

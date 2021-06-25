@@ -14,11 +14,14 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public FamilyStats stats;
 
     public CharacterClassData currentSelectedClass;
 
     public Mission CurrentMission => currentMission;
     private Mission currentMission;
+
+    public string DiseasedItemName { get; private set; }
 
 
     private bool performingMission;
@@ -34,17 +37,25 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
+
         DontDestroyOnLoad(this);
 
         LoadSceneAdditivelyAndSetActive(1);
+
+        FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
+        FirebaseCommunicator.GameStarted.AddListener(OnGameStarted);
     }
 
     private void Start()
     {
-        FirebaseCommunicator.GameStarted.AddListener(OnGameStarted);
 
         // Setup listener for new missions
         FirebaseCommunicator.instance.SetupListenForChildAddedEvents(new string[] { Mission.firebaseReferenceName, FirebaseCommunicator.instance.FamilyId.ToString() }, OnMissionAdded);
+    }
+
+    private void OnLoggedIn()
+    {
+        stats = new FamilyStats();
     }
 
     private void OnGameStarted()
@@ -86,7 +97,7 @@ public class GameManager : MonoBehaviour
         LoadSceneAdditivelyAndSetActive(2);
     }
 
-    public void FinishLevel()
+    public void FinishLevel(bool playerDied)
     {
         currentMission.completed = true;
         FirebaseCommunicator.instance.SendObject(JsonUtility.ToJson(currentMission), "missions", (task) =>
@@ -99,6 +110,14 @@ public class GameManager : MonoBehaviour
                 LoadSceneAdditivelyAndSetActive(1);
             }
         });
+        if (playerDied)
+        {
+            FailedMission();
+        }
+        else
+        {
+            SuccessfulMission();
+        }
     }
 
     void LoadSceneAdditivelyAndSetActive(int buildIndex)
@@ -127,5 +146,26 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Mission added!");
         GetMissions();
+    }
+
+    public void FailedMission()
+    {
+        stats.stats.numberOfMissions++;
+        stats.stats.numberOfDeaths++;
+
+        UpdateStats();
+    }
+
+    public void SuccessfulMission()
+    {
+        stats.stats.numberOfMissions++;
+        stats.stats.numberOfSuccessfulMissions++;
+
+        UpdateStats();
+    }
+
+    private void UpdateStats()
+    {
+        stats.UpdateStats();
     }
 }
