@@ -187,7 +187,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                     unspawnedExits.Enqueue(newRoomExit);
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
-
+                // TODO: #48 null after adding all exits of a room
                 HandleNewRoomType(newRoomEntrances);
             }
         }
@@ -447,6 +447,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     private RoomEntrances SpawnRoom(GameObject roomToSpawn, Exit connectedExit)
     {
+
         return Instantiate(roomToSpawn, connectedExit.RoomSpawnPoint.position, connectedExit.RoomSpawnPoint.rotation).GetComponent<RoomEntrances>();
     }
 
