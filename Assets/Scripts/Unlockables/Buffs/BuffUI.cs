@@ -5,11 +5,17 @@ using UnityEngine;
 public class BuffUI : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Text nameText;
-    [SerializeField] TMPro.TMP_Text DescriptionText;
+    [SerializeField] TMPro.TMP_Text descriptionText;
 
     public void Initialize(Buff buff)
     {
         nameText.text = buff.buffName;
-        DescriptionText.text = buff.description;
+        descriptionText.text = buff.description;
+    }
+
+    public void Initialize(string tooltip)
+    {
+        nameText.text = tooltip;
+        descriptionText.text = "";
     }
 }

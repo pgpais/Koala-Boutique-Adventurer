@@ -211,8 +211,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ef8991778aa414f8db1d29b6dae041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    stats:
+      numberOfMissions: 0
+      numberOfSuccessfulMissions: 0
+      numberOfDeaths: 0
+      buffsCollected: 0
   currentSelectedClass: {fileID: 11400000, guid: 5393b8e0d9f6eef4b9ddba582824a0eb,
     type: 2}
+  diseasedItemName: 
 --- !u!4 &1264824225
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class BuffPickable : PickableItem
 
     public Buff buffToGive;
 
+    [SerializeField] bool canBePicked = true;
+    [SerializeField] string tooltipOverride;
     [SerializeField] BuffUI tooltip;
     [SerializeField] LayerMask playerDetectionLayer;
     [SerializeField] float toolTipRange = 3f;
@@ -15,9 +17,20 @@ public class BuffPickable : PickableItem
     protected override void Start()
     {
         base.Start();
-        Model.GetComponent<SpriteRenderer>().sprite = buffToGive.icon;
+        if (buffToGive != null)
+        {
+            Model.GetComponentInChildren<SpriteRenderer>().sprite = buffToGive.icon;
+        }
+        tooltip.gameObject.SetActive(true);
+        if (string.IsNullOrEmpty(tooltipOverride))
+        {
+            tooltip.Initialize(buffToGive);
+        }
+        else
+        {
+            tooltip.Initialize(tooltipOverride);
+        }
         tooltip.gameObject.SetActive(false);
-        tooltip.Initialize(buffToGive);
     }
 
     private void FixedUpdate()
@@ -28,6 +41,8 @@ public class BuffPickable : PickableItem
             tooltip.gameObject.SetActive(inRange);
         }
     }
+
+    protected override bool CheckIfPickable() => canBePicked && base.CheckIfPickable();
 
     protected override void Pick(GameObject picker)
     {

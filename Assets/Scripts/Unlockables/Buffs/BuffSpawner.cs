@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuffSpawner : MonoBehaviour
 {
     [field: SerializeField] public Transform Spawner { get; private set; }
+    [SerializeField] BuffPickable underConstructionsPickable;
 
     [SerializeField] BuffPickable buffPickablePrefab;
 
@@ -29,11 +30,17 @@ public class BuffSpawner : MonoBehaviour
             // TODO: #44 warning sign sprite
             return;
         }
+        HideWoodSign();
         SpawnBuff(unlockedBuffs[rand.Next(0, unlockedBuffs.Count)]);
     }
 
     void SpawnBuff(Buff buff)
     {
         Instantiate(buffPickablePrefab, Spawner).buffToGive = buff;
+    }
+
+    void HideWoodSign()
+    {
+        underConstructionsPickable.gameObject.SetActive(false);
     }
 }
