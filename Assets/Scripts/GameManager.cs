@@ -127,17 +127,27 @@ public class GameManager : MonoBehaviour
 
     public void FinishLevel(bool playerDied)
     {
-        currentMission.completed = true;
-        FirebaseCommunicator.instance.SendObject(JsonUtility.ToJson(currentMission), "missions", (task) =>
+        if (currentMission != null)
         {
-            if (task.IsCompleted)
-            {
-                Debug.Log("Level finished!");
+            currentMission.completed = true;
 
-                SceneManager.UnloadSceneAsync(2);
-                LoadSceneAdditivelyAndSetActive(1);
-            }
-        });
+            FirebaseCommunicator.instance.SendObject(JsonUtility.ToJson(currentMission), "missions", (task) =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("Level finished!");
+
+                    SceneManager.UnloadSceneAsync(2);
+                    LoadSceneAdditivelyAndSetActive(1);
+                }
+            });
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync(2);
+            LoadSceneAdditivelyAndSetActive(1);
+        }
+
         if (playerDied)
         {
             FailedMission();

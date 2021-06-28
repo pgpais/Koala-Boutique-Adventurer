@@ -71,12 +71,15 @@ public class InventoryManager : MonoBehaviour
 
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
 
-        foreach (var itemName in itemQuantity.Keys)
+        if (GameManager.instance.CurrentMission != null)
         {
-            // TODO: #45 Put Diseased item in a different place firebase
-            if (string.Equals(GameManager.instance.CurrentMission.diseasedItemName, itemName))
+            foreach (var itemName in itemQuantity.Keys)
             {
-                GoldManager.GetGoldSendWithModifier(diseaseModifier);
+                // TODO: #45 Put Diseased item in a different place firebase
+                if (string.Equals(GameManager.instance.CurrentMission.diseasedItemName, itemName))
+                {
+                    GoldManager.GetGoldSendWithModifier(diseaseModifier);
+                }
             }
         }
     }
