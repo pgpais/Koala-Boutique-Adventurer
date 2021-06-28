@@ -15,7 +15,8 @@ MonoBehaviour:
   <ItemName>k__BackingField: Iron Ore
   <Description>k__BackingField: 
   <Type>k__BackingField: 0
-  <sprite>k__BackingField: {fileID: 1220852969510201505, guid: b316e382bc7e25c4cba7192fd45ea78d,
+  <sprite>k__BackingField: {fileID: 21300000, guid: bc5fcc605b31ff746ae0b45db6eb113d,
     type: 3}
   numberOfInteractions: 3
   processResult: {fileID: 11400000, guid: a06410131afb03341a3fa5371e906c82, type: 2}
+  startsUnlocked: 1

@@ -73,5 +73,11 @@ PrefabInstance:
       propertyPath: RunSpeed
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: GameObjectToLoot
+      value: 
+      objectReference: {fileID: 5505489886484983027, guid: 4b4253925f2031d4cb83b8e1790b4df0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70d368a1130a594a9977619d11d9b11, type: 3}

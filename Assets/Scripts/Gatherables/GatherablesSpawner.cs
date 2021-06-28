@@ -68,6 +68,8 @@ public class GatherablesSpawner : MonoBehaviour
     {
         System.Random rand = MissionManager.instance.Rand;
 
+        List<Item> unlockedGatherables = gatherablesToSpawn.FindAll(gatherable => gatherable.Unlocked);
+
         foreach (Transform spawner in gatherableSpawners)
         {
             // Debug.Log("spawning gatherables");
@@ -76,12 +78,11 @@ public class GatherablesSpawner : MonoBehaviour
 
             if (GameManager.instance != null && GameManager.instance.CurrentMission != null && rand.NextDouble() < chosenGatherablesChance)
             {
-                // TODO: #43 spawn chosen gatherable with higher chance
                 item = ItemManager.instance.itemsData.GetItemByName(GameManager.instance.CurrentMission.gatherableItemName);
             }
             else
             {
-                item = gatherablesToSpawn[rand.Next(0, gatherablesToSpawn.Count)];
+                item = gatherablesToSpawn[rand.Next(0, unlockedGatherables.Count)];
             }
 
             Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);

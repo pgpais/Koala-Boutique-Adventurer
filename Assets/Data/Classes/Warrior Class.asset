@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c3994b5660e7544b5e2c441326ca92, type: 3}
   m_Name: Warrior Class
   m_EditorClassIdentifier: 
-  startsUnlocked: 1
   className: Warrior
   healthModifier: 30
-  meleeAttackDamageModifier: 5
-  rangedAttackDamageModifier: 0
+  attackDamageModifier: 0
   movementSpeedMultiplier: 0.8
   initialWeapon: {fileID: 588063320836418560, guid: 94808c06380eef14d9fec5a662872a1e,
     type: 3}
+  startsUnlocked: 0

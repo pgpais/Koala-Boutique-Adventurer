@@ -20,7 +20,7 @@ public class MeleeWeaponWithClass : MeleeWeaponFixedAim
             {
                 // TODO: Check if correctly applied
                 _damageOnTouch.DamageCaused = oldDamage;
-                characterClass.AddModifier(_damageOnTouch, false);
+                characterClass.ApplyDamageModifier(_damageOnTouch, false);
             }
         }
     }

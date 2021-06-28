@@ -474,7 +474,14 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     public List<string> GetStartingBuffs()
     {
-        return GameManager.instance.CurrentMission.boughtBuffs;
+        if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
+        {
+            return GameManager.instance.CurrentMission.boughtBuffs;
+        }
+        else
+        {
+            return new List<string>();
+        }
     }
 
     private void OnEnable()
