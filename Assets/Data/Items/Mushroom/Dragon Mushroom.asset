@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
-  m_Name: Mushroom
+  m_Name: Dragon Mushroom
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Mushroom
+  <ItemName>k__BackingField: Dragon Mushroom
   <Description>k__BackingField: Just a gathered item
   <Type>k__BackingField: 0
   <sprite>k__BackingField: {fileID: -4987031940289456647, guid: 8777314c6a5b7a94a9023c7a976d4c9c,
     type: 3}
   numberOfInteractions: 3
   processResult: {fileID: 11400000, guid: f2ee9747288156b47a88b7d033c5dd4c, type: 2}
+  startsUnlocked: 1
