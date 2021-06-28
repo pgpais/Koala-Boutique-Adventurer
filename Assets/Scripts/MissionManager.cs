@@ -82,6 +82,13 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
         if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
         {
             Seed = GameManager.instance.CurrentMission.seed;
+            Rand = new Random(Seed);
+        }
+        else
+        {
+            Rand = new Random();
+            Seed = Rand.Next();
+            Rand = new Random(Rand.Next());
         }
 
         if (GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
@@ -89,7 +96,6 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
             difficulty = 1;
         }
 
-        Rand = new Random(Seed);
         remainingHardToCreate = difficulty / hardPerDifficultyRatio;
         remainingMediumToCreate = difficulty / mediumPerDifficultyRatio;
         GenerateMap();

@@ -140,6 +140,14 @@ public class FirebaseCommunicator : MonoBehaviour
         yield break;
     }
 
+    public void Logout()
+    {
+        PlayerPrefs.DeleteKey(PlayerSettingsKeys.familyId);
+        FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
+
+        IsLoggedIn = false;
+    }
+
     public void SendObject(string objJSON, string firebaseReferenceName, Action<Task> afterSendAction)
     {
         TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();

@@ -65,7 +65,7 @@ public class MenuManager : MonoBehaviour
         selectClassBackButton.onClick.AddListener(ShowMenuScreen);
 
         classSelectScreen.SetActive(false);
-        menuScreen.SetActive(true);
+        // menuScreen.SetActive(true);
     }
 
     void OnNoMissionExists()
@@ -98,11 +98,10 @@ public class MenuManager : MonoBehaviour
 
     void OnLogout()
     {
-        PlayerPrefs.DeleteKey(PlayerSettingsKeys.familyId);
-        FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
-
         askForIDParent.SetActive(true);
         menuObject.SetActive(false);
+
+        FirebaseCommunicator.instance.Logout();
     }
 
     void ShowClassSelectScreen()
