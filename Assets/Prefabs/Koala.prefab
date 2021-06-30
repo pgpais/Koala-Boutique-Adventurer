@@ -9805,7 +9805,7 @@ GameObject:
   - component: {fileID: 114545434076996454}
   - component: {fileID: 114619658823058744}
   - component: {fileID: 114644362621734812}
-  - component: {fileID: 114171358364461030}
+  - component: {fileID: 1054885265541138148}
   - component: {fileID: 9066412081002981391}
   - component: {fileID: -329154781904690765}
   m_Layer: 10
@@ -10122,7 +10122,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
---- !u!114 &114171358364461030
+--- !u!114 &1054885265541138148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10131,7 +10131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1498750440386690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01754710d9f92ec4d9a21b81f5682667, type: 3}
+  m_Script: {fileID: 11500000, guid: a02b4d4f7f979da46a958f02fa9e5986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 0}
@@ -10141,19 +10141,21 @@ MonoBehaviour:
   MaximumHealth: 100
   ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 5423255612875023378}
-  DestroyOnDeath: 0
+  DestroyOnDeath: 1
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
   DisableControllerOnDeath: 1
   DisableModelOnDeath: 1
-  DisableCollisionsOnDeath: 0
+  DisableCollisionsOnDeath: 1
   DisableChildCollisionsOnDeath: 0
   ChangeLayerOnDeath: 0
   ChangeLayersRecursivelyOnDeath: 0
   LayerOnDeath:
     _layerIndex: 0
   DeathMMFeedbacks: {fileID: 4206741978730624185}
+  hasIronBoots: 0
+  hasDeflectingArmor: 0
 --- !u!114 &9066412081002981391
 MonoBehaviour:
   m_ObjectHideFlags: 0

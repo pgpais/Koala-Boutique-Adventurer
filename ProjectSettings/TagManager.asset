@@ -10,6 +10,9 @@ TagManager:
   - World
   - NoMask
   - RoomSpawn
+  - Spike Trap
+  - Turret Enemy
+  - Turret Shot
   layers:
   - Default
   - TransparentFX
