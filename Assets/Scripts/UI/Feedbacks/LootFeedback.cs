@@ -14,11 +14,11 @@ public class LootFeedback : MonoBehaviour
     private void Awake()
     {
         panel.gameObject.SetActive(false);
-        InventoryManager.ItemAdded.AddListener((itemName) =>
+        InventoryManager.ItemAdded.AddListener((itemName, amount) =>
         {
             Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
 
-            Initialize(itemName, 1, item.sprite);
+            Initialize(itemName, amount, item.sprite);
         });
     }
 

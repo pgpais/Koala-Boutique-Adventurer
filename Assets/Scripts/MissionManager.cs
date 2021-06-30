@@ -91,7 +91,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
             Rand = new Random(Rand.Next());
         }
 
-        if (GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
+        if (GameManager.instance != null && GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
         {
             difficulty = 1;
         }

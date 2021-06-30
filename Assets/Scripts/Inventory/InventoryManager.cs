@@ -6,9 +6,10 @@ using UnityEngine.Events;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    public static UnityEvent<string> ItemAdded = new UnityEvent<string>();
+    public static UnityEvent<string, int> ItemAdded = new UnityEvent<string, int>();
 
     public Dictionary<string, int> ItemQuantity => itemQuantity;
+    public bool doubleDrops = false;
 
 
     [SerializeField] ItemsList itemsData;
@@ -37,6 +38,11 @@ public class InventoryManager : MonoBehaviour
         {
             Item item = itemsData.GetItemByName(itemName);
 
+            if (doubleDrops)
+            {
+                amount *= 2;
+            }
+
             if (itemQuantity.ContainsKey(itemName))
             {
                 itemQuantity[itemName] += amount;
@@ -47,7 +53,7 @@ public class InventoryManager : MonoBehaviour
                 itemQuantity.Add(itemName, amount);
             }
 
-            ItemAdded.Invoke(itemName);
+            ItemAdded.Invoke(itemName, amount);
             Debug.Log("Added item " + itemName + "!");
         }
     }

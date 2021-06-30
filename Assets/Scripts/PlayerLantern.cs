@@ -14,6 +14,11 @@ public class PlayerLantern : MonoBehaviour
 
     Light2D lantern;
 
+    public void AddLight(float amount)
+    {
+        maxLightRadius += amount;
+    }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,11 +31,6 @@ public class PlayerLantern : MonoBehaviour
         }
 
         MissionManager.MissionStarted.AddListener(InitLantern);
-    }
-
-    private void Start()
-    {
-
     }
 
     void InitLantern(float timeLimit)

@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5a248757e2bc54dbb891a0650f6ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockablesData: {fileID: 11400000, guid: caba670081b5180478352c6575bd721e, type: 2}
+  unlockablesData: {fileID: 11400000, guid: 64a4316c8bfac564386977fed2b718c0, type: 2}
 --- !u!4 &2075555512
 Transform:
   m_ObjectHideFlags: 0

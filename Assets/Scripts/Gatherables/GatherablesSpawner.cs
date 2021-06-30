@@ -76,7 +76,7 @@ public class GatherablesSpawner : MonoBehaviour
 
             Item item;
 
-            if (GameManager.instance != null && GameManager.instance.CurrentMission != null && rand.NextDouble() < chosenGatherablesChance)
+            if (GameManager.instance != null && GameManager.instance.CurrentMission != null && !GameManager.instance.CurrentMission.completed && rand.NextDouble() < chosenGatherablesChance)
             {
                 item = ItemManager.instance.itemsData.GetItemByName(GameManager.instance.CurrentMission.gatherableItemName);
             }

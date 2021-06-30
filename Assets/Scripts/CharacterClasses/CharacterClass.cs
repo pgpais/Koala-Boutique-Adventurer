@@ -12,6 +12,7 @@ public class CharacterClass : MonoBehaviour
 
     [SerializeField] CharacterClassData data;
     [SerializeField] List<Buff> currentBuffs;
+    [SerializeField] List<Buff> startingBuffs;
 
     private int weaponDamageModifier;
     private Character character;
@@ -30,6 +31,13 @@ public class CharacterClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (var buff in startingBuffs)
+        {
+            if (buff.Unlocked)
+            {
+                currentBuffs.Add(buff);
+            }
+        }
 
         // weapon = weaponHandle.CurrentWeapon;
         List<string> boughtBuffs = MissionManager.instance.GetStartingBuffs();
@@ -63,12 +71,12 @@ public class CharacterClass : MonoBehaviour
     void ModifyMovementSpeedWithClass()
     {
         var movementAbility = character.FindAbility<CharacterMovement>();
-        movementAbility.WalkSpeed *= data.movementSpeedMultiplier;
+        movementAbility.MovementSpeed *= data.movementSpeedMultiplier;
     }
     public void ModifyMovementSpeed(int amount)
     {
         var movementAbility = character.FindAbility<CharacterMovement>();
-        movementAbility.WalkSpeed += amount;
+        movementAbility.MovementSpeed += amount;
     }
 
     void ModifyMaximumHealthWithClass()
