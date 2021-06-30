@@ -75,6 +75,13 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"{itemName}: {quantity}");
         }
 
+        // TODO: remove this hardcode
+        if (itemQuantity.ContainsKey("Gem"))
+        {
+            GoldManager.GetGemsAndSendWithModifier(itemQuantity["Gem"]);
+            itemQuantity.Remove("Gem");
+        }
+
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
 
         if (GameManager.instance.CurrentMission != null)
