@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8871c6174acbed4b952fd5c5864b479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doubleDrops: 0
   itemsData: {fileID: 11400000, guid: 6652dfe5d0ee7164196c7e544d21409b, type: 2}
   diseaseModifier: -10
 --- !u!1 &1264824222

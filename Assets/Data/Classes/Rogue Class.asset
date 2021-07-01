@@ -16,6 +16,6 @@ MonoBehaviour:
   healthModifier: -10
   attackDamageModifier: 0
   movementSpeedMultiplier: 1.2
-  initialWeapon: {fileID: 557089157856823809, guid: 8f09ba4171b14714eb4283599de5fbe5,
+  initialWeapon: {fileID: -439844179941643001, guid: 1bb55e771d7a4584eb538c2704e8ad17,
     type: 3}
   startsUnlocked: 1
