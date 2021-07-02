@@ -18,4 +18,4 @@ MonoBehaviour:
   movementSpeedMultiplier: 1.1
   initialWeapon: {fileID: 3370565154181109150, guid: 87d66a148d11213409e580f3a1827d9f,
     type: 3}
-  startsUnlocked: 0
+  startsUnlocked: 1

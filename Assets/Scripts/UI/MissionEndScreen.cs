@@ -25,6 +25,7 @@ public class MissionEndScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        Cursor.visible = true;
         if (!playerDied)
         {
             foreach (Transform child in itemsLootedLayout)
