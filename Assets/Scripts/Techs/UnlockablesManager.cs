@@ -59,7 +59,10 @@ public class UnlockablesManager : MonoBehaviour
                 string[] unlockedNames = JsonHelper.DeserializeArray<string>(task.Result.GetRawJsonValue());
                 foreach (var unlockableName in unlockedNames)
                 {
-                    unlockables[unlockableName].Unlock();
+                    if (unlockables.ContainsKey(unlockableName))
+                    {
+                        unlockables[unlockableName].Unlock();
+                    }
                 }
             }
         });

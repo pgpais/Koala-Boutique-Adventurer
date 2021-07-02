@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f723f3b34e0c0774c946a30dbb7155f1, type: 3}
   m_Name: Big Chaser Enemy
   m_EditorClassIdentifier: 
-  startsUnlocked: 0
+  startsUnlocked: 1

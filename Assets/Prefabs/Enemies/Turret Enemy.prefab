@@ -956,7 +956,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!114 &5655847180681365850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,13 +969,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9bf1ac07f3659498e89157301c9746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LootMode: 0
+  LootMode: 2
   GameObjectToLoot: {fileID: 5243501292055483999, guid: b9af53a7e6d33354aaeb67de07d3590a,
     type: 3}
   LootTable:
     ObjectsToLoot: []
     WeightsTotal: 0
-  LootTableSO: {fileID: 0}
+  LootTableSO: {fileID: 11400000, guid: 2f9ae52d27e250c4b95538f714ff0532, type: 2}
   SpawnLootOnDeath: 1
   SpawnLootOnDamage: 0
   Delay: 0

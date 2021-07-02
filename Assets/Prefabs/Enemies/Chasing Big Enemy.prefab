@@ -95,6 +95,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
+      propertyPath: LootTableSO
+      value: 
+      objectReference: {fileID: 11400000, guid: ac11d31d9268f744487681525e34942f,
+        type: 2}
+    - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
       propertyPath: GameObjectToLoot
       value: 
       objectReference: {fileID: 4095829254680176568, guid: 30bf3a30b7ee4f0438130f521a72dce8,

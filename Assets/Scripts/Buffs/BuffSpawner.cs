@@ -30,13 +30,19 @@ public class BuffSpawner : MonoBehaviour
             // TODO: #44 warning sign sprite
             return;
         }
-        HideWoodSign();
-        SpawnBuff(unlockedBuffs[rand.Next(0, unlockedBuffs.Count)]);
+        List<Buff> notSpawnedBuffs = unlockedBuffs.FindAll((buff) => !buff.AlreadySpawned);
+
+        if (notSpawnedBuffs.Count > 0)
+        {
+            HideWoodSign();
+            SpawnBuff(notSpawnedBuffs[rand.Next(0, notSpawnedBuffs.Count)]);
+        }
     }
 
     void SpawnBuff(Buff buff)
     {
         Instantiate(buffPickablePrefab, Spawner).buffToGive = buff;
+        buff.AlreadySpawned = true;
     }
 
     void HideWoodSign()

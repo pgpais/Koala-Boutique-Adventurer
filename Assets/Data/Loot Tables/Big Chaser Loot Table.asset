@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5f1fe20095cfb42a76a5363be0a765, type: 3}
+  m_Name: Big Chaser Loot Table
+  m_EditorClassIdentifier: 
+  LootTable:
+    ObjectsToLoot:
+    - Loot: {fileID: 1466021108048585905, guid: 18a355c61331c4f46a318e25a767e98b,
+        type: 3}
+      Weight: 1
+      ChancePercentage: 0
+    - Loot: {fileID: 6451521442276991001, guid: 8db7b1e0851c78543a72b595de722925,
+        type: 3}
+      Weight: 1
+      ChancePercentage: 0
+    - Loot: {fileID: 5505489886484983027, guid: 4b4253925f2031d4cb83b8e1790b4df0,
+        type: 3}
+      Weight: 0.2
+      ChancePercentage: 0
+    - Loot: {fileID: 4095829254680176568, guid: 30bf3a30b7ee4f0438130f521a72dce8,
+        type: 3}
+      Weight: 1
+      ChancePercentage: 0
+    - Loot: {fileID: 5505489886484983027, guid: 31e7a3bcf1792f24a98954683bcfaa54,
+        type: 3}
+      Weight: 0.2
+      ChancePercentage: 0
+    WeightsTotal: 0

@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   numberOfInteractions: 3
   processResult: {fileID: 11400000, guid: 1bd48397619ee8b4593b9334fbef576e, type: 2}
-  startsUnlocked: 1
+  startsUnlocked: 0

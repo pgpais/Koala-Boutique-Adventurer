@@ -778,13 +778,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9bf1ac07f3659498e89157301c9746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LootMode: 0
+  LootMode: 2
   GameObjectToLoot: {fileID: 6451521442276991001, guid: 8db7b1e0851c78543a72b595de722925,
     type: 3}
   LootTable:
     ObjectsToLoot: []
     WeightsTotal: 0
-  LootTableSO: {fileID: 0}
+  LootTableSO: {fileID: 11400000, guid: 6a94962af15027141bcf9e9eed643f97, type: 2}
   SpawnLootOnDeath: 1
   SpawnLootOnDamage: 0
   Delay: 0
