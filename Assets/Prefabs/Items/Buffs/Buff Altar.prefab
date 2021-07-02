@@ -158,6 +158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Under Construction
       objectReference: {fileID: 0}
+    - target: {fileID: 2990150445620272645, guid: 27c6f0762bacb524fb5a661c2906c86f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4226785348382183166, guid: 27c6f0762bacb524fb5a661c2906c86f,
         type: 3}
       propertyPath: m_Sprite
@@ -182,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 6080426169441988134, guid: 27c6f0762bacb524fb5a661c2906c86f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6080426169441988134, guid: 27c6f0762bacb524fb5a661c2906c86f,
         type: 3}

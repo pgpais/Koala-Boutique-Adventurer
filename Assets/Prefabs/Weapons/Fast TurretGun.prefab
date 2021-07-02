@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2150994597676946333, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4331269903968044800, guid: baedfa6a9d0313c4da56ca20824d24bf,
+        type: 3}
     - target: {fileID: 5911789493567640714, guid: 531233bcb452eb7438a58d2d80ccaa5a,
         type: 3}
       propertyPath: m_RootOrder
@@ -69,8 +75,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
         type: 3}
+      propertyPath: SpawnPosition.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
+      propertyPath: SpawnPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
       propertyPath: TimeBetweenUses
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
+      propertyPath: ProjectileSpawnOffset.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020761541857460710, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 547805744498368688, guid: a0dfbbbb672090e41a1c3820766178da,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 531233bcb452eb7438a58d2d80ccaa5a, type: 3}
