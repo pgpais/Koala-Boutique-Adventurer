@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6734a378bd44848ac307d52e3ebefd, type: 3}
   m_Name: More Speed
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: -9083362998159298969, guid: 661ad3744901b064cbdcf72035bd8ce6,
+    type: 3}
   <buffName>k__BackingField: Running Shoes
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 1
   movementSpeedModifier: 3
   healthModifier: 0
   damageModifier: 0

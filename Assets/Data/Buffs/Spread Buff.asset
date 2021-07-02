@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8a29a5f168dac4aa45e332817ba386, type: 3}
   m_Name: Spread Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 9121847737087069751, guid: 94f8b294102840a4ab78bb8a1bd4af74,
+  <icon>k__BackingField: {fileID: 1080663263997981637, guid: fba815e8766c2cb47b13d0eae22b9a17,
     type: 3}
   <buffName>k__BackingField: More projectiles
   <description>k__BackingField: When using a ranged weapon, you shoot two additional
     projectiles.
+  <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0

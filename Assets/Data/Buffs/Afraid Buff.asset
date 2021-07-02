@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ecdfb6801d7484aa71a8ac68c81db8, type: 3}
   m_Name: Afraid Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: 8405985795958728959, guid: 9d7f08a098ad37d46bfc369df9a892c0,
+    type: 3}
   <buffName>k__BackingField: Afraid
   <description>k__BackingField: You move faster for a while after entering a room
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0
   speedBuffAmount: 5
   buffTime: 3

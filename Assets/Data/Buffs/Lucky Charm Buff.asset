@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e399e16e2c7daeb43865479282beebe5, type: 3}
   m_Name: Lucky Charm Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: 9111962250586777772, guid: f6d1bde24d66d2a488b7ab0f78ffe100,
+    type: 3}
   <buffName>k__BackingField: Lucky Charm
   <description>k__BackingField: Doubles your drops!
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0

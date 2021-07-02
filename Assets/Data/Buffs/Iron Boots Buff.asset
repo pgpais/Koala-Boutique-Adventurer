@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d538c64d30934f82575e7a5270e40, type: 3}
   m_Name: Iron Boots Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: -8630435554779211992, guid: 205cf85d05401464f9a7f580a8b9c8b0,
+    type: 3}
   <buffName>k__BackingField: Iron Boots
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0

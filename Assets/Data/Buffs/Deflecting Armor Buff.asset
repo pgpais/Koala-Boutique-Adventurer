@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9bb34329446e494abc2cc96ceb4a189, type: 3}
   m_Name: Deflecting Armor Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: 2389193319765324094, guid: 81a8f0fb6a37d234787b8499fdb738f1,
+    type: 3}
   <buffName>k__BackingField: Deflecting Armor
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0

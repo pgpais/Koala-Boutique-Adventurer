@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6734a378bd44848ac307d52e3ebefd, type: 3}
   m_Name: More Health
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: -3359916698839239071, guid: 138c46fe7f26448468bcc2e03b40d370,
+    type: 3}
   <buffName>k__BackingField: Chicken Dinner
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 1
   movementSpeedModifier: 0
   healthModifier: 10
   damageModifier: 0

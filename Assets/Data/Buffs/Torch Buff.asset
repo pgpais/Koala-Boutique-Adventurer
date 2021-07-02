@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d9f325ae4fd8c468a253ed4a78f046, type: 3}
   m_Name: Torch Buff
   m_EditorClassIdentifier: 
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: 7509860518518112746, guid: 51478e2f95368504faa1333d983b36c8,
+    type: 3}
   <buffName>k__BackingField: More Light
   <description>k__BackingField: Adds more light to your lantern
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0
   lightAmountToAdd: 5
