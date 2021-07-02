@@ -17,10 +17,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Room room;
     [SerializeField] Transform spawnersParent;
 
-    [Space]
-
-    [SerializeField] List<AIBrain> enemiesPrefabs;
-
     private List<Character> enemies;
 
     private void Start()
@@ -28,12 +24,6 @@ public class EnemySpawner : MonoBehaviour
         if (!spawnEnemiesInRoom)
         {
             Destroy(this);
-        }
-
-        if (enemiesPrefabs.Count == 0)
-        {
-            Debug.LogWarning("No enemy spawners found! This script will not work this way!", this);
-            return;
         }
 
         enemies = new List<Character>();
@@ -45,22 +35,27 @@ public class EnemySpawner : MonoBehaviour
     {
         System.Random rand = MissionManager.instance.Rand;
 
-        List<Transform> remainingSpawns = new List<Transform>();
+        List<EnemySpawnPoint> remainingSpawns = new List<EnemySpawnPoint>();
 
         foreach (Transform spawn in spawnersParent)
         {
             if (spawn.gameObject.activeSelf)
             {
-                remainingSpawns.Add(spawn);
+                remainingSpawns.Add(spawn.GetComponent<EnemySpawnPoint>());
             }
         }
 
-        if (spawnEnemiesInRoom && howManyEnemiesToSpawn == 0) howManyEnemiesToSpawn = remainingSpawns.Count;
+        if (spawnEnemiesInRoom && howManyEnemiesToSpawn == 0)
+        {
+            howManyEnemiesToSpawn = remainingSpawns.Count;
+        }
+
 
         for (var i = 0; i < howManyEnemiesToSpawn && remainingSpawns.Count > 0; i++)
         {
             int index = rand.Next(0, remainingSpawns.Count);
-            Transform spawn = remainingSpawns[i];
+            List<AIBrain> enemiesPrefabs = remainingSpawns[i].UnlockedEnemiesToSpawn;
+            Transform spawn = remainingSpawns[i].transform;
 
             Character enemy = Instantiate(enemiesPrefabs[rand.Next(0, enemiesPrefabs.Count)], spawn.position, spawn.rotation).GetComponent<Character>();
             var enemyHealth = enemy.GetComponent<Health>();

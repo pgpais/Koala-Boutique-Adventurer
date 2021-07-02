@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3130523278644764143}
   - component: {fileID: 2967031775997825721}
   - component: {fileID: 3051114663503119859}
-  - component: {fileID: 3050768398532345785}
+  - component: {fileID: 8378532999753363877}
   - component: {fileID: 3050682350522638359}
   - component: {fileID: 3050942055093260371}
   - component: {fileID: 3050856364761715629}
@@ -333,7 +333,7 @@ MonoBehaviour:
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &3050768398532345785
+--- !u!114 &8378532999753363877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3153712645695729299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe81ad80cb743b408fa90b048ad597f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0448a8c57cf385c46b4316b7b31d9b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterDimension: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   AdditionalAbilityNodes: []
   CharacterBrain: {fileID: 0}
   OptimizeForMobile: 1
+  data: {fileID: 11400000, guid: faa17cde5d4e99d46b7b7b603e9f509d, type: 2}
 --- !u!114 &3050682350522638359
 MonoBehaviour:
   m_ObjectHideFlags: 0

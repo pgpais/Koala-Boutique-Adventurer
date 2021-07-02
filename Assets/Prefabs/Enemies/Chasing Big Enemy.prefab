@@ -87,6 +87,12 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.71599996
       objectReference: {fileID: 0}
+    - target: {fileID: 4101862083786401132, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 33f14697e4132c04688fccd835bf92c4,
+        type: 2}
     - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: GameObjectToLoot

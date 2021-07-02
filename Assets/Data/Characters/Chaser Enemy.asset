@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c3994b5660e7544b5e2c441326ca92, type: 3}
-  m_Name: Rogue Class
+  m_Script: {fileID: 11500000, guid: f723f3b34e0c0774c946a30dbb7155f1, type: 3}
+  m_Name: Chaser Enemy
   m_EditorClassIdentifier: 
-  className: Rogue
-  healthModifier: -10
-  attackDamageModifier: 0
-  movementSpeedMultiplier: 1.2
-  initialWeapon: {fileID: 3370565154181109150, guid: 87d66a148d11213409e580f3a1827d9f,
-    type: 3}
   startsUnlocked: 1

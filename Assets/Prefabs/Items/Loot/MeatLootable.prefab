@@ -73,5 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeatLootable
       objectReference: {fileID: 0}
+    - target: {fileID: 7304612339968646331, guid: 43eabfd559b851f4681d9d92aca2a121,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 576847fb405e2574c943ec487ecc63c9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43eabfd559b851f4681d9d92aca2a121, type: 3}

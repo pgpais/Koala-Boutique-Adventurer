@@ -20,7 +20,6 @@ MonoBehaviour:
   - {fileID: 7156553355788820110, guid: 0e543de665cb1104983c000ae90a3695, type: 3}
   - {fileID: 1479454116637185649, guid: 5f88df84495232341bf72bdca92ba35b, type: 3}
   - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
-  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
   - {fileID: 5200037411056629204, guid: a86e2deb3b3de4c4cbf7d4ff2813ba1e, type: 3}
   - {fileID: 738832271819366297, guid: 1192bc51ecf8b1644ac5c8323f516c58, type: 3}
   - {fileID: 3098056529934016648, guid: f1b0e0ded72a94440a584e82bc537d65, type: 3}
@@ -38,7 +37,6 @@ MonoBehaviour:
   - {fileID: 6541945538768359495, guid: ebcbd6e2b8066a540b6ea3553c129b12, type: 3}
   - {fileID: 6998606759956459310, guid: 074510e3099483c47a88fb46fab7f5dd, type: 3}
   - {fileID: 7402771370676475565, guid: 3e1e5133e64d10747ac06cf0cf685dca, type: 3}
-  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
   - {fileID: 8672406322151948058, guid: 9b4d30d81dcc6f74cba8181f454ebe26, type: 3}
   - {fileID: 5702207936278299174, guid: 8f0329bc598eb5441a5530c58c31bd36, type: 3}
   - {fileID: 2495203568519362808, guid: 8c37d4758cc0d2c448c6d7b7ff960a95, type: 3}
@@ -52,7 +50,6 @@ MonoBehaviour:
   leftDoorRooms:
   - {fileID: 2275898502089727478, guid: e78b5ff583ac27942921da7c00a5ae95, type: 3}
   - {fileID: 6032191794252686664, guid: 15dd3d241f4f1a843b26309912dad61b, type: 3}
-  - {fileID: 2993804194512184587, guid: 5a80945d8cd5f014e86c18de5cbe0a0c, type: 3}
   - {fileID: 5200037411056629204, guid: a86e2deb3b3de4c4cbf7d4ff2813ba1e, type: 3}
   - {fileID: 8672406322151948058, guid: 9b4d30d81dcc6f74cba8181f454ebe26, type: 3}
   - {fileID: 7823618656975327966, guid: 7d4c0bda88e5a7240ad5a0817619a267, type: 3}

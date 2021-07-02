@@ -5,23 +5,8 @@ using UnityEngine;
 
 public class LootItem : PickableItem
 {
+    public Item Item => item;
     [SerializeField] Item item;
-
-    SpriteRenderer spriteRen;
-
-    private void Awake()
-    {
-        spriteRen = GetComponentInChildren<SpriteRenderer>();
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-        if (spriteRen != null)
-        {
-            spriteRen.sprite = item.sprite;
-        }
-    }
 
     // private void Start()
     // {
