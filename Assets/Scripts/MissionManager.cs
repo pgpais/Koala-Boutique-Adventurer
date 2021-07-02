@@ -455,7 +455,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     private RoomEntrances SpawnRoom(GameObject roomToSpawn, Exit connectedExit)
     {
 
-        return Instantiate(roomToSpawn, connectedExit.RoomSpawnPoint.position, connectedExit.RoomSpawnPoint.rotation).GetComponent<RoomEntrances>();
+        return Instantiate(roomToSpawn, connectedExit.RoomSpawnPoint.position, Quaternion.identity).GetComponent<RoomEntrances>();
     }
 
     private int CountRoomExits(RoomEntrances room)
