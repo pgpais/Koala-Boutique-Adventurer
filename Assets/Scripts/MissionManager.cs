@@ -79,7 +79,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.instance != null && GameManager.instance.CurrentMission != null)
+        if (GameManager.instance != null && GameManager.instance.CurrentMission != null && !GameManager.instance.CurrentMission.completed)
         {
             Seed = GameManager.instance.CurrentMission.seed;
             Rand = new Random(Seed);
@@ -321,7 +321,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
         //     );
         //     SelectDeadEnd(deadEnds);
         // }
-        // else 
+        // else
         // {
 
         // }
