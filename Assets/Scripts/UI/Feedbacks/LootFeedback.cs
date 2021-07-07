@@ -11,17 +11,6 @@ public class LootFeedback : MonoBehaviour
     [SerializeField] float feedbackTime;
     [SerializeField] Transform panel;
 
-    private void Awake()
-    {
-        panel.gameObject.SetActive(false);
-        InventoryManager.ItemAdded.AddListener((itemName, amount) =>
-        {
-            Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
-
-            Initialize(itemName, amount, item.sprite);
-        });
-    }
-
     public void Initialize(string itemName, int amount, Sprite itemSprite)
     {
         panel.gameObject.SetActive(true);
@@ -34,6 +23,6 @@ public class LootFeedback : MonoBehaviour
     private IEnumerator DisableAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        panel.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
