@@ -56,6 +56,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
         askForIDButton.onClick.AddListener(() => OnSubmitFamilyID(askForIDInputField.text));
         askForIDInputField.onSubmit.AddListener(OnSubmitFamilyID);
 
