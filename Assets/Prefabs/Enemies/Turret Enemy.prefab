@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: 3050856364761715629}
   - component: {fileID: 3050603264426669075}
   - component: {fileID: 3050466458443096461}
-  - component: {fileID: 3051095393617310887}
   - component: {fileID: 3050801256328987423}
   - component: {fileID: 3050585715912334523}
   - component: {fileID: 3050413600783894711}
@@ -239,6 +238,7 @@ GameObject:
   - component: {fileID: 829244162455993783}
   - component: {fileID: 4009192093255968564}
   - component: {fileID: 5655847180681365850}
+  - component: {fileID: 321887308093284137}
   m_Layer: 13
   m_Name: Turret Enemy
   m_TagString: Turret Enemy
@@ -262,6 +262,7 @@ Transform:
   - {fileID: 4469634924329709554}
   - {fileID: 3035088403166237990}
   - {fileID: 829244162444975527}
+  - {fileID: 242334997428956092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -504,38 +505,6 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
---- !u!114 &3051095393617310887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3153712645695729299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01754710d9f92ec4d9a21b81f5682667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Model: {fileID: 0}
-  CurrentHealth: 0
-  Invulnerable: 0
-  InitialHealth: 30
-  MaximumHealth: 30
-  ImmuneToKnockback: 0
-  DamageMMFeedbacks: {fileID: 4659532801750114095}
-  DestroyOnDeath: 1
-  DelayBeforeDestruction: 1
-  PointsWhenDestroyed: 0
-  RespawnAtInitialLocation: 0
-  DisableControllerOnDeath: 1
-  DisableModelOnDeath: 1
-  DisableCollisionsOnDeath: 0
-  DisableChildCollisionsOnDeath: 0
-  ChangeLayerOnDeath: 0
-  ChangeLayersRecursivelyOnDeath: 0
-  LayerOnDeath:
-    _layerIndex: 0
-  DeathMMFeedbacks: {fileID: 4726824487237749917}
 --- !u!114 &3050801256328987423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1005,41 @@ MonoBehaviour:
   GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
   GimosSize: 1
   SpawnLootButton: 0
+--- !u!114 &321887308093284137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153712645695729299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b4d4f7f979da46a958f02fa9e5986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 829244162444975524}
+  CurrentHealth: 0
+  Invulnerable: 0
+  InitialHealth: 30
+  MaximumHealth: 30
+  ImmuneToKnockback: 0
+  DamageMMFeedbacks: {fileID: 4659532801750114095}
+  DestroyOnDeath: 1
+  DelayBeforeDestruction: 1
+  PointsWhenDestroyed: 0
+  RespawnAtInitialLocation: 0
+  DisableControllerOnDeath: 1
+  DisableModelOnDeath: 1
+  DisableCollisionsOnDeath: 0
+  DisableChildCollisionsOnDeath: 0
+  ChangeLayerOnDeath: 0
+  ChangeLayersRecursivelyOnDeath: 0
+  LayerOnDeath:
+    _layerIndex: 0
+  DeathMMFeedbacks: {fileID: 4726824487237749917}
+  hasIronBoots: 0
+  hasDeflectingArmor: 0
+  DOTFeedbacks: {fileID: 7540271105418354213}
 --- !u!1 &3153737174209974499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,3 +1237,86 @@ MonoBehaviour:
   BoundParticleSystem: {fileID: 0}
   MoveToPosition: 0
   RandomParticleSystems: []
+--- !u!1 &6082768406144283914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242334997428956092}
+  - component: {fileID: 7540271105418354213}
+  - component: {fileID: 2896186237897962680}
+  m_Layer: 13
+  m_Name: DoTFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242334997428956092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082768406144283914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3156755760052750547}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7540271105418354213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082768406144283914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks:
+  - {fileID: 2896186237897962680}
+  InitializationMode: 2
+  SafeMode: 3
+  AutoPlayOnStart: 0
+  DebugActive: 0
+--- !u!114 &2896186237897962680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082768406144283914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 829244162444975526}
+  Mode: 0
+  PropertyName: _Tint
+  FlickerDuration: 0.2
+  FlickerOctave: 0.04
+  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
