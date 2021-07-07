@@ -133,13 +133,20 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
         foreach (var exit in initialRoomEntrances.Exits)
         {
             exit.SetCoordinates(initialRoomEntrances.x, initialRoomEntrances.y);
+            exit.level = 0;
             unspawnedExits.Enqueue(exit);
         }
         remainingExitsToCreate -= 4;
+        unspawnedExits.Enqueue(null);
 
         while (unspawnedExits.Count > 0)
         {
             Exit curExit = unspawnedExits.Dequeue();
+            if (curExit == null)
+            {
+                Debug.Log("New Level");
+                continue;
+            }
             // Debug.Log("Doing exit " + curExit.ExitDirection);
 
             if (roomMap[curExit.x, curExit.y] != null) // Room already created at exit position
@@ -158,6 +165,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                 GameObject roomToSpawn = GetRoomForExit(curExit);
                 // Add room at exit
                 RoomEntrances newRoomEntrances = SpawnRoom(roomToSpawn, curExit);
+                newRoomEntrances.level = curExit.level + 1;
 
 
 
@@ -174,6 +182,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                 foreach (var newRoomExit in newRoomEntrances.Exits)
                 {
                     newRoomExit.SetCoordinates(newRoomEntrances.x, newRoomEntrances.y);
+                    newRoomExit.level = newRoomEntrances.level;
 
                     if (!newRoomExit.gameObject.activeSelf)
                     {
@@ -306,10 +315,10 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
         List<GameObject> roomList = roomPrefabs.GetRoomListFromDirection(requiredDirection);
 
-        return SelectRoomFromList(roomList);
+        return SelectRoomFromList(roomList, curExit.level);
     }
 
-    private GameObject SelectRoomFromList(List<GameObject> roomList)
+    private GameObject SelectRoomFromList(List<GameObject> roomList, int level)
     {
         int startingIndex = Rand.Next(roomList.Count);
 
@@ -346,39 +355,46 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
                 return entrances.NExits > 1;
             });
-            return SelectRoom(rooms);
+            return SelectRoom(rooms, level);
         }
     }
 
-    private GameObject SelectRoom(List<GameObject> roomList)
+    private GameObject SelectRoom(List<GameObject> roomList, int level)
     {
-        int roomsCreated = easyCreated + mediumCreated + hardCreated;
         RoomDifficulty diff;
-
-        if (remainingMediumToCreate < howManyRooms - roomsCreated && remainingMediumToCreate > 0)
+        if (level < 2)
         {
-            diff = RoomDifficulty.Medium;
-        }
-        else if (remainingHardToCreate < howManyRooms - roomsCreated && remainingHardToCreate > 0)
-        {
-            diff = RoomDifficulty.Hard;
-
+            diff = RoomDifficulty.Easy;
         }
         else
         {
-            int nDifficulties = Enum.GetValues(typeof(RoomDifficulty)).Length;
+            int roomsCreated = easyCreated + mediumCreated + hardCreated;
 
-            if (remainingHardToCreate > 0 && remainingMediumToCreate > 0)
+            if (remainingMediumToCreate < howManyRooms - roomsCreated && remainingMediumToCreate > 0)
             {
-                diff = (RoomDifficulty)Rand.Next(nDifficulties);
+                diff = RoomDifficulty.Medium;
             }
-            else if (remainingMediumToCreate > 0)
+            else if (remainingHardToCreate < howManyRooms - roomsCreated && remainingHardToCreate > 0)
             {
-                diff = (RoomDifficulty)Rand.Next(nDifficulties - 1);
+                diff = RoomDifficulty.Hard;
+
             }
             else
             {
-                diff = RoomDifficulty.Easy;
+                int nDifficulties = Enum.GetValues(typeof(RoomDifficulty)).Length;
+
+                if (remainingHardToCreate > 0 && remainingMediumToCreate > 0)
+                {
+                    diff = (RoomDifficulty)Rand.Next(nDifficulties);
+                }
+                else if (remainingMediumToCreate > 0)
+                {
+                    diff = (RoomDifficulty)Rand.Next(nDifficulties - 1);
+                }
+                else
+                {
+                    diff = RoomDifficulty.Easy;
+                }
             }
         }
 

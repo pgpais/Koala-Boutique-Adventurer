@@ -9,7 +9,7 @@ public class Exit : MonoBehaviour
     public UnityEvent<Exit> ExitAdded;
 
     public int x, y;
-
+    public int level;
 
     public ExitDirection ExitDirection => exitDirection;
     [SerializeField] ExitDirection exitDirection;

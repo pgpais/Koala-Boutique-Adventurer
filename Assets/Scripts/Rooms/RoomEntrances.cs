@@ -42,6 +42,8 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
     [SerializeField] RoomType type;
     [SerializeField] bool closeDoorsUntilRoomIsCleared = true;
 
+    public int level = 0;
+
     [ShowIf("@Type == RoomType.Enemies")]
     [field: SerializeField] public RoomDifficulty Difficulty { get; private set; }
 
