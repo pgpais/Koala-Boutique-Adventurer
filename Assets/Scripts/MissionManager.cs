@@ -91,16 +91,31 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
             Rand = new Random(Rand.Next());
         }
 
-        if (GameManager.instance != null && GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
-        {
-            difficulty = 1;
-        }
+        SetDifficulty();
 
         remainingHardToCreate = difficulty / hardPerDifficultyRatio;
         remainingMediumToCreate = difficulty / mediumPerDifficultyRatio;
         GenerateMap();
 
         StartCoroutine(LateStart());
+    }
+
+    void SetDifficulty()
+    {
+        if (GameManager.instance != null && GameManager.instance.stats.stats.numberOfSuccessfulMissions < 1)
+        {
+            difficulty = 0;
+        }
+        else
+        {
+            difficulty = GameManager.instance.BaseDifficulty;
+            // foreach (Unlockable unlockable in UnlockablesManager.instance.Unlocked)
+            // {
+            //     difficulty += unlockable.DifficultyIncrease;
+            // }
+        }
+
+        difficulty = Mathf.Clamp(difficulty, GameManager.minDifficulty, GameManager.maxDifficulty);
     }
 
     IEnumerator LateStart()

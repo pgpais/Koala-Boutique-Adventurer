@@ -10,6 +10,9 @@ public class UnlockablesManager : MonoBehaviour
     [SerializeField] UnlockablesList unlockablesData;
 
     public Dictionary<string, Unlockable> Unlockables => unlockables;
+
+    public List<Unlockable> Unlocked => unlockables.Values.Where((unlockable) => unlockable.Unlocked).ToList();
+
     Dictionary<string, Unlockable> unlockables;
 
     private void Awake()

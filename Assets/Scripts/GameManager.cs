@@ -10,14 +10,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static string diseasedItemReferenceName = "diseasedItems";
+    public static string difficultyReferenceName = "difficulty";
     public static UnityEvent NoMissionExists = new UnityEvent();
     public static UnityEvent NewMissionAdded = new UnityEvent();
+    public static int maxDifficulty = 20;
+    public static int minDifficulty = 0;
+    public static int difficultyWinModifier = 3;
+    public static int difficultyDeathModifier = -1;
 
     public static GameManager instance;
 
     public FamilyStats stats;
 
     public CharacterClassData currentSelectedClass;
+
+    public int BaseDifficulty { get; private set; }
 
     public Mission CurrentMission => currentMission;
     private Mission currentMission;
@@ -58,6 +65,7 @@ public class GameManager : MonoBehaviour
     private void OnLoggedIn()
     {
         stats = new FamilyStats();
+        GetDifficulty();
     }
 
     private void OnGameStarted()
@@ -98,11 +106,12 @@ public class GameManager : MonoBehaviour
                   if (task.IsFaulted)
                   {
                       Debug.LogError("smth went wrong. " + task.Exception.ToString());
+                      return;
                   }
 
                   if (task.IsCompleted)
                   {
-                      Debug.Log("yey got mission");
+                      Debug.Log("yey got diseased");
                       string json = task.Result.GetRawJsonValue();
                       if (json == null)
                       {
@@ -114,6 +123,51 @@ public class GameManager : MonoBehaviour
 
                   }
               });
+    }
+
+    void GetDifficulty()
+    {
+        FirebaseCommunicator.instance.GetObject(difficultyReferenceName, (task) =>
+              {
+                  if (task.IsFaulted)
+                  {
+                      Debug.LogError("smth went wrong. " + task.Exception.ToString());
+                      return;
+                  }
+
+                  if (task.IsCompleted)
+                  {
+                      Debug.Log("yey got difficulty");
+                      string json = task.Result.GetRawJsonValue();
+                      if (json == null)
+                      {
+                          Debug.LogError("No difficulty found!");
+                          BaseDifficulty = 0;
+                          return;
+                      }
+
+                      BaseDifficulty = JsonConvert.DeserializeObject<int>(json);
+
+                  }
+              });
+    }
+
+    void UploadDifficulty()
+    {
+        string json = JsonConvert.SerializeObject(BaseDifficulty);
+        FirebaseCommunicator.instance.SendObject(json, difficultyReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("smth went wrong. " + task.Exception.ToString());
+                return;
+            }
+
+            if (task.IsCompleted)
+            {
+                Debug.Log("CLOUD: Updated Difficulty");
+            }
+        });
     }
 
     public void StartRun()
@@ -188,6 +242,8 @@ public class GameManager : MonoBehaviour
 
     public void FailedMission()
     {
+        UpdateBaseDifficulty(difficultyDeathModifier);
+
         stats.stats.numberOfMissions++;
         stats.stats.numberOfDeaths++;
 
@@ -196,6 +252,8 @@ public class GameManager : MonoBehaviour
 
     public void SuccessfulMission()
     {
+        UpdateBaseDifficulty(difficultyWinModifier);
+
         stats.stats.numberOfMissions++;
         stats.stats.numberOfSuccessfulMissions++;
 
@@ -205,5 +263,14 @@ public class GameManager : MonoBehaviour
     private void UpdateStats()
     {
         stats.UpdateStats();
+    }
+
+    void UpdateBaseDifficulty(int amount)
+    {
+        BaseDifficulty += amount;
+
+        BaseDifficulty = Mathf.Clamp(BaseDifficulty, minDifficulty, maxDifficulty);
+
+        UploadDifficulty();
     }
 }

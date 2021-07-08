@@ -16,6 +16,8 @@ public class Unlockable : SerializedScriptableObject
 
     [SerializeField] List<UnlockableReward> rewards;
 
+    [field: SerializeField] public int DifficultyIncrease { get; private set; } = 0;
+
     // TODO: list of items required for build
 
 

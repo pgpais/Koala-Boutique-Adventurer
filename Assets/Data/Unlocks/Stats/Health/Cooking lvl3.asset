@@ -43,4 +43,5 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Cooking lvl3
   <UnlockableDescription>k__BackingField: 
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0
