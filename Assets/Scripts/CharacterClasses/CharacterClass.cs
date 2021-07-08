@@ -76,7 +76,10 @@ public class CharacterClass : MonoBehaviour
     public void ModifyMovementSpeed(int amount)
     {
         var movementAbility = character.FindAbility<CharacterMovement>();
+        var runAbility = character.FindAbility<CharacterRun>();
+        movementAbility.WalkSpeed += amount;
         movementAbility.MovementSpeed += amount;
+        runAbility.RunSpeed += amount;
     }
 
     void ModifyMaximumHealthWithClass()
