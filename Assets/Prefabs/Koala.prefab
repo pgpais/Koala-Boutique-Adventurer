@@ -10156,6 +10156,7 @@ MonoBehaviour:
   DeathMMFeedbacks: {fileID: 4206741978730624185}
   hasIronBoots: 0
   hasDeflectingArmor: 0
+  DOTFeedbacks: {fileID: 0}
 --- !u!114 &9066412081002981391
 MonoBehaviour:
   m_ObjectHideFlags: 0
