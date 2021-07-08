@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1733475038040493563}
   - component: {fileID: 1159603640062058381}
   - component: {fileID: 6250900785845709640}
+  - component: {fileID: 481926870787982051}
   m_Layer: 13
   m_Name: Chasing Enemy
   m_TagString: Enemy
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561694053617324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69614a4a3cfd06d4e8388acafdb774bd, type: 3}
+  m_Script: {fileID: 11500000, guid: ce855b6340e55904bbe842f2698a0b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityStartSfx: {fileID: 0}
@@ -412,6 +413,9 @@ MonoBehaviour:
       - Decision: {fileID: 114975266224184248}
         TrueState: Deciding
         FalseState: 
+      - Decision: {fileID: 481926870787982051}
+        TrueState: Paused
+        FalseState: 
   - StateName: Moving
     Actions:
       array:
@@ -424,6 +428,9 @@ MonoBehaviour:
       - Decision: {fileID: 114631777180868210}
         TrueState: 
         FalseState: Detecting
+      - Decision: {fileID: 481926870787982051}
+        TrueState: Paused
+        FalseState: 
   - StateName: Deciding
     Actions:
       array:
@@ -435,6 +442,18 @@ MonoBehaviour:
         FalseState: 
       - Decision: {fileID: 114975266224184248}
         TrueState: 
+        FalseState: Detecting
+      - Decision: {fileID: 481926870787982051}
+        TrueState: Paused
+        FalseState: 
+  - StateName: Paused
+    Actions:
+      array:
+      - {fileID: 114472236543704332}
+    Transitions:
+      array:
+      - Decision: {fileID: 481926870787982051}
+        TrueState: Paused
         FalseState: Detecting
   BrainActive: 1
   TimeInThisState: 0
@@ -892,6 +911,19 @@ MonoBehaviour:
   hasIronBoots: 0
   hasDeflectingArmor: 0
   DOTFeedbacks: {fileID: 7847674135320713502}
+--- !u!114 &481926870787982051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561694053617324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3b4b6df2c987142869a5dd33488f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
 --- !u!1 &1671905898232590
 GameObject:
   m_ObjectHideFlags: 0

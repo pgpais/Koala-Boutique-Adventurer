@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 4009192093255968564}
   - component: {fileID: 5655847180681365850}
   - component: {fileID: 321887308093284137}
+  - component: {fileID: 2029188924464031362}
   m_Layer: 13
   m_Name: Turret Enemy
   m_TagString: Turret Enemy
@@ -527,6 +528,9 @@ MonoBehaviour:
       - Decision: {fileID: 3050585715912334523}
         TrueState: Aiming
         FalseState: 
+      - Decision: {fileID: 2029188924464031362}
+        TrueState: Paused
+        FalseState: 
   - StateName: Aiming
     Actions:
       array:
@@ -539,6 +543,9 @@ MonoBehaviour:
       - Decision: {fileID: 3051311098604759845}
         TrueState: Shooting
         FalseState: 
+      - Decision: {fileID: 2029188924464031362}
+        TrueState: Paused
+        FalseState: 
   - StateName: Shooting
     Actions:
       array:
@@ -548,6 +555,18 @@ MonoBehaviour:
       - Decision: {fileID: 3051311098604759845}
         TrueState: 
         FalseState: Aiming
+      - Decision: {fileID: 2029188924464031362}
+        TrueState: Paused
+        FalseState: 
+  - StateName: Paused
+    Actions:
+      array:
+      - {fileID: 3050906831314730729}
+    Transitions:
+      array:
+      - Decision: {fileID: 2029188924464031362}
+        TrueState: Paused
+        FalseState: Idling
   BrainActive: 1
   TimeInThisState: 0
   Target: {fileID: 0}
@@ -1040,6 +1059,19 @@ MonoBehaviour:
   hasIronBoots: 0
   hasDeflectingArmor: 0
   DOTFeedbacks: {fileID: 7540271105418354213}
+--- !u!114 &2029188924464031362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153712645695729299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3b4b6df2c987142869a5dd33488f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
 --- !u!1 &3153737174209974499
 GameObject:
   m_ObjectHideFlags: 0
