@@ -51,7 +51,7 @@ public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void PresentTimeLeft()
     {
-        string timeString = $"{(int)timeRemaining / 60}:{(int)timeRemaining % 60}";
+        string timeString = $"{(int)timeRemaining / 60}:{((int)timeRemaining % 60).ToString("00")}";
         timeRemainingText.text = timeString;
     }
 
