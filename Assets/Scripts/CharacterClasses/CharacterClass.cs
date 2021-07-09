@@ -6,9 +6,13 @@ using UnityEngine.Events;
 
 public class CharacterClass : MonoBehaviour
 {
+    public static UnityEvent<Buff> GotNewBuff = new UnityEvent<Buff>();
+    public static CharacterClass instance;
+
     [HideInInspector]
     public UnityEvent<Health> DamagedEnemy;
     public Character Character => character;
+    public List<Buff> CurrentBuffs => currentBuffs;
 
     [SerializeField] CharacterClassData data;
     [SerializeField] List<Buff> currentBuffs;
@@ -19,6 +23,15 @@ public class CharacterClass : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
         character = GetComponent<Character>();
         if (GameManager.instance != null)
         {
@@ -36,6 +49,7 @@ public class CharacterClass : MonoBehaviour
             if (buff.Unlocked)
             {
                 currentBuffs.Add(buff);
+                GotNewBuff.Invoke(buff);
             }
         }
 
@@ -44,7 +58,9 @@ public class CharacterClass : MonoBehaviour
 
         foreach (var buffName in boughtBuffs)
         {
-            currentBuffs.Add(MissionManager.instance.BuffList.GetBuffByName(buffName));
+            var buff = MissionManager.instance.BuffList.GetBuffByName(buffName);
+            currentBuffs.Add(buff);
+            GotNewBuff.Invoke(buff);
         }
 
         foreach (var buff in currentBuffs)
@@ -126,6 +142,7 @@ public class CharacterClass : MonoBehaviour
         {
             currentBuffs.Add(buff);
             buff.Initialize(this);
+            GotNewBuff.Invoke(buff);
         }
     }
 
