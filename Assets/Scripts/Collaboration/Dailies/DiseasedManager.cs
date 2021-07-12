@@ -30,7 +30,7 @@ public class DiseasedManager : MonoBehaviour
         FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
 
         DateTime now = DateTime.Now;
-        for (int i = 24; i >= 0; i--)
+        for (int i = 24; i >= 0; i -= 8)
         {
             if (i <= now.Hour)
             {
@@ -62,7 +62,7 @@ public class DiseasedManager : MonoBehaviour
                       {
                           Debug.Log("yey got diseased");
                           Debug.LogError("No Diseased Item today! creating a new one");
-                          CreateDiseasedItem(currentDate);
+                          diseased = new DiseasedTime(null, currentDate.ToString("yyyyMMdd HH"));
                           return;
                       }
 
@@ -79,7 +79,13 @@ public class DiseasedManager : MonoBehaviour
         if (now.Hour >= currentDate.Hour + 8 || now.DayOfYear > currentDate.DayOfYear)
         {
             currentDate = currentDate.AddHours(8);
+            GetDiseasedItem();
+        }
+
+        if (string.IsNullOrEmpty(diseased.diseasedItemName))
+        {
             CreateDiseasedItem(currentDate);
+            diseased = new DiseasedTime("null", currentDate.ToString("yyyyMMdd HH"));
         }
 
 
@@ -107,12 +113,13 @@ public class DiseasedManager : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("Failed to create new diseased item! Message:" + task.Exception.Message);
+                diseased = new DiseasedTime(null, currentDate.ToString("yyyyMMdd HH"));
                 return;
             }
             else if (task.IsCompleted)
             {
                 Debug.Log("Created new Diseased item!");
-                GetDiseasedItem();
+                diseased = newDiseased;
             }
         });
     }
