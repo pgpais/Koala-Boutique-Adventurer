@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DiseasedManager : MonoBehaviour
 {
+    private const string dateFormat = "yyyyMMdd HH";
     public static string referenceName = "diseasedItems";
     public static DiseasedManager instance;
 
@@ -47,7 +48,7 @@ public class DiseasedManager : MonoBehaviour
 
     void GetDiseasedItem()
     {
-        FirebaseCommunicator.instance.GetObject(new string[] { referenceName, FirebaseCommunicator.instance.FamilyId.ToString(), currentDate.ToString("yyyyMMdd HH") }, (task) =>
+        FirebaseCommunicator.instance.GetObject(new string[] { referenceName, FirebaseCommunicator.instance.FamilyId.ToString(), currentDate.ToString(dateFormat) }, (task) =>
               {
                   if (task.IsFaulted)
                   {
@@ -62,7 +63,7 @@ public class DiseasedManager : MonoBehaviour
                       {
                           Debug.Log("yey got diseased");
                           Debug.LogError("No Diseased Item today! creating a new one");
-                          diseased = new DiseasedTime(null, currentDate.ToString("yyyyMMdd HH"));
+                          diseased = new DiseasedTime(null, currentDate.ToString(dateFormat));
                           return;
                       }
 
@@ -85,7 +86,7 @@ public class DiseasedManager : MonoBehaviour
         if (string.IsNullOrEmpty(diseased.diseasedItemName))
         {
             CreateDiseasedItem(currentDate);
-            diseased = new DiseasedTime("null", currentDate.ToString("yyyyMMdd HH"));
+            diseased = new DiseasedTime("null", currentDate.ToString(dateFormat));
         }
 
 
@@ -104,16 +105,16 @@ public class DiseasedManager : MonoBehaviour
     public void CreateDiseasedItem(DateTime diseaseDate)
     {
         var item = ItemManager.instance.itemsData.GetRandomItem((item) => item.Type == Item.ItemType.Gatherable && item.Unlocked);
-        DiseasedTime newDiseased = new DiseasedTime(item.ItemName, diseaseDate.ToString("yyyyMMdd HH"));
+        DiseasedTime newDiseased = new DiseasedTime(item.ItemName, diseaseDate.ToString(dateFormat));
 
         string json = JsonConvert.SerializeObject(newDiseased);
 
-        FirebaseCommunicator.instance.SendObject(json, new string[] { referenceName, FirebaseCommunicator.instance.FamilyId.ToString(), diseaseDate.ToString("yyyyMMdd HH") }, (task) =>
+        FirebaseCommunicator.instance.SendObject(json, new string[] { referenceName, FirebaseCommunicator.instance.FamilyId.ToString(), diseaseDate.ToString(dateFormat) }, (task) =>
         {
             if (task.IsFaulted)
             {
                 Debug.LogError("Failed to create new diseased item! Message:" + task.Exception.Message);
-                diseased = new DiseasedTime(null, currentDate.ToString("yyyyMMdd HH"));
+                diseased = new DiseasedTime(null, currentDate.ToString(dateFormat));
                 return;
             }
             else if (task.IsCompleted)

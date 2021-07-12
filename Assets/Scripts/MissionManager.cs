@@ -218,7 +218,6 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                     unspawnedExits.Enqueue(newRoomExit);
                     // Debug.Log("Exit in prevRoom: " + curExit.ExitDirection + " | Exit in nextRoom: " + exit.ExitDirection + " | reqDirection: " + curExit.RequiredEntranceDirection);
                 }
-                // TODO: #48 null after adding all exits of a room
                 HandleNewRoomType(newRoomEntrances);
             }
         }
@@ -286,16 +285,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
         Debug.Log($"{entrances.gameObject.name} has exit to room {exitTP.Destination.CurrentRoom.gameObject.name}");
 
-        var health = destinationExit.gameObject.AddComponent<Health>();
-        health.DestroyOnDeath = false;
-        health.ChangeLayerOnDeath = false;
-        health.DisableModelOnDeath = false;
-        health.DisableCollisionsOnDeath = false;
-        health.DisableControllerOnDeath = false;
-        health.DisableChildCollisionsOnDeath = false;
-        health.ChangeLayersRecursivelyOnDeath = false;
-
-        destinationExit.EnableExit(false);
+        var health = destinationExit.gameObject.AddComponent<SecretDoor>();
     }
 
     private void SetupTeleporters(Teleporter current, Teleporter destination)

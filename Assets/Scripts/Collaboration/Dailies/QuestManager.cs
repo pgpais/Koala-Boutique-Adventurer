@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    private const string dateFormat = "yyyyMMdd";
     public static string referenceName = "adventurerQuest";
 
     public static QuestManager instance;
@@ -57,7 +58,7 @@ public class QuestManager : MonoBehaviour
                 {
                     dailyQuest = JsonConvert.DeserializeObject<Quest>(json);
 
-                    questDate = DateTime.ParseExact(dailyQuest.StartDay, "yyyyMMdd", null);
+                    questDate = DateTime.ParseExact(dailyQuest.StartDay, dateFormat, null);
                 }
             }
         });
@@ -77,7 +78,7 @@ public class QuestManager : MonoBehaviour
         string questItem = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
         int amount = 5;
         int goldReward = 100;
-        string dateTimeString = DateTime.Now.ToString("yyyyMMdd");
+        string dateTimeString = DateTime.Now.ToString(dateFormat);
 
         dailyQuest = new Quest(questItem, amount, goldReward, dateTimeString);
 
