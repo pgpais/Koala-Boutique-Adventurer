@@ -90,8 +90,7 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (var itemName in itemQuantity.Keys)
             {
-                // TODO: #45 Put Diseased item in a different place firebase
-                if (string.Equals(GameManager.instance.CurrentMission.diseasedItemName, itemName))
+                if (string.Equals(DiseasedManager.instance.DiseasedItemName, itemName))
                 {
                     GoldManager.GetGoldSendWithModifier(diseaseModifier);
                 }

@@ -27,9 +27,10 @@ public class ItemsList : ScriptableObject
         }
     }
 
-    public Item GetRandomItem()
+    public Item GetRandomItem(Predicate<Item> predicate)
     {
-        return items[Random.Range(0, items.Count)];
+        var filter = items.FindAll(predicate);
+        return filter[Random.Range(0, filter.Count)];
     }
 
     public Item GetRandomUnlockedItem()

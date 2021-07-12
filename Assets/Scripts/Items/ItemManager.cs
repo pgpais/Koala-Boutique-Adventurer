@@ -162,6 +162,6 @@ public class ItemManager : MonoBehaviour
 
     public Item GetRandomValuable()
     {
-        return itemsData.GetRandomItem();
+        return itemsData.GetRandomItem((item) => item.Type == Item.ItemType.Valuable);
     }
 }

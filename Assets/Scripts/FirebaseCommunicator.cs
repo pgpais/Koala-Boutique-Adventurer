@@ -155,6 +155,29 @@ public class FirebaseCommunicator : MonoBehaviour
         database.Child(firebaseReferenceName).Child(familyId.ToString()).SetRawJsonValueAsync(objJSON).ContinueWith(afterSendAction, scheduler);
     }
 
+    /// <summary>
+    /// Saves object to cloud without familyId
+    /// </summary>
+    /// <param name="objJSON"></param>
+    /// <param name="firebaseReferenceNames"></param>
+    /// <param name="afterSendAction"></param>
+    public void SendObject(string objJSON, string[] firebaseReferenceNames, Action<Task> afterSendAction)
+    {
+        TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        Debug.Log($"saving {objJSON} to {firebaseReferenceNames}");
+
+        var db = database;
+        Debug.Log(db.Key);
+
+        foreach (var referenceName in firebaseReferenceNames)
+        {
+            Debug.Log(referenceName);
+            db = db.Child(referenceName);
+            Debug.Log(db.Key);
+        }
+        db.SetRawJsonValueAsync(objJSON).ContinueWith(afterSendAction, scheduler);
+    }
+
     public void UpdateObject(Dictionary<string, System.Object> updates, string firebaseReferenceName, Action<Task> afterUpdateAction)
     {
         TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
