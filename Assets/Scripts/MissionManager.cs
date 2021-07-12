@@ -135,9 +135,6 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     public void FinishLevel()
     {
-        //! DEBUG
-        InventoryManager.instance.AddRandomValuable();
-
         MissionEnded.Invoke();
     }
 

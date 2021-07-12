@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
     public static UnityEvent<string, int> ItemAdded = new UnityEvent<string, int>();
+    public static UnityEvent ItemsAddedToGlobalInventory = new UnityEvent();
 
     public Dictionary<string, int> ItemQuantity => itemQuantity;
     public bool doubleDrops = false;
@@ -83,6 +84,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
+        ItemsAddedToGlobalInventory.Invoke();
 
         if (GameManager.instance.CurrentMission != null)
         {

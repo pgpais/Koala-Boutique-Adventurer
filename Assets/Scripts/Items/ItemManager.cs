@@ -162,6 +162,6 @@ public class ItemManager : MonoBehaviour
 
     public Item GetRandomValuable()
     {
-        return itemsData.GetRandomitem();
+        return itemsData.GetRandomItem();
     }
 }

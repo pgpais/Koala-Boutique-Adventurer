@@ -27,9 +27,14 @@ public class ItemsList : ScriptableObject
         }
     }
 
-    public Item GetRandomitem()
+    public Item GetRandomItem()
     {
-        var valuables = items.FindAll(item => item.Type == Item.ItemType.Valuable);
-        return valuables[Random.Range(0, valuables.Count)];
+        return items[Random.Range(0, items.Count)];
+    }
+
+    public Item GetRandomUnlockedItem()
+    {
+        var unlocked = items.FindAll(item => item.Unlocked);
+        return unlocked[Random.Range(0, unlocked.Count)];
     }
 }

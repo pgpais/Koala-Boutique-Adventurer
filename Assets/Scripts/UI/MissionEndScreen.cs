@@ -62,11 +62,6 @@ public class MissionEndScreen : MonoBehaviour
 
     void FinishMission()
     {
-        if (!playerDied)
-        {
-            InventoryManager.instance.AddInventoryToGlobalItems();
-        }
-
         if (GameManager.instance != null)
         {
             GameManager.instance.FinishLevel(playerDied);

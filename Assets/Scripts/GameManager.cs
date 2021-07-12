@@ -181,6 +181,11 @@ public class GameManager : MonoBehaviour
 
     public void FinishLevel(bool playerDied)
     {
+        if (!playerDied)
+        {
+            InventoryManager.instance.AddInventoryToGlobalItems();
+        }
+
         if (currentMission != null)
         {
             currentMission.completed = true;
