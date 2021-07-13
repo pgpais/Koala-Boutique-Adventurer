@@ -69,10 +69,10 @@ public class SecretDoor : ButtonActivated
                 doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
 
                 DateTime requestDate = DateTime.ParseExact(doorTime.interactDate, dateFormat, null);
-                //if today is after the date of the interact plus 2 days, create new request
-                if (DateTime.Now > requestDate.AddDays(2))
+                //if today is after the date of the interact plus 2 days, remove request
+                if (DateTime.Now >= requestDate.AddDays(2))
                 {
-                    CreateNewRequest();
+                    DeleteRequest();
                 }
             }
         });
@@ -105,6 +105,13 @@ public class SecretDoor : ButtonActivated
     void CreateNewRequest()
     {
         doorTime = new DoorTime(null, DateTime.Now.ToString(dateFormat));
+    }
+
+    //Delete Request
+    void DeleteRequest()
+    {
+        doorTime.interactDate = null;
+        SendDoorTime(doorTime);
     }
 
     void SendDoorTime(DoorTime doorTime)
