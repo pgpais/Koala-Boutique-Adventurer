@@ -26,19 +26,26 @@ public class HealingZone : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (targetHealth != null)
+            HealTarget();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (targetHealth == null)
         {
             targetHealth = other.GetComponent<Health>();
         }
-
-        HealTarget();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        HealTarget();
+        if (targetHealth == null)
+        {
+            targetHealth = other.GetComponent<Health>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
