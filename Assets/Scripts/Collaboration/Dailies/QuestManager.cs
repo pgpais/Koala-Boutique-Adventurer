@@ -52,7 +52,6 @@ public class QuestManager : MonoBehaviour
                 if (string.IsNullOrEmpty(json))
                 {
                     GenerateNewQuest();
-                    GetQuest();
                 }
                 else
                 {
@@ -88,6 +87,8 @@ public class QuestManager : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("Failed getting daily quest! message: " + task.Exception.Message);
+                // set daily quest date to the past so we get again next time
+                questDate = DateTime.Now.AddDays(-1);
                 return;
             }
             else if (task.IsCompleted)
