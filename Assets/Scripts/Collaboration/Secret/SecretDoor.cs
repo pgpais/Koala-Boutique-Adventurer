@@ -17,6 +17,28 @@ public class SecretDoor : ButtonActivated
         teleporter = GetComponent<Teleporter>();
     }
 
+    internal bool SubmitCode(int code)
+    {
+        if (code.ToString() == doorTime.code)
+        {
+            Unlock();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void Unlock()
+    {
+        doorTime.unlocked = true;
+        teleporter.Activable = true;
+        SendDoorTime(doorTime);
+
+        Destroy(this);
+    }
+
     private void Start()
     {
         teleporter.Activable = false;
@@ -38,11 +60,23 @@ public class SecretDoor : ButtonActivated
             else if (task.IsCompleted)
             {
                 string json = task.Result.GetRawJsonValue();
+
+                if (string.IsNullOrEmpty(json))
+                {
+                    doorTime = new DoorTime(null, null, false);
+                }
+
                 doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
+
+                DateTime requestDate = DateTime.ParseExact(doorTime.interactDate, dateFormat, null);
+                //if today is after the date of the interact plus 2 days, unlock the door
+                if (DateTime.Now > requestDate.AddDays(2))
+                {
+                    Unlock();
+                }
             }
         });
     }
-
     protected override void ActivateZone()
     {
         base.ActivateZone();
@@ -54,21 +88,24 @@ public class SecretDoor : ButtonActivated
             {
                 doorTime = new DoorTime(null, DateTime.Now.ToString(dateFormat));
 
-                SendNewDoorRequest(doorTime);
+                SendDoorTime(doorTime);
             }
             else
             {
                 Debug.Log("Already requested!");
             }
         }
-        else if (!doorTime.unlocked)
+
+        if (!doorTime.unlocked)
         {
             // TODO: show passcode ui
+            secretDoorUI.Init(this);
+            // Change game state to paused
         }
     }
-
-    void SendNewDoorRequest(DoorTime doorTime)
+    void SendDoorTime(DoorTime doorTime)
     {
+        //TODO: send item for processing
         string json = JsonConvert.SerializeObject(doorTime);
         FirebaseCommunicator.instance.SendObject(json, referenceName, (task) =>
         {
