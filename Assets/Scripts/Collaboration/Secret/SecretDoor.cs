@@ -69,10 +69,10 @@ public class SecretDoor : ButtonActivated
                 doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
 
                 DateTime requestDate = DateTime.ParseExact(doorTime.interactDate, dateFormat, null);
-                //if today is after the date of the interact plus 2 days, unlock the door
+                //if today is after the date of the interact plus 2 days, create new request
                 if (DateTime.Now > requestDate.AddDays(2))
                 {
-                    Unlock();
+                    CreateNewRequest();
                 }
             }
         });
@@ -86,7 +86,7 @@ public class SecretDoor : ButtonActivated
             // Door still hasn't been requested
             if (doorTime.interactDate == null)
             {
-                doorTime = new DoorTime(null, DateTime.Now.ToString(dateFormat));
+                CreateNewRequest();
 
                 SendDoorTime(doorTime);
             }
@@ -98,11 +98,15 @@ public class SecretDoor : ButtonActivated
 
         if (!doorTime.unlocked)
         {
-            // TODO: show passcode ui
             secretDoorUI.Init(this);
-            // Change game state to paused
         }
     }
+
+    void CreateNewRequest()
+    {
+        doorTime = new DoorTime(null, DateTime.Now.ToString(dateFormat));
+    }
+
     void SendDoorTime(DoorTime doorTime)
     {
         //TODO: send item for processing
