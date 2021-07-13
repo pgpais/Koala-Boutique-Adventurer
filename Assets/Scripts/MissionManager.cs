@@ -58,6 +58,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     private int howManyLootRoomsCreated = 0;
     private int howManyBuffRoomsCreated = 0;
     private int howManySecretRoomsCreated = 0;
+    private int howManyOracleRoomsCreated = 0;
 
     private void Awake()
     {
@@ -238,6 +239,9 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                 break;
             case RoomType.Loot:
                 howManyLootRoomsCreated++;
+                break;
+            case RoomType.Oracle:
+                howManyOracleRoomsCreated++;
                 break;
             case RoomType.Secret:
                 howManySecretRoomsCreated++;
@@ -432,6 +436,15 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
                         return entrances.Type == RoomType.Secret;
                     });
+        }
+        else if (howManyOracleRoomsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+            {
+                RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+
+                return entrances.Type == RoomType.Oracle;
+            });
         }
         else if (howManyHealingRoomsCreated < 1)
         {

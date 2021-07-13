@@ -26,7 +26,7 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
         Default,
         Exit,
         Loot,
-        Trap,
+        Oracle,
         Enemies,
         Secret,
         Buff,
