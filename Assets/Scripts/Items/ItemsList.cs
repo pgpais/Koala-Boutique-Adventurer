@@ -35,7 +35,7 @@ public class ItemsList : ScriptableObject
 
     public Item GetRandomUnlockedItem()
     {
-        var unlocked = items.FindAll(item => item.Unlocked);
+        var unlocked = items.FindAll(item => item.Unlocked && item.ItemName != "Gem");
         return unlocked[Random.Range(0, unlocked.Count)];
     }
 }

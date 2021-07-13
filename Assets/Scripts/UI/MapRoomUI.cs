@@ -19,7 +19,8 @@ public class MapRoomUI : MonoBehaviour
 
     public void Init(RoomType roomType)
     {
-        roomIcon.sprite = data.TypeToIcon[roomType];
+        if (data.TypeToIcon.ContainsKey(roomType))
+            roomIcon.sprite = data.TypeToIcon[roomType];
         gameObject.SetActive(false);
     }
 

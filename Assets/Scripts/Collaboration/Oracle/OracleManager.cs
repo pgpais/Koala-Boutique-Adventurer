@@ -14,7 +14,32 @@ public class OracleManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
+    }
+
+    internal string GetItemName()
+    {
+        return oracleData.itemName;
+    }
+
+    internal Sprite GetItemIcon()
+    {
+        Item item = ItemManager.instance.itemsData.GetItemByName(oracleData.itemName);
+        return item.sprite;
+    }
+
+    internal int GetHour()
+    {
+        return oracleData.bestPriceIndex * 3;
     }
 
     private void OnLoggedIn()
