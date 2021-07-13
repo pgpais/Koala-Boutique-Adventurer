@@ -8,10 +8,14 @@ public class OfferingManager : MonoBehaviour
     public static string referenceName = "offering";
     public static OfferingManager instance;
 
+
+
     public int numberOfItems = 4;
     private const string dateFormat = "yyyyMMdd";
 
+
     Offering offering;
+
 
     private void Awake()
     {
@@ -94,6 +98,12 @@ public class OfferingManager : MonoBehaviour
         });
     }
 
+    public void OfferingNotified()
+    {
+        offering.wasNotified = true;
+        SendOffering(offering);
+    }
+
     public struct Offering
     {
         public List<string> itemsToOffer;
@@ -111,5 +121,9 @@ public class OfferingManager : MonoBehaviour
         {
             return DateTime.Today >= DateTime.ParseExact(offerStartDate, dateFormat, null).AddDays(2);
         }
+    }
+    public Offering GetCurrentOffering()
+    {
+        return offering;
     }
 }

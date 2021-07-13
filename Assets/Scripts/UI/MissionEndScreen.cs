@@ -8,6 +8,8 @@ public class MissionEndScreen : MonoBehaviour
     [SerializeField] ItemUI itemUIPrefab;
     [Space]
     [SerializeField] Transform itemsLootedLayout;
+    [SerializeField] Transform offeringParent;
+    [SerializeField] Transform offeringLayout;
     [SerializeField] Button finishButton;
     [SerializeField] bool playerDied;
 
@@ -47,6 +49,22 @@ public class MissionEndScreen : MonoBehaviour
             // Show time remaining
 
             // Other stats
+
+            // Show offering
+            OfferingManager.Offering offering = OfferingManager.instance.GetCurrentOffering();
+
+            offeringParent.gameObject.SetActive(!offering.wasNotified);
+            if (!offering.wasNotified)
+            {
+
+                foreach (string itemName in offering.itemsToOffer)
+                {
+                    Item item = itemsList.GetItemByName(itemName);
+                    Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
+                }
+
+                OfferingManager.instance.OfferingNotified();
+            }
         }
 
         // button listener
