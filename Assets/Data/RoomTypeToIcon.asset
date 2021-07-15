@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: RoomTypeToIcon
   m_EditorClassIdentifier: 
   TypeToIcon:
-    keys: 04000000070000000100000006000000050000000200000000000000
+    keys: 0400000007000000010000000600000005000000020000000000000003000000
     values:
-    - {fileID: 946753061179584902, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: -6587150317201689214, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: -848916584108574680, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: -1618590777960108968, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: -659786605613242303, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: -2704089536514798322, guid: 94f8b294102840a4ab78bb8a1bd4af74, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 183b170a21b139341a0d3f7266c2a322, type: 3}
+    - {fileID: 21300000, guid: cb20d34bb95a180478376aa449ca5e17, type: 3}
+    - {fileID: 21300000, guid: f99f5c0545df7144ea48dbcba6ad7aed, type: 3}
+    - {fileID: 21300000, guid: e34d77bfdcd84044fa3cef4977b1cf94, type: 3}
+    - {fileID: 21300000, guid: bc64d834cc3158343bca873416fde178, type: 3}
+    - {fileID: 21300000, guid: ffa3ffd54330dc747b45dc19877caa25, type: 3}
+    - {fileID: 21300000, guid: b40abe092e14f934db43caed4398c524, type: 3}
+    - {fileID: 21300000, guid: 35a0c8a4ec2e56d4a86d1209f8156617, type: 3}

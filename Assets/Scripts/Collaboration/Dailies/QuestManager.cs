@@ -1,15 +1,20 @@
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    private const int managerQuestNumberOfItems = 4;
+    private const int managerQuestSellPerItem = 4;
     private const string dateFormat = "yyyyMMdd";
-    public static string referenceName = "adventurerQuest";
+    public static string adventureReferenceName = "adventurerQuest";
+    public static string managerReferenceName = "managerQuest";
 
     public static QuestManager instance;
 
-    Quest dailyQuest;
+    AdventurerQuest adventurerQuest;
+    ManagerQuest managerQuest;
     DateTime questDate;
 
     private void Awake()
@@ -28,15 +33,16 @@ public class QuestManager : MonoBehaviour
 
     void OnLoggedIn()
     {
-        GetQuest();
+        GetAdventurerQuest();
+        GetManagerQuest();
 
         MissionManager.MissionStarted.AddListener(OnMissionStarted);
-        MissionManager.MissionEnded.AddListener(OnMissionEnd);
+        // MissionManager.MissionEnded.AddListener(OnMissionEnd);
     }
 
-    void GetQuest()
+    void GetAdventurerQuest()
     {
-        FirebaseCommunicator.instance.GetObject(referenceName, (task) =>
+        FirebaseCommunicator.instance.GetObject(adventureReferenceName, (task) =>
         {
             if (task.IsFaulted)
             {
@@ -51,13 +57,39 @@ public class QuestManager : MonoBehaviour
 
                 if (string.IsNullOrEmpty(json))
                 {
-                    GenerateNewQuest();
+                    Debug.LogError("Failed getting daily quest! message: " + task.Exception.Message);
                 }
                 else
                 {
-                    dailyQuest = JsonConvert.DeserializeObject<Quest>(json);
+                    adventurerQuest = JsonConvert.DeserializeObject<AdventurerQuest>(json);
 
-                    questDate = DateTime.ParseExact(dailyQuest.StartDay, dateFormat, null);
+                    questDate = DateTime.ParseExact(adventurerQuest.StartDay, dateFormat, null);
+                }
+            }
+        });
+    }
+
+    void GetManagerQuest()
+    {
+        FirebaseCommunicator.instance.GetObject(managerReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed getting manager quest! message: " + task.Exception.Message);
+                return;
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("yey got manager quest!");
+                string json = task.Result.GetRawJsonValue();
+
+                if (string.IsNullOrEmpty(json))
+                {
+                    Debug.LogError("Failed getting manager quest! message: " + task.Exception.Message);
+                }
+                else
+                {
+                    managerQuest = JsonConvert.DeserializeObject<ManagerQuest>(json);
                 }
             }
         });
@@ -66,7 +98,7 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         int daysSinceQuest = (DateTime.Now - questDate).Days;
-        if (dailyQuest != null && daysSinceQuest > 0)
+        if (adventurerQuest != null && daysSinceQuest > 0)
         {
             GenerateNewQuest();
         }
@@ -79,10 +111,10 @@ public class QuestManager : MonoBehaviour
         int goldReward = 100;
         string dateTimeString = DateTime.Now.ToString(dateFormat);
 
-        dailyQuest = new Quest(questItem, amount, goldReward, dateTimeString);
+        adventurerQuest = new AdventurerQuest(questItem, amount, goldReward, dateTimeString);
 
-        string json = JsonConvert.SerializeObject(dailyQuest);
-        FirebaseCommunicator.instance.SendObject(json, referenceName, (task) =>
+        string json = JsonConvert.SerializeObject(adventurerQuest);
+        FirebaseCommunicator.instance.SendObject(json, adventureReferenceName, (task) =>
         {
             if (task.IsFaulted)
             {
@@ -101,22 +133,70 @@ public class QuestManager : MonoBehaviour
     void OnMissionStarted(float time)
     {
         InventoryManager.ItemsAddedToGlobalInventory.AddListener(OnItemsAdded);
+
+        if (managerQuest == null)
+            CreateManagerQuest();
     }
 
-    void OnMissionEnd()
+    //todo: this is a hack, we should be able to check the quest from an event
+    public void OnMissionEnd()
     {
+        managerQuest.Check();
 
+        SendManagerQuest();
     }
 
     private void OnItemsAdded()
     {
         foreach (var item in InventoryManager.instance.ItemQuantity.Keys)
         {
-            if (dailyQuest.CanCompleteQuest(item, InventoryManager.instance.ItemQuantity[item]))
+            if (adventurerQuest.CanCompleteQuest(item, InventoryManager.instance.ItemQuantity[item]))
             {
-                dailyQuest.CompleteQuest();
+                adventurerQuest.CompleteQuest();
             }
         }
         InventoryManager.ItemsAddedToGlobalInventory.RemoveListener(OnItemsAdded);
     }
+
+    void CreateManagerQuest()
+    {
+        Dictionary<string, int> items = new Dictionary<string, int>();
+        string dateTimeString = DateTime.Now.ToString(dateFormat);
+
+        for (int i = 0; i < managerQuestNumberOfItems; i++)
+        {
+            string itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+
+            while (items.ContainsKey(itemName))
+            {
+                itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+            }
+
+            int amount = managerQuestSellPerItem;
+            items.Add(itemName, amount);
+        }
+
+        managerQuest = new ManagerQuest(items, dateTimeString);
+
+        SendManagerQuest();
+    }
+
+    void SendManagerQuest()
+    {
+        string json = JsonConvert.SerializeObject(managerQuest);
+
+        FirebaseCommunicator.instance.SendObject(json, managerReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed getting manager quest! message: " + task.Exception.Message);
+                return;
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("CLOUD: update manager quest!");
+            }
+        });
+    }
+
 }

@@ -62,6 +62,7 @@ public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void ShowMissionFailedScreen()
     {
+        // TODO: #64 wait time to show dead animation
         failedScreen.gameObject.SetActive(true);
     }
 

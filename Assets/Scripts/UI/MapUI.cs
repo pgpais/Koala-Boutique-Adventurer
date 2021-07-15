@@ -11,6 +11,8 @@ public class MapUI : MonoBehaviour
     [SerializeField] GameObject doorPrefab;
     [SerializeField] Transform roomParent;
     [SerializeField] RoomEntrances startingRoom;
+    [SerializeField] int dividebythisWidth = 34;
+    [SerializeField] int dividebythisHeight = 28;
 
     float roomWidth;
     float roomHeight;
@@ -53,6 +55,8 @@ public class MapUI : MonoBehaviour
                     RectTransform roomRect = mapRoom.GetComponent<RectTransform>();
                     roomWidth = roomRect.rect.width;
                     roomHeight = roomRect.rect.height;
+                    roomWidth = roomWidth - (roomWidth / dividebythisWidth);
+                    roomHeight = roomHeight - (roomHeight / dividebythisHeight);
                     roomRect.SetParent(roomParent, false);
 
 
@@ -100,6 +104,7 @@ public class MapUI : MonoBehaviour
                     break;
             }
 
+            //TODO: #66 Different door vertical vs horizontal
             RectTransform doorRect = Instantiate(doorPrefab).GetComponent<RectTransform>();
             doorRect.SetParent(mapRoomRect, false);
             doorRect.anchoredPosition = posDelta;

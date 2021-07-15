@@ -1,6 +1,9 @@
 
+using System;
+using System.Collections.Generic;
+
 [System.Serializable]
-public class Quest
+public class AdventurerQuest
 {
     public string Item { get; private set; }
     public int Amount { get; private set; }
@@ -9,7 +12,7 @@ public class Quest
     public bool IsCompleted { get; private set; }
     public bool IsChecked { get; private set; }
 
-    public Quest(string item, int amount, int goldReward, string startDay, bool isCompleted = false, bool isChecked = false)
+    public AdventurerQuest(string item, int amount, int goldReward, string startDay, bool isCompleted = false, bool isChecked = false)
     {
         Item = item;
         Amount = amount;
@@ -27,5 +30,45 @@ public class Quest
     public void CompleteQuest()
     {
         IsCompleted = true;
+    }
+}
+
+[System.Serializable]
+internal class ManagerQuest
+{
+    public Dictionary<string, int> Items { get; private set; }
+    public string StartDay { get; private set; }
+    public bool IsCompleted { get; private set; }
+    public bool IsChecked { get; private set; }
+
+    public ManagerQuest(Dictionary<string, int> items, string startDay, bool isCompleted = false, bool isChecked = false)
+    {
+        Items = items;
+        StartDay = startDay;
+        IsCompleted = isCompleted;
+        IsChecked = isChecked;
+    }
+
+    public bool OnSoldItem(string itemName, int amount)
+    {
+        if (Items.ContainsKey(itemName))
+        {
+            Items[itemName] -= amount;
+            if (Items[itemName] <= 0)
+            {
+                Items.Remove(itemName);
+                if (Items.Count == 0)
+                {
+                    IsCompleted = true;
+                }
+            }
+        }
+
+        return IsCompleted;
+    }
+
+    internal void Check()
+    {
+        IsChecked = true;
     }
 }

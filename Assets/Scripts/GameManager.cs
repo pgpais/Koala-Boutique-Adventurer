@@ -180,9 +180,13 @@ public class GameManager : MonoBehaviour
 
     public void FinishLevel(bool playerDied)
     {
+        //TODO: If died, half items and gems
         if (!playerDied)
         {
             InventoryManager.instance.AddInventoryToGlobalItems();
+
+            // todo: this is a hack, it should be done with events
+            QuestManager.instance.OnMissionEnd();
         }
 
         if (currentMission != null)

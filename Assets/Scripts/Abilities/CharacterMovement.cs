@@ -13,6 +13,7 @@ public class CharacterMovement : MoreMountains.TopDownEngine.CharacterMovement
 
     void HandlePaused()
     {
+        //TODO: #65 Stop moving on death
         if (MoreMountains.TopDownEngine.GameManager.Instance.Paused)
         {
             _horizontalMovement = 0f;
