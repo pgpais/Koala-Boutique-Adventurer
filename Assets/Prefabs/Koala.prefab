@@ -15928,7 +15928,7 @@ MonoBehaviour:
   DebugActive: 0
   Channel: 0
   FlashColor: {r: 0.68235296, g: 0.03137255, b: 0.03137255, a: 1}
-  FlashDuration: 0.3
+  FlashDuration: 0.2
   FlashAlpha: 1
   FlashID: 0
 --- !u!114 &5243462857355733663
