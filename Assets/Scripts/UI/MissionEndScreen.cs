@@ -57,20 +57,20 @@ public class MissionEndScreen : MonoBehaviour
             // Other stats
 
             // Show offering
-            OfferingManager.Offering offering = OfferingManager.instance.GetCurrentOffering();
+            // OfferingManager.Offering offering = OfferingManager.instance.GetCurrentOffering();
 
-            offeringParent.gameObject.SetActive(!offering.wasNotified);
-            if (!offering.wasNotified)
-            {
+            // offeringParent.gameObject.SetActive(!offering.wasNotified);
+            // if (!offering.wasNotified)
+            // {
 
-                foreach (string itemName in offering.itemsToOffer)
-                {
-                    Item item = itemsList.GetItemByName(itemName);
-                    Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
-                }
+            //     foreach (string itemName in offering.itemsToOffer)
+            //     {
+            //         Item item = itemsList.GetItemByName(itemName);
+            //         Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
+            //     }
 
-                OfferingManager.instance.OfferingNotified();
-            }
+            //     OfferingManager.instance.OfferingNotified();
+            // }
         }
 
         // button listener
