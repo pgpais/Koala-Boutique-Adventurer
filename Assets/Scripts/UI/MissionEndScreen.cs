@@ -22,12 +22,18 @@ public class MissionEndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.anyKeyDown)
+        {
+            FinishMission();
+        }
     }
 
     private void OnEnable()
     {
+        MoreMountains.TopDownEngine.GameManager.Instance.Paused = true;
+
         Cursor.visible = true;
+
         if (!playerDied)
         {
             foreach (Transform child in itemsLootedLayout)
@@ -68,12 +74,12 @@ public class MissionEndScreen : MonoBehaviour
         }
 
         // button listener
-        finishButton.onClick.AddListener(FinishMission);
+
     }
 
     private void OnDisable()
     {
-        finishButton.onClick.RemoveListener(FinishMission);
+
     }
 
 

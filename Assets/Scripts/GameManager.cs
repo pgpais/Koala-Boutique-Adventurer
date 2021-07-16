@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
             InventoryManager.instance.AddInventoryToGlobalItems();
 
             // todo: this is a hack, it should be done with events
-            QuestManager.instance.OnMissionEnd();
+            // QuestManager.instance.OnMissionEnd();
         }
 
         if (currentMission != null)
