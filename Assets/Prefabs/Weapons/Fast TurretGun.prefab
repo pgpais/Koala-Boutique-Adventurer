@@ -75,6 +75,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
         type: 3}
+      propertyPath: MagazineSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020562899591026892, guid: 531233bcb452eb7438a58d2d80ccaa5a,
+        type: 3}
       propertyPath: SpawnPosition.x
       value: 0.8
       objectReference: {fileID: 0}

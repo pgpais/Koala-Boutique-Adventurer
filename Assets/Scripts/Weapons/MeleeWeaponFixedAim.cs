@@ -7,11 +7,11 @@ public class MeleeWeaponFixedAim : MeleeWeapon
 {
     protected override IEnumerator MeleeWeaponAttack()
     {
-        Debug.Log("Disabling aim", _aimableWeapon);
-        _aimableWeapon.enabled = false;
+        // Debug.Log("Disabling aim", _aimableWeapon);
+        // _aimableWeapon.enabled = false;
         yield return base.MeleeWeaponAttack();
-        _aimableWeapon.enabled = true;
-        Debug.Log("Enabling aim", _aimableWeapon);
+        // _aimableWeapon.enabled = true;
+        // Debug.Log("Enabling aim", _aimableWeapon);
 
     }
 }

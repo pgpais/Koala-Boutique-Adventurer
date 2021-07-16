@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 466889574451336338, guid: ff623a8b316b43d4fb6f6afa9ca5bd3e,
     type: 3}
+  <iconUI>k__BackingField: {fileID: 21300000, guid: 13dd3ac456ac5fa4cb0036064f401898,
+    type: 3}
   <buffName>k__BackingField: Blessing
   <description>k__BackingField: A blessing weaks your enemies!
   <StartsUnlocked>k__BackingField: 0

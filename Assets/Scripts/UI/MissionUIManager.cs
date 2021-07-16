@@ -29,31 +29,31 @@ public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
         endScreen.gameObject.SetActive(false);
         failedScreen.gameObject.SetActive(false);
 
-        seedText.text = "Seed: " + MissionManager.instance.Seed.ToString();
+        // seedText.text = "Seed: " + MissionManager.instance.Seed.ToString();
 
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (timeRemaining > 0)
-        {
-            CountdownTime();
-            PresentTimeLeft();
-        }
-    }
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     if (timeRemaining > 0)
+    //     {
+    //         CountdownTime();
+    //         PresentTimeLeft();
+    //     }
+    // }
 
-    void CountdownTime()
-    {
-        timeRemaining -= Time.deltaTime;
-    }
+    // void CountdownTime()
+    // {
+    //     timeRemaining -= Time.deltaTime;
+    // }
 
-    void PresentTimeLeft()
-    {
-        string timeString = $"{(int)timeRemaining / 60}:{((int)timeRemaining % 60).ToString("00")}";
-        timeRemainingText.text = timeString;
-    }
+    // void PresentTimeLeft()
+    // {
+    //     string timeString = $"{(int)timeRemaining / 60}:{((int)timeRemaining % 60).ToString("00")}";
+    //     timeRemainingText.text = timeString;
+    // }
 
     void ShowMissionEndScreen()
     {

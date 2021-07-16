@@ -9,6 +9,6 @@ public class BuffHUDItem : MonoBehaviour
 
     public void Init(Buff buff)
     {
-        buffImage.sprite = buff.icon;
+        buffImage.sprite = buff.iconUI;
     }
 }

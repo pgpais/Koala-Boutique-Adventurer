@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static string difficultyReferenceName = "difficulty";
     public static UnityEvent NoMissionExists = new UnityEvent();
     public static UnityEvent NewMissionAdded = new UnityEvent();
-    public static int maxDifficulty = 20;
+    public static int maxDifficulty = 40;
     public static int minDifficulty = 0;
     public static int difficultyWinModifier = 3;
     public static int difficultyDeathModifier = -1;

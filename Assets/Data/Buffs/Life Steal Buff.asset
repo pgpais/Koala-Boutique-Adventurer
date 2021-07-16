@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: -4199204927252948060, guid: 557d75ed79716ff4799cd08ab99bad12,
     type: 3}
+  <iconUI>k__BackingField: {fileID: 21300000, guid: ddff3d78cf6ce974780772cbad2f3612,
+    type: 3}
   <buffName>k__BackingField: Life Steal
   <description>k__BackingField: Your attacks heal you!
   <StartsUnlocked>k__BackingField: 0

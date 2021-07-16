@@ -133,7 +133,33 @@ MonoBehaviour:
   - {fileID: 4682402735325630275}
   InitializationMode: 2
   SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
 --- !u!114 &6586793919849454213
 MonoBehaviour:
@@ -157,6 +183,12 @@ MonoBehaviour:
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
     Sequence: {fileID: 0}
     TrackID: 0
     Quantized: 0
@@ -190,6 +222,12 @@ MonoBehaviour:
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
     Sequence: {fileID: 0}
     TrackID: 0
     Quantized: 0
@@ -240,6 +278,8 @@ GameObject:
   - component: {fileID: 5655847180681365850}
   - component: {fileID: 321887308093284137}
   - component: {fileID: 2029188924464031362}
+  - component: {fileID: -6499919313147052622}
+  - component: {fileID: 5427254119024103540}
   m_Layer: 13
   m_Name: Turret Enemy
   m_TagString: Turret Enemy
@@ -353,6 +393,7 @@ MonoBehaviour:
   DirectionOnSpawn: 0
   CharacterAnimator: {fileID: 0}
   UseDefaultMecanim: 1
+  PerformAnimatorSanityChecks: 1
   CharacterModel: {fileID: 0}
   SendStateChangeEvents: 1
   SendStateUpdateEvents: 1
@@ -499,7 +540,7 @@ MonoBehaviour:
   AutomaticallyBindAnimator: 1
   AmmoDisplayID: 0
   AutoIK: 1
-  ContinuousPress: 0
+  ContinuousPress: 1
   GettingHitInterruptsAttack: 0
   BufferInput: 0
   NewInputExtendsBuffer: 0
@@ -531,6 +572,9 @@ MonoBehaviour:
       - Decision: {fileID: 2029188924464031362}
         TrueState: Paused
         FalseState: 
+      - Decision: {fileID: -6499919313147052622}
+        TrueState: Reloading
+        FalseState: 
   - StateName: Aiming
     Actions:
       array:
@@ -558,6 +602,9 @@ MonoBehaviour:
       - Decision: {fileID: 2029188924464031362}
         TrueState: Paused
         FalseState: 
+      - Decision: {fileID: -6499919313147052622}
+        TrueState: Reloading
+        FalseState: 
   - StateName: Paused
     Actions:
       array:
@@ -566,6 +613,18 @@ MonoBehaviour:
       array:
       - Decision: {fileID: 2029188924464031362}
         TrueState: Paused
+        FalseState: Idling
+  - StateName: Reloading
+    Actions:
+      array:
+      - {fileID: 5427254119024103540}
+    Transitions:
+      array:
+      - Decision: {fileID: 2029188924464031362}
+        TrueState: Paused
+        FalseState: 
+      - Decision: {fileID: -6499919313147052622}
+        TrueState: 
         FalseState: Idling
   BrainActive: 1
   TimeInThisState: 0
@@ -586,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 12
+  Radius: 17
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
@@ -634,6 +693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+  TargetHandleWeaponAbility: {fileID: 0}
+  AimOrigin: 0
   FaceTarget: 1
   AimAtTarget: 1
 --- !u!114 &3051311098604759845
@@ -650,7 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   ComparisonMode: 1
-  Distance: 9
+  Distance: 17
 --- !u!114 &3050878759974431023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +729,7 @@ MonoBehaviour:
   HealthBarPrefab: {fileID: 0}
   Size: {x: 1.5, y: 0.4}
   BackgroundPadding: {x: 0.05, y: 0.05}
+  InitialRotationAngles: {x: 0, y: 0, z: 0}
   ForegroundColor:
     serializedVersion: 2
     key0: {r: 0.735849, g: 0, b: 0, a: 1}
@@ -1072,6 +1134,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+--- !u!114 &-6499919313147052622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153712645695729299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a6fc7fc6534a94f95e540ab6ea50b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+--- !u!114 &5427254119024103540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153712645695729299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c5548ebf1aeb04bb858a38ebeb4dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  OnlyReloadOnceInThisSate: 0
 --- !u!1 &3153737174209974499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1288,33 @@ MonoBehaviour:
   - {fileID: 6744881002859201105}
   InitializationMode: 2
   SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
 --- !u!114 &7256515097142698730
 MonoBehaviour:
@@ -1223,6 +1338,12 @@ MonoBehaviour:
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
     Sequence: {fileID: 0}
     TrackID: 0
     Quantized: 0
@@ -1261,6 +1382,12 @@ MonoBehaviour:
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
     Sequence: {fileID: 0}
     TrackID: 0
     Quantized: 0
@@ -1317,7 +1444,33 @@ MonoBehaviour:
   - {fileID: 2896186237897962680}
   InitializationMode: 2
   SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
 --- !u!114 &2896186237897962680
 MonoBehaviour:
@@ -1341,6 +1494,12 @@ MonoBehaviour:
     NumberOfRepeats: 0
     RepeatForever: 0
     DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
     Sequence: {fileID: 0}
     TrackID: 0
     Quantized: 0

@@ -45,12 +45,12 @@ public class PoisonBuff : Buff
         bool damageEnabled = !health.Invulnerable;
         if (damageEnabled)
         {
-            health.Damage(poisonDamage, characterClass.gameObject, 0, 0);
+            health.Damage(poisonDamage, characterClass.gameObject, 0, 0, Vector3.zero);
         }
         else
         {
             health.DamageEnabled();
-            health.Damage(poisonDamage, characterClass.gameObject, 0, 0);
+            health.Damage(poisonDamage, characterClass.gameObject, 0, 0, Vector3.zero);
             health.DamageDisabled();
         }
 

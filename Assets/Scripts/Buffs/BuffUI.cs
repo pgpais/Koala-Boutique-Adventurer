@@ -15,7 +15,10 @@ public class BuffUI : MonoBehaviour
 
     public void Initialize(string tooltip)
     {
-        nameText.text = tooltip;
-        descriptionText.text = "";
+        // if (nameText != null)
+        // {
+        //     nameText.text = tooltip;
+        // }
+        descriptionText.text = tooltip;
     }
 }

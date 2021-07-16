@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 9111962250586777772, guid: f6d1bde24d66d2a488b7ab0f78ffe100,
     type: 3}
+  <iconUI>k__BackingField: {fileID: 21300000, guid: 23c45d5bc6a76084f9c0c449d3555af6,
+    type: 3}
   <buffName>k__BackingField: Lucky Charm
   <description>k__BackingField: Doubles your drops!
   <StartsUnlocked>k__BackingField: 0

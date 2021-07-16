@@ -14,75 +14,76 @@ namespace Cheese
 
         [SerializeField] MMFeedbacks DOTFeedbacks;
 
-        public override void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration)
-        {
-            if (instigator.CompareTag("Turret Shot") && hasDeflectingArmor && Random.Range(0, 1f) < 0.5f)
-                return;
 
-            if (instigator.CompareTag("Spike Trap") && hasIronBoots)
-                return;
+        // public override void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration)
+        // {
+        //     if (instigator.CompareTag("Turret Shot") && hasDeflectingArmor && Random.Range(0, 1f) < 0.5f)
+        //         return;
 
-            if (Invulnerable)
-            {
-                return;
-            }
+        //     if (instigator.CompareTag("Spike Trap") && hasIronBoots)
+        //         return;
 
-            // if we're already below zero, we do nothing and exit
-            if ((CurrentHealth <= 0) && (InitialHealth != 0))
-            {
-                return;
-            }
+        //     if (Invulnerable)
+        //     {
+        //         return;
+        //     }
 
-            // we decrease the character's health by the damage
-            float previousHealth = CurrentHealth;
-            CurrentHealth -= damage;
+        //     // if we're already below zero, we do nothing and exit
+        //     if ((CurrentHealth <= 0) && (InitialHealth != 0))
+        //     {
+        //         return;
+        //     }
 
-            if (OnHit != null)
-            {
-                OnHit();
-            }
+        //     // we decrease the character's health by the damage
+        //     float previousHealth = CurrentHealth;
+        //     CurrentHealth -= damage;
 
-            if (CurrentHealth < 0)
-            {
-                CurrentHealth = 0;
-            }
+        //     if (OnHit != null)
+        //     {
+        //         OnHit();
+        //     }
 
-            // we prevent the character from colliding with Projectiles, Player and Enemies
-            if (invincibilityDuration > 0)
-            {
-                DamageDisabled();
-                StartCoroutine(DamageEnabled(invincibilityDuration));
-            }
+        //     if (CurrentHealth < 0)
+        //     {
+        //         CurrentHealth = 0;
+        //     }
 
-            // we trigger a damage taken event
-            MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);
+        //     // we prevent the character from colliding with Projectiles, Player and Enemies
+        //     if (invincibilityDuration > 0)
+        //     {
+        //         DamageDisabled();
+        //         StartCoroutine(DamageEnabled(invincibilityDuration));
+        //     }
 
-            if (_animator != null)
-            {
-                _animator.SetTrigger("Damage");
-            }
+        //     // we trigger a damage taken event
+        //     MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);
 
-            bool isDoT = invincibilityDuration == 0; // this is not a good definer, but it works
-            if (isDoT)
-            {
-                DOTFeedbacks?.PlayFeedbacks(this.transform.position);
-            }
-            else
-            {
-                DamageMMFeedbacks?.PlayFeedbacks(this.transform.position);
-            }
+        //     if (_animator != null)
+        //     {
+        //         _animator.SetTrigger("Damage");
+        //     }
 
-            // we update the health bar
-            UpdateHealthBar(true);
+        //     bool isDoT = invincibilityDuration == 0; // this is not a good definer, but it works
+        //     if (isDoT)
+        //     {
+        //         DOTFeedbacks?.PlayFeedbacks(this.transform.position);
+        //     }
+        //     else
+        //     {
+        //         DamageMMFeedbacks?.PlayFeedbacks(this.transform.position);
+        //     }
 
-            // if health has reached zero
-            if (CurrentHealth <= 0)
-            {
-                // we set its health to zero (useful for the healthbar)
-                CurrentHealth = 0;
+        //     // we update the health bar
+        //     UpdateHealthBar(true);
 
-                Kill();
-            }
-        }
+        //     // if health has reached zero
+        //     if (CurrentHealth <= 0)
+        //     {
+        //         // we set its health to zero (useful for the healthbar)
+        //         CurrentHealth = 0;
+
+        //         Kill();
+        //     }
+        // }
     }
 }

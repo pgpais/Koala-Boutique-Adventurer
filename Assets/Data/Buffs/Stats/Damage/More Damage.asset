@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 12085813604639031, guid: 43211ba3c0f12d04a92029eadc758569,
     type: 3}
+  <iconUI>k__BackingField: {fileID: 21300000, guid: 262bda9622348ab4b93909ddb3faa96f,
+    type: 3}
   <buffName>k__BackingField: More Damage
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
-  AlreadySpawned: 1
+  AlreadySpawned: 0
   movementSpeedModifier: 0
   healthModifier: 0
   damageModifier: 5
