@@ -88,6 +88,7 @@ public class MissionEndScreen : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
+            MoreMountains.TopDownEngine.GameManager.Instance.Paused = false;
             GameManager.instance.FinishLevel(playerDied);
         }
     }
