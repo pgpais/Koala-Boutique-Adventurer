@@ -201,9 +201,10 @@ MonoBehaviour:
   WeaponUseTransform: {fileID: 0}
   LeftHandHandle: {fileID: 0}
   RightHandHandle: {fileID: 0}
-  ModifyMovementWhileAttacking: 0
-  MovementMultiplier: 0
-  PreventAllMovementWhileInUse: 1
+  ModifyMovementWhileAttacking: 1
+  MovementMultiplier: 0.2
+  PreventAllMovementWhileInUse: 0
+  PreventAllAimWhileInUse: 0
   RecoilForce: 0
   Animators:
   - {fileID: 5634772773055356260}
@@ -240,6 +241,6 @@ MonoBehaviour:
     m_Bits: 8397056
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 700, y: 0}
+  KnockbackForce: {x: 700, y: 0, z: 0}
   InvincibilityDuration: 0.5
   CanDamageOwner: 0
