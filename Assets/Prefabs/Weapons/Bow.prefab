@@ -71,12 +71,13 @@ MonoBehaviour:
   ModifyMovementWhileAttacking: 1
   MovementMultiplier: 0.2
   PreventAllMovementWhileInUse: 0
+  PreventAllAimWhileInUse: 0
   RecoilForce: 0
   Animators:
   - {fileID: 2000100662575151167}
   WeaponAnimationID: 0
   IdleAnimationParameter: 
-  StartAnimationParameter: Shoot
+  StartAnimationParameter: Attacking
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
   UseAnimationParameter: 

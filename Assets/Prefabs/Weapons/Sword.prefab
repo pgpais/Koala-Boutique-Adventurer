@@ -210,7 +210,7 @@ MonoBehaviour:
   - {fileID: 5634772773055356260}
   WeaponAnimationID: 0
   IdleAnimationParameter: 
-  StartAnimationParameter: Slash
+  StartAnimationParameter: Attacking
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
   UseAnimationParameter: 

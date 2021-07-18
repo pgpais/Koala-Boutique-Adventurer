@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1561694053617324, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_Name
-      value: Chasing Small Enemy
+      value: Eye
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,6 +63,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95175321394988512, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 29062c31987c1ff48b62dfeaf10fd4e3,
+        type: 2}
     - target: {fileID: 114103483350062584, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: DamageCaused
@@ -73,12 +79,24 @@ PrefabInstance:
       propertyPath: RunSpeed
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5262351200695601763, guid: a708e1a99b207fc4e9f5a645361654ba,
+        type: 3}
     - target: {fileID: 4101862083786401132, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: 97b8c62a13776a84c8d582a0fb028cd2,
         type: 2}
+    - target: {fileID: 4290112132015569358, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: InitialWeapon
+      value: 
+      objectReference: {fileID: 9033571411509709967, guid: d54dd501de65ce249b13099a732d6c84,
+        type: 3}
     - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: LootTableSO

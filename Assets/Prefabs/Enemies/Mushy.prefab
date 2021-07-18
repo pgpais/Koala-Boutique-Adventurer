@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1561694053617324, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_Name
-      value: Chasing Big Enemy
+      value: Mushy
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4736116768674126, guid: f70d368a1130a594a9977619d11d9b11, type: 3}
       propertyPath: m_LocalScale.z
@@ -67,6 +67,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95175321394988512, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7b3b8ae3a2e86a244afb6ce46764888c,
+        type: 2}
     - target: {fileID: 114103483350062584, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: DamageCaused
@@ -79,13 +85,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1424101135454460495, guid: aab841893f811dd44bc6d43c200d1ce5,
+        type: 3}
+    - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
       propertyPath: m_Color.b
-      value: 0.71599996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.71599996
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101862083786401132, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
@@ -93,6 +110,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 33f14697e4132c04688fccd835bf92c4,
         type: 2}
+    - target: {fileID: 4290112132015569358, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: InitialWeapon
+      value: 
+      objectReference: {fileID: 9033571411509709967, guid: 9309cd57231f84f498e0e9dd13760b4b,
+        type: 3}
     - target: {fileID: 4715256016921185788, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: LootTableSO
