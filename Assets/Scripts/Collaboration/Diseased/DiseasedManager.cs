@@ -8,11 +8,19 @@ public class DiseasedManager : MonoBehaviour
     public static string referenceName = "diseasedItems";
     public static DiseasedManager instance;
 
-    public string DiseasedItemName => diseased.diseasedItemName;
+    public string DiseasedItemName
+    {
+        get
+        {
+            if (requirement.Unlocked)
+                return diseased.diseasedItemName;
+            else
+                return null;
+        }
+    }
 
+    [SerializeField] Unlockable requirement;
 
-    [SerializeField] bool testUpload = false;
-    [SerializeField] int uploadAmount = 1;
     DiseasedTime diseased;
 
     DateTime currentDate;
@@ -29,16 +37,6 @@ public class DiseasedManager : MonoBehaviour
         }
 
         FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
-
-        DateTime now = DateTime.Now;
-        for (int i = 24; i >= 0; i -= 8)
-        {
-            if (i <= now.Hour)
-            {
-                currentDate = new DateTime(now.Year, now.Month, now.Day, i, 00, 00);
-                break;
-            }
-        }
     }
 
     void OnLoggedIn()
@@ -48,6 +46,16 @@ public class DiseasedManager : MonoBehaviour
 
     void GetDiseasedItem()
     {
+        DateTime now = DateTime.Now;
+        for (int i = 24; i >= 0; i -= 8)
+        {
+            if (i <= now.Hour)
+            {
+                currentDate = new DateTime(now.Year, now.Month, now.Day, i, 00, 00);
+                break;
+            }
+        }
+
         FirebaseCommunicator.instance.GetObject(new string[] { referenceName, FirebaseCommunicator.instance.FamilyId.ToString(), currentDate.ToString(dateFormat) }, (task) =>
               {
                   if (task.IsFaulted)
@@ -76,6 +84,11 @@ public class DiseasedManager : MonoBehaviour
 
     private void Update()
     {
+        if (!requirement.Unlocked)
+        {
+            return;
+        }
+
         DateTime now = DateTime.Now;
         if (now.Hour >= currentDate.Hour + 8 || now.DayOfYear > currentDate.DayOfYear)
         {
@@ -87,18 +100,6 @@ public class DiseasedManager : MonoBehaviour
         {
             CreateDiseasedItem(currentDate);
             diseased = new DiseasedTime("null", currentDate.ToString(dateFormat));
-        }
-
-
-        if (testUpload)
-        {
-            DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            for (int i = 0; i < uploadAmount; i++)
-            {
-                CreateDiseasedItem(dateTime + new TimeSpan(8 * i, 0, 0));
-            }
-
-            testUpload = false;
         }
     }
 
@@ -125,6 +126,7 @@ public class DiseasedManager : MonoBehaviour
         });
     }
 
+    [System.Serializable]
     struct DiseasedTime
     {
         public string diseasedItemName;

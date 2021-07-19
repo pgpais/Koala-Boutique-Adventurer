@@ -70,6 +70,11 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("inventory > global");
         Debug.Log("Local inventory:");
 
+        if (DiseasedManager.instance != null && DiseasedManager.instance.DiseasedItemName != null)
+        {
+            HandleDiseasedItem(DiseasedManager.instance.DiseasedItemName);
+        }
+
         foreach (var itemName in itemQuantity.Keys)
         {
             int quantity = itemQuantity[itemName];
@@ -86,15 +91,18 @@ public class InventoryManager : MonoBehaviour
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
         ItemsAddedToGlobalInventory.Invoke();
 
-        if (GameManager.instance.CurrentMission != null)
+
+
+    }
+
+    void HandleDiseasedItem(string itemName)
+    {
+        if (itemQuantity.ContainsKey(itemName))
         {
-            foreach (var itemName in itemQuantity.Keys)
-            {
-                if (string.Equals(DiseasedManager.instance.DiseasedItemName, itemName))
-                {
-                    GoldManager.GetGoldSendWithModifier(diseaseModifier);
-                }
-            }
+            int quantity = itemQuantity[itemName];
+            itemQuantity.Remove(itemName);
+
+            GoldManager.GetGoldSendWithModifier(diseaseModifier * quantity);
         }
     }
 }
