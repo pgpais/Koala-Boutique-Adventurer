@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   <buffName>k__BackingField: More projectiles
   <description>k__BackingField: When using a ranged weapon, you shoot two additional
-    projectiles.
+    projectiles
   <StartsUnlocked>k__BackingField: 0
   AlreadySpawned: 0

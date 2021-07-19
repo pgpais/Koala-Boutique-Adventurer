@@ -17,7 +17,7 @@ MonoBehaviour:
   <iconUI>k__BackingField: {fileID: 21300000, guid: ddff3d78cf6ce974780772cbad2f3612,
     type: 3}
   <buffName>k__BackingField: Life Steal
-  <description>k__BackingField: Your attacks heal you!
+  <description>k__BackingField: Your attacks heal you
   <StartsUnlocked>k__BackingField: 0
   AlreadySpawned: 0
   LifeStealAmount: 0.5
