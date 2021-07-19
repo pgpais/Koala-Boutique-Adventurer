@@ -89,12 +89,29 @@ public class QuestManager : MonoBehaviour
         if (adventurerQuest.CanCompleteQuest(itemsGathered))
         {
             adventurerQuest.CompleteQuest();
+            SendAdventurerQuest();
             return true;
         }
         else
         {
             return false;
         }
+    }
+
+    public void SendAdventurerQuest()
+    {
+        string json = JsonConvert.SerializeObject(adventurerQuest);
+        FirebaseCommunicator.instance.SendObject(json, adventurerReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to send adventurer quest");
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Sent adventurer quest");
+            }
+        });
     }
 
     public bool AdventurerQuestExists()

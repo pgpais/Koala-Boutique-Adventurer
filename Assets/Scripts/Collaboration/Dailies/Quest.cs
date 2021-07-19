@@ -22,6 +22,11 @@ public class AdventurerQuest
 
     public bool CanCompleteQuest(Dictionary<string, int> itemQuantity)
     {
+        if (!IsChecked)
+        {
+            return false;
+        }
+
         bool correctItemQuantity = true;
 
         foreach (KeyValuePair<string, int> item in this.itemQuantity)
@@ -41,7 +46,7 @@ public class AdventurerQuest
             }
         }
 
-        return IsChecked && correctItemQuantity;
+        return correctItemQuantity;
     }
 
     public void CompleteQuest()
