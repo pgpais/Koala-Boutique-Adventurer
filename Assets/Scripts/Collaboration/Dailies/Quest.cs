@@ -58,6 +58,9 @@ public class AdventurerQuest
 [System.Serializable]
 internal class ManagerQuest
 {
+    public static int amountOfItems = 3;
+    public static int maxItemQuantity = 10;
+    public static string dateFormat = "yyyyMMdd";
     public Dictionary<string, int> Items { get; private set; }
     public string StartDay { get; private set; }
     public bool IsCompleted { get; private set; }
@@ -92,5 +95,13 @@ internal class ManagerQuest
     internal void Check()
     {
         IsChecked = true;
+    }
+
+    public bool IsOld()
+    {
+        DateTime today = DateTime.Today;
+        DateTime startDay = DateTime.ParseExact(StartDay, dateFormat, null);
+
+        return (today - startDay).Days != 0;
     }
 }

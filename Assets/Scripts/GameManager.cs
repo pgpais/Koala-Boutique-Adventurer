@@ -184,28 +184,14 @@ public class GameManager : MonoBehaviour
         if (!playerDied)
         {
             InventoryManager.instance.AddInventoryToGlobalItems();
-        }
-
-        if (currentMission != null)
-        {
-            currentMission.completed = true;
-
-            FirebaseCommunicator.instance.SendObject(JsonUtility.ToJson(currentMission), "missions", (task) =>
+            if (QuestManager.instance != null)
             {
-                if (task.IsCompleted)
-                {
-                    Debug.Log("Level finished!");
+                QuestManager.instance.OnLevelFinished();
+            }
+        }
 
-                    SceneManager.UnloadSceneAsync(2);
-                    LoadSceneAdditivelyAndSetActive(1);
-                }
-            });
-        }
-        else
-        {
-            SceneManager.UnloadSceneAsync(2);
-            LoadSceneAdditivelyAndSetActive(1);
-        }
+        SceneManager.UnloadSceneAsync(2);
+        LoadSceneAdditivelyAndSetActive(1);
 
         if (playerDied)
         {
