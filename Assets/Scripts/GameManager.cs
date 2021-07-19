@@ -184,9 +184,6 @@ public class GameManager : MonoBehaviour
         if (!playerDied)
         {
             InventoryManager.instance.AddInventoryToGlobalItems();
-
-            // todo: this is a hack, it should be done with events
-            // QuestManager.instance.OnMissionEnd();
         }
 
         if (currentMission != null)

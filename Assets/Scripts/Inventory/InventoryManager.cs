@@ -70,6 +70,11 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("inventory > global");
         Debug.Log("Local inventory:");
 
+        if (QuestManager.instance != null)
+        {
+            QuestManager.instance.TryToCompleteAdventurerQuest(itemQuantity);
+        }
+
         if (DiseasedManager.instance != null && DiseasedManager.instance.DiseasedItemName != null)
         {
             HandleDiseasedItem(DiseasedManager.instance.DiseasedItemName);
@@ -92,7 +97,7 @@ public class InventoryManager : MonoBehaviour
         ItemsAddedToGlobalInventory.Invoke();
 
 
-
+        itemQuantity.Clear();
     }
 
     void HandleDiseasedItem(string itemName)

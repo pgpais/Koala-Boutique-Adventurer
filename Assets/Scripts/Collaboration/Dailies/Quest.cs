@@ -5,26 +5,43 @@ using System.Collections.Generic;
 [System.Serializable]
 public class AdventurerQuest
 {
-    public string Item { get; private set; }
-    public int Amount { get; private set; }
+    public Dictionary<string, int> itemQuantity;
     public int GoldReward { get; private set; }
     public string StartDay { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool IsChecked { get; private set; }
 
-    public AdventurerQuest(string item, int amount, int goldReward, string startDay, bool isCompleted = false, bool isChecked = false)
+    public AdventurerQuest(Dictionary<string, int> itemQuantity, int goldReward, string startDay, bool isCompleted = false, bool isChecked = false)
     {
-        Item = item;
-        Amount = amount;
+        this.itemQuantity = itemQuantity;
         GoldReward = goldReward;
         StartDay = startDay;
         IsCompleted = isCompleted;
         IsChecked = isChecked;
     }
 
-    public bool CanCompleteQuest(string itemName, int amount)
+    public bool CanCompleteQuest(Dictionary<string, int> itemQuantity)
     {
-        return IsChecked && itemName == Item && amount == Amount;
+        bool correctItemQuantity = true;
+
+        foreach (KeyValuePair<string, int> item in this.itemQuantity)
+        {
+            if (itemQuantity.ContainsKey(item.Key))
+            {
+                if (item.Value != itemQuantity[item.Key])
+                {
+                    correctItemQuantity = false;
+                    break;
+                }
+            }
+            else
+            {
+                correctItemQuantity = false;
+                break;
+            }
+        }
+
+        return IsChecked && correctItemQuantity;
     }
 
     public void CompleteQuest()
