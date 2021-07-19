@@ -82,7 +82,7 @@ public class GatherablesSpawner : MonoBehaviour
             }
             else
             {
-                item = gatherablesToSpawn[rand.Next(0, unlockedGatherables.Count)];
+                item = unlockedGatherables[rand.Next(0, unlockedGatherables.Count)];
             }
 
             Gatherable gatherable = Instantiate(prefabToSpawn, spawner.position, spawner.rotation);
