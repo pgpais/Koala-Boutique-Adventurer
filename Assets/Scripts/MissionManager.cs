@@ -136,7 +136,16 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     public void FinishLevel()
     {
+        HandleBuffList();
         MissionEnded.Invoke();
+    }
+
+    private void HandleBuffList()
+    {
+        foreach (var buff in BuffList.buffs)
+        {
+            buff.AlreadySpawned = false;
+        }
     }
 
     void GenerateMap()
