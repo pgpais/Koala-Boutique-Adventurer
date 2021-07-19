@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BuffUI : MonoBehaviour
 {
-    [SerializeField] TMPro.TMP_Text nameText;
+    // [SerializeField] TMPro.TMP_Text nameText;
     [SerializeField] TMPro.TMP_Text descriptionText;
 
     public void Initialize(Buff buff)
     {
-        nameText.text = buff.buffName;
+        // nameText.text = buff.buffName;
         descriptionText.text = buff.description;
     }
 
