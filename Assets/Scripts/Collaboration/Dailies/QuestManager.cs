@@ -132,6 +132,11 @@ public class QuestManager : MonoBehaviour
 
     public bool TryToCompleteAdventurerQuest(Dictionary<string, int> itemsGathered)
     {
+        if (!AdventurerQuestExists())
+        {
+            return false;
+        }
+
         Debug.Log("trying adventurer quest");
         if (adventurerQuest.CanCompleteQuest(itemsGathered))
         {
@@ -163,7 +168,7 @@ public class QuestManager : MonoBehaviour
 
     public bool AdventurerQuestExists()
     {
-        return adventurerQuest != null;
+        return adventurerQuest != null && !adventurerQuest.IsOld();
     }
 
     internal void OnLevelFinished()

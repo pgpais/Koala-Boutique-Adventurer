@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class AdventurerQuest
 {
+    public static string dateFormat = "yyyyMMdd";
     public Dictionary<string, int> itemQuantity;
     public int GoldReward { get; private set; }
     public string StartDay { get; private set; }
@@ -52,6 +53,13 @@ public class AdventurerQuest
     public void CompleteQuest()
     {
         IsCompleted = true;
+    }
+
+    internal bool IsOld()
+    {
+        DateTime start = DateTime.ParseExact(StartDay, dateFormat, null);
+        // return true if day is before today
+        return (DateTime.Today - start).Days > 0;
     }
 }
 
