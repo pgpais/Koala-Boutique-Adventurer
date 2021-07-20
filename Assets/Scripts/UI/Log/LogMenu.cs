@@ -53,6 +53,8 @@ public class LogMenu : MonoBehaviour
             Destroy(item.gameObject);
         }
 
+        QuestManager.instance.CheckManagerQuest();
+
         // create childs of dailyQuestLayout
         foreach (var itemQuantity in QuestManager.instance.ManagerQuestItems)
         {

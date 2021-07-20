@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public static string completedAdventurerReferenceName = "completedAdventurerQuests";
+    public static string completedManagerReferenceName = "completedManagerQuests";
     public static string adventurerReferenceName = "adventurerQuest";
     public static string managerReferenceName = "managerQuest";
     public static string dateFormat = "yyyyMMdd";
@@ -13,9 +15,11 @@ public class QuestManager : MonoBehaviour
     public Dictionary<string, int> ManagerQuestItems => managerQuest.Items;
 
     public bool IsQuestComplete => adventurerQuest.IsCompleted;
+    public int CompletedAdventurerQuests => completedAdventurerQuests;
 
     AdventurerQuest adventurerQuest;
     private ManagerQuest managerQuest;
+    private int completedAdventurerQuests = 0;
 
     private void Awake()
     {
@@ -35,6 +39,29 @@ public class QuestManager : MonoBehaviour
     {
         GetAdventurerQuest();
         GetManagerQuest();
+        GetCompletedAdventurerQuests();
+    }
+
+    internal void CheckManagerQuest()
+    {
+        managerQuest.Check();
+        SaveManagerQuest();
+    }
+
+    private void GetCompletedAdventurerQuests()
+    {
+        FirebaseCommunicator.instance.GetObject(completedAdventurerReferenceName, (task) =>
+        {
+            string json = task.Result.GetRawJsonValue();
+            if (string.IsNullOrEmpty(json))
+            {
+                completedAdventurerQuests = 0;
+            }
+            else
+            {
+                completedAdventurerQuests = JsonConvert.DeserializeObject<int>(json);
+            }
+        });
     }
 
     void GetAdventurerQuest()
@@ -142,12 +169,30 @@ public class QuestManager : MonoBehaviour
         {
             adventurerQuest.CompleteQuest();
             SendAdventurerQuest();
+            completedAdventurerQuests++;
+            SendCompletedAdventurerQuests();
             return true;
         }
         else
         {
             return false;
         }
+    }
+
+    private void SendCompletedAdventurerQuests()
+    {
+        string json = JsonConvert.SerializeObject(completedAdventurerQuests);
+        FirebaseCommunicator.instance.SendObject(json, completedAdventurerReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to send completed adventurer quest");
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Completed adventurer quest sent");
+            }
+        });
     }
 
     public void SendAdventurerQuest()
