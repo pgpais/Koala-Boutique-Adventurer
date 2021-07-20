@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static OfferingManager;
 
 public class LogMenu : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class LogMenu : MonoBehaviour
     [SerializeField] LayoutGroup dailyQuestLayout;
     [SerializeField] TMP_Text questReward;
     [SerializeField] GameObject questCompleteImage;
+
+    [Header("King's Offering")]
+    [SerializeField] ItemSmallUI kingsOfferingItemSmallUIPrefab;
+    [SerializeField] LayoutGroup offeringLayout;
 
     private void Awake()
     {
@@ -36,7 +41,9 @@ public class LogMenu : MonoBehaviour
     private void OnEnable()
     {
         HandleShowDailyQuest();
+        HandleShowKingOffering();
     }
+
 
     private void HandleShowDailyQuest()
     {
@@ -57,5 +64,31 @@ public class LogMenu : MonoBehaviour
         }
 
         questCompleteImage.SetActive(QuestManager.instance.IsQuestComplete);
+    }
+
+    private void HandleShowKingOffering()
+    {
+        // destroy childs of offeringLayout
+        foreach (Transform item in offeringLayout.transform)
+        {
+            Destroy(item.gameObject);
+        }
+
+        if (OfferingManager.instance != null && OfferingManager.instance.OfferingExists())
+        {
+            //Show current offering
+            Offering offering = OfferingManager.instance.GetCurrentOffering();
+            foreach (var itemName in offering.itemsToOffer)
+            {
+                Item itemToOffer = ItemManager.instance.itemsData.GetItemByName(itemName);
+                ItemSmallUI itemUI = Instantiate(kingsOfferingItemSmallUIPrefab);
+                itemUI.transform.SetParent(offeringLayout.transform, false);
+                itemUI.InitWithoutQuantity(itemToOffer);
+            }
+        }
+        else
+        {
+            //Show offering not available info
+        }
     }
 }

@@ -49,6 +49,7 @@ public class OfferingManager : MonoBehaviour
                 Debug.Log("Success getting offering: " + task.Result);
                 string json = task.Result.GetRawJsonValue();
 
+                // Oferring does not exist
                 if (string.IsNullOrEmpty(json))
                 {
                     Debug.Log("No offering found, creating a new one");
@@ -58,6 +59,8 @@ public class OfferingManager : MonoBehaviour
                 {
                     Debug.Log("Found offering, deserializing");
                     this.offering = JsonConvert.DeserializeObject<Offering>(json);
+
+                    // Offering has expired
                     if (this.offering.HasExpired())
                     {
                         CreateOffering();
@@ -79,6 +82,11 @@ public class OfferingManager : MonoBehaviour
         offering.offerStartDate = DateTime.Today.ToString(dateFormat);
 
         SendOffering(offering);
+    }
+
+    internal bool OfferingExists()
+    {
+        return this.offering.wasNotified && !this.offering.HasExpired();
     }
 
     void SendOffering(Offering offering)
@@ -104,26 +112,38 @@ public class OfferingManager : MonoBehaviour
         SendOffering(offering);
     }
 
+    public Offering GetCurrentOffering()
+    {
+        return offering;
+    }
+
+    internal void OnLevelFinished()
+    {
+        offering.wasNotified = true;
+        SendOffering(offering);
+    }
+
+    [System.Serializable]
     public struct Offering
     {
         public List<string> itemsToOffer;
         public string offerStartDate;
         public bool wasNotified;
+        public bool isComplete;
 
-        public Offering(List<string> itemsToOffer, string offerStartDate, bool wasNotified = false)
+        public Offering(List<string> itemsToOffer, string offerStartDate, bool wasNotified = false, bool isComplete = false)
         {
             this.itemsToOffer = itemsToOffer;
             this.offerStartDate = offerStartDate;
             this.wasNotified = wasNotified;
+            this.isComplete = isComplete;
         }
 
         internal bool HasExpired()
         {
-            return DateTime.Today >= DateTime.ParseExact(offerStartDate, dateFormat, null).AddDays(2);
+            DateTime offerStartDate = DateTime.ParseExact(this.offerStartDate, dateFormat, null);
+            DateTime today = DateTime.Today;
+            return (today - offerStartDate).Days >= 2;
         }
-    }
-    public Offering GetCurrentOffering()
-    {
-        return offering;
     }
 }

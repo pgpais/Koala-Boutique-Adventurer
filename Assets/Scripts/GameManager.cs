@@ -184,9 +184,15 @@ public class GameManager : MonoBehaviour
         if (!playerDied)
         {
             InventoryManager.instance.AddInventoryToGlobalItems();
+
             if (QuestManager.instance != null)
             {
                 QuestManager.instance.OnLevelFinished();
+            }
+
+            if (OfferingManager.instance != null)
+            {
+                OfferingManager.instance.OnLevelFinished();
             }
         }
 

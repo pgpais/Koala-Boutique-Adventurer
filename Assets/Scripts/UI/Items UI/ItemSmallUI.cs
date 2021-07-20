@@ -14,4 +14,9 @@ public class ItemSmallUI : MonoBehaviour
         image.sprite = item.sprite;
         quantityLabel.text = quantity.ToString();
     }
+
+    public void InitWithoutQuantity(Item item)
+    {
+        image.sprite = item.sprite;
+    }
 }

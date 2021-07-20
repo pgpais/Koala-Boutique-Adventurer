@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,25 +57,37 @@ public class MissionEndScreen : MonoBehaviour
 
             // Other stats
 
-            // Show offering
-            // OfferingManager.Offering offering = OfferingManager.instance.GetCurrentOffering();
+            ShowOfferingIfNotNotified();
 
-            // offeringParent.gameObject.SetActive(!offering.wasNotified);
-            // if (!offering.wasNotified)
-            // {
-
-            //     foreach (string itemName in offering.itemsToOffer)
-            //     {
-            //         Item item = itemsList.GetItemByName(itemName);
-            //         Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
-            //     }
-
-            //     OfferingManager.instance.OfferingNotified();
-            // }
         }
 
         // button listener
 
+    }
+
+    private void ShowOfferingIfNotNotified()
+    {
+        OfferingManager.Offering offering = OfferingManager.instance.GetCurrentOffering();
+
+        if (!offering.wasNotified)
+        {
+            offeringParent.gameObject.SetActive(true);
+
+            foreach (Transform child in offeringLayout)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (string itemName in offering.itemsToOffer)
+            {
+                Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
+                Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
+            }
+        }
+        else
+        {
+            offeringParent.gameObject.SetActive(false);
+        }
     }
 
     private void OnDisable()
