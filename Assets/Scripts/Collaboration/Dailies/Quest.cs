@@ -5,6 +5,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class AdventurerQuest
 {
+    public static int amountOfItems = 3;
+    public static int maxItemQuantity = 10;
     public static string dateFormat = "yyyyMMdd";
     public Dictionary<string, int> itemQuantity;
     public int GoldReward { get; private set; }
