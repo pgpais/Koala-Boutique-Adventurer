@@ -31,6 +31,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         itemQuantity = new Dictionary<string, int>();
+        MissionManager.MissionStarted.AddListener((_) => itemQuantity.Clear());
     }
 
     public void AddItem(string itemName, int amount)
@@ -89,15 +90,14 @@ public class InventoryManager : MonoBehaviour
         // TODO: remove this hardcode
         if (itemQuantity.ContainsKey("Gem"))
         {
-            GoldManager.GetGemsAndSendWithModifier(itemQuantity["Gem"]);
+            int gemAmount = itemQuantity["Gem"];
+            GoldManager.GetGemsAndSendWithModifier(gemAmount);
             itemQuantity.Remove("Gem");
         }
 
+
         ItemManager.instance.AddItemsAfterGetting(itemQuantity);
         ItemsAddedToGlobalInventory.Invoke();
-
-
-        itemQuantity.Clear();
     }
 
     void HandleDiseasedItem(string itemName)

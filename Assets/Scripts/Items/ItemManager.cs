@@ -140,7 +140,6 @@ public class ItemManager : MonoBehaviour
                 Debug.Log(task.Result.GetRawJsonValue());
                 if (!string.IsNullOrEmpty(task.Result.GetRawJsonValue()))
                 {
-                    Debug.Log("no items!");
                     Dictionary<string, object> dictionary = task.Result.Value as Dictionary<string, object>;
                     itemQuantity = new Dictionary<string, int>();
                     foreach (var key in dictionary.Keys)
