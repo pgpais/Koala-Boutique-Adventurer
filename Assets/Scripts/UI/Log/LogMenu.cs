@@ -41,9 +41,14 @@ public class LogMenu : MonoBehaviour
     private void OnEnable()
     {
         HandleShowDailyQuest();
+
         HandleShowKingOffering();
     }
 
+    private void HideDailyQuest()
+    {
+
+    }
 
     private void HandleShowDailyQuest()
     {
@@ -53,19 +58,26 @@ public class LogMenu : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        QuestManager.instance.CheckManagerQuest();
-
-        // create childs of dailyQuestLayout
-        foreach (var itemQuantity in QuestManager.instance.ManagerQuestItems)
+        if (!QuestManager.instance.ExistsManagerQuest())
         {
-            Item item = ItemManager.instance.itemsData.GetItemByName(itemQuantity.Key);
-
-            ItemSmallUI itemUI = Instantiate(itemSmallUIPrefab);
-            itemUI.transform.SetParent(dailyQuestLayout.transform, false);
-            itemUI.Init(item, itemQuantity.Value);
+            HideDailyQuest();
         }
+        else
+        {
+            QuestManager.instance.CheckManagerQuest();
 
-        questCompleteImage.SetActive(QuestManager.instance.IsQuestComplete);
+            // create childs of dailyQuestLayout
+            foreach (var itemQuantity in QuestManager.instance.ManagerQuestItems)
+            {
+                Item item = ItemManager.instance.itemsData.GetItemByName(itemQuantity.Key);
+
+                ItemSmallUI itemUI = Instantiate(itemSmallUIPrefab);
+                itemUI.transform.SetParent(dailyQuestLayout.transform, false);
+                itemUI.Init(item, itemQuantity.Value);
+            }
+
+            questCompleteImage.SetActive(QuestManager.instance.IsQuestComplete);
+        }
     }
 
     private void HandleShowKingOffering()

@@ -10,18 +10,22 @@ public class QuestManager : MonoBehaviour
     public static string adventurerReferenceName = "adventurerQuest";
     public static string managerReferenceName = "managerQuest";
     public static string dateFormat = "yyyyMMdd";
+    public static int ManagerQuestDamageReward = 2;
     public static QuestManager instance;
 
     public Dictionary<string, int> ManagerQuestItems => managerQuest.Items;
 
     public bool IsQuestComplete => adventurerQuest.IsCompleted;
     public int CompletedAdventurerQuests => completedAdventurerQuests;
+    public int CompletedManagerQuests => completedManagerQuests;
+
 
     public bool testCompleteAdventurerQuest = false;
 
     AdventurerQuest adventurerQuest;
     private ManagerQuest managerQuest;
     private int completedAdventurerQuests = 0;
+    private int completedManagerQuests = 0;
 
     private void Awake()
     {
@@ -42,6 +46,23 @@ public class QuestManager : MonoBehaviour
         GetAdventurerQuest();
         GetManagerQuest();
         GetCompletedAdventurerQuests();
+        GetCompletedManagerQuests();
+    }
+
+    private void GetCompletedManagerQuests()
+    {
+        FirebaseCommunicator.instance.GetObject(completedManagerReferenceName, (task) =>
+        {
+            string json = task.Result.GetRawJsonValue();
+            if (string.IsNullOrEmpty(json))
+            {
+                completedManagerQuests = 0;
+            }
+            else
+            {
+                completedManagerQuests = JsonConvert.DeserializeObject<int>(json);
+            }
+        });
     }
 
     private void Update()
@@ -56,8 +77,29 @@ public class QuestManager : MonoBehaviour
 
     internal void CheckManagerQuest()
     {
+        if (managerQuest.IsCompleted)
+        {
+            completedManagerQuests++;
+            SendCompletedManagerQuests();
+        }
         managerQuest.Check();
         SaveManagerQuest();
+    }
+
+    private void SendCompletedManagerQuests()
+    {
+        string json = JsonConvert.SerializeObject(completedManagerQuests);
+        FirebaseCommunicator.instance.SendObject(json, completedManagerReferenceName, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to send completed manager quest");
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Completed manager quest sent");
+            }
+        });
     }
 
     private void GetCompletedAdventurerQuests()
@@ -135,7 +177,7 @@ public class QuestManager : MonoBehaviour
     void CreateManagerQuest()
     {
         Dictionary<string, int> questItems = new Dictionary<string, int>();
-        List<Item> items = ItemManager.instance.itemsData.Items;
+        List<Item> items = ItemManager.instance.itemsData.Items.FindAll((item) => item.Unlocked);
 
         for (int i = 0; i < ManagerQuest.amountOfItems; i++)
         {

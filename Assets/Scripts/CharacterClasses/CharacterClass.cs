@@ -72,6 +72,12 @@ public class CharacterClass : MonoBehaviour
         ModifyMovementSpeedWithClass();
         ModifyWeaponDamage();
 
+        if (QuestManager.instance != null)
+        {
+            int damageFromQuests = QuestManager.instance.CompletedManagerQuests * QuestManager.ManagerQuestDamageReward;
+            ModifyWeaponDamage(damageFromQuests);
+        }
+
         if (data.initialWeapon != null)
         {
             SetWeapon();
