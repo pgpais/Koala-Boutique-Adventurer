@@ -8,7 +8,7 @@ public class OfferingManager : MonoBehaviour
     public static string referenceName = "offering";
     public static OfferingManager instance;
 
-
+    public static int failedOfferingPenalty = -50;
 
     public int numberOfItems = 4;
     private const string dateFormat = "yyyyMMdd";
@@ -63,11 +63,20 @@ public class OfferingManager : MonoBehaviour
                     // Offering has expired
                     if (this.offering.HasExpired())
                     {
+                        if (!this.offering.offeringSuccessful && this.offering.wasNotified)
+                        {
+                            LoseGoldFromExpiredOffering();
+                        }
                         CreateOffering();
                     }
                 }
             }
         });
+    }
+
+    private void LoseGoldFromExpiredOffering()
+    {
+        GoldManager.GetGoldSendWithModifier(-failedOfferingPenalty);
     }
 
     void CreateOffering()
@@ -76,7 +85,12 @@ public class OfferingManager : MonoBehaviour
         offering.itemsToOffer = new List<string>();
         for (int i = 0; i < numberOfItems; i++)
         {
-            offering.itemsToOffer.Add(ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName);
+            string offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+            while (offering.itemsToOffer.Contains(offeringItemName))
+            {
+                offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+            }
+            offering.itemsToOffer.Add(offeringItemName);
         }
 
         offering.offerStartDate = DateTime.Today.ToString(dateFormat);
@@ -129,21 +143,21 @@ public class OfferingManager : MonoBehaviour
         public List<string> itemsToOffer;
         public string offerStartDate;
         public bool wasNotified;
-        public bool isComplete;
+        public bool offeringMade;
+        public bool offeringSuccessful;
 
-        public Offering(List<string> itemsToOffer, string offerStartDate, bool wasNotified = false, bool isComplete = false)
+        public Offering(List<string> itemsToOffer, string offerStartDate, bool wasNotified = false, bool offeringSuccessful = false, bool offeringMade = false)
         {
             this.itemsToOffer = itemsToOffer;
             this.offerStartDate = offerStartDate;
             this.wasNotified = wasNotified;
-            this.isComplete = isComplete;
+            this.offeringSuccessful = offeringSuccessful;
+            this.offeringMade = offeringMade;
         }
 
         internal bool HasExpired()
         {
-            DateTime offerStartDate = DateTime.ParseExact(this.offerStartDate, dateFormat, null);
-            DateTime today = DateTime.Today;
-            return (today - offerStartDate).Days >= 2;
+            return DateTime.Today >= DateTime.ParseExact(offerStartDate, dateFormat, null).AddDays(2);
         }
     }
 }

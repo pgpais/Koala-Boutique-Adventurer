@@ -19,4 +19,4 @@ MonoBehaviour:
     type: 3}
   numberOfInteractions: 3
   processResult: {fileID: 0}
-  startsUnlocked: 1
+  startsUnlocked: 0

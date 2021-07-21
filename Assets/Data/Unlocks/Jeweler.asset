@@ -17,6 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 476dfa4bc0d558e448b1173dd9796b7c, type: 2}
+    - {fileID: 11400000, guid: 1bd48397619ee8b4593b9334fbef576e, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,10 +29,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 10
       Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -43,4 +47,5 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Jeweler
   <UnlockableDescription>k__BackingField: 
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0
