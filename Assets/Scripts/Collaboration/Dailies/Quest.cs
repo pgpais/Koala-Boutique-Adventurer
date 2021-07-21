@@ -9,15 +9,15 @@ public class AdventurerQuest
     public static int maxItemQuantity = 10;
     public static string dateFormat = "yyyyMMdd";
     public Dictionary<string, int> itemQuantity;
-    public int GoldReward { get; private set; }
+    public string UnlockableRewardName { get; private set; }
     public string StartDay { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool IsChecked { get; private set; }
 
-    public AdventurerQuest(Dictionary<string, int> itemQuantity, int goldReward, string startDay, bool isCompleted = false, bool isChecked = false)
+    public AdventurerQuest(Dictionary<string, int> itemQuantity, string unlockableRewardName, string startDay, bool isCompleted = false, bool isChecked = false)
     {
         this.itemQuantity = itemQuantity;
-        GoldReward = goldReward;
+        UnlockableRewardName = unlockableRewardName;
         StartDay = startDay;
         IsCompleted = isCompleted;
         IsChecked = isChecked;
@@ -55,6 +55,7 @@ public class AdventurerQuest
     public void CompleteQuest()
     {
         IsCompleted = true;
+        IsChecked = false;
     }
 
     internal bool IsOld()

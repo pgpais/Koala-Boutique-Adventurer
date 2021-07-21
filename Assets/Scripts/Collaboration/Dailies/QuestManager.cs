@@ -17,6 +17,8 @@ public class QuestManager : MonoBehaviour
     public bool IsQuestComplete => adventurerQuest.IsCompleted;
     public int CompletedAdventurerQuests => completedAdventurerQuests;
 
+    public bool testCompleteAdventurerQuest = false;
+
     AdventurerQuest adventurerQuest;
     private ManagerQuest managerQuest;
     private int completedAdventurerQuests = 0;
@@ -40,6 +42,16 @@ public class QuestManager : MonoBehaviour
         GetAdventurerQuest();
         GetManagerQuest();
         GetCompletedAdventurerQuests();
+    }
+
+    private void Update()
+    {
+        if (testCompleteAdventurerQuest)
+        {
+            testCompleteAdventurerQuest = false;
+            adventurerQuest.CompleteQuest();
+            SendAdventurerQuest();
+        }
     }
 
     internal void CheckManagerQuest()
@@ -213,7 +225,7 @@ public class QuestManager : MonoBehaviour
 
     public bool AdventurerQuestExists()
     {
-        return adventurerQuest != null && !adventurerQuest.IsOld();
+        return adventurerQuest != null && adventurerQuest.IsChecked && !adventurerQuest.IsOld();
     }
 
     internal void OnLevelFinished()
