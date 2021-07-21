@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SecretDoor : ButtonActivated
 {
-    private const string dateFormat = "yyyyMMdd HH";
+    private const string dateFormat = "yyyyMMdd";
     public static string referenceName = "secretDoor";
 
     private SecretDoorUI secretDoorUI;
@@ -19,10 +19,17 @@ public class SecretDoor : ButtonActivated
 
     internal bool SubmitCode(int code)
     {
-        if (code.ToString() == doorTime.code)
+        if (doorTime.IsDecrypted())
         {
-            Unlock();
-            return true;
+            if (doorTime.CorrectCode(code))
+            {
+                Unlock();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -36,6 +43,8 @@ public class SecretDoor : ButtonActivated
         teleporter.Activable = true;
         SendDoorTime(doorTime);
 
+        teleporter.TriggerButtonAction();
+
         Destroy(this);
     }
 
@@ -45,7 +54,7 @@ public class SecretDoor : ButtonActivated
         // EnableZone();
         GetDoorTime();
 
-        secretDoorUI = FindObjectOfType<SecretDoorUI>();
+        secretDoorUI = FindObjectOfType<SecretDoorUI>(true);
     }
 
     void GetDoorTime()
@@ -60,19 +69,26 @@ public class SecretDoor : ButtonActivated
             else if (task.IsCompleted)
             {
                 string json = task.Result.GetRawJsonValue();
-
                 if (string.IsNullOrEmpty(json))
+
                 {
                     doorTime = new DoorTime(null, null, false);
                 }
-
-                doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
-
-                DateTime requestDate = DateTime.ParseExact(doorTime.interactDate, dateFormat, null);
-                //if today is after the date of the interact plus 2 days, remove request
-                if (DateTime.Now >= requestDate.AddDays(2))
+                else
                 {
+                    doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
+                }
+
+
+                if (doorTime.HasExpired())
+                {
+                    Debug.Log("Door has expired");
                     DeleteRequest();
+                }
+
+                if (doorTime.unlocked)
+                {
+                    Unlock();
                 }
             }
         });
@@ -81,10 +97,10 @@ public class SecretDoor : ButtonActivated
     {
         base.ActivateZone();
 
-        if (string.IsNullOrEmpty(doorTime.code))
+        if (!doorTime.IsDecrypted())
         {
             // Door still hasn't been requested
-            if (doorTime.interactDate == null)
+            if (!doorTime.IsValid())
             {
                 CreateNewRequest();
 
@@ -110,8 +126,10 @@ public class SecretDoor : ButtonActivated
     //Delete Request
     void DeleteRequest()
     {
-        doorTime.interactDate = null;
+        doorTime = new DoorTime(null, null, false);
         SendDoorTime(doorTime);
+
+        // ItemManager.instance.RemoveDoorItem();
     }
 
     void SendDoorTime(DoorTime doorTime)
@@ -144,6 +162,34 @@ public class SecretDoor : ButtonActivated
             this.code = code;
             this.interactDate = interactDate;
             this.unlocked = unlocked;
+        }
+
+        public bool HasExpired()
+        {
+            if (this.interactDate == null)
+            {
+                return true;
+            }
+
+            DateTime interactDate = DateTime.ParseExact(this.interactDate, dateFormat, null);
+            DateTime today = DateTime.Today;
+
+            return (today - interactDate).Days >= 2;
+        }
+
+        public bool IsValid()
+        {
+            return interactDate != null;
+        }
+
+        public bool IsDecrypted()
+        {
+            return code != null;
+        }
+
+        internal bool CorrectCode(int code)
+        {
+            return this.code == code.ToString();
         }
     }
 }

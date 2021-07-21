@@ -437,15 +437,15 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                         return entrances.Type == RoomType.Exit;
                     });
         }
-        // else if (howManySecretRoomsCreated < 1)
-        // {
-        //     return deadEndList.Find(delegate (GameObject obj)
-        //             {
-        //                 RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
+        else if (howManySecretRoomsCreated < 1)
+        {
+            return deadEndList.Find(delegate (GameObject obj)
+                    {
+                        RoomEntrances entrances = obj.GetComponent<RoomEntrances>();
 
-        //                 return entrances.Type == RoomType.Secret;
-        //             });
-        // }
+                        return entrances.Type == RoomType.Secret;
+                    });
+        }
         else if (howManyOracleRoomsCreated < 1)
         {
             return deadEndList.Find(delegate (GameObject obj)

@@ -29,15 +29,17 @@ public class SecretDoorUI : MonoBehaviour
                 if (secretDoor.SubmitCode(code))
                 {
                     // Success
+                    DisableAll();
                 }
                 else
                 {
-                    passCodeField.text = "Incorrect code.";
+                    // Failed
+                    passCodeField.text = "";
                 }
             }
             else
             {
-                passCodeField.text = "Invalid code.";
+                passCodeField.text = "";
             }
         }
     }

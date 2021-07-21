@@ -102,6 +102,11 @@ public class ItemManager : MonoBehaviour
         });
     }
 
+    internal void RemoveDoorItem()
+    {
+        throw new NotImplementedException();
+    }
+
     public void UpdateCloudWithItems()
     {
         var dictionary = new Dictionary<string, object>();
