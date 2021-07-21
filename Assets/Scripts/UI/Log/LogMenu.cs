@@ -76,7 +76,7 @@ public class LogMenu : MonoBehaviour
                 itemUI.Init(item, itemQuantity.Value);
             }
 
-            questCompleteImage.SetActive(QuestManager.instance.IsQuestComplete);
+            questCompleteImage.SetActive(QuestManager.instance.IsManagerQuestComplete);
         }
     }
 

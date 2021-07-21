@@ -15,7 +15,7 @@ public class QuestManager : MonoBehaviour
 
     public Dictionary<string, int> ManagerQuestItems => managerQuest.Items;
 
-    public bool IsQuestComplete => adventurerQuest.IsCompleted;
+    public bool IsManagerQuestComplete => managerQuest.IsCompleted;
     public int CompletedAdventurerQuests => completedAdventurerQuests;
     public int CompletedManagerQuests => completedManagerQuests;
 
