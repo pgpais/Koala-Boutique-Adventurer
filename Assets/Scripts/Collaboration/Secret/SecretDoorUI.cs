@@ -10,12 +10,20 @@ public class SecretDoorUI : MonoBehaviour
     [SerializeField] Button backButton;
 
     SecretDoor secretDoor;
+    bool active;
 
     private void Awake()
     {
         passCodeField.onEndEdit.AddListener(SubmitCode);
         backButton.onClick.AddListener(DisableAll);
-        DisableAll();
+    }
+
+    private void Update()
+    {
+        if (active && Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisableAll();
+        }
     }
 
     private void SubmitCode(string codeText)
@@ -57,6 +65,7 @@ public class SecretDoorUI : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        active = false;
         MoreMountains.TopDownEngine.GameManager.Instance.Paused = false;
     }
 
@@ -67,6 +76,7 @@ public class SecretDoorUI : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+        active = true;
         MoreMountains.TopDownEngine.GameManager.Instance.Paused = true;
     }
 }
