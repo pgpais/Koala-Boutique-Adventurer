@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d59039945fa514093dec0dfef0a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testCompleteAdventurerQuest: 0
 --- !u!4 &180845669
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1338727092
 Transform:
   m_ObjectHideFlags: 0
@@ -364,7 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e50ab7782cb1d45bca9fa7474c4b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requirement: {fileID: 11400000, guid: 9df41b77b1c9f9b43b330049ded0d9bf, type: 2}
 --- !u!1 &1681825527
 GameObject:
   m_ObjectHideFlags: 0

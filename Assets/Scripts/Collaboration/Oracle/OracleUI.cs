@@ -7,33 +7,37 @@ public class OracleUI : MonoBehaviour
 {
     [SerializeField] TMP_Text m_Text;
     [SerializeField] Image m_Image;
-    [SerializeField] GameObject tooltip;
 
-    private OracleAltar oracleAltar;
+    private OracleData data;
 
-    void Start()
+    // void Awake()
+    // {
+    //     if (gameObject.activeSelf)
+    //     {
+    //         Hide();
+    //     }
+    // }
+
+    internal void Show(OracleData data)
     {
-        Hide();
-    }
+        this.data = data;
+        Item item = ItemManager.instance.itemsData.GetItemByName(data.itemName);
 
-    internal void Show(OracleAltar oracleAltar)
-    {
-        this.oracleAltar = oracleAltar;
-        SetText(OracleManager.Instance.GetItemName());
-        SetSprite(OracleManager.Instance.GetItemIcon());
-        tooltip.SetActive(true);
+        SetText(item.ItemName);
+        SetSprite(item.sprite);
+        gameObject.SetActive(true);
     }
 
     internal void Hide()
     {
-        tooltip.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void SetText(string text)
     {
         int hour = OracleManager.Instance.GetHour();
 
-        m_Text.text = $"Best time to sell {text} is between {hour}h and {hour + 3}h";
+        m_Text.text = $"{hour}:00 - {hour + 3}:00";
     }
 
     private void SetSprite(Sprite itemSprite)

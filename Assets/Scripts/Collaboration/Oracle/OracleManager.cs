@@ -10,6 +10,7 @@ public class OracleManager : MonoBehaviour
     public static string dateFormat = "yyyyMMdd";
     public static OracleManager Instance;
 
+    private MarketPrices marketPrices;
     private OracleData oracleData;
 
     private void Awake()
@@ -44,13 +45,20 @@ public class OracleManager : MonoBehaviour
 
     private void OnLoggedIn()
     {
-        GetOracleData();
+        GetMarketPrices();
+
     }
 
     // Get the current oracle information
-    public void GetOracleData()
+    public OracleData GetOracleData()
     {
-        GetMarketPrices();
+        string itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+        int bestPriceIndex = marketPrices.GetBestPriceIndex(itemName);
+
+        oracleData = new OracleData(bestPriceIndex, itemName);
+        Debug.Log("Got oracle data, Best price: " + oracleData.bestPriceIndex + " for item: " + oracleData.itemName);
+
+        return oracleData;
     }
 
     // Get Market Prices for today
@@ -69,18 +77,15 @@ public class OracleManager : MonoBehaviour
                 Debug.Log("yey got oracle data");
                 string json = task.Result.GetRawJsonValue();
 
-                MarketPrices marketPrices = new MarketPrices(JsonConvert.DeserializeObject<Dictionary<string, int>[]>(json));
-
-                string itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
-                int bestPriceIndex = marketPrices.GetBestPriceIndex(itemName);
-
-                oracleData = new OracleData(bestPriceIndex, itemName);
-                Debug.Log("Got oracle data, Best price: " + oracleData.bestPriceIndex + " for item: " + oracleData.itemName);
+                marketPrices = new MarketPrices(JsonConvert.DeserializeObject<Dictionary<string, int>[]>(json));
             }
         });
     }
+
+
 }
 
+[System.Serializable]
 public struct OracleData
 {
     public int bestPriceIndex;
@@ -93,6 +98,7 @@ public struct OracleData
     }
 }
 
+[System.Serializable]
 public struct MarketPrices
 {
     public Dictionary<string, int>[] prices;
