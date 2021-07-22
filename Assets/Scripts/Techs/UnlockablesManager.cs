@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnlockablesManager : MonoBehaviour
 {
+    public static UnityEvent OnGotUnlockables = new UnityEvent();
     public static UnlockablesManager instance;
 
     [SerializeField] UnlockablesList unlockablesData;
 
     public Dictionary<string, Unlockable> Unlockables => unlockables;
+    public bool GotUnlockables => gotUnlockables;
 
     public List<Unlockable> Unlocked => unlockables.Values.Where((unlockable) => unlockable.Unlocked).ToList();
 
     Dictionary<string, Unlockable> unlockables;
+
+    bool gotUnlockables;
 
     private void Awake()
     {
@@ -67,6 +72,8 @@ public class UnlockablesManager : MonoBehaviour
                         unlockables[unlockableName].Unlock();
                     }
                 }
+                gotUnlockables = true;
+                OnGotUnlockables.Invoke();
             }
         });
     }

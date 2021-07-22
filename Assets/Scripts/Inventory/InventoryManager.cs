@@ -71,14 +71,14 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("inventory > global");
         Debug.Log("Local inventory:");
 
-        if (QuestManager.instance != null)
+        if (QuestManager.instance != null && QuestManager.instance.enabled)
         {
             QuestManager.instance.TryToCompleteAdventurerQuest(itemQuantity);
         }
 
-        if (DiseasedManager.instance != null && DiseasedManager.instance.DiseasedItemName != null)
+        if (DiseasedManager.instance != null && DiseasedManager.instance.enabled && DiseasedManager.instance.DiseasedItem != null)
         {
-            HandleDiseasedItem(DiseasedManager.instance.DiseasedItemName);
+            HandleDiseasedItem(DiseasedManager.instance.DiseasedItem);
         }
 
         foreach (var itemName in itemQuantity.Keys)
@@ -100,8 +100,9 @@ public class InventoryManager : MonoBehaviour
         ItemsAddedToGlobalInventory.Invoke();
     }
 
-    void HandleDiseasedItem(string itemName)
+    private void HandleDiseasedItem(Item diseasedItem)
     {
+        string itemName = diseasedItem.ItemName;
         if (itemQuantity.ContainsKey(itemName))
         {
             int quantity = itemQuantity[itemName];
@@ -110,4 +111,9 @@ public class InventoryManager : MonoBehaviour
             GoldManager.GetGoldSendWithModifier(diseaseModifier * quantity);
         }
     }
+}
+
+struct MissionStats
+{
+    //TODO: Info to log on the mission so it can be shown on the Manager's UI
 }
