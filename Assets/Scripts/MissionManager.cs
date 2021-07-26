@@ -437,7 +437,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
                         return entrances.Type == RoomType.Exit;
                     });
         }
-        else if (howManySecretRoomsCreated < 1)
+        else if (howManySecretRoomsCreated < 1) // TODO: only if secret room enabled
         {
             return deadEndList.Find(delegate (GameObject obj)
                     {

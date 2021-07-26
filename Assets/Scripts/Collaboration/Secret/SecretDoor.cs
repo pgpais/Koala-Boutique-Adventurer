@@ -8,6 +8,10 @@ public class SecretDoor : ButtonActivated
     private const string dateFormat = "yyyyMMdd";
     public static string referenceName = "secretDoor";
 
+
+    [SerializeField] Vector3 promptRelativePosition = new Vector3(1.25f, 1f, 0f);
+    [SerializeField] string buttonPromptText = "E";
+
     private SecretDoorUI secretDoorUI;
     private Teleporter teleporter;
     private DoorTime doorTime;
@@ -15,6 +19,10 @@ public class SecretDoor : ButtonActivated
     private void Awake()
     {
         teleporter = GetComponent<Teleporter>();
+        this.ButtonPromptPrefab = SecretDoorManager.instance.buttonPromptPrefab;
+        this.AlwaysShowPrompt = false;
+        this.PromptRelativePosition = promptRelativePosition;
+        this.ButtonPromptText = buttonPromptText;
     }
 
     internal bool SubmitCode(int code)

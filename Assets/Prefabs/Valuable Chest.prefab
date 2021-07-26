@@ -166,14 +166,15 @@ MonoBehaviour:
   InputKey: 32
   AnimationTriggerParameterName: 
   UseVisualPrompt: 1
-  ButtonPromptPrefab: {fileID: 0}
+  ButtonPromptPrefab: {fileID: 114767332097364426, guid: bb1fc0f1f16f31248b9b4d80aa795609,
+    type: 3}
   ButtonPromptText: A
   ButtonPromptColor: {r: 0.4862745, g: 0.9882353, b: 0, a: 1}
   ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
   AlwaysShowPrompt: 1
   ShowPromptWhenColliding: 1
   HidePromptAfterUse: 1
-  PromptRelativePosition: {x: 0, y: 0, z: 0}
+  PromptRelativePosition: {x: 1.5, y: 1.5, z: 0}
   PromptRotation: {x: 0, y: 0, z: 0}
   ActivationFeedback: {fileID: 0}
   DeniedFeedback: {fileID: 0}
