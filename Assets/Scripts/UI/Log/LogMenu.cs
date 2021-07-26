@@ -20,6 +20,12 @@ public class LogMenu : MonoBehaviour
     [SerializeField] ItemSmallUI kingsOfferingItemSmallUIPrefab;
     [SerializeField] LayoutGroup offeringLayout;
 
+    [Header("Oracle")]
+    [SerializeField] OracleInfo oracleInfoPrefab;
+    [SerializeField] Transform pageParent;
+    [SerializeField] Transform paginationParent;
+    [SerializeField] GameObject paginationPrefab;
+
     private void Awake()
     {
         closeButton.onClick.AddListener(HideMenu);
@@ -43,6 +49,8 @@ public class LogMenu : MonoBehaviour
         HandleShowDailyQuest();
 
         HandleShowKingOffering();
+
+        ShowOracleInfo();
     }
 
     private void HideDailyQuest()
@@ -103,6 +111,39 @@ public class LogMenu : MonoBehaviour
         else
         {
             //Show offering not available info
+        }
+    }
+
+    public void ShowOracleInfo()
+    {
+        // foreach (Transform child in pageParent.transform)
+        // {
+        //     Destroy(child.gameObject);
+        // }
+
+        // // destroy childs of paginationParent
+        // foreach (Transform child in paginationParent.transform)
+        // {
+        //     Destroy(child.gameObject);
+        // }
+
+        List<OracleData> oracleDataLog = OracleManager.Instance.OracleDataLog;
+
+        foreach (OracleData oracleData in oracleDataLog)
+        {
+
+            GameObject pagination = Instantiate(paginationPrefab);
+            pagination.transform.SetParent(paginationParent.transform, false);
+
+            Item item = ItemManager.instance.itemsData.GetItemByName(oracleData.itemName);
+
+            GameObject page = new GameObject();
+            page.AddComponent<RectTransform>();
+            page.transform.SetParent(pageParent, false);
+
+            OracleInfo oracleInfo = Instantiate(oracleInfoPrefab);
+            oracleInfo.transform.SetParent(page.transform, false);
+            oracleInfo.InitUI(item.sprite, oracleData.bestPriceIndex);
         }
     }
 }

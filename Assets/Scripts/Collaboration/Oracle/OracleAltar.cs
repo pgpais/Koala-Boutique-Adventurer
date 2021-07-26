@@ -13,7 +13,7 @@ public class OracleAltar : MonoBehaviour
 
     private void Start()
     {
-        data = OracleManager.Instance.GetOracleData();
+        data = OracleManager.Instance.GetNewOracleData();
         tooltip = FindObjectOfType<OracleUI>(true);
     }
 
@@ -21,6 +21,7 @@ public class OracleAltar : MonoBehaviour
     {
         // SHow tooltip
         tooltip.Show(data);
+        OracleManager.Instance.SendNewOracleData();
     }
 
     private void OnTriggerExit2D(Collider2D other)

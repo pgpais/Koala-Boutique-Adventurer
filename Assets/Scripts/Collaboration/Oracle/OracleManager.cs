@@ -10,8 +10,13 @@ public class OracleManager : MonoBehaviour
     public static string dateFormat = "yyyyMMdd";
     public static OracleManager Instance;
 
+    public List<OracleData> OracleDataLog => oracleDataLog;
+
+    private List<OracleData> oracleDataLog = new List<OracleData>();
+
     private MarketPrices marketPrices;
     private OracleData oracleData;
+
 
     private void Awake()
     {
@@ -43,20 +48,26 @@ public class OracleManager : MonoBehaviour
         return oracleData.bestPriceIndex * 3;
     }
 
+    internal int GetHour(int index)
+    {
+        return index * 3;
+    }
+
     private void OnLoggedIn()
     {
         GetMarketPrices();
-
+        GetOracleDataLog();
     }
 
     // Get the current oracle information
-    public OracleData GetOracleData()
+    public OracleData GetNewOracleData()
     {
         string itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
         int bestPriceIndex = marketPrices.GetBestPriceIndex(itemName);
 
         oracleData = new OracleData(bestPriceIndex, itemName);
         Debug.Log("Got oracle data, Best price: " + oracleData.bestPriceIndex + " for item: " + oracleData.itemName);
+
 
         return oracleData;
     }
@@ -78,6 +89,45 @@ public class OracleManager : MonoBehaviour
                 string json = task.Result.GetRawJsonValue();
 
                 marketPrices = new MarketPrices(JsonConvert.DeserializeObject<Dictionary<string, int>[]>(json));
+            }
+        });
+    }
+
+    public void SendNewOracleData()
+    {
+        oracleDataLog.Add(oracleData);
+
+        string json = JsonConvert.SerializeObject(oracleDataLog);
+
+        FirebaseCommunicator.instance.SendObject(json, new string[] { oracleReferenceName, FirebaseCommunicator.instance.FamilyId.ToString(), DateTime.Today.ToString(dateFormat) }, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to send oracle data: " + task.Exception.Message);
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("yey sent oracle data");
+            }
+        });
+    }
+
+    void GetOracleDataLog()
+    {
+        FirebaseCommunicator.instance.GetObject(new string[] { oracleReferenceName, FirebaseCommunicator.instance.FamilyId.ToString(), DateTime.Today.ToString(dateFormat) }, (task) =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to get oracle data log: " + task.Exception.Message);
+            }
+            else if (task.IsCompleted)
+            {
+                string json = task.Result.GetRawJsonValue();
+                if (string.IsNullOrEmpty(json))
+                {
+                    Debug.Log("No oracle data log");
+                }
+                oracleDataLog = JsonConvert.DeserializeObject<List<OracleData>>(json);
             }
         });
     }
