@@ -96,12 +96,12 @@ MonoBehaviour:
   InitializeOnStart: 0
   Interruptable: 0
   Flipped: 0
-  ProjectileSpawnOffset: {x: 0, y: 0.1, z: 0}
+  ProjectileSpawnOffset: {x: 1, y: 0.1, z: 0}
   ProjectilesPerShot: 1
   Spread: {x: 0, y: 0, z: 0}
   RotateWeaponOnSpread: 0
   RandomSpread: 0
-  SpawnPosition: {x: 0, y: 0.1, z: 0}
+  SpawnPosition: {x: 1, y: 0.1, z: 0}
   TestShootButton: 0
 --- !u!114 &-6057076994816178251
 MonoBehaviour:
