@@ -99,6 +99,9 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
         remainingHardToCreate = difficulty / hardPerDifficultyRatio;
         remainingMediumToCreate = difficulty / mediumPerDifficultyRatio;
+
+        ResetBuffList();
+
         GenerateMap();
 
         StartCoroutine(LateStart());
@@ -141,11 +144,10 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     public void FinishLevel()
     {
-        HandleBuffList();
         MissionEnded.Invoke();
     }
 
-    private void HandleBuffList()
+    private void ResetBuffList()
     {
         foreach (var buff in BuffList.buffs)
         {
