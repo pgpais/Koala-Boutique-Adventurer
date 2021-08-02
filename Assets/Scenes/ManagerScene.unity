@@ -350,7 +350,7 @@ MonoBehaviour:
       numberOfSuccessfulMissions: 0
       numberOfDeaths: 0
       buffsCollected: 0
-  currentSelectedClass: {fileID: 11400000, guid: 6460487f77470d946b5b0d5a6101d3b6,
+  currentSelectedClass: {fileID: 11400000, guid: 4589282e03ea2cc4599e29736c3a50c6,
     type: 2}
   diseasedItemName: 
 --- !u!4 &1264824225

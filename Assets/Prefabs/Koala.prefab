@@ -10171,7 +10171,7 @@ MonoBehaviour:
   DamagedEnemy:
     m_PersistentCalls:
       m_Calls: []
-  data: {fileID: 11400000, guid: 6460487f77470d946b5b0d5a6101d3b6, type: 2}
+  data: {fileID: 11400000, guid: 4589282e03ea2cc4599e29736c3a50c6, type: 2}
   currentBuffs: []
   startingBuffs:
   - {fileID: 11400000, guid: 719296a116759fc43b8994f6489db0b7, type: 2}
