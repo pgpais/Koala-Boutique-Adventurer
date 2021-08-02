@@ -19,7 +19,7 @@ MonoBehaviour:
   <buffName>k__BackingField: Running Shoes
   <description>k__BackingField: You get more movement speed
   <StartsUnlocked>k__BackingField: 0
-  AlreadySpawned: 1
-  movementSpeedModifier: 3
+  AlreadySpawned: 0
+  movementSpeedModifier: 1
   healthModifier: 0
   damageModifier: 0

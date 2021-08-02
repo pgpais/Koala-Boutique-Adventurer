@@ -79,6 +79,11 @@ PrefabInstance:
       propertyPath: RunSpeed
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 114809083901408364, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: WalkSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 212797044214329334, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: m_Sprite

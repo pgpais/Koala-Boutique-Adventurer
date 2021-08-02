@@ -3106,7 +3106,7 @@ PrefabInstance:
     - target: {fileID: 2640565964693813763, guid: 1b51ab52d8f07924b8eafda5e2defd9c,
         type: 3}
       propertyPath: <Difficulty>k__BackingField
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2640565964693813763, guid: 1b51ab52d8f07924b8eafda5e2defd9c,
         type: 3}
@@ -3116,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 2640565964693813767, guid: 1b51ab52d8f07924b8eafda5e2defd9c,
         type: 3}
       propertyPath: m_Name
-      value: LR Room 01
+      value: LR Medium 02
       objectReference: {fileID: 0}
     - target: {fileID: 6079959860333351829, guid: 1b51ab52d8f07924b8eafda5e2defd9c,
         type: 3}

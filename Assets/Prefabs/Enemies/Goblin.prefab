@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 7
+  Radius: 10
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
@@ -846,7 +846,7 @@ MonoBehaviour:
     MaximumScale: {x: 1, y: 1, z: 1}
   MaximumQuantity: 100
   RemainingQuantity: 100
-  AvoidObstacles: 0
+  AvoidObstacles: 1
   DimensionMode: 0
   AvoidObstaclesLayerMask:
     serializedVersion: 2

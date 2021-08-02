@@ -32,6 +32,9 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     [SerializeField] Room initialRoom;
 
+
+    [SerializeField] int howManyRoomsMax = 35;
+    [SerializeField] int howManyRoomsMin = 20;
     [Tooltip("How many rooms should be in the map (including initial). Could be difficulty?")]
     [SerializeField] int howManyRooms = 10; // TODO: #47 make map size depend on difficulty
     [SerializeField] int difficulty = 1;
@@ -120,6 +123,8 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
             difficulty = Mathf.Clamp(difficulty, GameManager.minDifficulty, GameManager.maxDifficulty);
         }
+
+        howManyRooms = Rand.Next(howManyRoomsMin, howManyRoomsMax);
     }
 
     IEnumerator LateStart()
@@ -380,7 +385,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     private GameObject SelectRoom(List<GameObject> roomList, int level)
     {
         RoomDifficulty diff;
-        if (level < 2)
+        if (level < 1)
         {
             diff = RoomDifficulty.Easy;
         }
@@ -423,7 +428,8 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
             return entrances.Difficulty == diff;
         });
 
-        return rooms[Rand.Next(rooms.Count)];
+        int index = Rand.Next(rooms.Count);
+        return rooms[index];
     }
 
     private GameObject SelectDeadEnd(List<GameObject> deadEndList)

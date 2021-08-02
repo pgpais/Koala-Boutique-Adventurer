@@ -7,6 +7,7 @@ public class LootItem : PickableItem
 {
     public Item Item => item;
     [SerializeField] Item item;
+    [SerializeField] int amount = 1;
 
     // private void Start()
     // {
@@ -15,7 +16,7 @@ public class LootItem : PickableItem
     protected override void Pick(GameObject picker)
     {
         base.Pick(picker);
-        InventoryManager.instance.AddItem(item.ItemName, 1);
+        InventoryManager.instance.AddItem(item.ItemName, amount);
 
         Destroy(gameObject);
     }

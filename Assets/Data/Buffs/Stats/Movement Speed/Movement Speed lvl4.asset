@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Movement Speed lvl4
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 0}
+  <iconUI>k__BackingField: {fileID: 0}
   <buffName>k__BackingField: Dacing Lessons 4
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
-  movementSpeedModifier: 3
+  AlreadySpawned: 0
+  movementSpeedModifier: 1
   healthModifier: 0
   damageModifier: 0

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 9472
   PerfectImpact: 0
   DamageCaused: 10
   DamageCausedKnockbackType: 1
@@ -133,7 +133,6 @@ MonoBehaviour:
   DamageTakenDamageable: 10
   DamageTakenNonDamageable: 10
   DamageTakenKnockbackType: 0
-  DamagedTakenKnockbackDirection: 0
   DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
   DamageTakenInvincibilityDuration: 0.5
   HitDamageableFeedback: {fileID: 0}

@@ -19,7 +19,7 @@ MonoBehaviour:
   <buffName>k__BackingField: More Damage
   <description>k__BackingField: You deal more damage
   <StartsUnlocked>k__BackingField: 0
-  AlreadySpawned: 1
+  AlreadySpawned: 0
   movementSpeedModifier: 0
   healthModifier: 0
-  damageModifier: 5
+  damageModifier: 2

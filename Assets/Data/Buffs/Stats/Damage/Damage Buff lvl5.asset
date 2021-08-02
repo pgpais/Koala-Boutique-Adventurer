@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Damage Buff lvl5
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 0}
+  <iconUI>k__BackingField: {fileID: 0}
   <buffName>k__BackingField: Training Dummy 5
   <description>k__BackingField: 
   <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0
   movementSpeedModifier: 0
   healthModifier: 0
-  damageModifier: 5
+  damageModifier: 2

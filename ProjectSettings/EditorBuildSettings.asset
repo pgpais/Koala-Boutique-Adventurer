@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level0.unity
     guid: ca78b33993305314c8fb104459a10b03
   - enabled: 1
-    path: Assets/TopDownEngine/ThirdParty/MoreMountains/MMTools/Tools/SceneLoading/LoadingScreen.unity
-    guid: 888394d52616e5e42b3b54c3f2bbd3eb
+    path: Assets/TopDownEngine/Demos/LevelSelection/LevelSelection.unity
+    guid: f991cbe75cb701b43baec351a60a630a
   m_configObjects: {}
