@@ -51,4 +51,9 @@ public class Item : ScriptableObject, UnlockableReward
     {
         unlocked = true;
     }
+
+    internal bool IsSellable()
+    {
+        return ItemName != "Gem" && processResult == null;
+    }
 }

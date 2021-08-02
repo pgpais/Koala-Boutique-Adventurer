@@ -177,7 +177,7 @@ public class QuestManager : MonoBehaviour
     void CreateManagerQuest()
     {
         Dictionary<string, int> questItems = new Dictionary<string, int>();
-        List<Item> items = ItemManager.instance.itemsData.Items.FindAll((item) => item.Unlocked);
+        List<Item> items = ItemManager.instance.itemsData.Items.FindAll((item) => item.Unlocked && item.IsSellable());
 
         for (int i = 0; i < ManagerQuest.amountOfItems; i++)
         {
