@@ -39,4 +39,9 @@ public class ItemsList : ScriptableObject
         var unlocked = items.FindAll(item => item.Unlocked && item.ItemName != "Gem");
         return unlocked[Random.Range(0, unlocked.Count)];
     }
+
+    public List<Item> GetSellableItems()
+    {
+        return items.FindAll(item => item.IsSellable());
+    }
 }

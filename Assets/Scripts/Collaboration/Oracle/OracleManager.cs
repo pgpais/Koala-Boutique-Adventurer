@@ -62,7 +62,8 @@ public class OracleManager : MonoBehaviour
     // Get the current oracle information
     public OracleData GetNewOracleData()
     {
-        string itemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+        var sellableItems = ItemManager.instance.itemsData.GetSellableItems();
+        var itemName = sellableItems[UnityEngine.Random.Range(0, sellableItems.Count)].ItemName;
         int bestPriceIndex = marketPrices.GetBestPriceIndex(itemName);
 
         oracleData = new OracleData(bestPriceIndex, itemName);
