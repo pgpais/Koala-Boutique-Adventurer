@@ -181,9 +181,16 @@ public class GameManager : MonoBehaviour
     public void FinishLevel(bool playerDied)
     {
         //TODO: If died, half items and gems
+
+        if (playerDied)
+        {
+            InventoryManager.instance.HalfInventory();
+        }
+
+        InventoryManager.instance.AddInventoryToGlobalItems();
+
         if (!playerDied)
         {
-            InventoryManager.instance.AddInventoryToGlobalItems();
 
             if (QuestManager.instance != null)
             {

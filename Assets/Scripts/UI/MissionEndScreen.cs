@@ -35,21 +35,22 @@ public class MissionEndScreen : MonoBehaviour
 
         Cursor.visible = true;
 
+        foreach (Transform child in itemsLootedLayout)
+        {
+            Destroy(child.gameObject);
+        }
+
+        ItemsList itemsList = ItemManager.instance.itemsData;
+
+        // Show items caught
+        foreach (var itemQuantity in InventoryManager.instance.ItemQuantity)
+        {
+            Item item = itemsList.GetItemByName(itemQuantity.Key);
+            Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemName, itemQuantity.Value);
+        }
+
         if (!playerDied)
         {
-            foreach (Transform child in itemsLootedLayout)
-            {
-                Destroy(child.gameObject);
-            }
-
-            ItemsList itemsList = ItemManager.instance.itemsData;
-
-            // Show items caught
-            foreach (var itemQuantity in InventoryManager.instance.ItemQuantity)
-            {
-                Item item = itemsList.GetItemByName(itemQuantity.Key);
-                Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemName, itemQuantity.Value);
-            }
 
             // Show enemies defeated
 

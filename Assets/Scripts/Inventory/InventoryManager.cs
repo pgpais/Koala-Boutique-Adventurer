@@ -204,6 +204,16 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    internal void HalfInventory()
+    {
+        foreach (var itemName in itemQuantity.Keys)
+        {
+            int quantity = itemQuantity[itemName];
+            quantity /= 2;
+            itemQuantity[itemName] = quantity;
+        }
+    }
+
     struct MissionStats
     {
         //TODO: Info to log on the mission so it can be shown on the Manager's UI
