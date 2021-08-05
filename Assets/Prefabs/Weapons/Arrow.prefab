@@ -55,9 +55,9 @@ MonoBehaviour:
   FaceDirection: 1
   Speed: 300
   Acceleration: 0
-  Direction: {x: -1, y: 0, z: 0}
+  Direction: {x: 1, y: 0, z: 0}
   DirectionCanBeChangedBySpawner: 1
-  FlipValue: {x: -1, y: 1, z: 1}
+  FlipValue: {x: 1, y: 1, z: 1}
   ProjectileIsFacingRight: 1
   InitialInvulnerabilityDuration: 0
   DamageOwner: 0
