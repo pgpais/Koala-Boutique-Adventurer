@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SecretDoorUI : MonoBehaviour
@@ -56,6 +57,7 @@ public class SecretDoorUI : MonoBehaviour
     {
         this.secretDoor = secretDoor;
         EnableAll();
+        EventSystem.current.SetSelectedGameObject(passCodeField.gameObject);
     }
 
     //Disable every child object
