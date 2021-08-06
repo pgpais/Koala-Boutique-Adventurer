@@ -416,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 1053859907811713865, guid: 8918b29ad8d827b40a6f254ec1990982,
         type: 3}
       propertyPath: spawnGatherablesInThisRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555669740465553689, guid: 8918b29ad8d827b40a6f254ec1990982,
         type: 3}
@@ -487,6 +487,16 @@ PrefabInstance:
         type: 3}
       propertyPath: nExits
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471998534455166486, guid: 8918b29ad8d827b40a6f254ec1990982,
+        type: 3}
+      propertyPath: startsUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471998534455166486, guid: 8918b29ad8d827b40a6f254ec1990982,
+        type: 3}
+      propertyPath: closeDoorsUntilRoomIsCleared
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3471998535187310252, guid: 8918b29ad8d827b40a6f254ec1990982,
         type: 3}
@@ -11481,7 +11491,7 @@ PrefabInstance:
     - target: {fileID: 8051687094878517983, guid: 8918b29ad8d827b40a6f254ec1990982,
         type: 3}
       propertyPath: spawnEnemiesInRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8918b29ad8d827b40a6f254ec1990982, type: 3}
