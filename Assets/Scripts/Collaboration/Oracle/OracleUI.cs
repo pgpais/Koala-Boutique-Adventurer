@@ -37,7 +37,7 @@ public class OracleUI : MonoBehaviour
     {
         int hour = OracleManager.Instance.GetHour();
 
-        m_Text.text = $"{hour}:00 - {hour + 3}:00";
+        m_Text.text = $"{(hour).ToString("00")}:00 - {(hour + 3).ToString("00")}:00";
     }
 
     private void SetSprite(Sprite itemSprite)
