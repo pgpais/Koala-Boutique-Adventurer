@@ -88,7 +88,7 @@ PrefabInstance:
         type: 3}
       propertyPath: AbilityInProgressSfx
       value: 
-      objectReference: {fileID: 8300000, guid: cfeae185af0ab684190081154dc2809e, type: 3}
+      objectReference: {fileID: 8300000, guid: d26b34dd7d2b00b4aba28b1775b51078, type: 3}
     - target: {fileID: 114809083901408364, guid: f70d368a1130a594a9977619d11d9b11,
         type: 3}
       propertyPath: AbilityStartFeedbacks
@@ -133,6 +133,31 @@ PrefabInstance:
         type: 3}
       propertyPath: MaximumHealth
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570400151692745703, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: RandomSfx.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570400151692745703, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: RandomSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d16d1c8884372d45817b70d830f7b1b, type: 3}
+    - target: {fileID: 7570400151692745703, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: RandomSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6eff3c5e569b3bc4d838bae768c54a9c, type: 3}
+    - target: {fileID: 7872318521523879776, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: Sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: c15a757df298f1e4fa027ec82afad92f, type: 3}
+    - target: {fileID: 7872318521523879776, guid: f70d368a1130a594a9977619d11d9b11,
+        type: 3}
+      propertyPath: RandomSfx.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70d368a1130a594a9977619d11d9b11, type: 3}

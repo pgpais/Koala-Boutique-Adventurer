@@ -10140,7 +10140,7 @@ MonoBehaviour:
   MaximumHealth: 200
   ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 5423255612875023378}
-  DestroyOnDeath: 1
+  DestroyOnDeath: 0
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0

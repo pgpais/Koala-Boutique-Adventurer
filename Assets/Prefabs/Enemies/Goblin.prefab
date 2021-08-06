@@ -334,7 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityStartSfx: {fileID: 0}
-  AbilityInProgressSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 8300000, guid: d0d6dd693a24a3d45aee0f8ce4fc96f6,
+    type: 3}
   AbilityStopSfx: {fileID: 0}
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
@@ -10989,8 +10990,9 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  Sfx: {fileID: 8300000, guid: 5b2bb7203064e94418a66880391a48d9, type: 3}
-  RandomSfx: []
+  Sfx: {fileID: 0}
+  RandomSfx:
+  - {fileID: 8300000, guid: c5272256158f94142920e472348b207b, type: 3}
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0
@@ -11228,8 +11230,11 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  Sfx: {fileID: 8300000, guid: a4ce1e0e50d887641b42f7507d3951bb, type: 3}
-  RandomSfx: []
+  Sfx: {fileID: 0}
+  RandomSfx:
+  - {fileID: 8300000, guid: 9322febfca210374caaf66433cdfd116, type: 3}
+  - {fileID: 8300000, guid: 4aa973aa2d449ff4e95c622825b3d62d, type: 3}
+  - {fileID: 8300000, guid: 39fe2688533518445abc5820dc741a11, type: 3}
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0

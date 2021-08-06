@@ -325,11 +325,12 @@ MonoBehaviour:
   DebugActive: 0
   Sfx: {fileID: 0}
   RandomSfx:
-  - {fileID: 8300000, guid: bb9e3789e5aa19941be78d8dc06145b3, type: 3}
-  - {fileID: 8300000, guid: 9a40732d48db93e469ffabc12d628092, type: 3}
-  - {fileID: 8300000, guid: 4a7e1fdc7837440498130665a9aebabe, type: 3}
-  - {fileID: 8300000, guid: 8708f9b210a88df48a18ec393c09abff, type: 3}
-  - {fileID: 8300000, guid: 177b7486b639a294a81e52640242efcc, type: 3}
+  - {fileID: 8300000, guid: ad11a93706e3b6145943447de4a5905d, type: 3}
+  - {fileID: 8300000, guid: cd5cfbf1e0200d84f9f0f61bbe21f732, type: 3}
+  - {fileID: 8300000, guid: 682db86af4e9f0f42b46258b7343b06e, type: 3}
+  - {fileID: 8300000, guid: 2719c30d738c87c41ab5100f60a9d6f9, type: 3}
+  - {fileID: 8300000, guid: 79358acea99baac4c9ef00539c189248, type: 3}
+  - {fileID: 8300000, guid: 4e549618c97131d48ba20c7a0ca215c0, type: 3}
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0

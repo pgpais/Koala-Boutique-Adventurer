@@ -251,9 +251,9 @@ MonoBehaviour:
   DebugActive: 0
   Sfx: {fileID: 0}
   RandomSfx:
-  - {fileID: 8300000, guid: 1714d5edf0969ea47bf7a7b0486e5935, type: 3}
-  - {fileID: 8300000, guid: a8ba219a571a6864a91e179755567338, type: 3}
-  - {fileID: 8300000, guid: 4c06193985c8eb74f89a4f2922988c0b, type: 3}
+  - {fileID: 8300000, guid: 92aecd452dfc33b4886551c5bda0011f, type: 3}
+  - {fileID: 8300000, guid: bb0af03d61d110544bc6932a6a9ed779, type: 3}
+  - {fileID: 8300000, guid: 44fea6b607c660b44bfd251657a7ad47, type: 3}
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0
