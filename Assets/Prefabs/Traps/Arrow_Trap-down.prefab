@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3677936705691741486}
   - component: {fileID: 3677936705691741485}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3677936705877880780}
   - component: {fileID: 3677936705877880781}
   - component: {fileID: 3677936705877880782}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Arrow_Trap-down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3677936706049192426}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3677936706499302710}
   - component: {fileID: 3677936706499302709}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Isometric Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
