@@ -60,6 +60,16 @@ public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
         endScreen.gameObject.SetActive(true);
     }
 
+    public IEnumerator OnMissionFailed()
+    {
+        if (InventoryManager.instance != null)
+        {
+            InventoryManager.instance.HalfInventory();
+        }
+        yield return new WaitForSeconds(2f);
+        ShowMissionFailedScreen();
+    }
+
     void ShowMissionFailedScreen()
     {
         // TODO: #64 wait time to show dead animation
@@ -78,6 +88,6 @@ public class MissionUIManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     public void OnMMEvent(MMGameEvent eventType)
     {
-        LevelManager.Instance.Players[0]._health.OnDeath += ShowMissionFailedScreen;
+        LevelManager.Instance.Players[0]._health.OnDeath += () => StartCoroutine(OnMissionFailed());
     }
 }

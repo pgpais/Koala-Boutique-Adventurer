@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
@@ -204,13 +205,20 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    // yes it's disgusting. don't care.
+    bool wasHalved = false;
     internal void HalfInventory()
     {
-        foreach (var itemName in itemQuantity.Keys)
+        if (!wasHalved)
         {
-            int quantity = itemQuantity[itemName];
-            quantity /= 2;
-            itemQuantity[itemName] = quantity;
+            List<string> keys = itemQuantity.Keys.ToList();
+            foreach (var itemName in keys)
+            {
+                int quantity = itemQuantity[itemName];
+                quantity /= 2;
+                itemQuantity[itemName] = quantity;
+            }
+            wasHalved = true;
         }
     }
 

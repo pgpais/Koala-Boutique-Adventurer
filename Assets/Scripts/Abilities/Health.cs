@@ -64,15 +64,6 @@ namespace Cheese
                 _animator.SetTrigger("Damage");
             }
 
-            bool isDoT = invincibilityDuration == 0; // this is not a good definer, but it works
-            if (isDoT)
-            {
-                DOTFeedbacks?.PlayFeedbacks(this.transform.position);
-            }
-            else
-            {
-                DamageMMFeedbacks?.PlayFeedbacks(this.transform.position);
-            }
 
             // we update the health bar
             UpdateHealthBar(true);
@@ -84,6 +75,19 @@ namespace Cheese
                 CurrentHealth = 0;
 
                 Kill();
+            }
+            else
+            {
+
+                bool isDoT = invincibilityDuration == 0; // this is not a good definer, but it works
+                if (isDoT)
+                {
+                    DOTFeedbacks?.PlayFeedbacks(this.transform.position);
+                }
+                else
+                {
+                    DamageMMFeedbacks?.PlayFeedbacks(this.transform.position);
+                }
             }
         }
     }

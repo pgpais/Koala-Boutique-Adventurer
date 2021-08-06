@@ -38,7 +38,7 @@ public class CharacterClass : MonoBehaviour
             data = GameManager.instance.currentSelectedClass;
         }
         DamagedEnemy = new UnityEvent<Health>();
-        DamagedEnemy.AddListener((health) => Debug.Log("Event fired"));
+        // DamagedEnemy.AddListener((health) => Debug.Log("Event fired"));
     }
 
     // Start is called before the first frame update
@@ -154,9 +154,6 @@ public class CharacterClass : MonoBehaviour
 
     public void OnDeath()
     {
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.FinishLevel(true);
-        }
+
     }
 }

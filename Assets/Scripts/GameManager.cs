@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
 
         if (playerDied)
         {
-            InventoryManager.instance.HalfInventory();
+
         }
 
         InventoryManager.instance.AddInventoryToGlobalItems();
