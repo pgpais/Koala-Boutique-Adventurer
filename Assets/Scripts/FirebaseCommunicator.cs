@@ -213,6 +213,32 @@ public class FirebaseCommunicator : MonoBehaviour
         db.GetValueAsync().ContinueWith(afterSendAction, scheduler);
     }
 
+
+    public void SetupListenForValueChangedEvents(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)
+    {
+        DatabaseReference dbReference = database;
+        foreach (var reference in firebaseReferences)
+        {
+            dbReference = dbReference.Child(reference);
+        }
+
+        dbReference.ValueChanged += onValueChangedAction;
+    }
+    public void SetupListenForValueChangedEvents(string firebaseReference, EventHandler<ValueChangedEventArgs> onValueChangedAction)
+    {
+        database.Child(firebaseReference).Child(familyId.ToString()).ValueChanged += onValueChangedAction;
+    }
+    public void RemoveValueChangedListener(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)
+    {
+        DatabaseReference dbReference = database;
+        foreach (var reference in firebaseReferences)
+        {
+            dbReference = dbReference.Child(reference);
+        }
+
+        dbReference.ValueChanged -= onValueChangedAction;
+    }
+
     public void SetupListenForEvents(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)
     {
         DatabaseReference dbReference = database;
