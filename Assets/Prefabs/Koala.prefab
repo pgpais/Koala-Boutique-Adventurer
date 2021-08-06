@@ -15843,8 +15843,14 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  Sfx: {fileID: 8300000, guid: 6f10d771e7aa4234c90db4da16c32b0d, type: 3}
-  RandomSfx: []
+  Sfx: {fileID: 0}
+  RandomSfx:
+  - {fileID: 8300000, guid: fce80641c7b1b124d8d5df3131607494, type: 3}
+  - {fileID: 8300000, guid: e7595cd81e80d384c9f302df1019f30a, type: 3}
+  - {fileID: 8300000, guid: 156f0e2cde4ef9a4b8c007affa8dc77c, type: 3}
+  - {fileID: 8300000, guid: 46efe9a07b0687a408aaf82037f9ca13, type: 3}
+  - {fileID: 8300000, guid: a037a4359d94ec64eb10e1d2fbcffb17, type: 3}
+  - {fileID: 8300000, guid: be643d3ae14ea6c4fbe1083d2570eb18, type: 3}
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0
@@ -16495,6 +16501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8773258298053573596}
   - component: {fileID: 4206741978730624185}
+  - component: {fileID: 4184229839708786047}
   m_Layer: 10
   m_Name: DeathFeedback
   m_TagString: Untagged
@@ -16528,7 +16535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Feedbacks: []
+  Feedbacks:
+  - {fileID: 4184229839708786047}
   InitializationMode: 2
   SafeMode: 3
   Direction: 0
@@ -16559,3 +16567,48 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   DebugActive: 0
+--- !u!114 &4184229839708786047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972998509315848447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2ce51367856bd49b72678cc4263225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Sound
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  Sfx: {fileID: 0}
+  RandomSfx:
+  - {fileID: 8300000, guid: 8c26299945d66a74ea1acc91e5dde3a2, type: 3}
+  TestButton: 0
+  TestStopButton: 0
+  PlayMethod: 0
+  PoolSize: 10
+  MinVolume: 1
+  MaxVolume: 1
+  MinPitch: 1
+  MaxPitch: 1
+  SfxAudioMixerGroup: {fileID: 0}

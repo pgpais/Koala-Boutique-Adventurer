@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 6566368070390497805}
   - component: {fileID: 3471998535665799038}
   - component: {fileID: 3251723470717531176}
+  - component: {fileID: -3261222733681171257}
+  - component: {fileID: 7912325578209429795}
   m_Layer: 23
   m_Name: Top Portal
   m_TagString: Untagged
@@ -379,7 +381,7 @@ MonoBehaviour:
   PromptRotation: {x: 0, y: 0, z: 0}
   ActivationFeedback: {fileID: 0}
   DeniedFeedback: {fileID: 0}
-  EnterFeedback: {fileID: 0}
+  EnterFeedback: {fileID: -3261222733681171257}
   ExitFeedback: {fileID: 0}
   OnActivation:
     m_PersistentCalls:
@@ -431,6 +433,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  FadeIgnoresTimescale: 0
   MoveMask: 1
   MoveMaskCurve: 5
   MoveMaskMethod: 1
@@ -460,6 +463,7 @@ MonoBehaviour:
       m_Calls: []
   x: 0
   y: 0
+  level: 0
   exitDirection: 0
   roomSpawnPoint: {fileID: 0}
 --- !u!114 &3251723470717531176
@@ -491,7 +495,95 @@ MonoBehaviour:
   - {x: 0.46411037, y: -0.46621847, z: 0}
   m_ShapePathHash: -893558626
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133154
+  m_InstanceId: 134774
+--- !u!114 &-3261222733681171257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585907733339030869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks:
+  - {fileID: 7912325578209429795}
+  InitializationMode: 2
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+--- !u!114 &7912325578209429795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585907733339030869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2ce51367856bd49b72678cc4263225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Sound
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  Sfx: {fileID: 8300000, guid: a15c1484c9a5d5a48a3a25370677fa93, type: 3}
+  RandomSfx: []
+  TestButton: 0
+  TestStopButton: 0
+  PlayMethod: 0
+  PoolSize: 10
+  MinVolume: 1
+  MaxVolume: 1
+  MinPitch: 1
+  MaxPitch: 1
+  SfxAudioMixerGroup: {fileID: 0}
 --- !u!1 &1585907733769519115
 GameObject:
   m_ObjectHideFlags: 0

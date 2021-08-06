@@ -4,6 +4,7 @@ using UnityEngine;
 public class OracleAltar : MonoBehaviour
 {
     [SerializeField] OracleUI tooltip;
+    [SerializeField] AudioClip onOracleActivatedSound;
 
     OracleData data;
 
@@ -22,6 +23,9 @@ public class OracleAltar : MonoBehaviour
         // SHow tooltip
         tooltip.Show(data);
         OracleManager.Instance.SendNewOracleData();
+
+        // Play sound
+        AudioSource.PlayClipAtPoint(onOracleActivatedSound, transform.position);
     }
 
     private void OnTriggerExit2D(Collider2D other)

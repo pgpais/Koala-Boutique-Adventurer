@@ -6,6 +6,7 @@ using UnityEngine;
 public class ArrowTrap : MonoBehaviour
 {
     [SerializeField] Arrow arrowPrefab;
+    [SerializeField] AudioClip onFireSound;
 
     [SerializeField] bool isAutomatic;
 
@@ -39,7 +40,7 @@ public class ArrowTrap : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(shotCooldown);
-            Instantiate(arrowPrefab, shootingPoint.position, shootingPoint.rotation).Init(projectileInitialVelocity);
+            Shoot();
         }
     }
 
@@ -55,9 +56,15 @@ public class ArrowTrap : MonoBehaviour
             var gameObj = hit.collider.gameObject;
             if (hit.collider != null && gameObj.CompareTag("Player"))
             {
-                Instantiate(arrowPrefab, shootingPoint.position, shootingPoint.rotation).Init(projectileInitialVelocity);
+                Shoot();
                 nextShotTime = Time.time + shotCooldown;
             }
         }
+    }
+
+    void Shoot()
+    {
+        Instantiate(arrowPrefab, shootingPoint.position, shootingPoint.rotation).Init(projectileInitialVelocity);
+        AudioSource.PlayClipAtPoint(onFireSound, transform.position);
     }
 }

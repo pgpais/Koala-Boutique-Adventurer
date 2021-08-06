@@ -240,3 +240,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 0}
+  onOracleActivatedSound: {fileID: 8300000, guid: 1354b67a86300a34e847c5483012cbc2,
+    type: 3}
