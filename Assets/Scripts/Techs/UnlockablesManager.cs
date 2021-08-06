@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class UnlockablesManager : MonoBehaviour
 {
+    private const string referenceName = "techs";
     public static UnityEvent OnGotUnlockables = new UnityEvent();
     public static UnlockablesManager instance;
 
@@ -49,12 +51,41 @@ public class UnlockablesManager : MonoBehaviour
 
     private void OnLoggedIn()
     {
-        GetUnlockedUnlockables();
+        SetupUnlockablesListener();
+        // GetUnlockedUnlockables();
+    }
+
+    private void SetupUnlockablesListener()
+    {
+        FirebaseCommunicator.instance.SetupListenForValueChangedEvents(referenceName, (obj, args) =>
+        {
+            string json = args.Snapshot.GetRawJsonValue();
+
+            if (string.IsNullOrEmpty(json))
+            {
+                Debug.LogWarning("No Unlockables");
+            }
+            else
+            {
+                Debug.Log(json);
+                string[] unlockedNames = JsonConvert.DeserializeObject<string[]>(json);
+                foreach (var unlockableName in unlockedNames)
+                {
+                    if (unlockables.ContainsKey(unlockableName))
+                    {
+                        unlockables[unlockableName].Unlock();
+                    }
+                }
+
+                gotUnlockables = true;
+                OnGotUnlockables.Invoke();
+            }
+        });
     }
 
     void GetUnlockedUnlockables()
     {
-        FirebaseCommunicator.instance.GetObject("techs", (task) =>
+        FirebaseCommunicator.instance.GetObject(referenceName, (task) =>
         {
             if (task.IsFaulted)
             {
@@ -122,7 +153,7 @@ public class UnlockablesManager : MonoBehaviour
 
         Debug.Log(json);
 
-        FirebaseCommunicator.instance.SendObject(json, "techs", (task) =>
+        FirebaseCommunicator.instance.SendObject(json, referenceName, (task) =>
         {
             if (task.IsFaulted)
             {

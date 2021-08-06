@@ -16,6 +16,32 @@ public class ClassSelectScreen : MonoBehaviour
         weaponPreview.sprite = null;
         weaponPreview.color = Color.clear;
 
+        // foreach (Transform child in layoutGroup)
+        // {
+        //     Destroy(child.gameObject);
+        // }
+
+        // foreach (var characterClass in possibleStartingClasses)
+        // {
+
+        //     var button = Instantiate(buttonPrefab, layoutGroup).GetComponent<Button>();
+        //     if (!characterClass.Unlocked)
+        //     {
+        //         button.interactable = false;
+        //     }
+        //     button.GetComponentInChildren<TMPro.TMP_Text>().text = characterClass.className;
+        //     button.onClick.AddListener(() =>
+        //     {
+        //         GameManager.instance.currentSelectedClass = characterClass;
+        //         weaponPreview.sprite = characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite;
+        //         weaponPreview.color = Color.white;
+        //     });
+        // }
+    }
+
+
+    private void OnEnable()
+    {
         foreach (Transform child in layoutGroup)
         {
             Destroy(child.gameObject);
