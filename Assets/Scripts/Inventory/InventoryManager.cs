@@ -108,7 +108,11 @@ public class InventoryManager : MonoBehaviour
 
     private void AddToNewItemsLog(int diseasedGoldLoss)
     {
-        NewItemsList currentNewItemsList = new NewItemsList(diseasedGoldLoss, itemQuantity, DiseasedManager.instance.DiseasedItem.ItemName);
+        string itemName = null;
+        if (DiseasedManager.instance.DiseasedItem != null)
+            itemName = DiseasedManager.instance.DiseasedItem.ItemName;
+
+        NewItemsList currentNewItemsList = new NewItemsList(diseasedGoldLoss, itemQuantity, itemName);
 
         GetNewItemsListAndAddCurrent(currentNewItemsList);
     }
