@@ -43,4 +43,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Purple Mushroom
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 80c0647a177daa94bbcffbd69e7d3b0d,
+    type: 3}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

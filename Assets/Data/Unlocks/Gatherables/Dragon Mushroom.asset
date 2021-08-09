@@ -43,4 +43,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Dragon Mushroom
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: c47786cdb95dd8d48aa7ad9945b566a7,
+    type: 3}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

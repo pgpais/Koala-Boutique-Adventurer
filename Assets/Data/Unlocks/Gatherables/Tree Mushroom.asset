@@ -43,4 +43,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Tree Mushroom
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 6125dd286fb89df40b2207202ca84bc7,
+    type: 3}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

@@ -43,5 +43,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Training Dummy lvl3
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 36127535b014c614db456141b341df62,
+    type: 3}
   <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

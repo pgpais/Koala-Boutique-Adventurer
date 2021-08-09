@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,5 +19,11 @@ public class ItemSmallUI : MonoBehaviour
     public void InitWithoutQuantity(Item item)
     {
         image.sprite = item.sprite;
+    }
+
+    internal void Init(string unlockableName, Sprite unlockableIcon)
+    {
+        quantityLabel.text = unlockableName;
+        image.sprite = unlockableIcon;
     }
 }

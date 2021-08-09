@@ -47,5 +47,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Food Market
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 40d3b0c3e8f1d7046ab716aec63a3b1f,
+    type: 3}
   <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

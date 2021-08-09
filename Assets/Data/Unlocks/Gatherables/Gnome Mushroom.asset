@@ -43,4 +43,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Gnome Mushroom
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: e9803baae69b57740af63d7dbb90a059,
+    type: 3}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

@@ -13,6 +13,7 @@ public class Unlockable : SerializedScriptableObject
 
     [field: SerializeField] public string UnlockableName { get; private set; }
     [field: SerializeField] public string UnlockableDescription { get; private set; }
+    [field: SerializeField] public Sprite UnlockableIcon { get; private set; }
 
     [SerializeField] List<UnlockableReward> rewards;
 

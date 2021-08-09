@@ -51,4 +51,7 @@ MonoBehaviour:
       m_Calls: []
   <UnlockableName>k__BackingField: Buff Altar
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 9b697f4d695de0942bb96c4254b9b258,
+    type: 3}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

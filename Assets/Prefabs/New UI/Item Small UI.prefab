@@ -100,6 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8807423444792894195}
+  - component: {fileID: 7762060951348004768}
   m_Layer: 5
   m_Name: Item Small UI
   m_TagString: Untagged
@@ -128,6 +129,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 190, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7762060951348004768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807423444792894196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c8fd43a541fa4b86cd5063829d30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 8807423446297263836}
+  quantityLabel: {fileID: 8807423445201240505}
 --- !u!1 &8807423445201240507
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,8 +236,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 6
