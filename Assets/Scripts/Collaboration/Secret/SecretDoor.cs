@@ -107,8 +107,8 @@ public class SecretDoor : ButtonActivated
 
         if (!doorTime.IsDecrypted())
         {
-            // Door still hasn't been requested
-            if (!doorTime.IsValid())
+            // Door still hasn't been requested or expired
+            if (!doorTime.IsValid() || doorTime.HasExpired())
             {
                 CreateNewRequest();
 
@@ -142,7 +142,6 @@ public class SecretDoor : ButtonActivated
 
     void SendDoorTime(DoorTime doorTime)
     {
-        //TODO: send item for processing
         string json = JsonConvert.SerializeObject(doorTime);
         FirebaseCommunicator.instance.SendObject(json, referenceName, (task) =>
         {
