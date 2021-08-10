@@ -128,7 +128,7 @@ public enum LogType
     AbundantItemSelected,
     Unlock,
     AdventurerQuestCreated,
-    AdventurerQuestReceived,
+    AdventurerQuestChecked,
     AdventurerQuestSuccess,
     ManagerQuestCreated,
     ManagerQuestChecked,
@@ -147,5 +147,6 @@ public enum LogType
     UnlocksTabSwitched,
     Paused,
     SceneLoaded,
-    sceneUnloaded
+    SceneUnloaded,
+    EncryptedKeyProcessed
 }

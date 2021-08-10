@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     private void OnSceneUnloaded(Scene arg0)
     {
         LogsManager.SendLogDirectly(new Log(
-            LogType.sceneUnloaded,
+            LogType.SceneUnloaded,
             new Dictionary<string, string>(){
                 {"scene", arg0.name}
             }
