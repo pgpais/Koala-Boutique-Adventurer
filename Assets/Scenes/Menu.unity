@@ -1321,6 +1321,7 @@ MonoBehaviour:
   kingsOfferingItemSmallUIPrefab: {fileID: 3642181422475289425, guid: 0a699b6c6229c0b4ba4f5fecd5b260ff,
     type: 3}
   offeringLayout: {fileID: 1886366313}
+  scrollSnap: {fileID: 1984695124}
   oracleInfoPrefab: {fileID: 8567616188430262408, guid: 6df2ab9d1f682e2418d0cc58b17e2050,
     type: 3}
   pageParent: {fileID: 1590994507}

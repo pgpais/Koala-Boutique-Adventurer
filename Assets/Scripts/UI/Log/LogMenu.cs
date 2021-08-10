@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DanielLochner.Assets.SimpleScrollSnap;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,14 +22,21 @@ public class LogMenu : MonoBehaviour
     [SerializeField] LayoutGroup offeringLayout;
 
     [Header("Oracle")]
+    [SerializeField] SimpleScrollSnap scrollSnap;
     [SerializeField] OracleInfo oracleInfoPrefab;
     [SerializeField] Transform pageParent;
     [SerializeField] Transform paginationParent;
     [SerializeField] GameObject paginationPrefab;
 
+
     private void Awake()
     {
         closeButton.onClick.AddListener(HideMenu);
+    }
+
+    private void Start()
+    {
+        ShowOracleInfo();
     }
 
     private void HideMenu()
@@ -50,7 +58,7 @@ public class LogMenu : MonoBehaviour
 
         HandleShowKingOffering();
 
-        ShowOracleInfo();
+        // ShowOracleInfo(); // Can't be here the it is implemented
     }
 
     private void HideDailyQuest()
@@ -116,34 +124,33 @@ public class LogMenu : MonoBehaviour
 
     public void ShowOracleInfo()
     {
-        // foreach (Transform child in pageParent.transform)
-        // {
-        //     Destroy(child.gameObject);
-        // }
+        foreach (Transform child in pageParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
-        // // destroy childs of paginationParent
-        // foreach (Transform child in paginationParent.transform)
-        // {
-        //     Destroy(child.gameObject);
-        // }
+        // destroy childs of paginationParent
+        foreach (Transform child in paginationParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+
 
         List<OracleData> oracleDataLog = OracleManager.Instance.OracleDataLog;
 
         foreach (OracleData oracleData in oracleDataLog)
         {
+            OracleInfo info = Instantiate(oracleInfoPrefab);
+            GameObject pag = Instantiate(paginationPrefab);
 
-            GameObject pagination = Instantiate(paginationPrefab);
-            pagination.transform.SetParent(paginationParent.transform, false);
+            pag.transform.SetParent(paginationParent, false);
+            info.transform.SetParent(pageParent, false);
 
-            Item item = ItemManager.instance.itemsData.GetItemByName(oracleData.itemName);
+            scrollSnap.AddToBack(info.gameObject);
 
-            GameObject page = new GameObject();
-            page.AddComponent<RectTransform>();
-            page.transform.SetParent(pageParent, false);
-
-            OracleInfo oracleInfo = Instantiate(oracleInfoPrefab);
-            oracleInfo.transform.SetParent(page.transform, false);
-            oracleInfo.InitUI(item.sprite, oracleData.bestPriceIndex);
+            var item = ItemManager.instance.itemsData.GetItemByName(oracleData.itemName);
+            info.InitUI(item.sprite, oracleData.bestPriceIndex);
         }
     }
 }
