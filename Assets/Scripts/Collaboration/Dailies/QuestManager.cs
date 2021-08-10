@@ -193,6 +193,13 @@ public class QuestManager : MonoBehaviour
         }
 
         managerQuest = new ManagerQuest(questItems, DateTime.Today.ToString(dateFormat));
+
+        LogsManager.SendLogDirectly(new Log(
+            LogType.ManagerQuestCreated,
+            new Dictionary<string, string>(){
+                {"itemsToSell", JsonConvert.SerializeObject(questItems)}
+            }
+        ));
     }
 
     void SaveManagerQuest()

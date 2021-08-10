@@ -32,8 +32,15 @@ public class GameManager : MonoBehaviour
     public string DiseasedItemName => diseasedItemName;
     [SerializeField] string diseasedItemName;
 
+    LogsManager logsManager;
+
 
     private bool performingMission;
+
+    //Don't look here! I was just lazy to find a better way
+    #region Silly variables
+    private bool alreadyDetectedPause = false;
+    #endregion
 
     void Awake()
     {
@@ -45,6 +52,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        logsManager = LogsManager.instance;
 
 
         DontDestroyOnLoad(this);
@@ -53,10 +61,38 @@ public class GameManager : MonoBehaviour
 
         FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
         FirebaseCommunicator.GameStarted.AddListener(OnGameStarted);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnSceneUnloaded(Scene arg0)
+    {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.sceneUnloaded,
+            new Dictionary<string, string>(){
+                {"scene", arg0.name}
+            }
+        ));
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.SceneLoaded,
+            new Dictionary<string, string>(){
+                {"scene", arg0.name}
+            }
+        ));
     }
 
     private void Start()
     {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.GameStarted,
+            new Dictionary<string, string>(),
+            DateTime.Now
+        ));
 
         // Setup listener for new missions
         FirebaseCommunicator.instance.SetupListenForChildAddedEvents(new string[] { Mission.firebaseReferenceName, FirebaseCommunicator.instance.FamilyId.ToString() }, OnMissionAdded);
@@ -246,6 +282,7 @@ public class GameManager : MonoBehaviour
 
     public void FailedMission()
     {
+        LogsManager.SendLogDirectly(new Log(LogType.MissionFail, null));
         UpdateBaseDifficulty(difficultyDeathModifier);
 
         stats.stats.numberOfMissions++;
@@ -256,6 +293,7 @@ public class GameManager : MonoBehaviour
 
     public void SuccessfulMission()
     {
+        LogsManager.SendLogDirectly(new Log(LogType.MissionSuccess, null));
         UpdateBaseDifficulty(difficultyWinModifier);
 
         stats.stats.numberOfMissions++;
@@ -277,4 +315,22 @@ public class GameManager : MonoBehaviour
 
         UploadDifficulty();
     }
+
+    private void Update()
+    {
+        // very lazy way to do this.
+        if (MoreMountains.TopDownEngine.GameManager.Instance.Paused && !alreadyDetectedPause)
+        {
+            alreadyDetectedPause = true;
+            LogsManager.SendLogDirectly(new Log(
+                LogType.Paused
+            ));
+        }
+        else if (!MoreMountains.TopDownEngine.GameManager.Instance.Paused)
+        {
+            alreadyDetectedPause = false;
+        }
+    }
+
+
 }

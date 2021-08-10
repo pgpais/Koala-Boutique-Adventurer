@@ -64,6 +64,14 @@ namespace Cheese
                 _animator.SetTrigger("Damage");
             }
 
+            LogsManager.SendLogDirectly(new Log(
+                LogType.DamageTaken,
+                new Dictionary<string, string>()
+                {
+                    {"GotDamaged", gameObject.name},
+                    {"DamagedBy", instigator.name}
+                }
+            ));
 
             // we update the health bar
             UpdateHealthBar(true);
@@ -73,7 +81,13 @@ namespace Cheese
             {
                 // we set its health to zero (useful for the healthbar)
                 CurrentHealth = 0;
-
+                LogsManager.SendLogDirectly(new Log(
+                    instigator.CompareTag("Player") ? LogType.EnemyKilled : LogType.Death,
+                    new Dictionary<string, string>()
+                    {
+                        {"KilledBy", instigator.name}
+                    }
+                ));
                 Kill();
             }
             else

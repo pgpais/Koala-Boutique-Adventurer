@@ -38,16 +38,30 @@ public class SecretDoorUI : MonoBehaviour
                 if (secretDoor.SubmitCode(code))
                 {
                     // Success
+                    LogsManager.SendLogDirectly(new Log(
+                        LogType.CorrectCodeInserted,
+                        null
+                    ));
+
                     DisableAll();
                 }
                 else
                 {
                     // Failed
+                    LogsManager.SendLogDirectly(new Log(
+                        LogType.WrongCodeInserted,
+                        null
+                    ));
+
                     passCodeField.text = "";
                 }
             }
             else
             {
+                LogsManager.SendLogDirectly(new Log(
+                    LogType.WrongCodeInserted,
+                    null
+                ));
                 passCodeField.text = "";
             }
         }

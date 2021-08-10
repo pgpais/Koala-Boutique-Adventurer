@@ -27,6 +27,11 @@ public class ValuableChest : MonoBehaviour
 
         Debug.Log("Interacted!");
 
+        LogsManager.SendLogDirectly(new Log(
+            LogType.LootChestCollected,
+            null
+        ));
+
         InventoryManager.instance.AddItem(chestLoot.ItemName, itemQuantity);
         Debug.Log("Collected chest!");
         chestClosed.SetActive(false);

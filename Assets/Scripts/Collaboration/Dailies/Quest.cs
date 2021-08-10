@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 [System.Serializable]
 public class AdventurerQuest
@@ -54,6 +55,13 @@ public class AdventurerQuest
 
     public void CompleteQuest()
     {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.AdventurerQuestSuccess,
+            new Dictionary<string, string>(){
+                {"questItems", JsonConvert.SerializeObject(itemQuantity)}
+            }
+        ));
+
         IsCompleted = true;
         IsChecked = false;
     }
@@ -106,6 +114,12 @@ internal class ManagerQuest
     internal void Check()
     {
         IsChecked = true;
+        LogsManager.SendLogDirectly(new Log(
+            LogType.ManagerQuestChecked,
+            new Dictionary<string, string>(){
+                {"StartDay", StartDay}
+            }
+        ));
     }
 
     public bool IsOld()

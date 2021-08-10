@@ -100,6 +100,12 @@ public class FirebaseCommunicator : MonoBehaviour
         Debug.LogFormat("User signed in successfully: {0} ({1})", user.DisplayName, user.UserId);
         IsLoggedIn = true;
         LoggedIn.Invoke();
+
+        LogsManager.SendLogDirectly(new Log(
+            LogType.LoggedIn,
+            null
+        ));
+
         yield break;
     }
 
@@ -146,6 +152,10 @@ public class FirebaseCommunicator : MonoBehaviour
         FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
 
         IsLoggedIn = false;
+        LogsManager.SendLogDirectly(new Log(
+            LogType.LoggedOut,
+            null
+        ));
     }
 
     public void SendObject(string objJSON, string firebaseReferenceName, Action<Task> afterSendAction)
@@ -283,12 +293,22 @@ public class FirebaseCommunicator : MonoBehaviour
         dbReference.ChildAdded -= onChildAddedAction;
     }
 
+    public string Push(string firebaseReferenceName)
+    {
+        return database.Child(firebaseReferenceName).Child(familyId.ToString()).Push().Key;
+    }
+
     private void OnApplicationQuit()
     {
 #if UNITY_EDITOR
         var db = FirebaseDatabase.DefaultInstance;
         db.SetPersistenceEnabled(false);
 #endif
+
+        LogsManager.SendLogDirectly(new Log(
+            LogType.GameQuit,
+            null
+        ));
     }
 
     // public IEnumerator CreateNewRoom(string roomId)

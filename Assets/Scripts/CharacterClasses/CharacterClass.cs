@@ -131,7 +131,15 @@ public class CharacterClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Player1_Shoot") && !MoreMountains.TopDownEngine.GameManager.Instance.Paused)
+        {
+            LogsManager.SendLogDirectly(new Log(
+                LogType.AttackPerformed,
+                new Dictionary<string, string>(){
+                    {"Attacker", character.name}
+                }
+            ));
+        }
     }
 
     public void ApplyDamageModifier(DamageOnTouch damagingScript, bool isRanged)
@@ -155,5 +163,10 @@ public class CharacterClass : MonoBehaviour
     public void OnDeath()
     {
 
+    }
+
+    private void SetupLogs()
+    {
+        // character.FindAbility<CharacterHandleWeapon>().CurrentWeapon = (weapon) => LogManager.SendLogDirectly(LogType.AttackPeformed, new Dictionary<string, string>() { { "Weapon", weapon.WeaponName } });
     }
 }

@@ -18,6 +18,14 @@ public class LootItem : PickableItem
         base.Pick(picker);
         InventoryManager.instance.AddItem(item.ItemName, amount);
 
+        LogsManager.SendLogDirectly(new Log(
+            LogType.LootCollected,
+            new Dictionary<string, string>(){
+                {"Item", item.ItemName},
+                {"Amount", amount.ToString()}
+            }
+        ));
+
         Destroy(gameObject);
     }
 }

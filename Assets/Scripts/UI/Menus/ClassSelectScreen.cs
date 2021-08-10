@@ -58,6 +58,13 @@ public class ClassSelectScreen : MonoBehaviour
             button.GetComponentInChildren<TMPro.TMP_Text>().text = characterClass.className;
             button.onClick.AddListener(() =>
             {
+                LogsManager.SendLogDirectly(new Log(
+                    LogType.ClassSelected,
+                    new Dictionary<string, string>(){
+                        {"Class", characterClass.className}
+                    }
+                ));
+
                 GameManager.instance.currentSelectedClass = characterClass;
                 weaponPreview.sprite = characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite;
                 weaponPreview.color = Color.white;

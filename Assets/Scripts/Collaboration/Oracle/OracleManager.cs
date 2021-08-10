@@ -97,6 +97,14 @@ public class OracleManager : MonoBehaviour
     public void SendNewOracleData()
     {
         oracleDataLog.Add(oracleData);
+        LogsManager.SendLogDirectly(new Log(
+            LogType.GotOracleInfo,
+            new Dictionary<string, string>(){
+                {"itemName", oracleData.itemName},
+                {"hour", (oracleData.bestPriceIndex * 3).ToString()},
+                {"maxHour", (oracleData.bestPriceIndex*3 + 3).ToString()}
+            }
+        ));
 
         string json = JsonConvert.SerializeObject(oracleDataLog);
 

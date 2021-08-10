@@ -38,6 +38,11 @@ public class HealingZone : MonoBehaviour
         {
             targetHealth = other.GetComponent<Health>();
         }
+
+        LogsManager.SendLogDirectly(new Log(
+            LogType.HealingReceived,
+            null
+        ));
     }
 
     private void OnTriggerStay2D(Collider2D other)

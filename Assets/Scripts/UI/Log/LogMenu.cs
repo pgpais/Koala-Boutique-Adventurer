@@ -54,6 +54,11 @@ public class LogMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.NotebookInteracted,
+            null
+        ));
+
         HandleShowDailyQuest();
 
         HandleShowKingOffering();
@@ -98,6 +103,7 @@ public class LogMenu : MonoBehaviour
 
     private void HandleShowKingOffering()
     {
+
         // destroy childs of offeringLayout
         foreach (Transform item in offeringLayout.transform)
         {
@@ -108,6 +114,20 @@ public class LogMenu : MonoBehaviour
         {
             //Show current offering
             Offering offering = OfferingManager.instance.GetCurrentOffering();
+
+            string offeringListLog = "";
+            foreach (var offeringItem in offering.itemsToOffer)
+            {
+                offeringListLog += offeringItem + ", ";
+            }
+            LogsManager.SendLogDirectly(new Log(
+                LogType.KingOfferingChecked,
+                new Dictionary<string, string>(){
+                    { "offering", offeringListLog},
+                    { "endDay", DateTime.Today.ToString("dd-MM-yyyy")}
+                }
+            ));
+
             foreach (var itemName in offering.itemsToOffer)
             {
                 Item itemToOffer = ItemManager.instance.itemsData.GetItemByName(itemName);

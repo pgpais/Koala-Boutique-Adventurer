@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,6 +73,19 @@ public class MissionEndScreen : MonoBehaviour
 
         if (!offering.wasNotified)
         {
+            string offeringListLog = "";
+            foreach (var offeringItem in offering.itemsToOffer)
+            {
+                offeringListLog += offeringItem + ", ";
+            }
+            LogsManager.SendLogDirectly(new Log(
+                LogType.KingOfferingReceived,
+                new Dictionary<string, string>(){
+                    { "offering", offeringListLog},
+                    { "endDay", DateTime.Today.ToString("dd-MM-yyyy")}
+                }
+            ));
+
             offeringParent.gameObject.SetActive(true);
 
             foreach (Transform child in offeringLayout)

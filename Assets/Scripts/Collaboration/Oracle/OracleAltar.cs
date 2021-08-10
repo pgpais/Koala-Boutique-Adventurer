@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -20,9 +21,19 @@ public class OracleAltar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.OracleInteracted,
+            new Dictionary<string, string>(){
+                {"itemName", data.itemName},
+                {"hour", (data.bestPriceIndex * 3).ToString()},
+                {"maxHour", (data.bestPriceIndex*3 + 3).ToString()}
+            }
+        ));
+
         // SHow tooltip
         tooltip.Show(data);
         OracleManager.Instance.SendNewOracleData();
+
 
         // Play sound
         AudioSource.PlayClipAtPoint(onOracleActivatedSound, transform.position);

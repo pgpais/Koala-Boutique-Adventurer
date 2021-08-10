@@ -105,6 +105,11 @@ public class SecretDoor : ButtonActivated
     {
         base.ActivateZone();
 
+        LogsManager.SendLogDirectly(new Log(
+            LogType.SecretDoorInteracted,
+            null
+        ));
+
         if (!doorTime.IsDecrypted())
         {
             // Door still hasn't been requested or expired

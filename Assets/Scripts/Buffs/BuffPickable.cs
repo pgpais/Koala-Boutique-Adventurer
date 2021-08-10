@@ -46,6 +46,14 @@ public class BuffPickable : PickableItem
 
     protected override void Pick(GameObject picker)
     {
+
+        LogsManager.SendLogDirectly(new Log(
+            LogType.BuffCollected,
+            new Dictionary<string, string>(){
+                {"buff", buffToGive.name}
+            }
+        ));
+
         CharacterClass characterClass = picker.GetComponent<CharacterClass>();
         characterClass.AddBuff(buffToGive);
     }

@@ -55,14 +55,33 @@ public class Gatherable : MonoBehaviour
         if (interactionsLeft <= 0)
         {
             string itemName;
+
             if (gatherableItem == null)
             {
-                itemName = "Gatherable1";
+                itemName = "Basic Mushroom";
             }
             else
             {
                 itemName = gatherableItem.ItemName;
             }
+
+            LogsManager.SendLogDirectly(new Log(
+                LogType.MushroomCollected,
+                new Dictionary<string, string> {
+                    { "ItemName", itemName }
+                }
+            ));
+
+            if (DiseasedManager.instance.DiseasedItem.ItemName == itemName)
+            {
+                LogsManager.SendLogDirectly(new Log(
+                    LogType.DiseasedItemCollected,
+                    new Dictionary<string, string> {
+                        { "ItemName", itemName }
+                    }
+                ));
+            }
+
             InventoryManager.instance.AddItem(itemName, 1);
             Debug.Log("Collected gatherable!");
             Destroy(gameObject);

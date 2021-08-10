@@ -111,6 +111,7 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
 
         room.OnPlayerEntersRoom.AddListener(OnPlayerEnteredRoom);
         room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEnteredRoom);
+        room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEnteredRoomFirstTime);
 
         StartCoroutine(LateStart());
     }
@@ -153,9 +154,27 @@ public class RoomEntrances : MonoBehaviour, UnlockableReward
         }
     }
 
+    private void OnPlayerEnteredRoomFirstTime()
+    {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.RoomExplored,
+            new Dictionary<string, string>(){
+                {"RoomName", gameObject.name},
+                {"RoomType", type.ToString()}
+            }
+        ));
+    }
 
     private void OnPlayerEnteredRoom()
     {
+        LogsManager.SendLogDirectly(new Log(
+            LogType.RoomEntered,
+            new Dictionary<string, string>(){
+                {"RoomName", gameObject.name},
+                {"RoomType", type.ToString()}
+            }
+        ));
+
         if (Type == RoomType.Enemies && closeDoorsUntilRoomIsCleared && !roomCleared)
         {
             foreach (var exit in activeExits)

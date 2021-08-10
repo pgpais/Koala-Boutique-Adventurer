@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DanielLochner.Assets.SimpleScrollSnap;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -42,6 +43,19 @@ public class NewUnlocksPanel : MonoBehaviour
     private void OnLoggedIn()
     {
         SetupUnlocksLogListener();
+    }
+
+    private void OnEnable()
+    {
+        if (unlockLogs != null && unlockLogs.Count > 0)
+        {
+            LogsManager.SendLogDirectly(new Log(
+                LogType.AdventurerNewsSeen,
+                new Dictionary<string, string>(){
+                    {"news", string.Join(",", unlockLogs.Select((log) => log.UnlockableName))}
+                }
+            ));
+        }
     }
 
     void SetupUnlocksLogListener()
