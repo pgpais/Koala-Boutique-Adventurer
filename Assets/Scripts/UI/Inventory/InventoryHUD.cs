@@ -33,7 +33,7 @@ public class InventoryHUD : MonoBehaviour
     {
         Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
 
-        ItemHUD itemHUD = itemHUDs.Find((itemHUD) => itemHUD.ItemName == item.ItemName);
+        ItemHUD itemHUD = itemHUDs.Find((itemHUD) => itemHUD.ItemNameKey == item.ItemNameKey);
         if (itemHUD != null)
         {
             itemHUD.UpdateQuantity(quantity);

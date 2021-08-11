@@ -66,7 +66,7 @@ public class InventoryManager : MonoBehaviour
     public void AddRandomValuable()
     {
         Item item = ItemManager.instance.GetRandomValuable();
-        AddItem(item.ItemName, 1);
+        AddItem(item.ItemNameKey, 1);
     }
 
     public void AddInventoryToGlobalItems()
@@ -110,7 +110,7 @@ public class InventoryManager : MonoBehaviour
     {
         string itemName = null;
         if (DiseasedManager.instance.DiseasedItem != null)
-            itemName = DiseasedManager.instance.DiseasedItem.ItemName;
+            itemName = DiseasedManager.instance.DiseasedItem.ItemNameKey;
 
         NewItemsList currentNewItemsList = new NewItemsList(diseasedGoldLoss, itemQuantity, itemName);
 
@@ -162,7 +162,7 @@ public class InventoryManager : MonoBehaviour
 
     private int HandleDiseasedItem(Item diseasedItem)
     {
-        string itemName = diseasedItem.ItemName;
+        string itemName = diseasedItem.ItemNameKey;
         if (itemQuantity.ContainsKey(itemName))
         {
             int quantity = itemQuantity[itemName];

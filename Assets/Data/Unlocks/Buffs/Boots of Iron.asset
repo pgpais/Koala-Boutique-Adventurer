@@ -41,7 +41,7 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Boots of Iron
+  unlockableStringKey: 6
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: bfacbb57eff22fe4aac2818e06e81fd4,
     type: 3}

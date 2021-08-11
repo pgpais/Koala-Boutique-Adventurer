@@ -41,7 +41,8 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Training Dummy lvl2
+  unlockableStringKey: 40
+  unlockableNameAddition: 2
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 36127535b014c614db456141b341df62,
     type: 3}

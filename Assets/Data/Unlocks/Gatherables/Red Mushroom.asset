@@ -41,7 +41,7 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Red Mushroom
+  unlockableStringKey: 28
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 8603f1528afde5f4a9751c107d17e00e,
     type: 3}

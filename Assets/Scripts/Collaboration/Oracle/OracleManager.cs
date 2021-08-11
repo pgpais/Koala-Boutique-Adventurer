@@ -63,7 +63,7 @@ public class OracleManager : MonoBehaviour
     public OracleData GetNewOracleData()
     {
         var sellableItems = ItemManager.instance.itemsData.GetSellableItems();
-        var itemName = sellableItems[UnityEngine.Random.Range(0, sellableItems.Count)].ItemName;
+        var itemName = sellableItems[UnityEngine.Random.Range(0, sellableItems.Count)].ItemNameKey;
         int bestPriceIndex = marketPrices.GetBestPriceIndex(itemName);
 
         oracleData = new OracleData(bestPriceIndex, itemName);

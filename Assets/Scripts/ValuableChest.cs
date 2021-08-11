@@ -32,7 +32,7 @@ public class ValuableChest : MonoBehaviour
             null
         ));
 
-        InventoryManager.instance.AddItem(chestLoot.ItemName, itemQuantity);
+        InventoryManager.instance.AddItem(chestLoot.ItemNameKey, itemQuantity);
         Debug.Log("Collected chest!");
         chestClosed.SetActive(false);
         chestOpen.SetActive(true);

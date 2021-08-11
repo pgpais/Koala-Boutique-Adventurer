@@ -133,7 +133,7 @@ public class MissionManager : MonoBehaviour, MMEventListener<MMGameEvent>
     IEnumerator LateStart()
     {
         yield return new WaitForSeconds(0.1f);
-        LogsManager.SendLogDirectly(new Log(LogType.MissionStart, new Dictionary<string, string>() { { "Class", GameManager.instance.currentSelectedClass.className } }));
+        LogsManager.SendLogDirectly(new Log(LogType.MissionStart, new Dictionary<string, string>() { { "Class", GameManager.instance.currentSelectedClass.ClassName } }));
         MissionStarted.Invoke(LanternTimeLimit);
     }
 

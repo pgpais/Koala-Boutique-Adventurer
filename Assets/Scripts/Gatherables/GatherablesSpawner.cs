@@ -112,7 +112,7 @@ public class GatherablesSpawner : MonoBehaviour
         {
             if (item.Type != Item.ItemType.Gatherable)
             {
-                Debug.LogError($"Item {item.ItemName} is not of type Gatherable! Stopping execution...");
+                Debug.LogError($"Item {item.ItemNameKey} is not of type Gatherable! Stopping execution...");
                 if (Application.isPlaying)
                 {
                     Application.Quit();
@@ -123,7 +123,7 @@ public class GatherablesSpawner : MonoBehaviour
         {
             if (item.Type != Item.ItemType.Gatherable)
             {
-                Debug.LogError($"Item {item.ItemName} is not of type Gatherable! Stopping execution...");
+                Debug.LogError($"Item {item.ItemNameKey} is not of type Gatherable! Stopping execution...");
                 if (Application.isPlaying)
                 {
                     Application.Quit();

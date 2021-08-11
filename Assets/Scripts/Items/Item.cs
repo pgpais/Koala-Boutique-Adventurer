@@ -17,7 +17,9 @@ public class Item : ScriptableObject, UnlockableReward
 
 
     public UnityEvent<int> ItemUpdated { get; private set; }
-    [field: SerializeField] public string ItemName { get; private set; }
+    public string ItemNameKey { get => Localisation.Get(_itemNameStringKey, Language.English); }
+    public string ItemName { get => Localisation.Get(_itemNameStringKey); }
+    public StringKey _itemNameStringKey;
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public ItemType Type { get; private set; }
     [field: SerializeField] public Sprite sprite { get; private set; }
@@ -54,6 +56,6 @@ public class Item : ScriptableObject, UnlockableReward
 
     internal bool IsSellable()
     {
-        return ItemName != "Gem" && processResult == null;
+        return ItemNameKey != "Gem" && processResult == null;
     }
 }

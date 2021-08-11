@@ -12,12 +12,12 @@ public class ItemsList : ScriptableObject
 
     public bool ContainsByName(string itemName)
     {
-        return items.Any(item => item.ItemName.Equals(itemName));
+        return items.Any(item => item.ItemNameKey.Equals(itemName));
     }
 
     public Item GetItemByName(string itemName)
     {
-        return items.Find(item => item.ItemName.Equals(itemName));
+        return items.Find(item => item.ItemNameKey.Equals(itemName));
     }
 
     internal void InitializeEvents()
@@ -36,7 +36,7 @@ public class ItemsList : ScriptableObject
 
     public Item GetRandomUnlockedItem()
     {
-        var unlocked = items.FindAll(item => item.Unlocked && item.ItemName != "Gem");
+        var unlocked = items.FindAll(item => item.Unlocked && item.ItemNameKey != "Gem");
         return unlocked[Random.Range(0, unlocked.Count)];
     }
 

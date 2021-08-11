@@ -6,7 +6,7 @@ using TMPro;
 
 public class ItemHUD : MonoBehaviour
 {
-    public string ItemName => item.ItemName;
+    public string ItemNameKey => item.ItemNameKey;
 
     [SerializeField] Image image;
     [SerializeField] TMP_Text label;

@@ -41,6 +41,9 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Torch
+  unlockableStringKey: 0
+  unlockableNameAddition: Torch
   <UnlockableDescription>k__BackingField: 
+  <UnlockableIcon>k__BackingField: {fileID: 0}
+  <DifficultyIncrease>k__BackingField: 0
   unlocked: 0

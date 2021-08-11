@@ -85,10 +85,10 @@ public class OfferingManager : MonoBehaviour
         offering.itemsToOffer = new List<string>();
         for (int i = 0; i < numberOfItems; i++)
         {
-            string offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+            string offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemNameKey;
             while (offering.itemsToOffer.Contains(offeringItemName))
             {
-                offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemName;
+                offeringItemName = ItemManager.instance.itemsData.GetRandomUnlockedItem().ItemNameKey;
             }
             offering.itemsToOffer.Add(offeringItemName);
         }

@@ -183,13 +183,13 @@ public class QuestManager : MonoBehaviour
         {
             int randomIndex = UnityEngine.Random.Range(0, items.Count);
             Item item = items[randomIndex];
-            while (questItems.ContainsKey(item.ItemName))
+            while (questItems.ContainsKey(item.ItemNameKey))
             {
                 randomIndex = (randomIndex + 1) % items.Count;
                 item = items[randomIndex];
             }
 
-            questItems.Add(item.ItemName, UnityEngine.Random.Range(1, ManagerQuest.maxItemQuantity));
+            questItems.Add(item.ItemNameKey, UnityEngine.Random.Range(1, ManagerQuest.maxItemQuantity));
         }
 
         managerQuest = new ManagerQuest(questItems, DateTime.Today.ToString(dateFormat));

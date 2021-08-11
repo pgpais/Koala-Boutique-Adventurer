@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
   m_Name: Gem
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Gem
+  _itemNameStringKey: 82
   <Description>k__BackingField: Just a valuabe item
   <Type>k__BackingField: 2
   <sprite>k__BackingField: {fileID: 21300000, guid: da2e7d55a9058b44fb041ceb8d50be04,

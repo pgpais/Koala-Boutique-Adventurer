@@ -14,7 +14,11 @@ public class LootFeedback : MonoBehaviour
     public void Initialize(string itemName, int amount, Sprite itemSprite)
     {
         panel.gameObject.SetActive(true);
-        feedbackText.text = $"You got {amount}x {itemName}!";
+        string feedbackTextString = Localisation.Get(StringKey.HUD_LootFeedback);
+        feedbackTextString = feedbackTextString.Replace("$AMOUNT$", amount.ToString());
+        feedbackTextString = feedbackTextString.Replace("$ITEM$", itemName);
+        feedbackText.text = feedbackTextString;
+
         feedbackImage.sprite = itemSprite;
 
         StartCoroutine(DisableAfterSeconds(feedbackTime));

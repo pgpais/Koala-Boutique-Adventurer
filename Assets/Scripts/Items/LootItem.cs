@@ -16,12 +16,12 @@ public class LootItem : PickableItem
     protected override void Pick(GameObject picker)
     {
         base.Pick(picker);
-        InventoryManager.instance.AddItem(item.ItemName, amount);
+        InventoryManager.instance.AddItem(item.ItemNameKey, amount);
 
         LogsManager.SendLogDirectly(new Log(
             LogType.LootCollected,
             new Dictionary<string, string>(){
-                {"Item", item.ItemName},
+                {"Item", item.ItemNameKey},
                 {"Amount", amount.ToString()}
             }
         ));

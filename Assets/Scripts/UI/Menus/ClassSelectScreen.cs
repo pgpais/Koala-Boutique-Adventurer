@@ -69,12 +69,12 @@ public class ClassSelectScreen : MonoBehaviour
             var toggle = classSelect.GetComponent<Toggle>();
             if (!characterClass.Unlocked)
             {
-                classSelect.Init(characterClass.className, lockedClassSprite, lockedIconColor);
+                classSelect.Init(characterClass.ClassName, lockedClassSprite, lockedIconColor);
                 toggle.interactable = false;
             }
             else
             {
-                classSelect.Init(characterClass.className, characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
+                classSelect.Init(characterClass.ClassName, characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
                 toggle.interactable = true;
 
                 if (GameManager.instance.currentSelectedClass == characterClass)
@@ -92,7 +92,7 @@ public class ClassSelectScreen : MonoBehaviour
                     LogsManager.SendLogDirectly(new Log(
                         LogType.ClassSelected,
                         new Dictionary<string, string>(){
-                        {"Class", characterClass.className}
+                        {"Class", characterClass.ClassName}
                         }
                     ));
 

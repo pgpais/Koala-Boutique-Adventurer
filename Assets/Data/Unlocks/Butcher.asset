@@ -45,7 +45,7 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Butcher
+  unlockableStringKey: 95
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 40d3b0c3e8f1d7046ab716aec63a3b1f,
     type: 3}

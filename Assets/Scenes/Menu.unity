@@ -1316,6 +1316,7 @@ MonoBehaviour:
   itemSmallUIPrefab: {fileID: 822316846087315853, guid: 5b0202c38d636bd48823e9cbe3085f83,
     type: 3}
   dailyQuestLayout: {fileID: 614141982}
+  dailyQuestDescription: {fileID: 265354361}
   questReward: {fileID: 1729656980}
   questCompleteImage: {fileID: 1225649199}
   kingsOfferingItemSmallUIPrefab: {fileID: 3642181422475289425, guid: 0a699b6c6229c0b4ba4f5fecd5b260ff,

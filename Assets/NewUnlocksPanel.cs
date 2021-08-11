@@ -117,7 +117,7 @@ public class NewUnlocksPanel : MonoBehaviour
 
 
             instantiatedObject.transform.SetParent(currentLayoutGroup.transform, false);
-            instantiatedObject.Init(unlockable.UnlockableName, unlockable.UnlockableIcon);
+            instantiatedObject.Init(unlockable.UnlockableNameKey, unlockable.UnlockableIcon);
             currentItemAmount++;
 
             if (currentItemAmount == maxItemsPerPage)

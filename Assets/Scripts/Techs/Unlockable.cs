@@ -11,8 +11,19 @@ public class Unlockable : SerializedScriptableObject
     [HideInInspector]
     public UnityEvent<Unlockable> UnlockableUpdated;
 
-    [field: SerializeField] public string UnlockableName { get; private set; }
-    [field: SerializeField] public string UnlockableDescription { get; private set; }
+
+    public string UnlockableNameKey => Localisation.Get(unlockableStringKey, Language.English) + " " + unlockableNameAddition;
+
+
+    public string UnlockableName => Localisation.Get(unlockableStringKey);
+
+
+    [SerializeField] StringKey unlockableStringKey;
+
+    [Tooltip("Add to unlocks with same name but different levels")]
+    [SerializeField] private string unlockableNameAddition;
+    [field: SerializeField]
+    public string UnlockableDescription { get; private set; }
     [field: SerializeField] public Sprite UnlockableIcon { get; private set; }
 
     [SerializeField] List<UnlockableReward> rewards;
@@ -38,14 +49,6 @@ public class Unlockable : SerializedScriptableObject
     private void OnEnable()
     {
         runTimeUnlocked = unlocked;
-    }
-
-    private void OnValidate()
-    {
-        if (string.IsNullOrEmpty(UnlockableName))
-        {
-            UnlockableName = this.name;
-        }
     }
 
     public void InitializeEvent()

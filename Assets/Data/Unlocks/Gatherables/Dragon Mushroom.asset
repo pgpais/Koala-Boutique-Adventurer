@@ -41,7 +41,7 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Dragon Mushroom
+  unlockableStringKey: 20
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: c47786cdb95dd8d48aa7ad9945b566a7,
     type: 3}

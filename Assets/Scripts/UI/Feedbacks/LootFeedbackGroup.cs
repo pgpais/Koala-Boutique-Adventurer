@@ -17,7 +17,7 @@ public class LootFeedbackGroup : MonoBehaviour
         {
             Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
 
-            Instantiate(lootFeedbackPrefab, transform).Initialize(itemName, amount, item.sprite);
+            Instantiate(lootFeedbackPrefab, transform).Initialize(item.ItemName, amount, item.sprite);
         });
     }
 }

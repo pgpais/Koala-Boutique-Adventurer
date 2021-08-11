@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
   m_Name: Hairy Mushroom
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Hairy Mushroom
+  _itemNameStringKey: 64
   <Description>k__BackingField: Just a gathered item
   <Type>k__BackingField: 0
   <sprite>k__BackingField: {fileID: 21300000, guid: d0828fd93c185654d85e842c9790391c,

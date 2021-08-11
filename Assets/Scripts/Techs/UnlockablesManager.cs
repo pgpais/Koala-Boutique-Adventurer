@@ -40,7 +40,7 @@ public class UnlockablesManager : MonoBehaviour
         foreach (var unlockable in unlockablesData.unlockables)
         {
             unlockable.InitializeEvent();
-            unlockables.Add(unlockable.UnlockableName, unlockable);
+            unlockables.Add(unlockable.UnlockableNameKey, unlockable);
         }
     }
 
@@ -141,7 +141,7 @@ public class UnlockablesManager : MonoBehaviour
 
     void SaveUnlockOnCloud()
     {
-        List<string> list = unlockables.Where(u => u.Value.Unlocked).Select(u => u.Value.UnlockableName).ToList();
+        List<string> list = unlockables.Where(u => u.Value.Unlocked).Select(u => u.Value.UnlockableNameKey).ToList();
 
         string json = "[";
         foreach (var item in list)

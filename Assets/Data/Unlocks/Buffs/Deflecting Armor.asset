@@ -41,7 +41,7 @@ MonoBehaviour:
   UnlockableUpdated:
     m_PersistentCalls:
       m_Calls: []
-  <UnlockableName>k__BackingField: Deflecting Armor
+  unlockableStringKey: 4
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: 1adbaf77e657f7b46b499b17e3ad5373,
     type: 3}

@@ -14,6 +14,7 @@ public class LogMenu : MonoBehaviour
     [Header("Daily Quest")]
     [SerializeField] ItemSmallUI itemSmallUIPrefab;
     [SerializeField] LayoutGroup dailyQuestLayout;
+    [SerializeField] TMP_Text dailyQuestDescription;
     [SerializeField] TMP_Text questReward;
     [SerializeField] GameObject questCompleteImage;
 
@@ -68,7 +69,8 @@ public class LogMenu : MonoBehaviour
 
     private void HideDailyQuest()
     {
-
+        questReward.transform.parent.gameObject.SetActive(false);
+        dailyQuestDescription.gameObject.SetActive(false);
     }
 
     private void HandleShowDailyQuest()
@@ -98,7 +100,14 @@ public class LogMenu : MonoBehaviour
             }
 
             questCompleteImage.SetActive(QuestManager.instance.IsManagerQuestComplete);
+
+            questReward.transform.parent.gameObject.SetActive(true);
+            dailyQuestDescription.gameObject.SetActive(true);
+
+            dailyQuestDescription.text = Localisation.Get(StringKey.UI_DailyQuestDescription);
+            questReward.text = Localisation.Get(StringKey.UI_DailyQuestReward);
         }
+
     }
 
     private void HandleShowKingOffering()

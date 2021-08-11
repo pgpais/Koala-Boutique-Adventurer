@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
   m_Name: Algae Mushroom
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Algae Mushroom
+  _itemNameStringKey: 60
   <Description>k__BackingField: Just a gathered item
   <Type>k__BackingField: 0
   <sprite>k__BackingField: {fileID: 21300000, guid: b423da36fe9795948a222132b6e3d656,

@@ -5,10 +5,16 @@ using UnityEngine;
 public class CharacterClassData : ScriptableObject, UnlockableReward
 {
     public bool Unlocked => unlocked;
+
+    public string ClassName
+    {
+        get => Localisation.Get(classNameKey);
+    }
+
     private bool unlocked = false;
 
     [Tooltip("The name given to this class")]
-    public string className;
+    public StringKey classNameKey;
 
     [Tooltip("How much health this class adds (or subtracts) to base value")]
     public int healthModifier = 0;

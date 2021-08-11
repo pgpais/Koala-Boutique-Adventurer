@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
   m_Name: Gold Ingot
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Gold Ingot
+  _itemNameStringKey: 77
   <Description>k__BackingField: 
   <Type>k__BackingField: 3
   <sprite>k__BackingField: {fileID: 21300000, guid: bacca650228f11848933beddff6d5f5f,

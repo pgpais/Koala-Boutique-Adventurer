@@ -34,7 +34,7 @@ public class Gatherable : MonoBehaviour
         sprRen.sprite = gatherableItem.sprite;
         sprRen.color = Color.white;
         interactionsLeft = gatherableItem.NumberOfInteractions;
-        gameObject.name = this.gatherableItem.ItemName;
+        gameObject.name = this.gatherableItem.ItemNameKey;
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class Gatherable : MonoBehaviour
             }
             else
             {
-                itemName = gatherableItem.ItemName;
+                itemName = gatherableItem.ItemNameKey;
             }
 
             LogsManager.SendLogDirectly(new Log(
@@ -72,7 +72,7 @@ public class Gatherable : MonoBehaviour
                 }
             ));
 
-            if (DiseasedManager.instance.DiseasedItem.ItemName == itemName)
+            if (DiseasedManager.instance.DiseasedItem.ItemNameKey == itemName)
             {
                 LogsManager.SendLogDirectly(new Log(
                     LogType.DiseasedItemCollected,

@@ -47,7 +47,7 @@ public class MissionEndScreen : MonoBehaviour
         foreach (var itemQuantity in InventoryManager.instance.ItemQuantity)
         {
             Item item = itemsList.GetItemByName(itemQuantity.Key);
-            Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemName, itemQuantity.Value);
+            Instantiate(itemUIPrefab, itemsLootedLayout).Init(item.sprite, item.ItemNameKey, itemQuantity.Value);
         }
 
         if (!playerDied)
@@ -96,7 +96,7 @@ public class MissionEndScreen : MonoBehaviour
             foreach (string itemName in offering.itemsToOffer)
             {
                 Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
-                Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemName, 1);
+                Instantiate(itemUIPrefab, offeringLayout).Init(item.sprite, item.ItemNameKey, 1);
             }
         }
         else

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18baa68dae152644da0fd92a094edbe8, type: 3}
   m_Name: Coal Ore
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Coal Ore
+  _itemNameStringKey: 71
   <Description>k__BackingField: 
   <Type>k__BackingField: 1
   <sprite>k__BackingField: {fileID: 21300000, guid: 88c9cd9e835c37840be627d4de5b29db,
