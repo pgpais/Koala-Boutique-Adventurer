@@ -109,7 +109,7 @@ public class MenuManager : MonoBehaviour
     {
         askForIDParent.SetActive(false);
         classSelectScreen.SetActive(true);
-        menuScreen.SetActive(false);
+        // menuScreen.SetActive(false);
         SetSelectedMenuItem(selectClassBackButton.gameObject);
     }
 

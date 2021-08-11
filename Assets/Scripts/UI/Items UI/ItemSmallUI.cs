@@ -26,4 +26,11 @@ public class ItemSmallUI : MonoBehaviour
         quantityLabel.text = unlockableName;
         image.sprite = unlockableIcon;
     }
+
+    internal void Init(string unlockableName, Sprite unlockableIcon, Color color)
+    {
+        quantityLabel.text = unlockableName;
+        image.sprite = unlockableIcon;
+        image.color = color;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,17 @@ using UnityEngine.UI;
 
 public class ClassSelectScreen : MonoBehaviour
 {
-    [SerializeField] GameObject buttonPrefab;
+    [SerializeField] ItemSmallUI classSelectButton;
     [SerializeField] Transform layoutGroup;
-    [SerializeField] Image weaponPreview;
+    [SerializeField] Button exitButton;
+    [SerializeField] Sprite lockedClassSprite;
+    [SerializeField] Color lockedIconColor;
 
     [SerializeField] List<CharacterClassData> possibleStartingClasses;
 
     private void Start()
     {
-        weaponPreview.sprite = null;
-        weaponPreview.color = Color.clear;
-
+        exitButton.onClick.AddListener(HideMenu);
         // foreach (Transform child in layoutGroup)
         // {
         //     Destroy(child.gameObject);
@@ -39,9 +40,23 @@ public class ClassSelectScreen : MonoBehaviour
         // }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HideMenu();
+        }
+    }
+
+    private void HideMenu()
+    {
+        gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {
+        exitButton.gameObject.SetActive(true);
         foreach (Transform child in layoutGroup)
         {
             Destroy(child.gameObject);
@@ -49,25 +64,40 @@ public class ClassSelectScreen : MonoBehaviour
 
         foreach (var characterClass in possibleStartingClasses)
         {
+            var classSelect = Instantiate(classSelectButton, layoutGroup);
 
-            var button = Instantiate(buttonPrefab, layoutGroup).GetComponent<Button>();
+            var toggle = classSelect.GetComponent<Toggle>();
             if (!characterClass.Unlocked)
             {
-                button.interactable = false;
+                classSelect.Init(characterClass.className, lockedClassSprite, lockedIconColor);
+                toggle.interactable = false;
             }
-            button.GetComponentInChildren<TMPro.TMP_Text>().text = characterClass.className;
-            button.onClick.AddListener(() =>
+            else
             {
-                LogsManager.SendLogDirectly(new Log(
-                    LogType.ClassSelected,
-                    new Dictionary<string, string>(){
-                        {"Class", characterClass.className}
-                    }
-                ));
+                classSelect.Init(characterClass.className, characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
+                toggle.interactable = true;
 
-                GameManager.instance.currentSelectedClass = characterClass;
-                weaponPreview.sprite = characterClass.initialWeapon.GetComponentInChildren<SpriteRenderer>().sprite;
-                weaponPreview.color = Color.white;
+                if (GameManager.instance.currentSelectedClass == characterClass)
+                {
+                    toggle.isOn = true;
+                }
+            }
+
+            toggle.group = layoutGroup.GetComponent<ToggleGroup>();
+
+            toggle.onValueChanged.AddListener((isOn) =>
+            {
+                if (isOn)
+                {
+                    LogsManager.SendLogDirectly(new Log(
+                        LogType.ClassSelected,
+                        new Dictionary<string, string>(){
+                        {"Class", characterClass.className}
+                        }
+                    ));
+
+                    GameManager.instance.currentSelectedClass = characterClass;
+                }
             });
         }
     }
