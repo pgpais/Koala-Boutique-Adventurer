@@ -101,7 +101,8 @@ public class GameManager : MonoBehaviour
     private void OnLoggedIn()
     {
         stats = new FamilyStats();
-        GetDifficulty();
+        // GetDifficulty();
+        SetupDifficultyListener();
     }
 
     private void OnGameStarted()
@@ -158,6 +159,24 @@ public class GameManager : MonoBehaviour
 
                   }
               });
+    }
+
+    private void SetupDifficultyListener()
+    {
+        FirebaseCommunicator.instance.SetupListenForValueChangedEvents(difficultyReferenceName, (obj, args) =>
+        {
+            string json = args.Snapshot.GetRawJsonValue();
+            if (string.IsNullOrEmpty(json))
+            {
+                Debug.Log("No difficulty found!");
+                BaseDifficulty = 0;
+            }
+            else
+            {
+                BaseDifficulty = JsonConvert.DeserializeObject<int>(json);
+                Debug.Log($"Difficulty set to {BaseDifficulty}");
+            }
+        });
     }
 
     void GetDifficulty()
