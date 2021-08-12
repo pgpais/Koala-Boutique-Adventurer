@@ -17,8 +17,8 @@ MonoBehaviour:
   <iconUI>k__BackingField: {fileID: 21300000, guid: f44ceea7e89e6c54195f27fbca9f8041,
     type: 3}
   <buffName>k__BackingField: Poison Coating
-  <description>k__BackingField: Your weapons infect enemies with poison
-  <StartsUnlocked>k__BackingField: 0
+  buffDescriptionKey: 57
+  <StartsUnlocked>k__BackingField: 1
   AlreadySpawned: 0
   <poisonDamage>k__BackingField: 1
   <poisonCooldown>k__BackingField: 0.2

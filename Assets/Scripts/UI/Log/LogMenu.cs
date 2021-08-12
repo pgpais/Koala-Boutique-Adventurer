@@ -2,17 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DanielLochner.Assets.SimpleScrollSnap;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static OfferingManager;
 
-public class LogMenu : MonoBehaviour
+public class LogMenu : SerializedMonoBehaviour
 {
     [SerializeField] Button closeButton;
 
     [Header("Daily Quest")]
     [SerializeField] ItemSmallUI itemSmallUIPrefab;
+    [SerializeField] Image dailyQuestTitleImage;
+    [SerializeField] Dictionary<Language, Sprite> dailyQuestTitleSprites = new Dictionary<Language, Sprite>();
     [SerializeField] LayoutGroup dailyQuestLayout;
     [SerializeField] TMP_Text dailyQuestDescription;
     [SerializeField] TMP_Text questReward;
@@ -20,9 +23,13 @@ public class LogMenu : MonoBehaviour
 
     [Header("King's Offering")]
     [SerializeField] ItemSmallUI kingsOfferingItemSmallUIPrefab;
+    [SerializeField] Image kingsOfferingTitleImage;
+    [SerializeField] Dictionary<Language, Sprite> kingsOfferingTitleSprites = new Dictionary<Language, Sprite>();
     [SerializeField] LayoutGroup offeringLayout;
 
     [Header("Oracle")]
+    [SerializeField] Image oracleTitleImage;
+    [SerializeField] Dictionary<Language, Sprite> oracleTitleSprites = new Dictionary<Language, Sprite>();
     [SerializeField] SimpleScrollSnap scrollSnap;
     [SerializeField] OracleInfo oracleInfoPrefab;
     [SerializeField] Transform pageParent;
@@ -75,6 +82,8 @@ public class LogMenu : MonoBehaviour
 
     private void HandleShowDailyQuest()
     {
+        dailyQuestTitleImage.sprite = dailyQuestTitleSprites[Localisation.currentLanguage];
+
         // destroy childs of dailyQuestLayout
         foreach (Transform item in dailyQuestLayout.transform)
         {
@@ -112,6 +121,7 @@ public class LogMenu : MonoBehaviour
 
     private void HandleShowKingOffering()
     {
+        kingsOfferingTitleImage.sprite = kingsOfferingTitleSprites[Localisation.currentLanguage];
 
         // destroy childs of offeringLayout
         foreach (Transform item in offeringLayout.transform)
@@ -153,6 +163,8 @@ public class LogMenu : MonoBehaviour
 
     public void ShowOracleInfo()
     {
+        oracleTitleImage.sprite = oracleTitleSprites[Localisation.currentLanguage];
+
         foreach (Transform child in pageParent.transform)
         {
             Destroy(child.gameObject);

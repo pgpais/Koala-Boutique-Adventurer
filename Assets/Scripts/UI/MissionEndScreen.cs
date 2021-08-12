@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,16 @@ public class MissionEndScreen : MonoBehaviour
     [SerializeField] Transform offeringLayout;
     [SerializeField] Button finishButton;
     [SerializeField] bool playerDied;
+    [Space]
+    [SerializeField] TMP_Text windowTitleText;
+    [SerializeField] StringKey windowTitleStringKey;
+    [SerializeField] TMP_Text collectedItemsText;
+    [SerializeField] StringKey collectedItemsStringKey;
+    [SerializeField] TMP_Text offeringText;
+    [SerializeField] StringKey offeringStringKey;
+    [SerializeField] TMP_Text continueText;
+    [SerializeField] StringKey continueStringKey;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +35,7 @@ public class MissionEndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             FinishMission();
         }
@@ -32,6 +43,11 @@ public class MissionEndScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        windowTitleText.text = Localisation.Get(windowTitleStringKey);
+        collectedItemsText.text = Localisation.Get(collectedItemsStringKey);
+        offeringText.text = Localisation.Get(offeringStringKey);
+        continueText.text = Localisation.Get(continueStringKey);
+
         MoreMountains.TopDownEngine.GameManager.Instance.Paused = true;
 
         Cursor.visible = true;

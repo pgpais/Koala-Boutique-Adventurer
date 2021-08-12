@@ -8,7 +8,8 @@ abstract public class Buff : ScriptableObject, UnlockableReward
     [field: SerializeField] public Sprite icon { get; private set; }
     [field: SerializeField] public Sprite iconUI { get; private set; }
     [field: SerializeField] public string buffName { get; private set; }
-    [field: SerializeField] public string description { get; private set; }
+    [SerializeField] StringKey buffDescriptionKey;
+    public string Description => Localisation.Get(buffDescriptionKey);
     [field: SerializeField] public bool StartsUnlocked { get; private set; } = false;
     public bool AlreadySpawned = false;
 

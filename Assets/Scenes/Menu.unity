@@ -846,6 +846,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b40774d41887a4291f1ec8cc623ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 0b7c8a8a1ae27cc48a7ca1415c234888, type: 3}
+    - {fileID: 21300000, guid: 4acd6a88c357aba4cb68c4c139d0c8f4, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: newUnlocksTitleImageSprites
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Language, Assembly-CSharp],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Language, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  newUnlocksTitleImage: {fileID: 994834883}
   scrollSnap: {fileID: 2108964923}
   contentParent: {fileID: 1413839472}
   paginationParent: {fileID: 1752762913}
@@ -1312,16 +1374,164 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaa2e63fd4bdf04ab4dffb6f399c494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: c4a3164dcd92d054a8588f4f3dbeb83c, type: 3}
+    - {fileID: 21300000, guid: 66cc88f2f04a71e4fa88a376bc3bf511, type: 3}
+    - {fileID: 21300000, guid: 7e7b74b9cfd84924491530dfc895d86c, type: 3}
+    - {fileID: 21300000, guid: 255bf77ecf94cc1469a1fa8959d3bba6, type: 3}
+    - {fileID: 21300000, guid: 205b7c38fb0e6d948aa8205b30806452, type: 3}
+    - {fileID: 21300000, guid: 6242ddf507e7fb5408797196a8a5f779, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dailyQuestTitleSprites
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Language, Assembly-CSharp],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Language, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: kingsOfferingTitleSprites
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[Language, Assembly-CSharp],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: oracleTitleSprites
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[Language, Assembly-CSharp],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   closeButton: {fileID: 372557646}
   itemSmallUIPrefab: {fileID: 822316846087315853, guid: 5b0202c38d636bd48823e9cbe3085f83,
     type: 3}
+  dailyQuestTitleImage: {fileID: 739127392}
   dailyQuestLayout: {fileID: 614141982}
   dailyQuestDescription: {fileID: 265354361}
   questReward: {fileID: 1729656980}
   questCompleteImage: {fileID: 1225649199}
   kingsOfferingItemSmallUIPrefab: {fileID: 3642181422475289425, guid: 0a699b6c6229c0b4ba4f5fecd5b260ff,
     type: 3}
+  kingsOfferingTitleImage: {fileID: 1257170293}
   offeringLayout: {fileID: 1886366313}
+  oracleTitleImage: {fileID: 1459801513}
   scrollSnap: {fileID: 1984695124}
   oracleInfoPrefab: {fileID: 8567616188430262408, guid: 6df2ab9d1f682e2418d0cc58b17e2050,
     type: 3}
@@ -4019,7 +4229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &531223484
 RectTransform:
   m_ObjectHideFlags: 0

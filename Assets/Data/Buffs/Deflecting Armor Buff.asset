@@ -17,6 +17,6 @@ MonoBehaviour:
   <iconUI>k__BackingField: {fileID: 21300000, guid: b0a220c4a3b26eb4a826e162f7ad8d00,
     type: 3}
   <buffName>k__BackingField: Deflecting Armor
-  <description>k__BackingField: You are able to resist some shots
-  <StartsUnlocked>k__BackingField: 0
+  buffDescriptionKey: 51
+  <StartsUnlocked>k__BackingField: 1
   AlreadySpawned: 0

@@ -7,6 +7,9 @@ public class OracleUI : MonoBehaviour
 {
     [SerializeField] TMP_Text m_Text;
     [SerializeField] Image m_Image;
+    [Space]
+    [SerializeField] TMP_Text oracleMessageText;
+    [SerializeField] StringKey oracleMessageStringKey;
 
     private OracleData data;
 
@@ -20,6 +23,8 @@ public class OracleUI : MonoBehaviour
 
     internal void Show(OracleData data)
     {
+        oracleMessageText.text = Localisation.Get(oracleMessageStringKey);
+
         this.data = data;
         Item item = ItemManager.instance.itemsData.GetItemByName(data.itemName);
 

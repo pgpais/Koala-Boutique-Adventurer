@@ -10,7 +10,7 @@ public class BuffUI : MonoBehaviour
     public void Initialize(Buff buff)
     {
         // nameText.text = buff.buffName;
-        descriptionText.text = buff.description;
+        descriptionText.text = buff.Description;
     }
 
     public void Initialize(string tooltip)

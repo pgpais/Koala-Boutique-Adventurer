@@ -42,6 +42,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   unlockableStringKey: 2
+  unlockableNameAddition: 
   <UnlockableDescription>k__BackingField: 
   <UnlockableIcon>k__BackingField: {fileID: 21300000, guid: d11ff56f9b1e22049a81c69e6d5627e4,
     type: 3}

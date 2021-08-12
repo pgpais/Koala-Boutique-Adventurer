@@ -9,6 +9,9 @@ public class SecretDoorUI : MonoBehaviour
 
     [SerializeField] TMP_InputField passCodeField;
     [SerializeField] Button backButton;
+    [Space]
+    [SerializeField] TMP_Text secretDoorMessage;
+    [SerializeField] StringKey secretDoorMessageStringKey;
 
     SecretDoor secretDoor;
     bool active;
@@ -71,6 +74,9 @@ public class SecretDoorUI : MonoBehaviour
     {
         this.secretDoor = secretDoor;
         EnableAll();
+
+        secretDoorMessage.text = Localisation.Get(secretDoorMessageStringKey);
+
         EventSystem.current.SetSelectedGameObject(passCodeField.gameObject);
     }
 

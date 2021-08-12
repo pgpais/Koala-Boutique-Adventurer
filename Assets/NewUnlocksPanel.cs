@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using DanielLochner.Assets.SimpleScrollSnap;
 using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewUnlocksPanel : MonoBehaviour
+public class NewUnlocksPanel : SerializedMonoBehaviour
 {
     public static string dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
     public static string unlocksLogReferenceName = "unlocksLog";
 
+    [SerializeField] Image newUnlocksTitleImage;
+    [SerializeField] Dictionary<Language, Sprite> newUnlocksTitleImageSprites = new Dictionary<Language, Sprite>();
     [SerializeField] SimpleScrollSnap scrollSnap;
     [SerializeField] Transform contentParent;
     [SerializeField] Transform paginationParent;
@@ -47,6 +50,8 @@ public class NewUnlocksPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        newUnlocksTitleImage.sprite = newUnlocksTitleImageSprites[Localisation.currentLanguage];
+
         if (unlockLogs != null && unlockLogs.Count > 0)
         {
             LogsManager.SendLogDirectly(new Log(
