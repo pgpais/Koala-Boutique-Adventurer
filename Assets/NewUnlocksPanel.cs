@@ -118,11 +118,20 @@ public class NewUnlocksPanel : SerializedMonoBehaviour
         {
             var instantiatedObject = Instantiate(itemSmallUI);
 
-            Unlockable unlockable = UnlockablesManager.instance.Unlockables[unlockLog.UnlockableName];
+            Unlockable unlockable;
+            if (UnlockablesManager.instance.Unlockables.ContainsKey(unlockLog.UnlockableName))
+            {
+                unlockable = UnlockablesManager.instance.Unlockables[unlockLog.UnlockableName];
+            }
+            else
+            {
+                Debug.LogWarning(string.Format("Unlockable {0} not found", unlockLog.UnlockableName));
+                continue;
+            }
 
 
             instantiatedObject.transform.SetParent(currentLayoutGroup.transform, false);
-            instantiatedObject.Init(unlockable.UnlockableNameKey, unlockable.UnlockableIcon);
+            instantiatedObject.Init(unlockable.UnlockableName, unlockable.UnlockableIcon);
             currentItemAmount++;
 
             if (currentItemAmount == maxItemsPerPage)
