@@ -9,7 +9,9 @@ public class BuffPickable : PickableItem
     public Buff buffToGive;
 
     [SerializeField] bool canBePicked = true;
-    [SerializeField] string tooltipOverride;
+    [SerializeField] StringKey tooltipOverrideStringKey;
+    [SerializeField] string tooltipOverride => Localisation.Get(tooltipOverrideStringKey);
+    [SerializeField] bool isTooltipOverride = false;
     [SerializeField] BuffUI tooltip;
     [SerializeField] LayerMask playerDetectionLayer;
     [SerializeField] float toolTipRange = 3f;
@@ -22,7 +24,7 @@ public class BuffPickable : PickableItem
             Model.GetComponentInChildren<SpriteRenderer>().sprite = buffToGive.icon;
         }
         tooltip.gameObject.SetActive(true);
-        if (string.IsNullOrEmpty(tooltipOverride))
+        if (!isTooltipOverride)
         {
             tooltip.Initialize(buffToGive);
         }

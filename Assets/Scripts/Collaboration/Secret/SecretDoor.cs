@@ -1,4 +1,5 @@
 using System;
+using Firebase.Database;
 using MoreMountains.TopDownEngine;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -60,9 +61,49 @@ public class SecretDoor : ButtonActivated
     {
         teleporter.Activable = false;
         // EnableZone();
-        GetDoorTime();
+        SetupDoorTimeListener();
+        // GetDoorTime();
 
         secretDoorUI = FindObjectOfType<SecretDoorUI>(true);
+    }
+
+    private void SetupDoorTimeListener()
+    {
+        FirebaseCommunicator.instance.SetupListenForValueChangedEvents(referenceName, OnNewDoorTime);
+
+
+    }
+
+    private void OnNewDoorTime(object sender, ValueChangedEventArgs args)
+    {
+        Debug.Log("New door time REMOVE");
+        string json = args.Snapshot.GetRawJsonValue();
+        if (string.IsNullOrEmpty(json))
+
+        {
+            doorTime = new DoorTime(null, null, false);
+        }
+        else
+        {
+            doorTime = JsonConvert.DeserializeObject<DoorTime>(json);
+        }
+
+
+        if (doorTime.HasExpired())
+        {
+            Debug.Log("Door has expired");
+            DeleteRequest();
+        }
+
+        if (doorTime.unlocked)
+        {
+            Unlock();
+        }
+    }
+
+    private void OnDisable()
+    {
+        FirebaseCommunicator.instance.RemoveValueChangedListener(referenceName, OnNewDoorTime);
     }
 
     void GetDoorTime()

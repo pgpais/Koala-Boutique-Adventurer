@@ -82,7 +82,8 @@ MonoBehaviour:
   Model: {fileID: 8941860872862626026}
   buffToGive: {fileID: 0}
   canBePicked: 1
-  tooltipOverride: 
+  tooltipOverrideStringKey: 127
+  isTooltipOverride: 0
   tooltip: {fileID: 2989529418680000755}
   playerDetectionLayer:
     serializedVersion: 2

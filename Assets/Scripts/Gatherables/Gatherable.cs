@@ -72,14 +72,17 @@ public class Gatherable : MonoBehaviour
                 }
             ));
 
-            if (DiseasedManager.instance.DiseasedItem.ItemNameKey == itemName)
+            if (DiseasedManager.instance.DiseasedItem != null)
             {
-                LogsManager.SendLogDirectly(new Log(
-                    LogType.DiseasedItemCollected,
-                    new Dictionary<string, string> {
+                if (DiseasedManager.instance.DiseasedItem.ItemNameKey == itemName)
+                {
+                    LogsManager.SendLogDirectly(new Log(
+                        LogType.DiseasedItemCollected,
+                        new Dictionary<string, string> {
                         { "ItemName", itemName }
-                    }
-                ));
+                        }
+                    ));
+                }
             }
 
             InventoryManager.instance.AddItem(itemName, 1);

@@ -1159,10 +1159,15 @@ PrefabInstance:
       propertyPath: closeDoorsUntilRoomIsCleared
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6529237928330082450, guid: 1d95505ebd9ca3f488b3a5546aa71763,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8020520091210511121, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}
       propertyPath: spawnGatherablesInThisRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392552347944800577, guid: 1d95505ebd9ca3f488b3a5546aa71763,
         type: 3}

@@ -134,6 +134,12 @@ public class LogMenu : SerializedMonoBehaviour
             //Show current offering
             Offering offering = OfferingManager.instance.GetCurrentOffering();
 
+            if (offering.offeringMade || offering.HasExpired())
+            {
+                // TODO: Hide offering
+                return;
+            }
+
             string offeringListLog = "";
             foreach (var offeringItem in offering.itemsToOffer)
             {

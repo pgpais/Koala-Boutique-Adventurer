@@ -109,6 +109,8 @@ public class FirebaseCommunicator : MonoBehaviour
         yield break;
     }
 
+
+
     public IEnumerator LoginWithEmailAndPassword(string email, string password, Action<bool> afterLoginAction)
     {
         Debug.Log("loggi");
@@ -247,6 +249,11 @@ public class FirebaseCommunicator : MonoBehaviour
         }
 
         dbReference.ValueChanged -= onValueChangedAction;
+    }
+
+    internal void RemoveValueChangedListener(string referenceName, EventHandler<ValueChangedEventArgs> onValueChangedAction)
+    {
+        database.Child(referenceName).ValueChanged -= onValueChangedAction;
     }
 
     public void SetupListenForEvents(string[] firebaseReferences, EventHandler<ValueChangedEventArgs> onValueChangedAction)

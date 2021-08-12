@@ -6848,6 +6848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e5067096a9feb45838997f91fbbb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classSelectTitleText: {fileID: 187106762}
+  classSelectTitleTextKey: 131
   classSelectButton: {fileID: 3831792902392356907, guid: c4ba37fa199468042bd52d83ebe29a8e,
     type: 3}
   layoutGroup: {fileID: 1619744742}
@@ -9410,6 +9412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e5067096a9feb45838997f91fbbb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classSelectTitleText: {fileID: 0}
+  classSelectTitleTextKey: 0
   classSelectButton: {fileID: 0}
   layoutGroup: {fileID: 1464404910}
   exitButton: {fileID: 0}

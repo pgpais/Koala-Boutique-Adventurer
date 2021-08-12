@@ -229,6 +229,11 @@ PrefabInstance:
       propertyPath: tooltipOverride
       value: WARNING. UNDER CONSTRUCTION
       objectReference: {fileID: 0}
+    - target: {fileID: 6621807074713422781, guid: 27c6f0762bacb524fb5a661c2906c86f,
+        type: 3}
+      propertyPath: isTooltipOverride
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27c6f0762bacb524fb5a661c2906c86f, type: 3}
 --- !u!4 &7021067535259546462 stripped

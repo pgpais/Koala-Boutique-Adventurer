@@ -79,12 +79,17 @@ PrefabInstance:
     - target: {fileID: 517212632927919225, guid: 242c00858e7a641498f67107c53092a4,
         type: 3}
       propertyPath: spawnGatherablesInThisRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2025295214731722281, guid: 242c00858e7a641498f67107c53092a4,
         type: 3}
       propertyPath: m_InstanceId
       value: -686532
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674829458186967034, guid: 242c00858e7a641498f67107c53092a4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4153047158767450402, guid: 242c00858e7a641498f67107c53092a4,
         type: 3}

@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ClassSelectScreen : MonoBehaviour
 {
+    [SerializeField] TMP_Text classSelectTitleText;
+    [SerializeField] StringKey classSelectTitleTextKey;
     [SerializeField] ItemSmallUI classSelectButton;
     [SerializeField] Transform layoutGroup;
     [SerializeField] Button exitButton;
@@ -100,5 +103,7 @@ public class ClassSelectScreen : MonoBehaviour
                 }
             });
         }
+
+        classSelectTitleText.text = Localisation.Get(classSelectTitleTextKey);
     }
 }

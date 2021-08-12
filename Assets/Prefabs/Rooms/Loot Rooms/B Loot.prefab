@@ -1533,10 +1533,15 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[434].second.m_TileSpriteIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1942018425633200144, guid: 5ec6d61b14b7341458c2152dbc2748c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3396119504579859347, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
       propertyPath: spawnGatherablesInThisRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3753673119473119683, guid: 5ec6d61b14b7341458c2152dbc2748c6,
         type: 3}
