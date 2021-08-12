@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   <buffName>k__BackingField: Blessing
   buffDescriptionKey: 49
-  <StartsUnlocked>k__BackingField: 1
-  AlreadySpawned: 1
+  <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0
   healthModifier: 0.75

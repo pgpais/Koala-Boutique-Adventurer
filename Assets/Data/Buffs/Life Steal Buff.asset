@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   <buffName>k__BackingField: Life Steal
   buffDescriptionKey: 55
-  <StartsUnlocked>k__BackingField: 1
+  <StartsUnlocked>k__BackingField: 0
   AlreadySpawned: 0
   LifeStealAmount: 0.5

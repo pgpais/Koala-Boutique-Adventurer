@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   <buffName>k__BackingField: Iron Boots
   buffDescriptionKey: 53
-  <StartsUnlocked>k__BackingField: 1
-  AlreadySpawned: 1
+  <StartsUnlocked>k__BackingField: 0
+  AlreadySpawned: 0

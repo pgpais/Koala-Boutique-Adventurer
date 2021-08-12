@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   <buffName>k__BackingField: Deflecting Armor
   buffDescriptionKey: 51
-  <StartsUnlocked>k__BackingField: 1
+  <StartsUnlocked>k__BackingField: 0
   AlreadySpawned: 0
