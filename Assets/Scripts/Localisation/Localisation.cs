@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -207,11 +208,10 @@ public class Localisation
         }
     };
 
-
-
     public static void SetLanguage(Language language)
     {
         currentLanguage = language;
+        PlayerPrefs.SetInt("Language", (int)language);
     }
 
     public static string Get(StringKey key)

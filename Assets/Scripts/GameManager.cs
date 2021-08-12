@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+        Localisation.SetLanguage((Language)PlayerPrefs.GetInt("Language", 0));
     }
 
     private void OnSceneUnloaded(Scene arg0)

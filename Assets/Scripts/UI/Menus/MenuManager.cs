@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] GameObject askForIDParent;
     [SerializeField] TMP_InputField askForIDInputField;
+    [SerializeField] Toggle englishToggle;
+    [SerializeField] Toggle portugueseToggle;
     [SerializeField] Button askForIDButton;
 
     [Space]
@@ -51,6 +54,28 @@ public class MenuManager : MonoBehaviour
 
         // GameManager.NoMissionExists.AddListener(OnNoMissionExists);
         GameManager.NewMissionAdded.AddListener(OnNewMissionAdded);
+
+        if (Localisation.currentLanguage == Language.Portuguese)
+        {
+            portugueseToggle.isOn = true;
+        }
+
+        portugueseToggle.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                Localisation.SetLanguage(Language.Portuguese);
+            }
+        });
+
+
+        englishToggle.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                Localisation.SetLanguage(Language.English);
+            }
+        });
     }
 
     // Start is called before the first frame update
@@ -103,6 +128,8 @@ public class MenuManager : MonoBehaviour
         menuObject.SetActive(false);
 
         FirebaseCommunicator.instance.Logout();
+
+        SceneManager.LoadScene(0);
     }
 
     void ShowClassSelectScreen()
