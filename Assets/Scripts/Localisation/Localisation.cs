@@ -221,7 +221,7 @@ public class Localisation
                 {StringKey.UI_MarketItems_Title, "Venda de Produto"},
 
                 {StringKey.UI_AdventurerDailyQuest_Reward_Text, "Recompensa"},
-                {StringKey.UI_AdventurerDailyQuest_Description, "Recolha o número especificado"},
+                {StringKey.UI_AdventurerDailyQuest_Description, "Recolha exactamente o número especificado"},
                 {StringKey.UI_AdventurerDailyQuest_Complete_Text, "Completa"},
                 {StringKey.UI_AdventurerDailyQuest_Complete_Description, "$ITEMNAME$ adquirido"},
 
@@ -304,9 +304,9 @@ public class Localisation
                 {StringKey.Unlock_Class_Warrior_Description, "Desbloqueia uma nova classe para o aventureiro!"},
 
                 {StringKey.Unlock_Shop_IronWorkshop_Name, "Atelier de Ferro"},
-                {StringKey.Unlock_Shop_IronWorkshop_Description, "Desbloqueia o atelier de ferro!"},
+                {StringKey.Unlock_Shop_IronWorkshop_Description, "Produz mais Ferro com o processamento"},
                 {StringKey.Unlock_Shop_WoodWorkshop_Name, "Atelier de Madeira"},
-                {StringKey.Unlock_Shop_WoodWorkshop_Description, "Desbloqueia o atelier de madeira!"},
+                {StringKey.Unlock_Shop_WoodWorkshop_Description, "Produz mais Tábuas de Madeira com o processamento"},
 
             }
         }
