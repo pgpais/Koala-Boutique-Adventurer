@@ -59,6 +59,8 @@ public class InventoryManager : MonoBehaviour
             }
 
             ItemAdded.Invoke(itemName, amount);
+
+            NewItemsManager.instance.OnNewItemAdded(itemName, amount);
             Debug.Log("Added item " + itemName + "!");
         }
     }

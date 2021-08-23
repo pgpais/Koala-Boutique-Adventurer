@@ -34,15 +34,14 @@ public class NewItemsManager : MonoBehaviour
         {
             FirebaseCommunicator.LoggedIn.AddListener(OnLoggedIn);
         }
-
-        ItemManager.NewItemAdded.AddListener(OnNewItemAdded);
     }
 
-    private void OnNewItemAdded(Item item, int amount)
+    public void OnNewItemAdded(string itemNameKey, int amount)
     {
-        if (!HasSeenItemBefore(item))
+        Debug.Log("have seen itme befor? " + HasSeenItemBefore(itemNameKey));
+        if (!HasSeenItemBefore(itemNameKey))
         {
-            alreadySeenItems.Add(item.ItemName);
+            alreadySeenItems.Add(itemNameKey);
             SendAlreadySeenItems();
         }
     }
