@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menuObject;
     [SerializeField] GameObject menuScreen;
     [SerializeField] GameObject classSelectScreen;
+    [SerializeField] GameObject unlocksProgressScreen;
     [SerializeField] Button playButton;
     [SerializeField] Button selectClassButton;
     [SerializeField] Button selectClassBackButton;
@@ -102,6 +104,11 @@ public class MenuManager : MonoBehaviour
     void OnNewMissionAdded()
     {
         playButton.interactable = true;
+    }
+
+    internal void ShowUnlocksProgessPopup()
+    {
+        unlocksProgressScreen.SetActive(true);
     }
 
     void OnPlayButton()

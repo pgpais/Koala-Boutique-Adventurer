@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Unlockable", menuName = "Ye Olde Shop/Unlockable", order = 0)]
-public class Unlockable : SerializedScriptableObject
+public class Unlockable : SerializedScriptableObject, IComparable<Unlockable>
 {
     [HideInInspector]
     public UnityEvent<Unlockable> UnlockableUpdated;
@@ -15,7 +15,8 @@ public class Unlockable : SerializedScriptableObject
     public string UnlockableNameKey => Localisation.Get(unlockableStringKey, Language.English) + " " + unlockableNameAddition;
 
 
-    public string UnlockableName => Localisation.Get(unlockableStringKey);
+    public string UnlockableName => Localisation.Get(unlockableStringKey) + " " + unlockableNameAddition;
+    public UnlockCategory Category => category;
 
 
     [SerializeField] StringKey unlockableStringKey;
@@ -25,7 +26,9 @@ public class Unlockable : SerializedScriptableObject
     [field: SerializeField]
     public string UnlockableDescription { get; private set; }
     [field: SerializeField] public Sprite UnlockableIcon { get; private set; }
+    [SerializeField] UnlockCategory category;
 
+    [Space]
     [SerializeField] List<UnlockableReward> rewards;
 
     [field: SerializeField] public int DifficultyIncrease { get; private set; } = 0;
@@ -56,11 +59,6 @@ public class Unlockable : SerializedScriptableObject
         UnlockableUpdated = new UnityEvent<Unlockable>();
     }
 
-    private void OnApplicationQuit()
-    {
-
-    }
-
     internal void Unlock()
     {
 
@@ -71,4 +69,25 @@ public class Unlockable : SerializedScriptableObject
             reward.Unlock();
         }
     }
+
+    public int CompareTo(Unlockable other)
+    {
+        if (this.Unlocked && !other.Unlocked)
+        {
+            return -1;
+        }
+        if (!this.Unlocked && other.Unlocked)
+        {
+            return 1;
+        }
+        return this.UnlockableName.CompareTo(other.UnlockableName);
+    }
+}
+
+public enum UnlockCategory
+{
+    Classes,
+    Altar,
+    Resources,
+    Stats,
 }

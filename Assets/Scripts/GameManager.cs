@@ -27,15 +27,17 @@ public class GameManager : MonoBehaviour
     public int BaseDifficulty { get; private set; }
 
     public Mission CurrentMission => currentMission;
-    private Mission currentMission;
-
     public string DiseasedItemName => diseasedItemName;
+    public bool JustFinishedMission => justFinishedMission; //TODO: use this for showing the remaining unlocks popup
+
+    private Mission currentMission;
     [SerializeField] string diseasedItemName;
 
     LogsManager logsManager;
 
 
     private bool performingMission;
+    private bool justFinishedMission = false;
 
     //Don't look here! I was just lazy to find a better way
     #region Silly variables
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
 
         Localisation.SetLanguage((Language)PlayerPrefs.GetInt("Language", 0));
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneUnloaded(Scene arg0)
@@ -78,14 +82,24 @@ public class GameManager : MonoBehaviour
         ));
     }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
         LogsManager.SendLogDirectly(new Log(
             LogType.SceneLoaded,
             new Dictionary<string, string>(){
-                {"scene", arg0.name}
+                {"scene", scene.name}
             }
         ));
+
+        if (scene.buildIndex == 1)
+        {
+            if (justFinishedMission)
+            {
+                Debug.Log("Arrived from mission");
+                justFinishedMission = false;
+                MenuManager.instance.ShowUnlocksProgessPopup();
+            }
+        }
     }
 
     private void Start()
@@ -237,12 +251,7 @@ public class GameManager : MonoBehaviour
 
     public void FinishLevel(bool playerDied)
     {
-        //TODO: If died, half items and gems
-
-        if (playerDied)
-        {
-
-        }
+        justFinishedMission = true;
 
         InventoryManager.instance.AddInventoryToGlobalItems();
 
