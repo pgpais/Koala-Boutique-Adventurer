@@ -6,6 +6,8 @@ using TMPro;
 
 public class LootFeedback : MonoBehaviour
 {
+    [SerializeField] TMP_Text feedbackTitle;
+    [SerializeField] TMP_Text feedbackSubtitle;
     [SerializeField] TMP_Text feedbackText;
     [SerializeField] Image feedbackImage;
     [SerializeField] float feedbackTime;
@@ -21,7 +23,19 @@ public class LootFeedback : MonoBehaviour
 
         feedbackImage.sprite = itemSprite;
 
+        var stuffToDisableAndReenable = GetComponentsInChildren<RectTransform>();
+        foreach (var transform in stuffToDisableAndReenable)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(transform);
+            // transform.enabled = false;
+        }
+        // foreach (var transform in stuffToDisableAndReenable)
+        // {
+        //     transform.enabled = true;
+        // }
+
         StartCoroutine(DisableAfterSeconds(feedbackTime));
+
     }
 
     private IEnumerator DisableAfterSeconds(float seconds)

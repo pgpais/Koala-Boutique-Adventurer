@@ -5,6 +5,7 @@ using UnityEngine;
 public class LootFeedbackGroup : MonoBehaviour
 {
     [SerializeField] LootFeedback lootFeedbackPrefab;
+    [SerializeField] LootFeedback firstTimeLootFeedbackPrefab;
 
     private void Awake()
     {
@@ -17,7 +18,24 @@ public class LootFeedbackGroup : MonoBehaviour
         {
             Item item = ItemManager.instance.itemsData.GetItemByName(itemName);
 
-            Instantiate(lootFeedbackPrefab, transform).Initialize(item.ItemName, amount, item.sprite);
+            if (IsFirstTimeItem(item))
+            {
+                var lootFeedback = Instantiate(firstTimeLootFeedbackPrefab, transform);
+                lootFeedback.Initialize(item.ItemName, amount, item.sprite);
+                lootFeedback.transform.SetParent(transform, false);
+
+            }
+            else
+            {
+                var lootFeedback = Instantiate(lootFeedbackPrefab);
+                lootFeedback.Initialize(item.ItemName, amount, item.sprite);
+                lootFeedback.transform.SetParent(transform, false);
+            }
         });
+    }
+
+    bool IsFirstTimeItem(Item item)
+    {
+        return !NewItemsManager.instance.HasSeenItemBefore(item);
     }
 }
