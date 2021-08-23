@@ -17,6 +17,6 @@ MonoBehaviour:
   <Type>k__BackingField: 0
   <sprite>k__BackingField: {fileID: 21300000, guid: b423da36fe9795948a222132b6e3d656,
     type: 3}
-  numberOfInteractions: 2
+  numberOfInteractions: 1
   processResult: {fileID: 0}
   startsUnlocked: 0
