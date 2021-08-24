@@ -156,6 +156,8 @@ public class Localisation
                 { StringKey.Unlock_Shop_IronWorkshop_Description, "Get more iron ingots from processing"},
                 { StringKey.Unlock_Shop_WoodWorkshop_Name, "Wood Workshop"},
                 { StringKey.Unlock_Shop_WoodWorkshop_Description, "Get more wood planks from processing"},
+                { StringKey.HUD_NewLootFeedback_Title, "New resource collected!"},
+                { StringKey.HUD_NewLootFeedback_Subtitle, "Unlocked by your partner in the shop!"},
             }
         },
         {
@@ -307,7 +309,8 @@ public class Localisation
                 {StringKey.Unlock_Shop_IronWorkshop_Description, "Produz mais Ferro com o processamento"},
                 {StringKey.Unlock_Shop_WoodWorkshop_Name, "Atelier de Madeira"},
                 {StringKey.Unlock_Shop_WoodWorkshop_Description, "Produz mais Tábuas de Madeira com o processamento"},
-
+                { StringKey.HUD_NewLootFeedback_Title, "Novo recurso recolhido!"},
+                { StringKey.HUD_NewLootFeedback_Subtitle, "Desbloqueado pelo teu parceiro na loja!"},
             }
         }
     };
@@ -513,4 +516,6 @@ public enum StringKey
     Buff_Movement_Description,
 
     UI_ClassSelect_Title,
+    HUD_NewLootFeedback_Title,
+    HUD_NewLootFeedback_Subtitle,
 }
