@@ -158,6 +158,11 @@ public class Localisation
                 { StringKey.Unlock_Shop_WoodWorkshop_Description, "Get more wood planks from processing"},
                 { StringKey.HUD_NewLootFeedback_Title, "New resource collected!"},
                 { StringKey.HUD_NewLootFeedback_Subtitle, "Unlocked by your partner in the shop!"},
+
+                {StringKey.UI_LevelInfo_Title, "LEVEL"},
+                {StringKey.UI_LevelInfo_Hard, "Hard"},
+                {StringKey.UI_LevelInfo_Medium, "Medium"},
+                {StringKey.UI_LevelInfo_Easy, "Easy"},
             }
         },
         {
@@ -311,6 +316,11 @@ public class Localisation
                 {StringKey.Unlock_Shop_WoodWorkshop_Description, "Produz mais Tábuas de Madeira com o processamento"},
                 { StringKey.HUD_NewLootFeedback_Title, "Novo recurso recolhido!"},
                 { StringKey.HUD_NewLootFeedback_Subtitle, "Desbloqueado pelo teu parceiro na loja!"},
+
+                {StringKey.UI_LevelInfo_Title, "NÍVEL"},
+                {StringKey.UI_LevelInfo_Easy, "Fácil"},
+                {StringKey.UI_LevelInfo_Medium, "Médio"},
+                {StringKey.UI_LevelInfo_Hard, "Difícil"},
             }
         }
     };
@@ -518,4 +528,9 @@ public enum StringKey
     UI_ClassSelect_Title,
     HUD_NewLootFeedback_Title,
     HUD_NewLootFeedback_Subtitle,
+
+    UI_LevelInfo_Title,
+    UI_LevelInfo_Hard,
+    UI_LevelInfo_Medium,
+    UI_LevelInfo_Easy,
 }

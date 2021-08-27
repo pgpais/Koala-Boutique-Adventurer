@@ -28,6 +28,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button selectClassBackButton;
     [SerializeField] Button logoutButton;
 
+    [Header("Level Info")]
+    [SerializeField] GameObject levelInfo;
+    [SerializeField] TMP_Text levelInfoTitle;
+    [SerializeField] TMP_Text levelInfoNumber;
+    [SerializeField] TMP_Text levelInfoDifficulty;
+
     private void Awake()
     {
         if (instance != null)
@@ -159,5 +165,34 @@ public class MenuManager : MonoBehaviour
     {
         var eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(obj);
+    }
+
+    public void ShowLevelInfo()
+    {
+        levelInfo.SetActive(true);
+        levelInfoTitle.text = Localisation.Get(StringKey.UI_LevelInfo_Title);
+        levelInfoNumber.text = GameManager.instance.NumberOfMissions.ToString();
+        MissionDifficulty difficulty = GameManager.instance.DifficultyRank;
+
+        switch (difficulty)
+        {
+            case MissionDifficulty.Easy:
+                levelInfoDifficulty.text = Localisation.Get(StringKey.UI_LevelInfo_Easy);
+                break;
+            case MissionDifficulty.Medium:
+                levelInfoDifficulty.text = Localisation.Get(StringKey.UI_LevelInfo_Medium);
+                break;
+            case MissionDifficulty.Hard:
+                levelInfoDifficulty.text = Localisation.Get(StringKey.UI_LevelInfo_Hard);
+                break;
+            default:
+                levelInfoDifficulty.text = "???";
+                break;
+        }
+    }
+
+    public void HideLevelInfo()
+    {
+        levelInfo.SetActive(false);
     }
 }

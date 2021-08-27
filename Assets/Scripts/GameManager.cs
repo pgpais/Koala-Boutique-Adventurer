@@ -25,6 +25,25 @@ public class GameManager : MonoBehaviour
     public CharacterClassData currentSelectedClass;
 
     public int BaseDifficulty { get; private set; }
+    public MissionDifficulty DifficultyRank
+    {
+        get
+        {
+            if (BaseDifficulty <= 10)
+            {
+                return MissionDifficulty.Easy;
+            }
+            else if (BaseDifficulty >= 11 && BaseDifficulty <= 20)
+            {
+                return MissionDifficulty.Medium;
+            }
+            else
+            {
+                return MissionDifficulty.Hard;
+            }
+        }
+    }
+    public int NumberOfMissions => stats.stats.numberOfMissions;
 
     public Mission CurrentMission => currentMission;
     public string DiseasedItemName => diseasedItemName;
@@ -366,4 +385,11 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+}
+
+public enum MissionDifficulty
+{
+    Easy,
+    Medium,
+    Hard,
 }
