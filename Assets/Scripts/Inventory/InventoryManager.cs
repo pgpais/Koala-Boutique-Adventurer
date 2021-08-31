@@ -90,10 +90,22 @@ public class InventoryManager : MonoBehaviour
 
         AddToNewItemsLog(diseasedGoldLoss);
 
+        List<string> itemsToRemove = new List<string>();
+
         foreach (var itemName in itemQuantity.Keys)
         {
             int quantity = itemQuantity[itemName];
             Debug.Log($"{itemName}: {quantity}");
+
+            if (quantity <= 0)
+            {
+                itemsToRemove.Add(itemName);
+            }
+        }
+
+        foreach (var ItemName in itemsToRemove)
+        {
+            itemQuantity.Remove(ItemName);
         }
 
         // TODO: remove this hardcode
