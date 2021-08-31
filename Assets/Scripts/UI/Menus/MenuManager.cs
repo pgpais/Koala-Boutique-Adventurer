@@ -127,6 +127,11 @@ public class MenuManager : MonoBehaviour
 
     void OnSubmitFamilyID(string familyId)
     {
+        if (string.IsNullOrEmpty(familyId))
+        {
+            return;
+        }
+
         FileUtils.DeleteFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath));
         FileUtils.WriteStringToFile(FileUtils.GetPathToPersistent(FirebaseCommunicator.familyIDSavePath), familyId);
 
