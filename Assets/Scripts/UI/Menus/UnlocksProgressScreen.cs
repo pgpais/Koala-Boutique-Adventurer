@@ -15,6 +15,8 @@ public class UnlocksProgressScreen : SerializedMonoBehaviour
     [SerializeField] UnlockSmallUI prefab;
     [SerializeField] Button closePopup;
 
+    [SerializeField] GameObject logScreen;
+
     List<UnlockSmallUI> unlockUIs = new List<UnlockSmallUI>();
 
     private void Awake()
@@ -77,6 +79,8 @@ public class UnlocksProgressScreen : SerializedMonoBehaviour
     private void OnDisable()
     {
         closePopup.gameObject.SetActive(false);
+
+        logScreen.SetActive(true);
     }
 
     private void SortUI()

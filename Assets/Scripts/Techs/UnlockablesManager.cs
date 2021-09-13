@@ -77,9 +77,9 @@ public class UnlockablesManager : MonoBehaviour
                     }
                 }
 
-                gotUnlockables = true;
-                OnGotUnlockables.Invoke();
             }
+            gotUnlockables = true;
+            OnGotUnlockables.Invoke();
         });
     }
 

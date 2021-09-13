@@ -19,7 +19,7 @@ public class ClassSelectScreen : MonoBehaviour
 
     private void Start()
     {
-        exitButton.onClick.AddListener(HideMenu);
+        // exitButton.onClick.AddListener(HideMenu);
         // foreach (Transform child in layoutGroup)
         // {
         //     Destroy(child.gameObject);
@@ -45,10 +45,10 @@ public class ClassSelectScreen : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            HideMenu();
-        }
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     HideMenu();
+        // }
     }
 
     private void HideMenu()
@@ -59,7 +59,7 @@ public class ClassSelectScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        exitButton.gameObject.SetActive(true);
+        // exitButton.gameObject.SetActive(true);
         foreach (Transform child in layoutGroup)
         {
             Destroy(child.gameObject);

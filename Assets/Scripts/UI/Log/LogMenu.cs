@@ -62,6 +62,8 @@ public class LogMenu : SerializedMonoBehaviour
 
     private void OnEnable()
     {
+        closeButton.gameObject.SetActive(true);
+
         LogsManager.SendLogDirectly(new Log(
             LogType.NotebookInteracted,
             null

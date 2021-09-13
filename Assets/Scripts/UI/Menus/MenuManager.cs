@@ -95,10 +95,18 @@ public class MenuManager : MonoBehaviour
 
         playButton.onClick.AddListener(OnPlayButton);
         logoutButton.onClick.AddListener(OnLogout);
-        selectClassButton.onClick.AddListener(ShowClassSelectScreen);
-        selectClassBackButton.onClick.AddListener(ShowMenuScreen);
+        // selectClassButton.onClick.AddListener(ShowClassSelectScreen);
+        // selectClassBackButton.onClick.AddListener(ShowMenuScreen);
 
         classSelectScreen.SetActive(false);
+        if (UnlockablesManager.instance.GotUnlockables)
+        {
+            ShowClassSelectScreen();
+        }
+        else
+        {
+            UnlockablesManager.OnGotUnlockables.AddListener(ShowClassSelectScreen);
+        }
         // menuScreen.SetActive(true);
     }
 
@@ -161,7 +169,7 @@ public class MenuManager : MonoBehaviour
     void ShowMenuScreen()
     {
         askForIDParent.SetActive(false);
-        classSelectScreen.SetActive(false);
+        // classSelectScreen.SetActive(false);
         menuScreen.SetActive(true);
         SetSelectedMenuItem(playButton.gameObject);
     }
