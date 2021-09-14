@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.TopDownEngine;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,8 +21,10 @@ public class ArrowTrap : MonoBehaviour
     [SerializeField] float range;
     [SerializeField] LayerMask hitLayer;
 
+    Room room;
 
     private float nextShotTime;
+    bool canMakeSound = false;
 
     private void Awake()
     {
@@ -29,8 +33,24 @@ public class ArrowTrap : MonoBehaviour
 
     private void Start()
     {
+        room = GetComponentInParent<Room>();
+
+        room.OnPlayerEntersRoomForTheFirstTime.AddListener(OnPlayerEntersRoom);
+        room.OnPlayerEntersRoom.AddListener(OnPlayerEntersRoom);
+        room.OnPlayerExitsRoom.AddListener(OnPlayerExitsRoom);
+
         if (isAutomatic)
             StartCoroutine(AutoShootLoop());
+    }
+
+    private void OnPlayerExitsRoom()
+    {
+        canMakeSound = false;
+    }
+
+    private void OnPlayerEntersRoom()
+    {
+        canMakeSound = true;
     }
 
     private IEnumerator AutoShootLoop()
@@ -65,6 +85,9 @@ public class ArrowTrap : MonoBehaviour
     void Shoot()
     {
         Instantiate(arrowPrefab, shootingPoint.position, shootingPoint.rotation).Init(projectileInitialVelocity);
-        AudioSource.PlayClipAtPoint(onFireSound, transform.position);
+        if (canMakeSound)
+        {
+            AudioSource.PlayClipAtPoint(onFireSound, transform.position);
+        }
     }
 }
