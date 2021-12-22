@@ -59,7 +59,7 @@ public class Localisation
                 {StringKey.UI_EndScreen_Failure_Continue, "Press ENTER to continue..."},
                 {StringKey.UI_ClassSelect_Title, "Select your class:"},
 
-                {StringKey.UI_Oracle_Message, "The Oracle whispers, predicting that this item are in high demand at this time today:"},
+                {StringKey.UI_Oracle_Message, "The Oracle whispers, predicting that this item is in high demand at this time today:"},
                 {StringKey.UI_SecretDoor_Message, "This door requires a code to unlock"},
 
                 {StringKey.UI_NextMission_AbundantItem, "Abundant Item"},
