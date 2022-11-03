@@ -1,4 +1,4 @@
-# Ye Olde Shop - Adventurer Version
+# Koala Boutique - Adventurer Version
 
 [Check out the Manager version](https://github.com/pgpais/Ye-Olde-Shop--Parent-), the other part of this game.
 
